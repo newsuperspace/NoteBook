@@ -1,0 +1,535 @@
+﻿关于XML DOM、HTML DOM 和 DOM4J
+DOM是一门跨平台跨语言的用于保存数据和描述数据间关系的语言。因此它广泛地应用于各种平台各种语言的数据存储和数据传输。
+这种跨平台性完全是因为DOM本身其实就是纯文本（不同于其他语言的二进制性质），这就使得各种语言可以使用字符串的分析技术来实现对统一DOM文档的解析
+从而使得解析结果在各个平台上都是一模一样的（因为字符串在任何平台都还是那个字符串不会改变）。
+因此不同语言就拥有了各自一套用以解析DOM文档的API，具体来说JavaScript上使用xml DOM技术解析XML文档，而在Java语言上就使用DOM4J这个jar包中提供的api来解析
+DOM文档。
+最后关于XML DOM和HTML DOM二者的关系在于，由于HTML是特殊的XML（二者本身是一体的只不过HTML使用的DTD约束的XML文档，因此标签都是固定的，不能像XML那样随意自定义）因此HTML DOM所提供的一套API都是有针对性的指向HTML中的每一种标签、属性的，而XML DOM中的API更类似于DOM4J，可以解析任何位置结构形式的XML文档，因此泛用性更强。
+
+
+
+
+JSP九大隐式对象
+request  
+response  
+session  
+appliction  
+pageContext  
+out  
+exception  
+page  
+config
+
+EL十一隐式对象
+pageContext   唯一与JSP中相同的对象 且 类型为 PageContext引用类型
+
+下面的全是map键值对容器对象
+pageScope   存放 JSP页面域中的  <String，Object>   索引方式 为  pageScope.键名
+requestScope    请求转发链域中的键值对
+sessionScope    session域中的键值对
+applicationScope    web应用域中的键值对
+
+parma    请求参数的键值对 ，如果有多个同名参数（比如 足球<input type="checked"  name="hobby"  value="football">   篮球<input type="checked"  name="hobby"  value="basketball"> 这两个都被选中的时候 以get请求方式重写的URL就变成了  http://www.NB.com/WebRoot/xxxx?hobby=football&hobby=basketball）
+这样的话 当使用 param.hobby只能得到第一个football。
+paramValues   <String, Strint[]>
+
+header      请求头键值对
+headerValues   存在多个同名请求头的时候使用这个 <String，String[]>
+
+cookie  <String, Cookie>   键是cookie的名字，值是cookie对象，这个很特殊一定要注意
+initParam  获得当前web应用中的web.xml文档中的 全局初始化配置参数的键值对
+
+
+
+
+
+设定外键的SQL语句：
+CONSTRIANT fjodsiufs7e  FOREIGN KEY (等待约束为外键的当前表字段名)  REFERENCES  主表名 （主表中的字段名）
+
+
+
+CONSTRIANT JSDOFUJS FOREIGN KEY t_id REFERENCES teachers(id);
+
+
+CREATE TABLE teacher(
+	id INT PRIMARY KEY,
+	name VARCHAR(20) NOT NULL,
+	lesson VARCHAR(20)  NOT NULL UNIQUE
+); 
+
+CREATE TABLE student(
+	id INT PRIMARY KEY,
+	name VARCHAR(20) NOT NULL,
+	score INT(3)
+);
+
+CREATE TABLE teacher_student(
+	t_id INT,
+	st_id INT,
+	PRIMARY KEY(t_id,st_id),
+	CONSTRAINT t_id2teacher_pk FOREIGN KEY (t_id) REFERENCES teacher (id),
+	CONSTRAINT st_id2student_pk FOREIGN KEY (st_id) REFERENCES student (id)
+);
+
+INSERT INTO teacher (name, lesson) VALUES ('AAA', 'english');
+INSERT INTO teacher (name, lesson) VALUES ('BBB', 'math');
+INSERT INTO teacher (name, lesson) VALUES ('CCC', 'history');
+INSERT INTO student (name, score) VALUES ('msn',300);
+INSERT INTO student (name, score) VALUES ('qq',217);
+INSERT INTO student (name, score) VALUES ('chiyun',391);
+INSERT INTO student (name, score) VALUES ('lun', 210);
+
+INSERT INTO teacher_student VALUES (1,4);
+INSERT INTO teacher_student VALUES (1,3);
+INSERT INTO teacher_student VALUES (1,2);
+INSERT INTO teacher_student VALUES (2,1);
+INSERT INTO teacher_student VALUES (2,3);
+INSERT INTO teacher_student VALUES (3,1);
+
+
+SELECT teacher.name,teacher.lesson,student.name FROM teacher_student AS ts INNER JOIN (teacher,student) ON (ts.t_id = teacher.id AND ts.st_id = student.id)  ORDER BY teacher.name DESC;
+
+
+
+SELECT * FROM student WHERE id IN (SELECT ts.st_id FROM teacher_student AS ts WHERE ts.t_id = 2);
+
+
+
+
+JDBC编写步骤
+1、注册数据库驱动
+2、创建与数据库服务器的连接
+3、创建SQL对象
+4、通过SQL对象执行SQL语句
+5、处理从数据库返回的游标结果集对象
+6、释放资源（按顺序关闭结果集对象、SQL对象和断开与数据库服务器的连接）
+
+
+
+
+
+
+
+CREATE TABLE customer(
+ 		id  VARCHAR(40) PRIMARY KEY,
+  		name VARCHAR(20)  NOT NULL,
+  		gender VARCHAR(4)  NOT NULL,
+  		birthday DATE,
+  		cellphone VARCHAR(20),
+ 		email VARCHAR(40),
+ 		hobby VARCHAR(100),
+ 		type VARCHAR(40) NOT NULL,
+ 		description VARCHAR(255)
+);
+
+No enclosing instance of type connectionPool is accessible. Must qualify the allocation with an enclosing instance of type connectionPool (e.g. x.new A() where x is an instance of connectionPool).
+
+
+
+
+数据库的“存储过程”  也就是数据库服务器端上的函数（过程）调用
+
+
+
+
+
+多线程同步的方式有很多种：
+
+1、public static  synchronized  void  function()
+{
+
+}
+这种形式可以使在多线程同时调用function函数的时候保证同一时间只允许一个线程使用函数
+
+2、常用的方式是使用“同步代码块”封装一段代码，同时锁定需要单一线程操作的对象
+synchronized(this){
+
+	....  // 执行语句	
+
+}
+这句话的作用就是在任意一个线程运行代码块中的“执行语句”的时候都会锁死当前对象，这样其他线程就无法对当前对象中的成员执行任何修改操作了，从而实现同步化
+
+3、封装某一List容器使其变为同步容器，同一时间只允许一个线程对容器进行操作
+List<T>  list  =  Collections.synchronizedlist(new ArrayList<T>());
+
+
+
+
+我为什么喜欢空指针异常？因为我知道异常的产生原因，知道如何处理，统而言之就是对这个异常太熟悉了，所以一碰到这个异常我不会陌生不会抓狂而是成竹在胸，就因为我了解NullPointerException这个单词！！！！！
+所以为了提高我对其他异常的兴奋程度如同空指针异常，我应该像熟悉空指针异常一样去熟悉其他异常！！！！！！
+
+
+
+
+
+
+
+
+// ==========================================  外键约束  实现多表结构=============================================
+CONSTRAINT teacher_id FOREIGN KEY(T_ID) REFERENCE teacher(id);
+CONSTRAINT student_id FOREIGN KEY(S_ID) REFERENCE student(id);
+PRIMARY KEY(teacher_id,student_id);
+
+
+
+SELECT t.id,t.name,t.lesson,st.name FROM teacher_student 
+INNER JOIN (student st, teacher t) 
+ON (teacher_student.t_id = t.id AND teacher_student.st_id = st.id) ORDER BY t.id ASC;
+
+
+
+
+select * from student where id in (select st_id from teacher_student where t_id=1);
+
+
+Object[][]  args  =  new Object[10][];
+for(int i=0;i<args.length;i++){
+	args[i]  = new Object[2]{i,"name"+i};
+}
+
+
+
+//==========================================Filte过滤器的配置========================================================
+
+Filter过滤器的配置分为四种，分别针对不同的对web资源的请求情况而设置
+常规 REQUEST
+请求转发  FORWARD
+请求包含（动态）  INCLUDE
+全局错误 Error
+
+常规请求为默认配置也就是当正常的请求响应过程才会被过滤器过滤，请求重定向是请求两次响应自然也算在内
+
+请求转发是拦截通过请求转发方式对指定web资源的访问
+
+请求包含是对以动态包含方式（除JSP处理指令——include意外的其他所有方式，包括JSTL核心标签、Servlet中的request.getRequestDispatcher().forward()、JSP动作元素等 都是动态包含）请求的web资源的过滤方式
+
+最后是以在Web应用中的web.xml配置文件中进行的全局错误页的响应的过滤
+<error-page>
+	<error-exception>java.lang.Exception</error-exception>
+	<locatio>/WEB-INF/pages/error.jsp</location>
+</error-page>
+这样当当前web应用中出现任何错误的时候，都会自动通过ERROR的方式跳转到指定的页面中，则error就是过滤这一过程的过滤器配置
+
+
+// =======================================================GZIP===========================================================
+
+// 这里我们使用字节数组输出流作为GZIP的压缩输出流
+ByteArrayOutputStream   baos  = new  ByteArrayOutputStream();
+GZIPOutputStream  gzip  =  new GZIPOutputStream(baos);
+
+// 准备好待压缩的数据
+String s  =  "long  text";
+
+// 将待压缩的数据转变为字符数组（字节流缓冲）
+byte[]   buffer  =  s.getBytes();
+// 调用gzip的write将待压缩的字节缓冲写入到压缩输出流中
+gzip.write(buffer,0,buffer.length);
+// 完成压缩过程后就调用finish方法，该方法会完成收尾工作，无需手动关闭底层流
+gzip.finish();
+
+// 至此待压缩的数据已经经过GZIP压缩后放到了baos流中，之所以使用ByteArrayOutputStream，是因为可以通过抓有方法轻松获取经过压缩的字节缓冲数组
+buffer =  baos.toByteArray();
+
+// 最后调用HttpServletResponse写入到响应中去
+response.setHeader("Content-Encoding","GZIP");  // 通知浏览器实体内容的字节流数据是经过GZIP压缩的，浏览器会自动进行解压缩操作
+response.getOutputStream.write(buffer,0,buffer.length);
+
+
+
+
+//==========================================================下载======================================================
+InputStream  ins =  new FileInputStream("磁盘上的待下载的文件的路径");
+OutputStream  os  =  response.getOutputStream(); 
+
+len = -1;
+byte[]  buffer =  new byte[1024];
+
+while((len = ins.read(buffer))!=-1)
+{
+	os.write(buffer,0,len);
+}
+
+// 这样待下载的文件的字节流就已经成功写入到了面向浏览器的输出流了，接下来只需要设置好响应头，旅行告知浏览器以“文件下载”的方式打开文件即可
+
+response.setHeader("Content-Disposition","attachment;filename="+URLEncoder.encoding(filename,response.getCharacterEncoding()));  // 注意如果文件名（包含后缀）存在中文，则一定要使用URLEncoder进行URL编码，因为在HTTP协议（请求和响应）中都不允许出现非ISO8859-1字符集的字符
+
+response.setHeader("Content-Type","application/octet-stream");
+
+
+// ===============================================上传请使用开源框架commons-FileUpload==========================================================
+
+// ---------------------------表现层设计-------------------------------
+1、使用Form表单的post请求方式
+2、使用Form表单的enctype属性变更正文内容MIME类型为multipart/form-data
+3、使用file类型的input标签实现文件上传功能
+
+<form action=""  method="POST"  enctype="multipart/form-data">
+	<input type="file"  name="upload" />
+	<input type="submit" value="上传" />
+</form>
+
+
+// ----------------------------servlet层设计--------------------------------
+// 1、创建一个关于FileItem的工厂实例，在这个工厂中规定了关于解析request中包含的表单字段的对应类型FileItem创建的所有配置信息
+FileItemFactory  factory  =  new  DiskFileItemFactory();  // 创建出工厂实例
+setSizeThreshold(int sizeThreshold);  // 指定保存上传文件项FileItem中的流数据到本地磁盘的时候，所能使用的最大内存缓冲区大小，以字节为单位
+factory.setRepository(new  File("c:/temp")); // 指定保存上传文件项FileItem中的数据流到磁盘的时候，如果超出上面规定的缓冲区则以磁盘临时文件的存放位置
+
+// 2、创建处理FileUpload jar包的核心处理对象，该对象能够为我们方便的解析出实体内容（请求正文）中的各个字段（包括普通字段项和上传字段项）
+FileUpload   upload  =  new  ServletFileupload(factory);
+
+upload.isMultipartContent(request);  //这一步很关键检测提交过来的request请求正文MIME类型是否是规定的multipart/form-data
+
+upload.setFileSizeMax();   //设置单个上传文件的大小上限，如果超出范围的上传就会爆出异常
+upload.setSizeMax();	// 设置同一个表单中总上传文件的上限如果超出范围就会爆出异常
+
+upload.setProgressListener(ProgressListener pListener); // 设置上传进度监听器，反馈上传数据量的实时信息
+
+// 3、一切准备就绪可以开始从request中提取出FileItem对象了，记住每个FileItem对象对应一个form表单中的字段，可能是普通字段；也可能是上传字段，需要区分对待
+
+List<DiskFileItem> list =  upload.parseRequest(request);
+for(DiskFileItem  fileItem: list)
+{
+	if(fileItem.isFormField())
+	{
+		// 是普通字段
+		name  = fileItem.getFieldName();    // 字段名和文件名都是包含在每个正文部分的头部，而头部文字的编码是通过request.setCharacterEncoding()指定的
+		// 而如果字段值包含中文，那么就需要手动指定解码所需要的码表
+		value = fileItem.getString("utf-8");   
+	}
+	else
+	{
+		// 上传字段
+		InputStream  is  = fileItem.getInputStream();
+		
+		File  file  =  new File("c:/xxxx/cccc/"+fileItem.getName());
+		if(!file.exist())
+		{
+			//如果文件不存在，就需要逐级逐层的先创建出目录结构
+			file.mkdirs();
+		}
+		
+		OutputStream  os  =  new FileOutputStream(file);
+		
+		byte[]  buffer  =  new  byte[1024];
+		int len = -1;
+		while((len=is.read(buffer))!=-1)os
+		{
+			os.write(buffer,0,len);
+		}
+		
+		is.close();
+		os.close();
+		
+		// 文件保存完毕后，还需要将临时文件删除，就大功告成了
+		fileItem.delete();
+	}
+}
+
+
+
+
+// =======================================在实际开发Tmao图书商城项目的时候发现的一些问题============================================
+1、不知道是不是JavaEE版本的问题，我发现在使用6.0或者7.0版本的时候对于编写用于处理乱码问题的过滤器的时候，对于以GET请求方式提交过来的数据，并应该以静态代理包装设计模式对HttpServletRequest对象进行包装后，对其getParameter()方法的行为进行改变，具体处理代码如下：
+
+	
+
+	/**
+	 * 定义一个私有的内部类，继承自Request的包装适配器类型——Wrapper
+	 * 然后更改我们所需要的方法的行为
+	 * @author Administrator
+	 *
+	 */
+	private  class MyHttpServletRequest  extends HttpServletRequestWrapper
+	{
+		/**
+		 * 这个构造器是包装适配器的核心，它将需要更改成员方法行为的被包装对象注入到以修饰设计模式实现的包装适配器中去
+		 * 这个适配器类型又是我们当前类的父类，在这个适配器类型与被包装类型实现了完全相同的接口，并在每个相同方法内部
+		 * 原封不动地原样调用被包装的对象的同名方法。而我们在自己的类中只需要覆盖(override)我们需要更改行为的方法即可，至于其他
+		 * 不需要更改行为的方法就会调用父类内部的，而父类又会自动调用被包装类的。
+		 * @param request
+		 */
+		public MyHttpServletRequest(HttpServletRequest request) {
+			super(request);
+		}
+
+		@Override
+		public String getParameter(String name) {
+			String value = super.getParameter(name);
+			
+			if(null==value)
+			{
+				return null;
+			}
+			
+			try {
+				byte[]  buffer =  value.getBytes("iso8859-1");
+				value =  new String(buffer,propertiesUtils.getCharsetConfig().getProperty("page"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+				throw  new  RuntimeException("CharacterEncodingFilter->MyHttpServletRequest->getParameter()->编码类型异常");
+			}
+			return value;
+		}	
+	}
+从上面代码可知我们为了处理请求方式为GET的请求参数的乱码问题而需要对HttpServletRequest.getParameter()方法的行为进行改变，因为从学习处理乱码问题的时候老师告诉我，对于post请求方式的乱码处理问题只需要简单的request.setCharacterEncoding("指定解析编码")即可，对于响应正文的乱码问题只需要简单的通过
+response.setCharacterEncoding("解析编码")+response.setHeader("Content-Type","text/html;charset=utf-8"),前者是告知服务器以何种码表来将我们所写的字符串编码为二进制码后输出到指对浏览器的输出流，也就是响应正文的输出流中去；后者是组织响应头的信息，告知浏览器以何种编码（与服务器所使用的编码相同）解码响应正文中的
+二进制数据以此重新取得原本的字符串。
+
+但是对于以GET请求方式提交来的请求参数，就不能简单是设置几句代码了。正常情况下，get请求方式所提交过来的请求参数是组织在URL中的，由于URL是Http协议的一部分，且Http协议不能使用非ISO8859-1字符集，因此对于表单数据为汉字的情况，通常情况下浏览器会先以当前页面所使用的字符集将该汉字字符串编码为二进制数据，
+然后再将二进制数据转变进制为十六进制，最后以没字节（二位十六进制）为单位用%分割起来。这一过程称之为URL编码.
+而老版本的Tomcat服务器默认拿到URL编码后的请求参数后会执行逆向的过程，首先取出%分隔号，然后将十六进制重新转变为二进制，最后一步却使用默认的ISO8859-1的字符集将二进制数据解码为字符串，这里就会出现乱码，因为编码的时候使用的是非ISO8859-1字符集，而解码却使用了ISO8859-1字符集，这就是造成乱码的本源。
+因此在我们需要对request.getParameter()进行自定的处理，通过包装适配器设计模式，我们首先创建一个自定义类MyHttpServletRequest继承自关于HttpServletRequest和包装适配器类型——HttpServletRequestWrapper，该包装类的所有成员方法与被包装request完全相同，并且每个方法的执行逻辑就是调用被包装的request对象的相同方法。
+我们继承这个包装类后就可以对不需要更改行为的方法调用原来的方法即可，而对于getParameter/getParameterMap等一些列与获取请求参数有关的方法进行我们自定义的更改。更改过程就是将已经被以ISO8859-1解码的乱码字符串重新编码为二进制数据，然后再以正确的字符集进行解码，这样我们就得到了没有乱码的字符串了。
+
+
+这一切看上去顺利成长，直到我在实际开发中发现，通过我特殊处理的getParameter()方法获取到的却是乱码请求参数，而通过原始的未经特殊处理的request.getParameterMap得到的确实正确的请求参数，这让我得到两个信息。
+（1）在request中有关获取请求参数的方法之间没有多大关联，也就是说getParameterMap内部并不是调用了getParameter方法的。由于我手上没有JavaEE源码所以也无法验证
+（2）新版本的TOMCAT或者高版本的JavaEE、JAVASE已经不在默认使用ISO8859-1来处理get请求方式提交来的请求参数了，而是默认使用UTF-8了，因此在新版本中开发web工程对于处理乱码问题的过滤器已经不需要在写那些额外的处理get请求方式的代码了。
+
+
+
+
+2、在使用过滤器完成对特定静态WEB资源(*.jsp *.html  *.css  *.js)的GZIP压缩的时候我发现浏览器的加载速度会变慢，我猜测可能是浏览器需要处理太多的GZIP解压缩的工作。后来我在无疑中将一个jsp页面使用外部脚本转为使用内部脚本之后，也就是不再需要加载外部JS脚本的时候，整个网站的运行速度都变快了。
+
+
+3、 关于Web.xml文件版本的问题
+
+
+4、可能是我是用的jsp版本较低的缘故，在实际开发中如果需要让JSP页面上的EL表达式生效，就需要手动在JSP的page处理指令中添加属性 isELIgnored="false"意思是不忽略文档中的EL表达式，但实际我在查阅资料的时候说这个属性是默认就为false的，而我却需要手动添加.
+
+
+5、BASE64编码的作用是将任何二进制数据转变为可见字符串，同时这一过程也是可逆的。因此你会发现任何二进制数据，图片也好、音视频也好、可执行文件也好、文本文件也好，都可以通过BASE64编码转变为一长串字符串的形式，以此便于网络传输。
+
+
+
+6、在开始工程的时候只有选择JAVAEE6.0才能在工程中使用web.xml 3.0 否则如果选择更高的JAVAEE7 就只能使用web.xml 2.3 。两个版本的区别后很多，比如对于需要通过包装设计模式更改response.getOutputStream（通常是为了实现GZIP压缩）所获取到的输出流ServletOutputStream，该类型在EE的API文档中标明是abstract，因此需要继承该抽象类，此时如果是EE6只需要实现一个write方法即可，而如果EE7则需要实现额外两个。
+另一个最大的不同来自web.xml文档，在7中文档的servlet和filter配置没有先后顺序，但是在2.3中过滤器必须先于servlet配置，同时在配置filter的时候3.0有新的子节点，而2.3没有。因此我建议使用更好用的3.0因此就必须在创建工程的时候选择使用JAVAEE6.
+
+7、记得在创建工程后，一定要优先更改工程的存储编码为UTF-8.
+
+
+8、!!!!!!!!!!!!!很重要的一点，就是在使用<form></form>表单的时候在属性action中不能携带有请求参数，如果需要在提交表单的时候想action指定的路径中传入已经确定的请求参数的时候只能通过<input type="hidden"  name="fff"  value="xxx">。如果强行在action属性中以"?xxx=nnn&yyy=sss"形式在URL后拼接请求参数，则在提交表单的时候就会丢失。
+
+
+
+9、关于通过SERVLET3.0更方便地实现文件上传的功能的关键点
+（1）处理文件上传的servlet类要标明@WebServlet和@MultiPartConfig两个注解，这样该servlet才能开始使用servlet3.0提供的新机制处理文件上传
+（2）在前端要完成文件上传一如既往的三步走a:POST提交b:enctype="multipart/form-data"c：使用file类型的input标签
+（3）通过request.getPart（）获取到指定表单字段的Part类型对象，然后通过part的方法便捷地完成对MIME协议实现的多部分表单结构的解析
+Part:  
+getHeader():form-data; name="image"; filename="中国NGO(非营利组织)登记注册攻略.png"
+getHeaderNames():[content-disposition, content-type]
+getName()image
+
+-----------------------------21911323430
+Content-Disposition: form-data; name="image"; filename="ä¸­å½NGO(éè¥å©ç»ç»)ç»è®°æ³¨åæ»ç¥.png"
+Content-Type: image/png
+
+
+
+10、增强foreach只能用于快速遍历一个容器，也就是说foreach只能用来查看容器中的元素，如果你想在遍历容器的过程中修改容器中的元素，则还是使用传统的for循环吧。
+
+
+
+11、在操作拥有外键的数据库表的时候一定要格外小心。
+（1）在向从表中添加新数据的时候，一定要保证新数据所使用的外键值已经预先存在于主表中了，否则是无法向从表中添加主表所被引用外键中不存的外键值的数据的。
+（2）在删除主表中的数据的时候要确保，从表中的数据没有引用该主表数据的外键值的数据存在，这样才能删除成功，否则但凡从表中还有一条数据在引用主表中的这一个表项，该表项都是不允许被删除的。
+形如Tmao工程中的->servlet/center->处理形成订单业务的流程分支formOrder->FormOrder()方法中最后想数据库中写入数据时候，就要遵守“外键主表先写入的”原则
+		/*
+		 * 下面这个像服务器中写入数据是有先后顺讯的，由于orderitem表中的ordersnum是引用表orders中的ordersnum的外键
+		 * 因此在创建orderitem数据的时候一定要确保从表orderitem中所使用的外键值已经先一步存在于主表orders中了
+		 */
+		 
+		 
+原则心法口诀：   先加主后加从，先删从后删主——————————主从从主		 
+
+		 
+		 
+		 
+12、  EL表达式 ==  JSP表达式   ；   EL自定义函数+ EL函数（JSTL中的function）+ JSP自定标签 + JSTL标准标签（JSTL中core核心标签）  ==  JSP脚本片断  = JSP动作元素
+
+
+13、  在JSP中只有“JSP处理指令——————<%@ include  file="xxx.jsp" %>”  是唯一的静态包含，其他的包括JSTL标准标签库、JSP动作元素、servlet的request.getRequestDispatcher().include()在内的都是动态包含
+
+
+		 
+14、使用JavaMail发送邮件
+		/*
+		 * 配置这一次邮件发送所需要的配置信息
+		 */
+		Properties props  =  new Properties();
+		props.setProperty("mail.transport.protocol", "smtp");   //邮件发送使用的协议类型是SMTP
+		props.setProperty("mail.host", "smtp.126.com");    // 发送邮件所使用的邮件服务器域名地址
+		props.setProperty("mail.smtp.auth", "true");    // 想邮件服务器请求验证(必须有)
+		
+		/*
+		 * session对象注意是javax.mail.Session而不是HttpSession服务器端会话
+		 * 邮件session代表着一次与邮件服务器的会话，也就是每发送一次邮件（不一定是一封，一次可以多封）或者每接受一次邮件
+		 * 都需要与smtp服务器或者pop服务器产生会话，这个会话就是session
+		 */
+		Session session  =  Session.getInstance(props);
+		session.setDebug(true);   // 开启DEBUG模式，则在邮件发送过程中会将日志信息打印到控制台上
+		
+		MimeMessage  message  =  new MimeMessage(session);   // message对象代表一封邮件
+		try {
+			message.setFrom(new InternetAddress("huixinshegong@126.com"));
+			
+			/*
+			 *Message.RecipientType中一共有三个常量代表邮件发送的三种模式，分别是
+			 *TO 常规发送
+			 *CC 抄送
+			 *BCC 密送 
+			 */
+			message.setRecipients(Message.RecipientType.TO, "459464207@qq.com");
+			
+			message.setSubject("欢迎使用JavaMail发送自定义邮件");  // 定义邮件的标题
+			
+			/*
+			 * 设置邮件内容，这一封邮件仅仅是简单的一封纯文本的邮件。
+			 * 邮件内容组织形式是使用MIME协议的，也就是嵌套在SMTP协议内部的MIME协议来组织邮件正文的内容
+			 * MIME协议将邮件正文内容分割为多个部分，每个部分的内容类型（Content-Type）可以各不相同，这一点与同样使用MIME协议之一的子协议
+			 * 文件上传所使用的表单组织形式——Multipart/form-data如出一辙，区别是一个将邮件正文分割为多个部分，而另一个是将表单数据分割为多个部分
+			 * 目的都是使得正文内容的表现形式可以多种多样。
+			 */
+			message.setContent("少小离家老大回，<br>"
+					+ "乡音无改鬓毛衰。<br>"
+					+ "儿童相见不相识，<br>"
+					+ "笑问客从何处来。<br>", 
+					"text/html;charset=utf-8");   // 最后指定了此次纯文本的MIME类型为“以utf-8为字符集的超文本标记语言文本”
+			
+			message.saveChanges();   // 保存一下邮件message中的内容
+			
+			/*
+			 *  最后如果你想在本地磁盘上备份一下邮件，必须使用*.eml拓展名的专用格式保存邮件文件到本地磁盘上
+			 */
+			message.writeTo(new  FileOutputStream("c:/xxx.eml"));
+
+			//--------------------------------------------邮件message我们已经组织好，下面就是准备最后的发送事务了-------------------------------------------
+			Transport transport = session.getTransport();   // 首先从本次邮件会话中获取这次邮件发送的发送器
+			transport.connect("huixinshegong", "xxoo123321");   // 告知你发送邮件所使用的邮箱账户登录的用户名和密码
+			
+			/*
+			 * 最后万事俱备发送邮件吧
+			 * 需要注意的是这里一定要选择使用sendMessage()函数来发送邮件
+			 * 如果使用send()发送可能会被有些收件服务器判定为垃圾邮件而拒收
+			 */
+			transport.sendMessage(message, message.getAllRecipients());
+		} catch (AddressException e) {
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		 
+		 
+		 
+关于工程目录与实际web应用目录的的对应关系，在Web项目中自动生成的WebRoot目录对应的就是实际发布到TomCat服务器中域名对应的Web应用管理目录中的Web应用程序
+同时在工程阶段的src中的全部内容都会原封不动地拷贝到WEB应用目录下的classes目录，也就是说开发阶段的src == web应用/WEB-INF/classes，WebRoot == Web应用。
+需要特别指出的是classes目录就是全部Web应用类的classpath根目录，但是除了classes以外lib目录下包含着当前工程所需要使用到的全部jar包，而每个jar包打开后的根目录也是属于classpath的范畴，所以在实际web应用开发的时候，只要文件存在于classpath就可以直接填写以classpath为基的相对路径，tomcat会自动搜索classpath寻找你所需要的文件。（day01-07 struts配置文件和package属性.avi））
+		 
+		 

@@ -1,0 +1,1079 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0055)http://blog.csdn.net/crazzy0727/article/details/9761815 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<SCRIPT type="text/javascript" charset="utf-8" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/tracking.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </SCRIPT>
+
+<META content="no-siteapp" http-equiv="Cache-Control"><LINK rel="alternate" 
+href="#" media="handheld"><TITLE>Servlet3.0中HttpServletRequest增加了对文件上传的支持 - 
+crazzy0727的专栏        - 博客频道 - CSDN.NET</TITLE>
+<META content="text/html; charset=utf-8" http-equiv="Content-Type">
+<META name="description" content="0INRMumLsiQwT0xVgvYVmNCBWS7mV8LzSeLOZGHzflL3ziBSx+iej3G1syAeYvPZxqagQ0P7mgdX/qgnEWWuIcv4cTR6ZI5QNmqULAGtRkCtCNsphAD7cLBiV7UpV7yvURpKw6H8jHyDDZc8zP5P8QF9abbRoeoTcPcDs/Ij0+JSX9fkdkqCvmUFYzy/GBb+hMWJ">
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery-version.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad.htm"></SCRIPT>
+<!--new top--><LINK rel="stylesheet" href="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/index.css"><!--new top--><!-- ad begin -->
+<SCRIPT language="javascript" type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/tracking.htm"></SCRIPT>
+<!-- ad end--><LINK rel="Stylesheet" type="text/css" href="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/style.css"><LINK 
+id="RSSLink" title="RSS" rel="alternate" type="application/rss+xml" href="/crazzy0727/rss/list"><LINK 
+rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico"><LINK rel="stylesheet" 
+type="text/css" href="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/default.css">
+<SCRIPT language="javascript" type="text/javascript" charset="gb2312" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/35ff706fd57d11c141cdefcd58d6562b.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+hQGHuMEAyLn('[id="bb9c190068b8405587e5006f905e790c"]');
+hQGHuMEAyLn('.banner_top2,.banner_top3,.leftad,.rightad,.textad,#Topic_Top,#tad2,.ad_l,#ad_left,#ad_right,.adtxt,[class^="ad_area_"],[id^="div-gpt-ad-"],[class^="ad_300"],.ad_960,div.baidu,.ad_650,.ad_300_60,.AD,.tracking-ad');</SCRIPT>
+
+<META name="GENERATOR" content="MSHTML 9.00.8112.16696"></HEAD>
+<BODY><!-- 广告位开始 --><INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="149"></INS><!-- 广告位结束 --><!--new top-->
+<SCRIPT id="toolbar-tpl-scriptId" type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/html.js" skin="black" prod="blog" fixed="true"></SCRIPT>
+<!--new top-->
+<DIV id="container">
+<DIV id="header">
+<DIV class="header">
+<DIV id="blog_title">
+<H2><A href="http://blog.csdn.net/crazzy0727">crazzy0727的专栏</A></H2>
+<H3></H3>
+<DIV class="clear"></DIV></DIV>
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV id="navigator">
+<DIV class="navigator_bg"></DIV>
+<DIV class="navigator">
+<UL>
+  <LI id="btnContents"><A href="http://blog.csdn.net/crazzy0727?viewmode=contents"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])"><IMG 
+  src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_list.gif">目录视图</SPAN></A></LI>
+  <LI id="btnView"><A href="http://blog.csdn.net/crazzy0727?viewmode=list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])"><IMG 
+  src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_summary.gif">摘要视图</SPAN></A></LI>
+  <LI id="btnRss"><A href="http://blog.csdn.net/crazzy0727/rss/list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])"><IMG 
+  src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_rss.gif">订阅</SPAN></A></LI></UL></DIV>
+</DIV>
+<SCRIPT type="text/javascript">var username = "crazzy0727";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/crazzy0727";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</SCRIPT>
+
+<DIV id="body">
+<DIV id="main">
+<DIV class="main">
+<DIV class="ad_class">
+<DIV class="notice tracking-ad" data-mod="popu_3"><A href="http://blog.csdn.net/blogdevteam/article/details/51919935">
+<FONT color="blue">【公告】博客系统优化升级</FONT></A>&nbsp;&nbsp;&nbsp;<A href="http://lib.csdn.net/base/unity3d/structure">
+<FONT color="red">Unity3D学习，离VR开发还有一步</FONT></A>&nbsp;&nbsp;&nbsp;<A href="http://blog.csdn.net/blogdevteam/article/details/51984275">
+<FONT color="blue">博乐招募开始啦</FONT></A>&nbsp;&nbsp;&nbsp;<A href="http://lib.csdn.net/base/vr">
+<FONT color="red">虚拟现实，一探究竟</FONT></A>&nbsp;&nbsp;&nbsp;</DIV></DIV><!-- 广告位开始 -->
+<INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="72"></INS><!-- 广告位结束 --><LINK rel="stylesheet" type="text/css" 
+href="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment1.css">
+<LINK rel="stylesheet" type="text/css" href="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/style1.css">
+<SCRIPT language="JavaScript" type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.cookie.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/main.js"></SCRIPT>
+<LINK rel="stylesheet" href="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/markdown_views.css">
+<LINK rel="stylesheet" href="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.css">
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/MathJax.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/web-storage-cache.min.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/replace.min.js"></SCRIPT>
+
+<SCRIPT type="text/ecmascript">
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </SCRIPT>
+
+<DIV id="article_details" class="details">
+<DIV class="article_title"><SPAN class="ico ico_type_Repost"></SPAN>
+<H1><SPAN class="link_title"><A href="http://blog.csdn.net/crazzy0727/article/details/9761815"> 
+       Servlet3.0中HttpServletRequest增加了对文件上传的支持                    
+</A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix">
+<DIV class="article_r"><SPAN class="link_postdate">2013-08-05 08:43</SPAN><SPAN 
+class="link_view" title="阅读次数">716人阅读</SPAN><SPAN class="link_comments" title="评论次数"> 
+<A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+href="http://blog.csdn.net/crazzy0727/article/details/9761815#comments">评论</A>(0)</SPAN><SPAN 
+class="link_collect tracking-ad" data-mod="popu_171"> <A title="收藏" onclick="javascript:collectArticle('Servlet3.0中HttpServletRequest增加了对文件上传的支持','9761815');return false;" 
+href="javascript:void(0);">收藏</A></SPAN><SPAN class="link_report"> <A title="举报" 
+onclick="javascript:report(9761815,2);return false;" href="http://blog.csdn.net/crazzy0727/article/details/9761815#report">举报</A></SPAN></DIV></DIV>
+<DIV style="display: none;" id="embody" class="embody"><SPAN 
+class="embody_t">本文章已收录于：</SPAN>
+<DIV id="lib" class="embody_c" 
+value='{"err":0,"msg":"ok","data":[]}'></DIV></DIV>
+<STYLE type="text/css">.embody{
+                padding:10px 10px 10px;
+                margin:0 -20px;
+                border-bottom:solid 1px #ededed;                
+            }
+            .embody_b{
+                margin:0 ;
+                padding:10px 0;
+            }
+            .embody .embody_t,.embody .embody_c{
+                display: inline-block;
+                margin-right:10px;
+            }
+            .embody_t{
+                font-size: 12px;
+                color:#999;
+            }
+            .embody_c{
+                font-size: 12px;
+            }
+            .embody_c img,.embody_c em{
+                display: inline-block;
+                vertical-align: middle;               
+            }
+             .embody_c img{               
+                width:30px;
+                height:30px;
+            }
+            .embody_c em{
+                margin: 0 20px 0 10px;
+                color:#333;
+                font-style: normal;
+            }
+    </STYLE>
+
+<SCRIPT type="text/javascript">
+        $(function () {
+            try
+            {
+                var lib = eval("("+$("#lib").attr("value")+")");
+                var html = "";
+                if (lib.err == 0) {
+                    $.each(lib.data, function (i) {
+                        var obj = lib.data[i];
+                        //html += '<img src="' + obj.logo + '"/>' + obj.name + "&nbsp;&nbsp;";
+                        html += ' <a href="' + obj.url + '" target="_blank">';
+                        html += ' <img src="' + obj.logo + '">';
+                        html += ' <em><b>' + obj.name + '</b></em>';
+                        html += ' </a>';
+                    });
+                    if (html != "") {
+                        setTimeout(function () {
+                            $("#lib").html(html);                      
+                            $("#embody").show();
+                        }, 100);
+                    }
+                }      
+            } catch (err)
+            { }
+            
+        });
+    </SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.js"></SCRIPT>
+
+<DIV id="article_content" class="article_content">
+<P style="line-height: 25.18px; padding-top: 0px; padding-bottom: 0px; font-family: Helvetica,Tahoma,Arial,sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+Servlet3.0还有一个改变是改进了部分API，这种改进很好的简化了的了JAVA 
+WEB的开发，其中一个改进就是HttpServletRequest增加了进文件上传的支持。</P>
+<P style="line-height: 25.18px; padding-top: 0px; padding-bottom: 0px; font-family: Helvetica,Tahoma,Arial,sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+&nbsp;</P>
+<P style="line-height: 25.18px; padding-top: 0px; padding-bottom: 0px; font-family: Helvetica,Tahoma,Arial,sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+HttpServletRequest提供了如下两个方法来处理文件上传<BR>1、Part getPart(String name) 
+:根据文件名来获取文件上传域；<BR>2、Collection&lt;Part&gt; getParts():获取所有的文件上传域；</P>
+<P style="line-height: 25.18px; padding-top: 0px; padding-bottom: 0px; font-family: Helvetica,Tahoma,Arial,sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+每个Part对象对应一个文件上传域，该对象提供了大量的方法来访问上传文件的文件类型、大小、输入流等，并提供一个write(String 
+file)方法将文件文件写入服务器磁盘</P>
+<P style="line-height: 25.18px; padding-top: 0px; padding-bottom: 0px; font-family: Helvetica,Tahoma,Arial,sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+&nbsp;</P>
+<P style="line-height: 25.18px; padding-top: 0px; padding-bottom: 0px; font-family: Helvetica,Tahoma,Arial,sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+上传文件一定要为表单设置enctype属性为multipart/form-data:表示以二进制流的方式处理表单</P>
+<P style="line-height: 25.18px; padding-top: 0px; padding-bottom: 0px; font-family: Helvetica,Tahoma,Arial,sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+文件上传页面upload.jsp</P>
+<DIV style='padding: 1px; width: 679px; line-height: 25.18px; overflow: auto; font-family: Monaco,"DejaVu Sans Mono","Bitstream Vera Sans Mono",Consolas,"Courier New",monospace; margin-left: 9px; word-break: break-all; word-wrap: break-word;' 
+class="dp-highlighter">
+<DIV class="bar">
+<DIV style="margin: 0px; padding: 3px; font-weight: bold;" 
+class="tools">Java代码&nbsp;&nbsp;<A style="color: rgb(16, 138, 198); text-decoration: underline;" 
+title="收藏这段代码" target="_blank"><IMG style="border: 0px currentColor;" class="star" 
+alt="收藏代码" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/icon_star.png"></A></DIV>
+</DIV>
+<OL style="margin: 0px 0px 1px; padding: 2px 0px; border: 1px solid rgb(209, 215, 220); color: rgb(43, 145, 175); line-height: 1.4em; font-size: 1em;" 
+class="dp-j" start="1">
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&lt;%@&nbsp;page&nbsp;language=<SPAN style="color: blue;" 
+  class="string">"java"</SPAN>&nbsp;contentType=<SPAN style="color: blue;" 
+  class="string">"text/html;&nbsp;charset=UTF-8"</SPAN>&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;pageEncoding=<SPAN style="color: blue;" 
+  class="string">"UTF-8"</SPAN>%&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&lt;!DOCTYPE&nbsp;html&nbsp;PUBLIC&nbsp;<SPAN 
+  style="color: blue;" 
+  class="string">"-//W3C//DTD&nbsp;HTML&nbsp;4.01&nbsp;Transitional//EN"</SPAN>&nbsp;<SPAN 
+  style="color: blue;" 
+  class="string">"http://www.w3.org/TR/html4/loose.dtd"</SPAN>&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&lt;html&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&lt;head&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&lt;meta&nbsp;http-equiv=<SPAN style="color: blue;" 
+  class="string">"Content-Type"</SPAN>&nbsp;content=<SPAN style="color: blue;" 
+  class="string">"text/html;&nbsp;charset=UTF-8"</SPAN>&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&lt;title&gt;Insert&nbsp;title&nbsp;here&lt;/title&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&lt;/head&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&lt;body&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&lt;form&nbsp;action=<SPAN style="color: blue;" 
+  class="string">"upload"</SPAN>&nbsp;method=<SPAN style="color: blue;" class="string">"post"</SPAN>&nbsp;enctype=<SPAN 
+  style="color: blue;" 
+  class="string">"multipart/form-data"</SPAN>&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;文件名：&lt;input&nbsp;type=<SPAN 
+  style="color: blue;" class="string">"text"</SPAN>&nbsp;id=<SPAN style="color: blue;" 
+  class="string">"name"</SPAN>&nbsp;name=<SPAN style="color: blue;" class="string">"name"</SPAN>/&gt;&lt;br/&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;请选择文件：&lt;input&nbsp;type=<SPAN 
+  style="color: blue;" class="string">"file"</SPAN>&nbsp;name=<SPAN style="color: blue;" 
+  class="string">"file"</SPAN>&gt;&lt;br/&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=<SPAN 
+  style="color: blue;" class="string">"submit"</SPAN>&nbsp;value=<SPAN style="color: blue;" 
+  class="string">"上传"</SPAN>/&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&lt;/form&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&lt;/body&gt;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&lt;/html&gt;&nbsp;&nbsp;</SPAN></LI></OL></DIV>
+<P style="line-height: 25.18px; padding-top: 0px; padding-bottom: 0px; font-family: Helvetica,Tahoma,Arial,sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+&nbsp;</P>
+<P style="line-height: 25.18px; padding-top: 0px; padding-bottom: 0px; font-family: Helvetica,Tahoma,Arial,sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+&nbsp;</P>
+<P style="line-height: 25.18px; padding-top: 0px; padding-bottom: 0px; font-family: Helvetica,Tahoma,Arial,sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+UploadServlet.java</P>
+<P style="line-height: 25.18px; padding-top: 0px; padding-bottom: 0px; font-family: Helvetica,Tahoma,Arial,sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+使用Servlet3.0特性，使用注解@WebServlet与@MultipartConfig(处理文件上传)</P>
+<DIV style='padding: 1px; width: 679px; line-height: 25.18px; overflow: auto; font-family: Monaco,"DejaVu Sans Mono","Bitstream Vera Sans Mono",Consolas,"Courier New",monospace; margin-left: 9px; word-break: break-all; word-wrap: break-word;' 
+class="dp-highlighter">
+<DIV class="bar">
+<DIV style="margin: 0px; padding: 3px; font-weight: bold;" 
+class="tools">Java代码&nbsp;&nbsp;<A style="color: rgb(16, 138, 198); text-decoration: underline;" 
+title="收藏这段代码" target="_blank"><IMG style="border: 0px currentColor;" class="star" 
+alt="收藏代码" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/icon_star.png"></A></DIV>
+</DIV>
+<OL style="margin: 0px 0px 1px; padding: 2px 0px; border: 1px solid rgb(209, 215, 220); color: rgb(43, 145, 175); line-height: 1.4em; font-size: 1em;" 
+class="dp-j" start="1">
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">package</SPAN>&nbsp;aniyo.upload.servlet;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">import</SPAN>&nbsp;java.io.File;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">import</SPAN>&nbsp;java.io.IOException;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">import</SPAN>&nbsp;java.io.PrintWriter;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">import</SPAN>&nbsp;java.util.Collection;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">import</SPAN>&nbsp;javax.servlet.ServletException;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">import</SPAN>&nbsp;javax.servlet.annotation.MultipartConfig;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">import</SPAN>&nbsp;javax.servlet.annotation.WebServlet;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">import</SPAN>&nbsp;javax.servlet.http.HttpServlet;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">import</SPAN>&nbsp;javax.servlet.http.HttpServletRequest;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">import</SPAN>&nbsp;javax.servlet.http.HttpServletResponse;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">import</SPAN>&nbsp;javax.servlet.http.Part;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">/**</SPAN>&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">&nbsp;*&nbsp;Servlet&nbsp;3.0增加对文件上传的支持</SPAN>&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">&nbsp;*&nbsp;@author&nbsp;aniyo</SPAN>&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">&nbsp;*&nbsp;blog:http://aniyo.iteye.com</SPAN>&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">&nbsp;*</SPAN>&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">&nbsp;*/</SPAN>&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(100, 100, 100);" class="annotation">@WebServlet</SPAN>(name=<SPAN 
+  style="color: blue;" class="string">"upload"</SPAN>,urlPatterns={<SPAN style="color: blue;" 
+  class="string">"/upload"</SPAN>})&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(100, 100, 100);" class="annotation">@MultipartConfig</SPAN>&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">public</SPAN>&nbsp;<SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">class</SPAN>&nbsp;UploadServlet&nbsp;<SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">extends</SPAN>&nbsp;HttpServlet{&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">/*&nbsp;(non-Javadoc)</SPAN>&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;javax.servlet.http.HttpServlet#service(javax.servlet.http.HttpServletRequest,&nbsp;javax.servlet.http.HttpServletResponse)</SPAN>&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</SPAN>&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN style="color: rgb(100, 100, 100);" 
+  class="annotation">@Override</SPAN>&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">protected</SPAN>&nbsp;<SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">void</SPAN>&nbsp;service(HttpServletRequest&nbsp;request,&nbsp;HttpServletResponse&nbsp;response)&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">throws</SPAN>&nbsp;ServletException,&nbsp;IOException&nbsp;{&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response.setContentType(<SPAN 
+  style="color: blue;" 
+  class="string">"text/html;charset=GBK"</SPAN>);&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter&nbsp;out&nbsp;=&nbsp;response.getWriter();&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">//fileName用于测试在界面上自己随便输入的一个名字，自己可以根据时间或其他规则来命名</SPAN>&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;fileName&nbsp;=&nbsp;request.getParameter(<SPAN 
+  style="color: blue;" class="string">"name"</SPAN>);&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">//获取文件上传域</SPAN>&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Part&nbsp;part&nbsp;=&nbsp;request.getPart(<SPAN 
+  style="color: blue;" class="string">"file"</SPAN>);&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out.println(<SPAN 
+  style="color: blue;" 
+  class="string">"上传文件的类型为:"</SPAN>+part.getContentType()+<SPAN style="color: blue;" 
+  class="string">"&lt;br/&gt;"</SPAN>);&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out.println(<SPAN 
+  style="color: blue;" 
+  class="string">"上传文件的大小为:"</SPAN>+part.getSize());&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">//获取该文件的上传域</SPAN>&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Collection&lt;String&gt;&nbsp;headerNames&nbsp;=&nbsp;part.getHeaderNames();&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">for</SPAN>(String&nbsp;headerName&nbsp;:&nbsp;headerNames){&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out.println(headerName+<SPAN 
+  style="color: blue;" 
+  class="string">"---&gt;"</SPAN>+part.getHeader(headerName)+<SPAN style="color: blue;" 
+  class="string">"&lt;br/&gt;"</SPAN>);&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">//将上传的文件写入服务器</SPAN>&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;part.write(getServletContext().getRealPath(<SPAN 
+  style="color: blue;" 
+  class="string">"/uploadFiles"</SPAN>+File.separator+fileName));&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">/*&nbsp;(non-Javadoc)</SPAN>&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;javax.servlet.GenericServlet#destroy()</SPAN>&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</SPAN>&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN style="color: rgb(100, 100, 100);" 
+  class="annotation">@Override</SPAN>&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">public</SPAN>&nbsp;<SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">void</SPAN>&nbsp;destroy()&nbsp;{&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">super</SPAN>.destroy();&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">/*&nbsp;(non-Javadoc)</SPAN>&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;javax.servlet.GenericServlet#init()</SPAN>&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;"><SPAN style="margin: 0px; padding: 0px; border: 0px currentColor; width: auto; color: rgb(0, 130, 0);" 
+  class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</SPAN>&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN style="color: rgb(100, 100, 100);" 
+  class="annotation">@Override</SPAN>&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">public</SPAN>&nbsp;<SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">void</SPAN>&nbsp;init()&nbsp;<SPAN style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">throws</SPAN>&nbsp;ServletException&nbsp;{&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN 
+  style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="color: rgb(127, 0, 85); font-weight: bold;" 
+  class="keyword">super</SPAN>.init();&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></LI>
+  <LI style="margin: 0px 0px 0px 38px; padding: 0px 0px 0px 10px; line-height: 18px; font-size: 1em; border-left-color: rgb(209, 215, 220); border-left-width: 1px; border-left-style: solid; background-color: rgb(250, 250, 250);">
+  <SPAN style="color: black;">} &nbsp;</SPAN></LI></OL></DIV></DIV><!-- Baidu Button BEGIN -->
+<DIV style="float: right;" class="bdsharebuttonbox tracking-ad" data-mod="popu_172">
+<A style='background-image: url("http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png") !important;' 
+class="bds_more" href="http://blog.csdn.net/crazzy0727/article/details/9761815#" 
+data-cmd="more"></A><A style="background-position: 0px -52px !important;" class="bds_qzone" 
+title="分享到QQ空间" href="http://blog.csdn.net/crazzy0727/article/details/9761815#" 
+data-cmd="qzone"></A><A style="background-position: 0px -104px !important;" 
+class="bds_tsina" title="分享到新浪微博" href="http://blog.csdn.net/crazzy0727/article/details/9761815#" 
+data-cmd="tsina"></A><A style="background-position: 0px -260px !important;" 
+class="bds_tqq" title="分享到腾讯微博" href="http://blog.csdn.net/crazzy0727/article/details/9761815#" 
+data-cmd="tqq"></A><A style="background-position: 0px -208px !important;" class="bds_renren" 
+title="分享到人人网" href="http://blog.csdn.net/crazzy0727/article/details/9761815#" 
+data-cmd="renren"></A><A style="background-position: 0px -1612px !important;" 
+class="bds_weixin" title="分享到微信" href="http://blog.csdn.net/crazzy0727/article/details/9761815#" 
+data-cmd="weixin"></A></DIV>
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+<!-- Baidu Button END --><LINK rel="stylesheet" href="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog_detail.css"><!--172.16.140.14--><!-- Baidu Button BEGIN -->
+<SCRIPT id="bdshare_js" type="text/javascript" data="type=tools&amp;uid=1536434"></SCRIPT>
+
+<SCRIPT id="bdshell_js" type="text/javascript"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</SCRIPT>
+<!-- Baidu Button END -->
+<DIV id="digg" ArticleId="9761815">
+<DL id="btnDigg" class="digg digg_disable" onclick="btndigga();">
+  <DT>顶</DT>
+  <DD>0</DD></DL>
+<DL id="btnBury" class="digg digg_disable" onclick="btnburya();">
+  <DT>踩</DT>
+  <DD>0</DD></DL></DIV>
+<DIV class="tracking-ad" data-mod="popu_222"><A 
+href="javascript:void(0);">&nbsp;</A></DIV>
+<DIV class="tracking-ad" data-mod="popu_223"> <A 
+href="javascript:void(0);">&nbsp;</A></DIV>
+<SCRIPT type="text/javascript">
+                function btndigga() {
+                    $(".tracking-ad[data-mod='popu_222'] a").click();
+                }
+                function btnburya() {
+                    $(".tracking-ad[data-mod='popu_223'] a").click();
+                }
+            </SCRIPT>
+
+<UL class="article_next_prev">
+  <LI class="prev_article"><SPAN onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/crazzy0727/article/details/9613021';">上一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])" 
+  href="http://blog.csdn.net/crazzy0727/article/details/9613021">IE8 
+  window.open不能新窗口打开</A></LI>
+  <LI class="next_article"><SPAN onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/crazzy0727/article/details/9761879';">下一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])" 
+  href="http://blog.csdn.net/crazzy0727/article/details/9761879">Servlet3.0提供异步处理</A></LI></UL>
+<DIV style="height: 10px; clear: both;"></DIV></DIV>
+<DIV id="suggest"></DIV>
+<SCRIPT language="javascript" type="text/javascript">     
+             $(function(){
+                 $.get("/crazzy0727/svc/GetSuggestContent/9761815",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </SCRIPT>
+
+<STYLE>
+.blog-ass-articl dd {
+color: #369;
+width: 99%; /*修改行*/
+float: left;
+overflow: hidden;
+font: normal normal 12px/23px "SimSun";
+height: 23px;
+margin: 0;
+padding: 0 0 0 10px;
+margin-right: 30px;
+background: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;
+}
+</STYLE>
+<LINK rel="stylesheet" href="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/replace.css">
+<DIV id="relate" class="tracking-ad" data-mod="popu_218">
+<DIV class="relate_t">
+<H3><SPAN>参考知识库</SPAN></H3></DIV>
+<DIV class="relate_c"></DIV></DIV>
+<DL id="res-relatived" class="blog-ass-articl">
+  <DIV style="display: none;" id="libkeyparent" class="embody embody_b"><SPAN 
+  class="embody_t">更多资料请参考：</SPAN>
+  <DIV id="libkey" class="embody_c"></DIV></DIV>
+  <DT><SPAN>猜你在找</SPAN></DT>
+  <DIV style="width: 42%; float: left;" id="adCollege">
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/job_reco.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "9761815",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </SCRIPT>
+  </DIV>
+  <DIV style="width: 42%; margin-right: 30px; float: left;" id="res" class="tracking-ad" 
+  data-mod="popu_36"></DIV></DL>
+<SCRIPT type="text/javascript">
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = 'Servlet3.0中HttpServletRequest增加了对文件上传的支持' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </SCRIPT>
+
+<DIV id="ad_cen"><!-- 广告位开始 --><INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="71"></INS><!-- 广告位结束 --></DIV>
+<DIV class="comment_class">
+<DIV id="comment_title" class="panel_head"><SPAN 
+class="see_comment">查看评论</SPAN><A name="comments"></A></DIV>
+<DIV id="comment_list"></DIV>
+<DIV id="comment_bar"></DIV>
+<DIV id="comment_form"></DIV>
+<DIV class="announce">* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<A name="reply"></A><A 
+name="quote"></A></DIV></DIV>
+<SCRIPT type="text/javascript">var fileName = '9761815';
+    var commentscount = 0;
+    var islock = false
+</SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment.js"></SCRIPT>
+
+<DIV id="ad_bot"></DIV>
+<DIV id="report_dialog"></DIV>
+<DIV style="bottom: 60px;" id="d-top"><A style="display: none;" id="quick-reply" 
+class="btn btn-top q-reply" title="快速回复"><IMG alt="快速回复" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog-icon-reply.png"></A><A 
+style="display: none;" id="d-top-a" class="btn btn-top backtop" title="返回顶部" 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])"><IMG 
+alt="TOP" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/top.png"></A>
+</DIV>
+<SCRIPT type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</SCRIPT>
+
+<STYLE type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</STYLE>
+
+<DIV style="display: none;" class="tag_list"></DIV>
+<SCRIPT language="javascript" type="text/javascript">     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/crazzy0727/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </SCRIPT>
+
+<DIV style="background: 0px 0px rgb(255, 255, 255); border: 1px solid rgb(220, 220, 220); left: 630px; top: 222.5px; display: none; position: absolute; z-index: 10000; opacity: 1;" 
+id="pop_win"></DIV>
+<DIV id="popup_mask"></DIV>
+<STYLE>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+</STYLE>
+
+<SCRIPT type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });         
+
+        },200);  
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },5000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },10000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },15000);
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }   
+
+</SCRIPT>
+
+<SCRIPT language="javascript" type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/async_new.htm"></SCRIPT>
+
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV id="side">
+<DIV class="side">
+<DIV id="panel_Profile" class="panel">
+<UL class="panel_head"><SPAN>个人资料</SPAN></UL>
+<UL class="panel_body profile">
+  <DIV id="blog_userface"><A href="http://my.csdn.net/crazzy0727" target="_blank"><IMG 
+  style="max-width: 90%;" title="访问我的空间" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/1_crazzy0727.gif"></A><BR><SPAN><A 
+  class="user_name" href="http://my.csdn.net/crazzy0727" 
+  target="_blank">crazzy0727</A></SPAN></DIV>
+  <DIV class="interact"><A id="span_add_follow" class="attent" title="[加关注]" 
+  href="javascript:void(0);"></A><A class="letter" title="[发私信]" onclick="window.open('http://msg.csdn.net/letters/model?receiver=crazzy0727','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])" 
+  href="javascript:void(0);"></A></DIV>
+  <DIV id="blog_medal">
+  <DIV id="bms_box"></DIV></DIV>
+  <UL id="blog_rank">
+    <LI>访问：<SPAN>50224次</SPAN></LI>
+    <LI>积分：<SPAN>1030</SPAN> </LI>
+    <LI>等级： <SPAN 
+    style="display: inline-block; position: relative; z-index: 1;"><IMG style="vertical-align: middle;" 
+    id="leveImg" alt="" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog4.png">
+    <DIV style="border: 2px solid rgb(221, 221, 221); left: -24px; top: 25px; width: 101px; height: 32px; text-align: center; line-height: 32px; display: none; position: absolute; z-index: 999; box-shadow: none; background-color: rgb(255, 255, 255);" 
+    id="smallTittle">
+    <DIV style="left: 42%; top: -8px; width: 0px; height: 0px; border-right-color: transparent; border-bottom-color: rgb(234, 234, 234); border-left-color: transparent; border-right-width: 10px; border-bottom-width: 8px; border-left-width: 10px; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; position: absolute;"></DIV> 
+               积分：1030 </DIV></SPAN></LI>
+    <LI>排名：<SPAN>千里之外</SPAN></LI></UL>
+  <UL id="blog_statistics">
+    <LI>原创：<SPAN>43篇</SPAN></LI>
+    <LI>转载：<SPAN>86篇</SPAN></LI>
+    <LI>译文：<SPAN>1篇</SPAN></LI>
+    <LI>评论：<SPAN>3条</SPAN></LI></UL></UL></DIV>
+<DIV id="panel_Search" class="panel">
+<UL class="panel_head"><SPAN>文章搜索</SPAN></UL>
+<UL class="panel_body">
+  <FORM id="frmSearch" class="form_search" action="http://so.csdn.net/search" 
+  target="_blank"><SPAN><INPUT id="inputSearch" class="blogsearch" title="请输入关键字" 
+  type="text"></SPAN><INPUT id="btnSubmit" title="search in blog" value="搜索" type="button"><INPUT 
+  id="inputQ" name="q" type="hidden"><INPUT name="t" value="blog" 
+  type="hidden"><A id="btnSearchBlog" target="_blank"></A></FORM></UL></DIV>
+<SCRIPT type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</SCRIPT>
+
+<DIV id="panel_Category" class="panel">
+<UL class="panel_head"><SPAN>文章分类</SPAN></UL>
+<UL class="panel_body">
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/1414486">ajax</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/1414488">java</A><SPAN>(12)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/1414489">oracle</A><SPAN>(3)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/1428938">异常</A><SPAN>(3)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/1428939">配置</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/1432321">框架搭建</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/1463641">jsp</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/1463715">javascript</A><SPAN>(2)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/1508687">html</A><SPAN>(10)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/2265991">svn</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/2266689">h2</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/2415111">mysql</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/2422363">tomcat</A><SPAN>(2)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/2489771">maven</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/2514845">git</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/2550473">eclipse</A><SPAN>(2)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/2569977">jpa</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/2585377">sql</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/2585459">深入</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/crazzy0727/article/category/2585475">Guava</A><SPAN>(14)</SPAN></LI>
+</UL></DIV>
+<DIV id="panel_Archive" class="panel">
+<UL class="panel_head"><SPAN>文章存档</SPAN></UL>
+<UL class="panel_body">
+  <DIV id="archive_list"><!--归档统计-->
+  <LI><A 
+  href="http://blog.csdn.net/crazzy0727/article/month/2015/04">2015年04月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/crazzy0727/article/month/2014/09">2014年09月</A><SPAN>(19)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/crazzy0727/article/month/2014/08">2014年08月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/crazzy0727/article/month/2014/07">2014年07月</A><SPAN>(10)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/crazzy0727/article/month/2014/05">2014年05月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/crazzy0727/article/month/2013/08">2013年08月</A><SPAN>(7)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/crazzy0727/article/month/2013/07">2013年07月</A><SPAN>(77)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/crazzy0727/article/month/2013/06">2013年06月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/crazzy0727/article/month/2013/05">2013年05月</A><SPAN>(6)</SPAN></LI>
+  </DIV></UL></DIV>
+<DIV id="hotarticls" class="panel">
+<UL class="panel_head"><SPAN>阅读排行    </SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title="java.lang.NoClassDefFoundError: com/sun/star/lang/DisposedException" 
+  href="http://blog.csdn.net/crazzy0727/article/details/9496789">java.lang.NoClassDefFoundError: 
+  com/sun/star/lang/DisposedException</A><SPAN>(2567)</SPAN></LI>
+  <LI><A title="DrawingManager.js___百度地图API" href="http://blog.csdn.net/crazzy0727/article/details/9235883">DrawingManager.js___百度地图API</A><SPAN>(2327)</SPAN>
+  </LI>
+  <LI><A title="ssh: connect to host github.com port 22: Bad file number" href="http://blog.csdn.net/crazzy0727/article/details/38870257">ssh: 
+  connect to host github.com port 22: Bad file number</A><SPAN>(2274)</SPAN>
+  </LI>
+  <LI><A title="The import java.util cannot be resolved" href="http://blog.csdn.net/crazzy0727/article/details/9380469">The 
+  import java.util cannot be resolved</A><SPAN>(2030)</SPAN></LI>
+  <LI><A title="JAVA 笔记xx.getClass().getClassLoader().getResourceAsStream()" 
+  href="http://blog.csdn.net/crazzy0727/article/details/9342953">JAVA 
+  笔记xx.getClass().getClassLoader().getResourceAsStream()</A><SPAN>(1968)</SPAN>
+  </LI>
+  <LI><A title="类 BMapLib.DrawingManager___百度地图API" href="http://blog.csdn.net/crazzy0727/article/details/9236031">类 
+  BMapLib.DrawingManager___百度地图API</A><SPAN>(1468)</SPAN></LI>
+  <LI><A title="异常：JBPM4--No unnamed transitions were found for the task" href="http://blog.csdn.net/crazzy0727/article/details/8980151">异常：JBPM4--No 
+  unnamed transitions were found for the task</A><SPAN>(960)</SPAN></LI>
+  <LI><A title="JSP自定义标签的开发及使用" href="http://blog.csdn.net/crazzy0727/article/details/9762007">JSP自定义标签的开发及使用</A><SPAN>(808)</SPAN>
+  </LI>
+  <LI><A title="windows7 64bit下mvn命令后提示‘cmd’不是内部或外部命令,也不是可执行程序或批处理文件" href="http://blog.csdn.net/crazzy0727/article/details/38591467">windows7 
+  64bit下mvn命令后提示‘cmd’不是内部或外部命令,也不是可执行程序或批处理文件</A><SPAN>(744)</SPAN></LI>
+  <LI><A title="免费和高级定制后台管理模板" href="http://blog.csdn.net/crazzy0727/article/details/9354793">免费和高级定制后台管理模板</A><SPAN>(725)</SPAN>
+  </LI></UL></DIV>
+<DIV id="hotarticls2" class="panel">
+<UL class="panel_head"><SPAN>评论排行</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title="jQuery 效果 - 滑动slideDown()、slideUp()、slideToggle()" href="http://blog.csdn.net/crazzy0727/article/details/9289259">jQuery 
+  效果 - 滑动slideDown()、slideUp()、slideToggle()</A><SPAN>(1)</SPAN></LI>
+  <LI><A title="java.lang.NoClassDefFoundError: com/sun/star/lang/DisposedException" 
+  href="http://blog.csdn.net/crazzy0727/article/details/9496789">java.lang.NoClassDefFoundError: 
+  com/sun/star/lang/DisposedException</A><SPAN>(1)</SPAN></LI>
+  <LI><A title="windows7 64bit下mvn命令后提示‘cmd’不是内部或外部命令,也不是可执行程序或批处理文件" href="http://blog.csdn.net/crazzy0727/article/details/38591467">windows7 
+  64bit下mvn命令后提示‘cmd’不是内部或外部命令,也不是可执行程序或批处理文件</A><SPAN>(1)</SPAN></LI>
+  <LI><A title="ibait的使用" href="http://blog.csdn.net/crazzy0727/article/details/9213115">ibait的使用</A><SPAN>(0)</SPAN>
+  </LI>
+  <LI><A title="String.format()" href="http://blog.csdn.net/crazzy0727/article/details/9145261">String.format()</A><SPAN>(0)</SPAN>
+  </LI>
+  <LI><A title="maven debug" href="http://blog.csdn.net/crazzy0727/article/details/45393787">maven 
+  debug</A><SPAN>(0)</SPAN></LI>
+  <LI><A title="JSP中path与basePath的区别" href="http://blog.csdn.net/crazzy0727/article/details/9142461">JSP中path与basePath的区别</A><SPAN>(0)</SPAN>
+  </LI>
+  <LI><A title="JBPM总结四" href="http://blog.csdn.net/crazzy0727/article/details/8993656">JBPM总结四</A><SPAN>(0)</SPAN>
+  </LI>
+  <LI><A title="jbpm4.4 使用之活动标签" href="http://blog.csdn.net/crazzy0727/article/details/8993650">jbpm4.4 
+  使用之活动标签</A><SPAN>(0)</SPAN></LI>
+  <LI><A title="MyEclipse搭建SSH框架 Struts2.1+Spring3.0+hibernate3.3" href="http://blog.csdn.net/crazzy0727/article/details/8984739">MyEclipse搭建SSH框架 
+  Struts2.1+Spring3.0+hibernate3.3</A><SPAN>(0)</SPAN></LI></UL></DIV>
+<DIV id="homepageArticles" class="panel tracking-ad" data-mod="popu_4">
+<UL class="panel_head"><SPAN>推荐文章</SPAN></UL>
+<UL id="ad_commend" class="panel_body">
+  <UL>
+    <LI><A href="http://blog.csdn.net/guolin_blog/article/details/51763825" 
+    target="_blank">* 郭神带你真正理解沉浸式模式</A></LI>
+    <LI><A href="http://blog.csdn.net/poem_qianmo/article/details/52268975" 
+    target="_blank">* 优秀代码的格式准则</A></LI>
+    <LI><A href="http://blog.csdn.net/wzy0623/article/details/52249187" target="_blank">* 
+    Hadoop的数据仓库实践——OLAP与数据可视化（二）</A></LI>
+    <LI><A href="http://blog.csdn.net/megatronkings/article/details/52156312" 
+    target="_blank">* Android 视图篇——恼人的分割线留白解决之道</A></LI>
+    <LI><A href="http://blog.csdn.net/abc649395594/article/details/52259409" 
+    target="_blank">* 移动端开发者眼中的前端开发流程变迁与前后端分离</A></LI></UL></UL></DIV>
+<DIV id="newcomments" class="panel">
+<UL class="panel_head"><SPAN>最新评论</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A 
+  href="http://blog.csdn.net/crazzy0727/article/details/9289259#comments">jQuery 
+  效果 - 滑动slideDown()、slideUp()、slideToggle()</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/u013047005">u013047005</A>:
+  感谢分享学习    </P></LI>
+  <LI><A 
+  href="http://blog.csdn.net/crazzy0727/article/details/9496789#comments">java.lang.NoClassDefFoundError: 
+  com/sun/star/lang/DisposedException</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/NoChineseWord">NoChineseWord</A>:
+  大神给提供个下载路径吧。    </P></LI>
+  <LI><A href="http://blog.csdn.net/crazzy0727/article/details/38591467#comments">windows7 
+  64bit下mvn命令后提示‘cmd’不是内部或外部命令,也不是可执行程序或批处理文件</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/chenqian_deyouxiang">chenqian_deyouxiang</A>:
+  解决了我的问题太棒了，就是不知道为什么？    </P></LI></UL></DIV></DIV>
+<DIV class="clear"></DIV><!-- 广告位开始 --><INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="190"></INS><!-- 广告位结束 --></DIV>
+<DIV class="clear"></DIV></DIV>
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/cnick.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/newblog.min.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/showblogmedal.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/JavaScript1.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/login.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/counter.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad-blog.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</SCRIPT>
+</DIV><!--new top-->
+<SCRIPT id="csdn-toolbar-id" type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/toolbar.js" subCount="5" count="5" wrapId="note1" btnId="header_notice_num"></SCRIPT>
+<!--new top--><LINK rel="stylesheet" type="text/css" href="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.css">
+<SCRIPT language="JavaScript" type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/wmd.js"></SCRIPT>
+
+<SCRIPT language="JavaScript" type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/showdown.js"></SCRIPT>
+
+<SCRIPT language="JavaScript" type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/prettify.js"></SCRIPT>
+
+<SCRIPT language="JavaScript" type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.js"></SCRIPT>
+
+<DIV style="width: 1px; height: 1px; display: none;" id="a52b5334d">
+<SCRIPT id="adJs52b5334"></SCRIPT>
+
+<SCRIPT>document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();</SCRIPT>
+</DIV><LINK rel="stylesheet" href="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog_code.css">
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/saveToCode.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Servlet3_0中HttpServletRequest增加了对文件上传的支持%20-%20crazzy0727的专栏%20-%20博客频道%20-%20CSDN_NET_files/main(1).js"></SCRIPT>
+</BODY></HTML>

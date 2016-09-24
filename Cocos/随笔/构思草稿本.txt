@@ -1,0 +1,209 @@
+﻿反战游戏，炸断腿，警示作用，体现各种死法。，命只有一条。反法西斯纪念日上映，VR
+在社交平台上，我提问，你帮我选
+
+1、用简单的游戏周期来吸引玩家
+2、用很多牛逼闪闪的奖励和赞赏来让玩家自我感觉良好
+3、训练玩家使用虚拟货币
+4、要请玩家使用真实货币来买进虚拟货币，这样他们就会忘记自己在花真实的钱
+5、将游戏重点放在等待，并允许玩家花费虚拟货币取消等待
+
+地狱潜者（TPS射击战斗系统）+ 废土2和潜行者（世界观和游戏风格----现代、科幻、灵能、孤寂） + 铁血联盟（技战术、武器装备组件、模拟经营等系统） + 永恒之柱（RPG成长和技能系统）+ 红色警戒（基地建设+塔防战斗） + 剑湾传奇（构建一个科幻D&D规则上的DM跑团+自定义地下城）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10002626
+
+window.Global:{
+	backNode:{
+		default: null,
+		type: cc.Node
+	},
+	backLabel:{
+		default: 0,
+		type: cc.Label
+	}
+}
+
+总类型：  null    []     0(任意一个数值)
+
+分类型：
+
+null -----  通过  var nameType  =  cc.Class({}); 定义的自定义类型，
+			任何cocos中的类型  cc.Sprite  cc.Node  等等
+			任何JS的原生引用类型   Object，  
+			
+			
+
+			
+
+cc.eventManager.addListener({
+	event: cc.eventListener.Keyboard,
+	
+	onKeyPressed: function(){
+	
+	},
+	
+	onKeyReleased: function()
+	{
+	
+	}
+
+}, self.node);
+
+
+
+	cc.eventManager.addListener(事件监听器对象，方法调用对象通常是某个脚本对象); 该方法用来注册监听器来监听指定类型事件。
+	事件监听器对象的创建创建方法可以直接使用{}字面量的方式创建
+	也可以使用 var  listener  =  cc.eventListener.create({}); 的方式创建，该方法返回cc.eventListener类型的监听器对象,然后cc.eventManager.addListener(listener,this)就可以了
+
+	通常cc.eventListener常用类型有两种，KEYBOARD和ACCELERATION
+	// Create KEYBOARD EventListener.
+	cc.EventListener.create({
+		event: cc.EventListener.KEYBOARD,
+		onKeyPressed: function (keyCode, event) {     						<----------------------这里的event参数类型就是 cc.event.xxxxx
+			if(cc.KEY.space == keyCode)			<------- 参数keyCode是Number类型，与枚举cc.KEY中是一一对应的，通过这个方法就能获知用户按下的是哪个按键
+			{
+				do something;
+			}
+		},
+		onKeyReleased: function (keyCode, event) {
+			cc.log('released key: ' + keyCode);
+		}
+	});
+
+	// Create ACCELERATION EventListener.
+	cc.EventListener.create({
+		event: cc.EventListener.ACCELERATION,
+		callback: function (acc, event) {     		<---------------------这里的event参数类型就是 cc.event.xxxxx
+			cc.log(
+				"x轴加速度:" + acc.x +      <-------------acc参数我推测应该是cc.Acceleration类型的，用以报告设备各个加速度传感器轴上的加速度读数。
+				"y轴加速度:" + acc.y +
+				"z轴加速度:" + acc.z 
+			);
+		}
+	});
+		
+	
+
+（1）cc.eventListener.xxx  其中只包含监听器类型，用来给cc.eventManager.addListener()中作为参数对象的其中一个叫event字段类型。只有三种监听器类型
+UNKNOWN 未知的事件监听器类型
+KEYBOARD 键盘事件监听器类型
+ACCELERATION 加速器事件监听器类型
+
+
+（2）cc.event.eventCustom 这是传递给事件处理过程的event参数的类，所有种类事件的属性和方法都包含在以cc.event.xxxx的类型中。因此在事件处理过程中解析每次
+传递进来的event参数的时候就需要参考对应类型的cc.event.xxxxx类型的事件。
+	以cc.event为前缀的事件类型有
+	cc.event.EventAcceleration  触碰事件发生时候传递到处理历程中event的参数的类型
+	cc.event.EventCustom      
+	cc.Event.EventKeyboard
+	cc.Event.EventMouse
+	cc.event.eventTouche
+	
+	
+
+
+（3）cc.Node.eventType.xxxxx 由于creator事件处理的位置在cc.Node，因此当我们通过形如
+	// add Node Touch Event
+	node.on(cc.Node.EventType.TOUCH_START, callback, this.node); 
+	node.on(cc.Node.EventType.TOUCH_MOVE, callback, this.node);
+	node.on(cc.Node.EventType.TOUCH_END, callback, this.node);
+	node.on(cc.Node.EventType.TOUCH_CANCEL, callback, this.node);
+	
+	实现对指定节点node上发生的指定类型的事件的监听的时候，这里“指定类型”就是通过cc.Node.EventType.xxxxxx来指定的
+			
+			
+
+(4) cc.eventManager 事件管理器类型，
+它主要管理事件监听器注册和派发系统事件。 原始设计中，它支持鼠标，触摸，键盘，陀螺仪和自定义事件。 在 Creator 的设计中，鼠标，触摸和自定义事件的监听和派发请参考 http://cocos.com/docs/creator/scripting/events.html。			
+			
+因此现在cc.eventManager中管理的事件种类只有KEYBOARD和ACCELERATION两种，而TOUCHE、MOUSE等事件的监听则具体到了
+需要处理这类事件的cc.Node节点上了。 之所以这样处理是因为对于TOUCH和MOUSE这类事件不仅需要精确制导发生的准确节点，而且
+触发类型也是非常复杂（包括按下、抬起、移动、移入、移出）等许多情况。所以将这类事件的处理单元从全局地、宏观地eventManager
+转下发给准确的node节点，就能更方便的处理此类事件。
+而eventManager更加偏向于宏观事件的处理，例如键盘的按下/抬起，以及设备加速度传感器读数，因为这里事件是发生在全局性地发生在所有节点上因此无需细致的操作。
+通过var  listener  =  cc.eventManager.addListener("cc.eventListener类型的事件监听器对象"， 需要处理这类事件的节点其实这个参数对于宏观事件不太重要主要是为了给事件监听器分组，方便以后通过removeListeners()来将一组的监听器一次移除而不会像调用removeAllListeners()那样移除所有事件监听器)；来完成指定类型事件监听器的注册,方法会返回一个cc.eventListener类型对象用以下面的移除监听器的操作
+通过cc.eventManager.removeListener(“通过cc.eventManager.addListener()方法返回的已经注册了的cc.eventListener类型的对象”); 完成对这个监听器对象的移除
+
+
+	
+
+（5） 在通过eventManager注册eventListener.KEYBOARD类型监听器监听键盘输入的时候一定需要用到另外一种用于定位用户具体按键的枚举cc.KEY
+通过cc.key枚举中的按键与监听器事件处理过程收到的参数keyCode进行比对，就能知道用户到底按下的是键盘上的哪个按键了。
+
+
+（6） 	cc.node.on() 只能监听发生在该节点上的 TOUCH和MOUSE操作
+		cc.eventManager.addListener() 用来监听更全部的键盘、加速度传感器的操作
+			
+			
+（7） cc.event.eventAcceleration和 cc.Acceleration 的关系
+		cc.event.eventTouch 和 cc.Touch的关系
+		
+（8） 在cc.Node节点上有很多的坐标系转换工具
+	①convertToNodeSpace          
+	形如：node.convertToNodeSpace(cc.p(100,100));  
+	这里将参数的坐标看作是世界坐标系中的一个坐标（世界坐标系就是GL坐标系，以屏幕左下角为原点）
+	然后将这个坐标转化为一node的左下角为原点的坐标系中的坐标
+	
+	②convertToWorldSpace
+	形如： node.convertToWorldSpace(cc.v2(100,100));
+	这里将参数的坐标看作是以node节点左下角为原点的坐标系中的一个坐标，然后将这个坐标转换为世界坐标系（屏幕左下角）中的坐标输出
+	
+	
+	③convertToNodeSpaceAR
+	node.convertToNodeSpaceAR(cc.p(100,100));
+	参数为世界坐标系中的一点，将该点转变成node节点以锚点为原点所构成的这所标系中的坐标
+	
+	④convertToWorldSpaceAR
+	node.covertToWorldSpaceAR(cc.v2(100,100));
+	参数为node节点以锚点为坐标系原点的中的一个坐标，将之转变成世界坐标系中的坐标
+	
+	⑤convertTouchToNodeSpace
+	将发生的cc.Touch类型的触碰对象中的位置坐标转变为以节点左下角为原点的坐标系中的坐标
+	⑥convertTouchToNodeSpaceAR 
+	将发生的cc.Touch类型的触碰对象中的位置坐标转变为以节点锚点为原点的坐标系中的坐标（creator默认就是以锚点为原点）
+			
+	综上所述，由于Creator默认都是以node节点的锚点为其自身坐标系原点，因此实际在creator中编写脚本都应该使用AR版本的函数。r
+	
+(9) 在事件处理过程中，事件参数event.target会返回最初事件目标对象（Object），然后通过原生类型Object的原生属性_name就可以知道当前event事件
+	最初的触发节点对象（cc.node）的字符串名了。 实例可以参考MoveAnimationCtrl.js脚本
+	
+	
+(10)
+	
+	
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

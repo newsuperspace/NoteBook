@@ -1,0 +1,1 @@
+[{"__type__":"cc.Prefab","_name":"sprite","data":{"__id__":1}},{"__type__":"cc.Node","_name":"Sprite","_contentSize":{"__type__":"cc.Size","width":40,"height":36},"_components":[{"__type__":"cc.Sprite","node":{"__id__":1},"_spriteFrame":{"__uuid__":"8cdb44ac-a3f6-449f-b354-7cd48cf84061"}}]}]

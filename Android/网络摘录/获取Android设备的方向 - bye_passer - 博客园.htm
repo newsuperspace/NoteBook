@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0062)http://www.cnblogs.com/bpasser/archive/2011/10/17/2214517.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>获取Android设备的方向 - bye_passer - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./获取Android设备的方向 - bye_passer - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./获取Android设备的方向 - bye_passer - 博客园_files/style2.css">
+<link type="text/css" rel="stylesheet" href="./获取Android设备的方向 - bye_passer - 博客园_files/97961.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/bpasser/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/bpasser/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/bpasser/wlwmanifest.xml">
+<script async="" src="./获取Android设备的方向 - bye_passer - 博客园_files/analytics.js"></script><script type="text/javascript" src="./获取Android设备的方向 - bye_passer - 博客园_files/encoder.js"></script><script src="./获取Android设备的方向 - bye_passer - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'bpasser', cb_enable_mathjax=false;</script>
+<script src="./获取Android设备的方向 - bye_passer - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<script type="text/javascript">
+	try {
+		if (screen.availWidth > 1200) {
+			document.getElementById("MainCss").href = '/Skins/BOOK/style2.css';
+		}
+	} catch (e) { }
+</script>
+
+<div id="header">
+<div id="HeaderTitle">
+<div id="Title">
+<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/bpasser/">bye_passer</a>
+</div>
+<div id="subTitle">System.out.println("Hello, Death!");</div>
+</div>
+</div>
+
+<div id="main">
+	
+<div id="post_detail">
+	<div class="post">
+		<h2>
+			<a id="cb_post_title_url" href="./获取Android设备的方向 - bye_passer - 博客园_files/获取Android设备的方向 - bye_passer - 博客园.htm">获取Android设备的方向</a>
+		</h2>
+		<div id="cnblogs_post_body"><p>带有g-sensor的Android设备上可通过API获取到设备的运动加速度，应用程序通过一些假设和运算，可以从加速度计算出设备的方向</p>
+<p>获取设备运动加速度的基本代码是：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./获取Android设备的方向 - bye_passer - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>        SensorManager sm = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);<br>        sm.registerListener(<span style="color: #0000ff;">new</span> SensorEventListener() {<br><br>            <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> onSensorChanged(SensorEvent event) {<br>                <span style="color: #0000ff;">if</span> (Sensor.TYPE_ACCELEROMETER != event.sensor.getType()) {<br>                    <span style="color: #0000ff;">return</span>;<br>                }<br><br>                <span style="color: #0000ff;">float</span>[] values = event.values;<br>                <span style="color: #0000ff;">float</span> ax = values[0];<br>                <span style="color: #0000ff;">float</span> ay = values[1];<br>                <span style="color: #0000ff;">float</span> az = values[2];<br><br>                <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Have fun with the acceleration components...</span><span style="color: #008000;"><br></span>                <br>            }<br><br>            <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> onAccuracyChanged(Sensor sensor, <span style="color: #0000ff;">int</span> accuracy) {<br><br>            }<br>        }, sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./获取Android设备的方向 - bye_passer - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>SendorEventListener 通过 SendorEvent 回调参数获得当前设备在坐标系x、y、z轴上的加速度分量。SensorEvent 的 api doc 中定义了这里使用的坐标系为：</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./获取Android设备的方向 - bye_passer - 博客园_files/2011101621141189.png" alt=""></p>
+<p>我暂且称之为“设备坐标系”吧，设备坐标系是固定于设备的，与设备的方向（在世界坐标系中的朝向）无关</p>
+<p>精确地说，Sensor Event 所提供的加速度数值，是设备以地球为参照物的加速度减去重力加速度的叠加后的值。我是这样理解的：当以重力加速度g向地面作自由落体运动时，手机处于失重状态，g-sensor以这种状态作为加速度的0；而当手机处于静止状态（相对于地面）时，为了抵御自由落体运动的趋势，它有一个反向（向上）的g的加速度。因此，得出一个结论：<strong>当设备处于静止或者匀速运动状态时，它有一个垂直地面向上的g的加速度，这个g投影到设备坐标系的x、y、z轴上，就是SensorEvent 提供给我们的3个分量的数值</strong>。在“设备处于静止或者匀速运动状态”的假设的前提下，可以根据SensorEvent所提供的3个加速度分量计算出设备相对于地面的方向</p>
+<p>前面所提到的“设备的方向”是一个含糊的说法。这里我们精确地描述设备方向为：以垂直于地面的方向为正方向，用设备坐标系x、y、z轴与正方向轴之间的夹角Ax、Ay、Az来描述设备的方向，如下图所示。可以看出，设备还有一个自由度，即：绕着正方向轴旋转，Ax、Ay、Az不变。但Ax、Ay、Az的约束条件，对于描述设备相对于正方向轴的相对位置已经足够了。如果需要完全约束设备相对于地面的位置，除了正方向轴外，还需要引入另一个参照轴，例如连接地球南、北极的地轴（如果设备上有地磁强度Sensor，则可满足该约束条件）</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./获取Android设备的方向 - bye_passer - 博客园_files/2011101622240688.png" alt=""></p>
+<p>Ax、Ay、Az的范围为[0, 2*PI)。例如，当Ay=0时，手机y轴竖直向上；Ay=PI时，手机y轴向下；Ay=PI/2时，手机水平、屏幕向上；Ay=3*PI/2时，手机水平、屏幕向下</p>
+<p>根据3D矢量代数的法则，可知：</p>
+<ul>
+<li>Gx=g*cos(Ax)</li>
+<li>Gy=g*cos(Ay)</li>
+<li>Gz=g*cos(Az)</li>
+<li>g^2=Gz^2+Gy^2+Gz^2</li>
+</ul>
+<p>因此，根据Gx、Gy、Gz，可以计算出Ax、Ay、Az</p>
+<h2>在x-y平面上的2D简化</h2>
+<p>当Ax、Ay确定时，Az有两种可能的值，二者相差PI，确定了设备屏幕的朝向是向上还是向下。大多数情况下，我们只关心Ax、Ay（因为程序UI位于x-y平面？），而忽略Az，例如，Android的屏幕自动旋转功能，不管使用者是低着头看屏幕（屏幕朝上）、还是躺在床上看（屏幕朝下），UI始终是底边最接近地心的方向</p>
+<p>那么我们设Gx与Gy的矢量和为g'（即：g在x-y平面上的投影），将计算简化到x-y 2D平面上。记y轴相对于g'的偏角为A，以A来描述设备的方向。以逆时针方向为正，A的范围为[0, 2*PI)</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./获取Android设备的方向 - bye_passer - 博客园_files/2011101623113436.png" alt=""></p>
+<p>有：</p>
+<ul>
+<li>g'^2=Gx^2+Gy^2</li>
+<li>Gy=g'*cos(A)</li>
+<li>Gx=g'*sin(A)</li>
+</ul>
+<p>则：</p>
+<ul>
+<li>g'=sqrt(Gx^2+Gy^2)</li>
+<li>A=arccos(Gy/g')</li>
+</ul>
+<p>由于arccos函数值范围为[0, PI]；而A&gt;PI时，Gx=g'*sin(A)&lt;0，因此，根据Gx的符号分别求A的值为：</p>
+<ul>
+<li>当Gx&gt;=0时，A=arccos(Gy/g')</li>
+<li>当Gx&lt;0时，A=2*PI-arccos(Gy/g')</li>
+</ul>
+<p>注意：由于cos函数曲线关于直线x=n*PI 对称，因此arccos函数的曲线如果在y轴方向[0, 2*PI]范围内补全的话，则关于直线y=PI对称，因此有上面当Gx&lt;0时的算法</p>
+<h2>考虑应用程序的屏幕旋转</h2>
+<p>前面计算出了Android设备的“物理屏幕”相对于地面的旋转角度，而应用程序的UI又相对于“物理屏幕”存在0、90、180、270度4种可能的旋转角度，要综合考虑进来。也就是说：</p>
+<ul>
+<li>UI相对于地面的旋转角度=物理屏幕相对于地面的旋转角度-UI相对于物理屏幕的旋转角度</li>
+</ul>
+<p>Android应用获取屏幕旋转角度的方法为：</p>
+<div class="cnblogs_code">
+<pre>        <span style="color: #0000ff;">int</span> rotation = activity.getWindowManager().getDefaultDisplay().getRotation();<br>        <span style="color: #0000ff;">int</span> degree= 90 * rotation;<br>        <span style="color: #0000ff;">float</span> rad = (float)Math.PI / 2 * rotation;</pre>
+</div>
+<h2>Demo</h2>
+<p>根据上面的算法，我写了一个“不倒翁”的Demo，当设备旋转时，不倒翁始终是站立的。软件市场上不少“水平尺”一类的应用，其实现原理应该是与此相同的</p>
+<p><a href="http://files.cnblogs.com/bpasser/Budaow.zip">下载Demo源代码</a></p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./获取Android设备的方向 - bye_passer - 博客园_files/2011101701433250.jpg" alt=""></p>
+<p>Activity实现了SensorEventListener，并且注册到SensorManager。同时设置屏幕方向固定为LANDSCAPE：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./获取Android设备的方向 - bye_passer - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>    <span style="color: #0000ff;">private</span> GSensitiveView gsView;<br>    <span style="color: #0000ff;">private</span> SensorManager sm;<br><br>    @Override<br>    <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> onCreate(Bundle savedInstanceState) {<br>        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);<br>        <span style="color: #0000ff;">super</span>.onCreate(savedInstanceState);<br><br>        gsView = <span style="color: #0000ff;">new</span> GSensitiveView(<span style="color: #0000ff;">this</span>);<br>        setContentView(gsView);<br><br>        sm = (SensorManager) getSystemService(SENSOR_SERVICE);<br>        sm.registerListener(<span style="color: #0000ff;">this</span>, sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);<br>    }<br><br>    @Override<br>    <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">void</span> onDestroy() {<br>        sm.unregisterListener(<span style="color: #0000ff;">this</span>);<br>        <span style="color: #0000ff;">super</span>.onDestroy();<br>    }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./获取Android设备的方向 - bye_passer - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>当g-sensor数据变化时的回调如下。这里就是根据我们前面推论的算法计算出UI旋转的角度，并且调用GSensitiveView.setRotation()方法通知View更新</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./获取Android设备的方向 - bye_passer - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>    <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> onSensorChanged(SensorEvent event) {<br>        <span style="color: #0000ff;">if</span> (Sensor.TYPE_ACCELEROMETER != event.sensor.getType()) {<br>            <span style="color: #0000ff;">return</span>;<br>        }<br><br>        <span style="color: #0000ff;">float</span>[] values = event.values;<br>        <span style="color: #0000ff;">float</span> ax = values[0];<br>        <span style="color: #0000ff;">float</span> ay = values[1];<br><br>        <span style="color: #0000ff;">double</span> g = Math.sqrt(ax * ax + ay * ay);<br>        <span style="color: #0000ff;">double</span> cos = ay / g;<br>        <span style="color: #0000ff;">if</span> (cos &gt; 1) {<br>            cos = 1;<br>        } <span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span> (cos &lt; -1) {<br>            cos = -1;<br>        }<br>        <span style="color: #0000ff;">double</span> rad = Math.acos(cos);<br>        <span style="color: #0000ff;">if</span> (ax &lt; 0) {<br>            rad = 2 * Math.PI - rad;<br>        }<br><br>        <span style="color: #0000ff;">int</span> uiRot = getWindowManager().getDefaultDisplay().getRotation();<br>        <span style="color: #0000ff;">double</span> uiRad = Math.PI / 2 * uiRot;<br>        rad -= uiRad;<br><br>        gsView.setRotation(rad);<br>    }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./获取Android设备的方向 - bye_passer - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>GSensitiveView是扩展ImageView的自定义类，主要是根据旋转角度绘制图片：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./获取Android设备的方向 - bye_passer - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">class</span> GSensitiveView <span style="color: #0000ff;">extends</span> ImageView {<br><br>        <span style="color: #0000ff;">private</span> Bitmap image;<br>        <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">double</span> rotation;<br>        <span style="color: #0000ff;">private</span> Paint paint;<br><br>        <span style="color: #0000ff;">public</span> GSensitiveView(Context context) {<br>            <span style="color: #0000ff;">super</span>(context);<br>            BitmapDrawable drawble = (BitmapDrawable) context.getResources().getDrawable(R.drawable.budaow);<br>            image = drawble.getBitmap();<br><br>            paint = <span style="color: #0000ff;">new</span> Paint();<br>        }<br><br>        @Override<br>        <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">void</span> onDraw(Canvas canvas) {<br>            <span style="color: #008000;">//</span><span style="color: #008000;"> super.onDraw(canvas);</span><span style="color: #008000;"><br></span><br>            <span style="color: #0000ff;">double</span> w = image.getWidth();<br>            <span style="color: #0000ff;">double</span> h = image.getHeight();<br><br>            Rect rect = <span style="color: #0000ff;">new</span> Rect();<br>            getDrawingRect(rect);<br><br>            <span style="color: #0000ff;">int</span> degrees = (<span style="color: #0000ff;">int</span>) (180 * rotation / Math.PI);<br>            canvas.rotate(degrees, rect.width() / 2, rect.height() / 2);<br>            canvas.drawBitmap(image, <span style="color: #008000;">//<br></span>                    (<span style="color: #0000ff;">float</span>) ((rect.width() - w) / 2),<span style="color: #008000;">//</span><span style="color: #008000;">  </span><span style="color: #008000;"><br></span>                    (<span style="color: #0000ff;">float</span>) ((rect.height() - h) / 2),<span style="color: #008000;">//</span><span style="color: #008000;">  </span><span style="color: #008000;"><br></span>                    paint);<br>        }<br><br>        <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> setRotation(<span style="color: #0000ff;">double</span> rad) {<br>            rotation = rad;<br>            invalidate();<br>        }<br><br>    }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./获取Android设备的方向 - bye_passer - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><br><br><br><br><br></p>
+<p></p>
+<p><br><br></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/bpasser/tag/Android/">Android</a>, <a href="http://www.cnblogs.com/bpasser/tag/g-sensor/">g-sensor</a>, <a href="http://www.cnblogs.com/bpasser/tag/%E9%87%8D%E5%8A%9B%E6%84%9F%E5%BA%94/">重力感应</a>, <a href="http://www.cnblogs.com/bpasser/tag/%E5%B1%8F%E5%B9%95%E6%96%B9%E5%90%91/">屏幕方向</a></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(2214517,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/bye_passer" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./获取Android设备的方向 - bye_passer - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./获取Android设备的方向 - bye_passer - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/bpasser/" target="_blank"><img src="./获取Android设备的方向 - bye_passer - 博客园_files/u335516.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/bpasser/">bye_passer</a><br>
+<a href="http://home.cnblogs.com/u/bpasser/followees">关注 - 0</a><br>
+<a href="http://home.cnblogs.com/u/bpasser/followers">粉丝 - 18</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(2214517,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">2</span>
+    </div>
+	<div class="buryit" onclick="votePost(2214517,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/bpasser/archive/2011/10/16/2213802.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/bpasser/archive/2011/10/16/2213802.html" title="发布于2011-10-16 01:04">Android 3D 编程：索引</a><br><a href="http://www.cnblogs.com/bpasser/archive/2011/10/18/2216031.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/bpasser/archive/2011/10/18/2216031.html" title="发布于2011-10-18 10:16">Android 3D 编程：HelloArrow</a><br></div>
+</div>
+
+
+		<p class="postfoot">
+			posted on <span id="post-date">2011-10-17 01:44</span> <a href="http://www.cnblogs.com/bpasser/">bye_passer</a> 阅读(<span id="post_view_count">12801</span>) 评论(<span id="post_comment_count">2</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=2214517" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/bpasser/archive/2011/10/17/2214517.html#" onclick="AddToWz(2214517);return false;">收藏</a>
+		</p>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=97961,cb_entryId=2214517,cb_blogApp=currentBlogApp,cb_blogUserGuid='bec5af7b-09e7-e011-8ee0-842b2b196315',cb_entryCreatedDate='2011/10/17 1:44:00';loadViewCount(cb_entryId);</script>
+	
+	</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<a name="评论"></a>
+<div id="comments">
+<h3>评论</h3>
+	
+	
+			<h4>
+				<a href="http://www.cnblogs.com/bpasser/archive/2011/10/17/2214517.html#2619913" class="layer">#1楼</a><a name="2619913" id="comment_anchor_2619913"></a>
+					<span>
+						 <span class="comment_date">2013-02-20 18:06</span>
+					</span>
+				<a id="a_comment_author_2619913" href="http://home.cnblogs.com/u/217552/" target="_blank">南极</a> <a href="http://msg.cnblogs.com/send/%E5%8D%97%E6%9E%81" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_2619913" class="blog_comment_body">好详细，研究研究</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2619913,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2619913,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="http://www.cnblogs.com/bpasser/archive/2011/10/17/2214517.html#2818054" class="layer">#2楼</a><a name="2818054" id="comment_anchor_2818054"></a><span id="comment-maxId" style="display:none;">2818054</span><span id="comment-maxDate" style="display:none;">2013/11/17 11:16:59</span>
+					<span>
+						 <span class="comment_date">2013-11-17 11:16</span>
+					</span>
+				<a id="a_comment_author_2818054" href="http://www.cnblogs.com/wanghongtao/" target="_blank">30°の仰望</a> <a href="http://msg.cnblogs.com/send/30%26%23176%3B%E3%81%AE%E4%BB%B0%E6%9C%9B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_2818054" class="blog_comment_body">你好，我还没没明白怎么去判断手机的屏幕方向是向上还是向下？ <br>   你说：  根据3D矢量代数的法则，可知：<br><br>Gx=g*cos(Ax)<br>Gy=g*cos(Ay)<br>Gz=g*cos(Az)<br>g^2=Gz^2+Gy^2+Gz^2<br>因此，根据Gx、Gy、Gz，可以计算出Ax、Ay、Az<br>Ay=PI/2时，手机水平、屏幕向上；Ay=3*PI/2时，手机水平、屏幕向下<br>  Gy又是什么意思，  怎么求</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2818054,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2818054,&#39;Bury&#39;,this)">反对(0)</a></div>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+</div><div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/bpasser/archive/2011/10/17/2214517.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/bpasser/archive/2011/10/17/2214517.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－专注为 App 开发者提供IM云服务</a><br><a href="http://www.ucloud.cn/site/active/new_gift.html?utm_source=cost&utm_campaign=bokeyuan1&utm_medium=display&utm_content=3yuecu" target="_blank">【推荐】UCloud开年大礼，充5000返1000；买云主机送CDN，详情点击</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://q.cnblogs.com/" target="_blank"><img width="300" height="250" src="./获取Android设备的方向 - bye_passer - 博客园_files/not-to-stop-questioning.jpg" alt="博问" title="博问"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/540224/" target="_blank">科学家通过建模对早期火星地貌进行“重建”</a><br> ·  <a href="http://news.cnblogs.com/n/540223/" target="_blank">谷歌对抗寨卡病毒新措施：强化搜索结果新增地图工具</a><br> ·  <a href="http://news.cnblogs.com/n/540222/" target="_blank">Canonical和英特尔合作开设物联网和Snappy Ubuntu Core培训</a><br> ·  <a href="http://news.cnblogs.com/n/540221/" target="_blank">李开复：我在硅谷看到的最前沿科技趋势</a><br> ·  <a href="http://news.cnblogs.com/n/540220/" target="_blank">快来试试在浏览器里运行Windows 98或Linux</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jpush.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./获取Android设备的方向 - bye_passer - 博客园_files/24442-20160226161816318-1782390681.jpg" alt="极光推送_2016年3月份推广" title="极光推送_2016年3月份推广"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/538249/" target="_blank">谷歌背后的数学</a><br> ·  <a href="http://kb.cnblogs.com/page/533808/" target="_blank">Medium开发团队谈架构设计</a><br> ·  <a href="http://kb.cnblogs.com/page/539274/" target="_blank">理解“渐进增强(Progressive Enhancement)”</a><br> ·  <a href="http://kb.cnblogs.com/page/534571/" target="_blank">为什么说DOM操作很慢</a><br> ·  <a href="http://kb.cnblogs.com/page/527518/" target="_blank">为什么你应该尝试全栈</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	
+<p id="footer">
+	Powered by: 
+	<br>
+	
+	<a id="Footer1_Hyperlink3" name="Hyperlink1" href="http://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br>
+	Copyright © bye_passer
+</p>
+</div>
+<div id="rightmenu">
+	
+		<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2011/09/01&#39;);return false;">&lt;</a></td><td align="center">2011年10月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2011/11/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalWeekendDay" align="center">1</td></tr><tr><td class="CalWeekendDay" align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td class="CalWeekendDay" align="center">8</td></tr><tr><td class="CalWeekendDay" align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/bpasser/archive/2011/10/15.html"><u>15</u></a></td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/bpasser/archive/2011/10/16.html"><u>16</u></a></td><td align="center"><a href="http://www.cnblogs.com/bpasser/archive/2011/10/17.html"><u>17</u></a></td><td align="center"><a href="http://www.cnblogs.com/bpasser/archive/2011/10/18.html"><u>18</u></a></td><td align="center"><a href="http://www.cnblogs.com/bpasser/archive/2011/10/19.html"><u>19</u></a></td><td align="center">20</td><td align="center">21</td><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/bpasser/archive/2011/10/22.html"><u>22</u></a></td></tr><tr><td class="CalWeekendDay" align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td class="CalWeekendDay" align="center">29</td></tr><tr><td class="CalWeekendDay" align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+		
+<h3>导航</h3>
+<ul>
+			<li><a id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</a></li>
+			<li><a id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/bpasser/">首页</a></li>
+			<li><a id="MyLinks1_NewPostLink" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+			<li><a id="MyLinks1_ContactLink" accesskey="9" rel="nofollow" href="http://msg.cnblogs.com/send/bye_passer">联系</a></li>
+			<li><a id="MyLinks1_Syndication" href="http://www.cnblogs.com/bpasser/rss">订阅</a><a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/bpasser/rss"><img src="./获取Android设备的方向 - bye_passer - 博客园_files/xml.gif" alt="订阅"></a>
+			</li><li><a id="MyLinks1_Admin" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+		
+<h3>统计</h3>
+	<ul>
+		<li>随笔 - 12
+		</li><li>文章 - 0
+		</li><li>评论 - 7
+		</li><li>引用 - 0
+	</li>
+</ul>
+		
+<h3>公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/bpasser/">bye_passer</a><br>园龄：<a href="http://home.cnblogs.com/u/bpasser/" title="入园时间：2011-09-25">4年5个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/bpasser/followers/">18</a><br>关注：<a href="http://home.cnblogs.com/u/bpasser/followees/">0</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;bec5af7b-09e7-e011-8ee0-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+
+		<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bpasser/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/bpasser/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/bpasser/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/bpasser/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/bpasser/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<h3 class="catListTitle">我的标签</h3>
+<div id="MyTag">
+<ul>
+<li><a href="http://www.cnblogs.com/bpasser/tag/Android/">Android</a>(9)</li><li><a href="http://www.cnblogs.com/bpasser/tag/OpenGL/">OpenGL</a>(4)</li><li><a href="http://www.cnblogs.com/bpasser/tag/NDK/">NDK</a>(3)</li><li><a href="http://www.cnblogs.com/bpasser/tag/RTL8192cu/">RTL8192cu</a>(2)</li><li><a href="http://www.cnblogs.com/bpasser/tag/S5PV210/">S5PV210</a>(1)</li><li><a href="http://www.cnblogs.com/bpasser/tag/Shader/">Shader</a>(1)</li><li><a href="http://www.cnblogs.com/bpasser/tag/SoftAP/">SoftAP</a>(1)</li><li><a href="http://www.cnblogs.com/bpasser/tag/SQLite/">SQLite</a>(1)</li><li><a href="http://www.cnblogs.com/bpasser/tag/WiFi/">WiFi</a>(1)</li><li><a href="http://www.cnblogs.com/bpasser/tag/%E5%B1%8F%E5%B9%95%E6%96%B9%E5%90%91/">屏幕方向</a>(1)</li><li><a href="http://www.cnblogs.com/bpasser/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+		<h3>随笔档案</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/bpasser/archive/2011/12.html">2011年12月 (2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/bpasser/archive/2011/11.html">2011年11月 (1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/bpasser/archive/2011/10.html">2011年10月 (7)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/bpasser/archive/2011/09.html">2011年9月 (1)</a> </li>
+			
+				</ul>
+			
+	
+		<h3>相册</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/bpasser/gallery/324769.html" rel="nofollow">styling(4)</a> </li>
+			
+				</ul>
+			
+	</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap" style="display: none;">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"></div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="./获取Android设备的方向 - bye_passer - 博客园_files/获取Android设备的方向 - bye_passer - 博客园.htm">1. 获取Android设备的方向(12801)</a></li><li><a href="http://www.cnblogs.com/bpasser/archive/2011/11/02/2233455.html">2. SQLite 数据类型总结(11018)</a></li><li><a href="http://www.cnblogs.com/bpasser/archive/2011/10/19/2217411.html">3. Android 3D 编程：HelloArrow（用 OpenGL ES 2.0 实现）(6258)</a></li><li><a href="http://www.cnblogs.com/bpasser/archive/2011/09/25/2189941.html">4. Android OpenGL ES 1.x 教程的Native实现(6046)</a></li><li><a href="http://www.cnblogs.com/bpasser/archive/2011/10/15/2213015.html">5. Realtek 8192cu 驱动移植到 Android 2.2(5611)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="./获取Android设备的方向 - bye_passer - 博客园_files/获取Android设备的方向 - bye_passer - 博客园.htm">1. 获取Android设备的方向(2)</a></li><li><a href="http://www.cnblogs.com/bpasser/archive/2011/10/16/2213802.html">2. Android 3D 编程：索引(2)</a></li><li><a href="http://www.cnblogs.com/bpasser/archive/2011/09/25/2189941.html">3. Android OpenGL ES 1.x 教程的Native实现(2)</a></li><li><a href="http://www.cnblogs.com/bpasser/archive/2011/10/19/2217411.html">4. Android 3D 编程：HelloArrow（用 OpenGL ES 2.0 实现）(1)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/bpasser/archive/2011/09/25/2189941.html">1. Android OpenGL ES 1.x 教程的Native实现(2)</a></li><li><a href="http://www.cnblogs.com/bpasser/archive/2011/10/19/2217411.html">2. Android 3D 编程：HelloArrow（用 OpenGL ES 2.0 实现）(2)</a></li><li><a href="./获取Android设备的方向 - bye_passer - 博客园_files/获取Android设备的方向 - bye_passer - 博客园.htm">3. 获取Android设备的方向(2)</a></li><li><a href="http://www.cnblogs.com/bpasser/archive/2011/10/15/2213483.html">4. Realtek 8192cu 支持 Android Hotspot(1)</a></li><li><a href="http://www.cnblogs.com/bpasser/archive/2011/10/15/2213015.html">5. Realtek 8192cu 驱动移植到 Android 2.2(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+	
+</div>
+			
+			
+			
+			
+			 
+
+	
+
+
+
+</body></html>

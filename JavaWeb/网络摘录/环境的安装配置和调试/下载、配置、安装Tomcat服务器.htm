@@ -1,0 +1,898 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0057)http://blog.csdn.net/liuhaomatou/article/details/39893897 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<SCRIPT type="text/javascript" charset="utf-8" src="下载、配置、安装Tomcat服务器_files/tracking.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </SCRIPT>
+
+<META content="no-siteapp" http-equiv="Cache-Control"><LINK rel="alternate" 
+href="#" media="handheld"><TITLE>Apatch Tomcat8.0 的配置遇到问题全面总结 - liuhaomatou的专栏   
+     - 博客频道 - CSDN.NET</TITLE>
+<META content="text/html; charset=utf-8" http-equiv="Content-Type">
+<META name="description" content="1、一个椰子和一个西瓜砸在头上哪一个较痛？ （头最痛）2、进动物园玩的时候第一个见到的是什么？ （售票员）3、有一个人一年才上一天班又不怕被解雇他是谁？ （圣诞老人）4、世界上除了火车啥车最长？ （塞车）5、小明从楼跳下为何会没事？ （他向里面跳）7、为什么上山比下山慢？ (因为没听过落石往下滚)...">
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/jquery.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/jquery-version.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/ad.htm"></SCRIPT>
+<!--new top--><LINK rel="stylesheet" href="下载、配置、安装Tomcat服务器_files/index.css"><!--new top--><!-- ad begin -->
+<SCRIPT language="javascript" type="text/javascript" src="下载、配置、安装Tomcat服务器_files/tracking.htm"></SCRIPT>
+<!-- ad end--><LINK rel="Stylesheet" type="text/css" href="下载、配置、安装Tomcat服务器_files/style.css"><LINK 
+id="RSSLink" title="RSS" rel="alternate" type="application/rss+xml" href="/liuhaomatou/rss/list"><LINK 
+rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico"><LINK rel="stylesheet" 
+type="text/css" href="下载、配置、安装Tomcat服务器_files/default.css">
+<SCRIPT language="javascript" type="text/javascript" charset="gb2312" src="下载、配置、安装Tomcat服务器_files/35ff706fd57d11c141cdefcd58d6562b.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+hQGHuMEAyLn('.banner_top2,.banner_top3,.leftad,.rightad,.textad,#Topic_Top,#tad2,.ad_l,#ad_left,#ad_right,.adtxt,[class^="ad_area_"],[id^="div-gpt-ad-"],[class^="ad_300"],.ad_960,div.baidu,.ad_650,.ad_300_60,.AD,.tracking-ad');</SCRIPT>
+
+<META name="GENERATOR" content="MSHTML 9.00.8112.16696"></HEAD>
+<BODY><!-- 广告位开始 --><INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="149"></INS><!-- 广告位结束 --><!--new top-->
+<SCRIPT id="toolbar-tpl-scriptId" type="text/javascript" src="下载、配置、安装Tomcat服务器_files/html.js" skin="black" prod="blog" fixed="true"></SCRIPT>
+<!--new top-->
+<DIV id="container">
+<DIV id="header">
+<DIV class="header">
+<DIV id="blog_title">
+<H2><A href="http://blog.csdn.net/liuhaomatou">liuhaomatou的专栏</A></H2>
+<H3>汗水洒在每一天</H3>
+<DIV class="clear"></DIV></DIV>
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV id="navigator">
+<DIV class="navigator_bg"></DIV>
+<DIV class="navigator">
+<UL>
+  <LI id="btnContents"><A href="http://blog.csdn.net/liuhaomatou?viewmode=contents"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])"><IMG 
+  src="下载、配置、安装Tomcat服务器_files/ico_list.gif">目录视图</SPAN></A></LI>
+  <LI id="btnView"><A 
+  href="http://blog.csdn.net/liuhaomatou?viewmode=list"><SPAN onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])"><IMG 
+  src="下载、配置、安装Tomcat服务器_files/ico_summary.gif">摘要视图</SPAN></A></LI>
+  <LI id="btnRss"><A href="http://blog.csdn.net/liuhaomatou/rss/list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])"><IMG 
+  src="下载、配置、安装Tomcat服务器_files/ico_rss.gif">订阅</SPAN></A></LI></UL></DIV></DIV>
+<SCRIPT type="text/javascript">var username = "liuhaomatou";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/liuhaomatou";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</SCRIPT>
+
+<DIV id="body">
+<DIV id="main">
+<DIV class="main">
+<DIV class="ad_class">
+<DIV class="notice tracking-ad" data-mod="popu_3"><A href="http://blog.csdn.net/kakashi8841/article/details/51735510">
+<FONT color="blue">【专家图书】蔡俊鸿翻译的Unity3D书籍上市啦</FONT></A>&nbsp;&nbsp;&nbsp;<A href="http://lib.csdn.net/base/swift/resource">
+<FONT color="red">【知识库】Swift资源大集合</FONT></A>&nbsp;&nbsp;&nbsp;<A href="http://blog.csdn.net/csdnproduct/article/details/51668917">
+<FONT color="blue">【公告】博客新皮肤上线啦</FONT></A>&nbsp;&nbsp;&nbsp;<A href="http://blog.csdn.net/robbin2015/article/details/51683764">
+<FONT color="red">快来领福利：C币、机械键盘</FONT></A>&nbsp;&nbsp;&nbsp;</DIV></DIV><!-- 广告位开始 -->
+<INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="72"></INS><!-- 广告位结束 --><LINK rel="stylesheet" type="text/css" 
+href="下载、配置、安装Tomcat服务器_files/comment1.css"><LINK rel="stylesheet" type="text/css" 
+href="下载、配置、安装Tomcat服务器_files/style1.css">
+<SCRIPT language="JavaScript" type="text/javascript" src="下载、配置、安装Tomcat服务器_files/jquery.cookie.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/main.js"></SCRIPT>
+<LINK rel="stylesheet" href="下载、配置、安装Tomcat服务器_files/markdown_views.css"><LINK 
+rel="stylesheet" href="下载、配置、安装Tomcat服务器_files/category.css">
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/MathJax.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/web-storage-cache.min.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/replace.min.js"></SCRIPT>
+<LINK rel="stylesheet" href="下载、配置、安装Tomcat服务器_files/blog_code.css">
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/saveToCode.js"></SCRIPT>
+
+<SCRIPT type="text/ecmascript">
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </SCRIPT>
+
+<DIV id="article_details" class="details">
+<DIV class="article_title"><SPAN class="ico ico_type_Original"></SPAN>
+<H1><SPAN class="link_title"><A href="http://blog.csdn.net/liuhaomatou/article/details/39893897"> 
+       Apatch Tomcat8.0 的配置遇到问题全面总结                    </A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix">
+<DIV class="article_l"><SPAN class="link_categories">            标签：             
+ <A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+href="http://www.csdn.net/tag/tomcat" target="_blank">tomcat</A><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+href="http://www.csdn.net/tag/CATALINA_HOME" target="_blank">CATALINA_HOME</A><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+href="http://www.csdn.net/tag/unable%20to%20open%20the%20s" 
+target="_blank">unable to open the s</A><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+href="http://www.csdn.net/tag/java" target="_blank">java</A></SPAN></DIV>
+<DIV class="article_r"><SPAN class="link_postdate">2014-10-08 15:41</SPAN><SPAN 
+class="link_view" title="阅读次数">25466人阅读</SPAN><SPAN class="link_comments" title="评论次数"> 
+<A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+href="http://blog.csdn.net/liuhaomatou/article/details/39893897#comments">评论</A>(7)</SPAN><SPAN 
+class="link_collect tracking-ad" data-mod="popu_171"> <A title="收藏" onclick="javascript:collectArticle('Apatch Tomcat8.0 的配置遇到问题全面总结','39893897');return false;" 
+href="javascript:void(0);">收藏</A></SPAN><SPAN class="link_report"> <A title="举报" 
+onclick="javascript:report(39893897,2);return false;" href="http://blog.csdn.net/liuhaomatou/article/details/39893897#report">举报</A></SPAN></DIV></DIV>
+<DIV style="display: none;" id="embody" class="embody"><SPAN 
+class="embody_t">本文章已收录于：</SPAN>
+<DIV id="lib" class="embody_c" 
+value='{"err":0,"msg":"ok","data":[]}'></DIV></DIV>
+<STYLE type="text/css">.embody{
+                padding:10px 10px 10px;
+                margin:0 -20px;
+                border-bottom:solid 1px #ededed;                
+            }
+            .embody_b{
+                margin:0 ;
+                padding:10px 0;
+            }
+            .embody .embody_t,.embody .embody_c{
+                display: inline-block;
+                margin-right:10px;
+            }
+            .embody_t{
+                font-size: 12px;
+                color:#999;
+            }
+            .embody_c{
+                font-size: 12px;
+            }
+            .embody_c img,.embody_c em{
+                display: inline-block;
+                vertical-align: middle;               
+            }
+             .embody_c img{               
+                width:30px;
+                height:30px;
+            }
+            .embody_c em{
+                margin: 0 20px 0 10px;
+                color:#333;
+                font-style: normal;
+            }
+    </STYLE>
+
+<SCRIPT type="text/javascript">
+        $(function () {
+            try
+            {
+                var lib = eval("("+$("#lib").attr("value")+")");
+                var html = "";
+                if (lib.err == 0) {
+                    $.each(lib.data, function (i) {
+                        var obj = lib.data[i];
+                        //html += '<img src="' + obj.logo + '"/>' + obj.name + "&nbsp;&nbsp;";
+                        html += ' <a href="' + obj.url + '" target="_blank">';
+                        html += ' <img src="' + obj.logo + '">';
+                        html += ' <em><b>' + obj.name + '</b></em>';
+                        html += ' </a>';
+                    });
+                    if (html != "") {
+                        setTimeout(function () {
+                            $("#lib").html(html);                      
+                            $("#embody").show();
+                        }, 100);
+                    }
+                }      
+            } catch (err)
+            { }
+            
+        });
+    </SCRIPT>
+
+<DIV class="category clearfix">
+<DIV class="category_l"><IMG 
+src="下载、配置、安装Tomcat服务器_files/category_icon.jpg"><SPAN>分类：</SPAN></DIV>
+<DIV class="category_r"><LABEL onclick="GetCategoryArticles('2618519','liuhaomatou','top','39893897');"><SPAN 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">Tomcat<EM>（1）</EM></SPAN><IMG 
+style="display: inline;" class="arrow-down" src="下载、配置、安装Tomcat服务器_files/arrow_triangle%2520_down.jpg"><IMG 
+style="display: none;" class="arrow-up" src="下载、配置、安装Tomcat服务器_files/arrow_triangle_up.jpg">
+<DIV class="subItem">
+<DIV class="subItem_t"><A href="http://blog.csdn.net/liuhaomatou/article/category/2618519" 
+target="_blank">作者同类文章</A><I class="J_close">X</I></DIV>
+<UL id="top_2618519" class="subItem_l"></UL></DIV></LABEL></DIV></DIV>
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/category.js"></SCRIPT>
+
+<DIV class="bog_copyright">
+<P class="copyright_p">版权声明：本文为博主原创文章，未经博主允许不得转载。</P></DIV>
+<DIV id="article_content" class="article_content">
+<P><SPAN style="font-size: 18px;"><STRONG>首先从官方网站<A href="http://tomcat.apache.org/" 
+target="_blank">http://tomcat.apache.org/</A>下载Tomcat,我这里下载的是最新版本的Tomcat8.0</STRONG></SPAN></P>
+<P><SPAN style="font-size: 18px;"><STRONG>下载后解压得到：</STRONG></SPAN></P>
+<P><SPAN style="font-size: 18px;"><IMG alt="" src="下载、配置、安装Tomcat服务器_files/20141008152024449.png"><BR>
+</SPAN></P>
+<P><SPAN style="font-size: 18px;">进入到bin目录下面：</SPAN></P>
+<P><SPAN style="font-size: 18px;"><SPAN style="line-height: 24px; font-family: Simsun;"><STRONG>运行tomcat8w.exe 
+tomcat8.exe ,提示 指定的服务未安装 unable to open the service 
+'tomcat8'</STRONG></SPAN><BR></SPAN></P>
+<P><SPAN style="font-size: 18px;"><SPAN style="color: rgb(51, 51, 51); line-height: 24px; font-family: Simsun;"><STRONG><BR>
+</STRONG></SPAN></SPAN></P>
+<P><STRONG></STRONG></P>
+<P style="color: rgb(51, 51, 51); line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+解决方法：</P>
+<P style="color: rgb(51, 51, 51); line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+</P>
+<P style="color: rgb(51, 51, 51); line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+<SPAN style="color: rgb(255, 0, 0);">打开命令行提示符窗口</SPAN><SPAN style="color: rgb(255, 0, 0);">=&gt; 
+进入Tomcat安装目录==&gt; 进入bin目录下==&gt; 输入：service.bat install&nbsp;</SPAN></P>
+<P style="color: rgb(51, 51, 51); line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+<SPAN style="color: rgb(255, 0, 0);"><BR></SPAN></P>
+<P style="line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+这个时候会提示：</P>
+<P style="line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+<SPAN style='color: rgb(0, 0, 0); line-height: 30px; font-family: "Microsoft YaHei"; font-size: 20px; text-decoration: none;'><A 
+style='line-height: 30px; font-family: "Microsoft YaHei"; font-size: 20px; text-decoration: none;' 
+href="http://blog.csdn.net/liminled/article/details/18086655" 
+target="_blank">The CATALINA_HOME environment variable is not defined 
+correctly</A>&nbsp;的错误信息。</SPAN><BR></P>
+<P style="padding-top: 0px; padding-bottom: 10px; margin-top: 0px; margin-bottom: 0px;">
+<SPAN style="font-family: Microsoft YaHei;"><SPAN style="line-height: 30px; font-size: 20px;">这个是因为环境变量没有配置正确导致的。</SPAN></SPAN></P>
+<P style="padding-top: 0px; padding-bottom: 10px; margin-top: 0px; margin-bottom: 0px;">
+<SPAN style="font-family: Microsoft YaHei;"><SPAN style="line-height: 30px; font-size: 20px;"></SPAN></SPAN></P><PRE style='padding: 0px; color: rgb(51, 51, 51); line-height: 24px; font-family: arial,"courier new",courier,宋体,monospace; font-size: 14px; margin-top: 0px; margin-bottom: 10px; white-space: pre-wrap; word-wrap: break-word; background-color: rgb(255, 255, 255);' id="answer-content-1387290179" class="answer-text mb-10">解决方法如下：
+      1、JAVA_HOME中的路径不能使用分号结尾，如
+             E:\Java\jdk1.6.0_10;
+          这样写就会出现提示CATALINA_HOME或是JAVA_HOME没有配置好的错误,，还有就是JAVA_HOME的路径一定不要写成了JRE的路径
+      2、CATALINA_BASE，CATALINA_HOME，TOMCAT_HOME中的路径不能以"\"结尾，如
+             E:\Java\apache-tomcat-6.0.29\
+          这样写就会出现java.util.logging.ErrorManager的错误，屏幕一闪而过
+     正确的写法:
+           JAVA_HOME            C:\Program Files\Java\jdk1.8.0_11
+           CATALINA_BASE      D:\tools\apache-tomcat-8.0.14-windows-x64\apache-tomcat-8.0.14
+           CATALINA_HOME    D:\tools\apache-tomcat-8.0.14-windows-x64\apache-tomcat-8.0.14
+           TOMCAT_HOME       D:\tools\apache-tomcat-8.0.14-windows-x64\apache-tomcat-8.0.14</PRE><PRE style='padding: 0px; color: rgb(51, 51, 51); line-height: 24px; font-family: arial,"courier new",courier,宋体,monospace; font-size: 14px; margin-top: 0px; margin-bottom: 10px; white-space: pre-wrap; word-wrap: break-word; background-color: rgb(255, 255, 255);' id="answer-content-1387290179" class="answer-text mb-10"></PRE><PRE style='padding: 0px; color: rgb(51, 51, 51); line-height: 24px; font-family: arial,"courier new",courier,宋体,monospace; font-size: 14px; margin-top: 0px; margin-bottom: 10px; white-space: pre-wrap; word-wrap: break-word; background-color: rgb(255, 255, 255);' id="answer-content-1387290179" class="answer-text mb-10"></PRE><PRE style='padding: 0px; line-height: 24px; font-family: arial,"courier new",courier,宋体,monospace; font-size: 14px; margin-top: 0px; margin-bottom: 10px; white-space: pre-wrap; word-wrap: break-word; background-color: rgb(255, 255, 255);' id="answer-content-1387290179" class="answer-text mb-10"><SPAN style="color: rgb(51, 51, 51);">配置好了环境变量后在重新打开运行-&gt;cmd-&gt;进入到tomcat8.0的bin目录下运行：<STRONG></STRONG></SPAN><P style="color: rgb(51, 51, 51); line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;"><SPAN style="color: rgb(255, 0, 0);">service.bat install</SPAN></P><P style="line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">这个时候就会提示如下信息：</P><P style="line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;"><IMG alt="" src="下载、配置、安装Tomcat服务器_files/20141008153529828.png">
+</P><P style="color: rgb(51, 51, 51); line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;"><SPAN style="color: rgb(255, 0, 0);">
+</SPAN></P></PRE>
+最后在进入到tomcat8.0的解压后的bin目录下运行tomcat8w.exe 即可
+<P></P>
+<P style="padding-top: 0px; padding-bottom: 10px; margin-top: 0px; margin-bottom: 0px;">
+<SPAN style="font-family: Microsoft YaHei;"><SPAN style="line-height: 30px; font-size: 20px;"><IMG 
+alt="" src="下载、配置、安装Tomcat服务器_files/20141008153707078.png"><BR>
+</SPAN></SPAN></P>
+<P style="line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+<SPAN style='color: rgb(0, 0, 0); line-height: 30px; font-family: "Microsoft YaHei"; font-size: 20px; text-decoration: none;'><BR>
+</SPAN></P>
+<P style="padding-top: 0px; padding-bottom: 10px; margin-top: 0px; margin-bottom: 0px;">
+<SPAN style="font-family: Microsoft YaHei;"><SPAN style="line-height: 30px; font-size: 20px;">在浏览器网页中输入：<A 
+href="http://localhost:8080/" 
+target="_blank">http://localhost:8080/</A>&nbsp;后不能打开，是因为Tomcat没有启动，点击如下图片所示的start按钮即可以启动。</SPAN></SPAN></P>
+<P style="line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+<SPAN style='color: rgb(0, 0, 0); line-height: 30px; font-family: "Microsoft YaHei"; font-size: 20px; text-decoration: none;'><BR>
+</SPAN></P>
+<P style="line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+<SPAN style='color: rgb(0, 0, 0); line-height: 30px; font-family: "Microsoft YaHei"; font-size: 20px; text-decoration: none;'><BR>
+</SPAN></P>
+<P style="line-height: 24px; padding-top: 0px; padding-bottom: 10px; font-family: Simsun; font-size: 14px; margin-top: 0px; margin-bottom: 0px;">
+<SPAN style='color: rgb(0, 0, 0); line-height: 30px; font-family: "Microsoft YaHei"; font-size: 20px; text-decoration: none;'><IMG 
+alt="" src="下载、配置、安装Tomcat服务器_files/20141008153927963.png"><BR></SPAN></P>
+<BR></DIV><!-- Baidu Button BEGIN -->
+<DIV style="float: right;" class="bdsharebuttonbox tracking-ad" data-mod="popu_172">
+<A style='background-image: url("http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png") !important;' 
+class="bds_more" href="http://blog.csdn.net/liuhaomatou/article/details/39893897#" 
+data-cmd="more"></A><A style="background-position: 0px -52px !important;" class="bds_qzone" 
+title="分享到QQ空间" href="http://blog.csdn.net/liuhaomatou/article/details/39893897#" 
+data-cmd="qzone"></A><A style="background-position: 0px -104px !important;" 
+class="bds_tsina" title="分享到新浪微博" href="http://blog.csdn.net/liuhaomatou/article/details/39893897#" 
+data-cmd="tsina"></A><A style="background-position: 0px -260px !important;" 
+class="bds_tqq" title="分享到腾讯微博" href="http://blog.csdn.net/liuhaomatou/article/details/39893897#" 
+data-cmd="tqq"></A><A style="background-position: 0px -208px !important;" class="bds_renren" 
+title="分享到人人网" href="http://blog.csdn.net/liuhaomatou/article/details/39893897#" 
+data-cmd="renren"></A><A style="background-position: 0px -1612px !important;" 
+class="bds_weixin" title="分享到微信" href="http://blog.csdn.net/liuhaomatou/article/details/39893897#" 
+data-cmd="weixin"></A></DIV>
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+<!-- Baidu Button END --><LINK rel="stylesheet" href="下载、配置、安装Tomcat服务器_files/blog_detail.css"><!--172.16.140.14--><!-- Baidu Button BEGIN -->
+<SCRIPT id="bdshare_js" type="text/javascript" data="type=tools&amp;uid=1536434"></SCRIPT>
+
+<SCRIPT id="bdshell_js" type="text/javascript"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</SCRIPT>
+<!-- Baidu Button END -->
+<DIV id="digg" ArticleId="39893897">
+<DL id="btnDigg" class="digg digg_disable" onclick="btndigga();">
+  <DT>顶</DT>
+  <DD>2</DD></DL>
+<DL id="btnBury" class="digg digg_disable" onclick="btnburya();">
+  <DT>踩</DT>
+  <DD>0</DD></DL></DIV>
+<DIV class="tracking-ad" data-mod="popu_222"><A 
+href="javascript:void(0);">&nbsp;</A></DIV>
+<DIV class="tracking-ad" data-mod="popu_223"> <A 
+href="javascript:void(0);">&nbsp;</A></DIV>
+<SCRIPT type="text/javascript">
+                function btndigga() {
+                    $(".tracking-ad[data-mod='popu_222'] a").click();
+                }
+                function btnburya() {
+                    $(".tracking-ad[data-mod='popu_223'] a").click();
+                }
+            </SCRIPT>
+
+<UL class="article_next_prev">
+  <LI class="prev_article"><SPAN onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/liuhaomatou/article/details/39395209';">上一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])" 
+  href="http://blog.csdn.net/liuhaomatou/article/details/39395209">ipc连接时出来这个提示: 
+  不允许一个用户使用一个以上用户名与一个服务器或共享资源的多重连接。中断与此服务器或共享资源的连接，然后在试一次...</A></LI>
+  <LI class="next_article"><SPAN onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/liuhaomatou/article/details/40348111';">下一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])" 
+  href="http://blog.csdn.net/liuhaomatou/article/details/40348111">改变世界的 17 
+  个等式</A></LI></UL>
+<DIV style="height: 10px; clear: both;"></DIV>
+<DIV style="display: none;" class="similar_article">
+<H4>我的同类文章</H4>
+<DIV style="margin: 20px 0px 0px;" class="similar_c">
+<DIV class="similar_c_t"><LABEL class="similar_cur"><SPAN style="cursor: pointer;" 
+onclick="GetCategoryArticles('2618519','liuhaomatou','foot','39893897');">Tomcat<EM>（1）</EM></SPAN></LABEL></DIV>
+<DIV style="max-height: 195px;" class="similar_wrap tracking-ad" data-mod="popu_141"><A 
+style="display: none;" href="http://blog.csdn.net/">http://blog.csdn.net/</A>
+<UL class="similar_list fl"></UL>
+<UL class="similar_list fr"></UL></DIV></DIV></DIV>
+<SCRIPT type="text/javascript">
+        $(function () {
+            GetCategoryArticles('2618519', 'liuhaomatou','foot','39893897');
+        });
+    </SCRIPT>
+</DIV>
+<DIV id="suggest"></DIV>
+<SCRIPT language="javascript" type="text/javascript">     
+             $(function(){
+                 $.get("/liuhaomatou/svc/GetSuggestContent/39893897",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </SCRIPT>
+
+<STYLE>
+.blog-ass-articl dd {
+color: #369;
+width: 99%; /*修改行*/
+float: left;
+overflow: hidden;
+font: normal normal 12px/23px "SimSun";
+height: 23px;
+margin: 0;
+padding: 0 0 0 10px;
+margin-right: 30px;
+background: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;
+}
+</STYLE>
+<LINK rel="stylesheet" href="下载、配置、安装Tomcat服务器_files/replace.css">
+<DIV id="relate" class="tracking-ad" data-mod="popu_218">
+<DIV class="relate_t">
+<H3><SPAN>参考知识库</SPAN></H3></DIV>
+<DIV class="relate_c"></DIV></DIV>
+<DL id="res-relatived" class="blog-ass-articl">
+  <DIV style="display: none;" id="libkeyparent" class="embody embody_b"><SPAN 
+  class="embody_t">更多资料请参考：</SPAN>
+  <DIV id="libkey" class="embody_c"></DIV></DIV>
+  <DT><SPAN>猜你在找</SPAN></DT>
+  <DIV style="width: 42%; float: left;" id="adCollege">
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/job_reco.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "39893897",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </SCRIPT>
+  </DIV>
+  <DIV style="width: 42%; margin-right: 30px; float: left;" id="res" class="tracking-ad" 
+  data-mod="popu_36"></DIV></DL>
+<SCRIPT type="text/javascript">
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = 'Apatch Tomcat8.0 的配置遇到问题全面总结' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </SCRIPT>
+
+<DIV id="ad_cen"><!-- 广告位开始 --><INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="71"></INS><!-- 广告位结束 --></DIV>
+<DIV class="comment_class">
+<DIV id="comment_title" class="panel_head"><SPAN 
+class="see_comment">查看评论</SPAN><A name="comments"></A></DIV>
+<DIV id="comment_list"></DIV>
+<DIV id="comment_bar"></DIV>
+<DIV id="comment_form"></DIV>
+<DIV class="announce">* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<A name="reply"></A><A 
+name="quote"></A></DIV></DIV>
+<SCRIPT type="text/javascript">var fileName = '39893897';
+    var commentscount = 7;
+    var islock = false
+</SCRIPT>
+
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/comment.js"></SCRIPT>
+
+<DIV id="ad_bot"></DIV>
+<DIV id="report_dialog"></DIV>
+<DIV style="bottom: 60px;" id="d-top"><A style="display: none;" id="quick-reply" 
+class="btn btn-top q-reply" title="快速回复"><IMG alt="快速回复" src="下载、配置、安装Tomcat服务器_files/blog-icon-reply.png"></A><A 
+style="display: none;" id="d-top-a" class="btn btn-top backtop" title="返回顶部" 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])"><IMG 
+alt="TOP" src="下载、配置、安装Tomcat服务器_files/top.png"></A></DIV>
+<SCRIPT type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</SCRIPT>
+
+<STYLE type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</STYLE>
+
+<DIV style="display: none;" class="tag_list"></DIV>
+<SCRIPT language="javascript" type="text/javascript">     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/liuhaomatou/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </SCRIPT>
+
+<DIV style="background: 0px 0px rgb(255, 255, 255); border: 1px solid rgb(220, 220, 220); left: 630px; top: 222.5px; display: none; position: absolute; z-index: 10000; opacity: 1;" 
+id="pop_win"></DIV>
+<DIV id="popup_mask"></DIV>
+<STYLE>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+</STYLE>
+
+<SCRIPT type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });         
+
+        },200);  
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },5000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },10000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },15000);
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }   
+
+</SCRIPT>
+
+<SCRIPT language="javascript" type="text/javascript" src="下载、配置、安装Tomcat服务器_files/async_new.htm"></SCRIPT>
+
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV id="side">
+<DIV class="side">
+<DIV id="panel_Profile" class="panel">
+<UL class="panel_head"><SPAN>个人资料</SPAN></UL>
+<UL class="panel_body profile">
+  <DIV id="blog_userface"><A href="http://my.csdn.net/liuhaomatou" target="_blank"><IMG 
+  style="max-width: 90%;" title="访问我的空间" src="下载、配置、安装Tomcat服务器_files/1_liuhaomatou.jpg"></A><BR><SPAN><A 
+  class="user_name" href="http://my.csdn.net/liuhaomatou" 
+  target="_blank">liuhaomatou</A></SPAN></DIV>
+  <DIV class="interact"><A id="span_add_follow" class="attent" title="[加关注]" 
+  href="javascript:void(0);"></A><A class="letter" title="[发私信]" onclick="window.open('http://msg.csdn.net/letters/model?receiver=liuhaomatou','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])" 
+  href="javascript:void(0);"></A></DIV>
+  <DIV id="blog_medal">
+  <DIV id="bms_box"><A target="_blank"><IMG onmouseover="m_over_m(this,4)" 
+  onmouseout="m_out_m()" alt="1" 
+  src="下载、配置、安装Tomcat服务器_files/chizhiyiheng.png"></A></DIV></DIV>
+  <UL id="blog_rank">
+    <LI>访问：<SPAN>239530次</SPAN></LI>
+    <LI>积分：<SPAN>1760</SPAN> </LI>
+    <LI>等级： <SPAN 
+    style="display: inline-block; position: relative; z-index: 1;"><IMG style="vertical-align: middle;" 
+    id="leveImg" alt="" src="下载、配置、安装Tomcat服务器_files/blog4.png">
+    <DIV style="border: 2px solid rgb(221, 221, 221); left: -24px; top: 25px; width: 101px; height: 32px; text-align: center; line-height: 32px; display: none; position: absolute; z-index: 999; box-shadow: none; background-color: rgb(255, 255, 255);" 
+    id="smallTittle">
+    <DIV style="left: 42%; top: -8px; width: 0px; height: 0px; border-right-color: transparent; border-bottom-color: rgb(234, 234, 234); border-left-color: transparent; border-right-width: 10px; border-bottom-width: 8px; border-left-width: 10px; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; position: absolute;"></DIV> 
+               积分：1760 </DIV></SPAN></LI>
+    <LI>排名：<SPAN>第15445名</SPAN></LI></UL>
+  <UL id="blog_statistics">
+    <LI>原创：<SPAN>34篇</SPAN></LI>
+    <LI>转载：<SPAN>33篇</SPAN></LI>
+    <LI>译文：<SPAN>0篇</SPAN></LI>
+    <LI>评论：<SPAN>37条</SPAN></LI></UL></UL></DIV>
+<DIV id="panel_Search" class="panel">
+<UL class="panel_head"><SPAN>文章搜索</SPAN></UL>
+<UL class="panel_body">
+  <FORM id="frmSearch" class="form_search" action="http://so.csdn.net/search" 
+  target="_blank"><SPAN><INPUT id="inputSearch" class="blogsearch" title="请输入关键字" 
+  type="text"></SPAN><INPUT id="btnSubmit" title="search in blog" value="搜索" type="button"><INPUT 
+  id="inputQ" name="q" type="hidden"><INPUT name="t" value="blog" 
+  type="hidden"><A id="btnSearchBlog" target="_blank"></A></FORM></UL></DIV>
+<SCRIPT type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</SCRIPT>
+
+<DIV id="panel_Category" class="panel">
+<UL class="panel_head"><SPAN>文章分类</SPAN></UL>
+<UL class="panel_body">
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/1237702">Android</A><SPAN>(30)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/6061298">代码管理git</A><SPAN>(4)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/1284420">开发工具</A><SPAN>(2)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/1295681">Ubuntu</A><SPAN>(9)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/2119845">English</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/2141299">数学</A><SPAN>(3)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/2180135">算法</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/2205185">诗歌</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/2353883">国外知名开发网站收藏</A><SPAN>(0)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/2495445">C语言</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/2552843">蓝牙</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/2618519">Tomcat</A><SPAN>(2)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/2655473">android 
+  wifi</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/2704623">java 
+  Socket</A><SPAN>(2)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/2705371">网络</A><SPAN>(3)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/2729947">java 
+  多线程</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/2735601">java</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/liuhaomatou/article/category/6097431">app 
+  原形设计工具</A><SPAN>(1)</SPAN></LI></UL></DIV>
+<DIV id="panel_Archive" class="panel">
+<UL class="panel_head"><SPAN>文章存档</SPAN></UL>
+<UL class="panel_body">
+  <DIV id="archive_list"><!--归档统计-->
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2016/05">2016年05月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2016/02">2016年02月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2016/01">2016年01月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2015/08">2015年08月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2015/07">2015年07月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2015/06">2015年06月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2015/05">2015年05月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2015/04">2015年04月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2015/01">2015年01月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2014/11">2014年11月</A><SPAN>(7)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2014/10">2014年10月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2014/09">2014年09月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2014/08">2014年08月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2014/07">2014年07月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2014/04">2014年04月</A><SPAN>(15)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2014/03">2014年03月</A><SPAN>(10)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2013/03">2013年03月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2012/12">2012年12月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/liuhaomatou/article/month/2012/11">2012年11月</A><SPAN>(2)</SPAN></LI>
+  </DIV></UL></DIV>
+<DIV id="hotarticls" class="panel">
+<UL class="panel_head"><SPAN>阅读排行    </SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title="Android中LayoutParams总结和用法" href="http://blog.csdn.net/liuhaomatou/article/details/22899925">Android中LayoutParams总结和用法</A><SPAN>(65442)</SPAN>
+  </LI>
+  <LI><A title="Android开发使用的常见第三方框架汇总" href="http://blog.csdn.net/liuhaomatou/article/details/44857005">Android开发使用的常见第三方框架汇总</A><SPAN>(31667)</SPAN>
+  </LI>
+  <LI><A title="Android Process 详解" href="http://blog.csdn.net/liuhaomatou/article/details/22445755">Android 
+  Process 详解</A><SPAN>(26396)</SPAN></LI>
+  <LI><A title="Apatch Tomcat8.0 的配置遇到问题全面总结" href="http://blog.csdn.net/liuhaomatou/article/details/39893897">Apatch 
+  Tomcat8.0 的配置遇到问题全面总结</A><SPAN>(25428)</SPAN></LI>
+  <LI><A title=".9.png一些总结。" href="http://blog.csdn.net/liuhaomatou/article/details/21418037">.9.png一些总结。</A><SPAN>(9324)</SPAN>
+  </LI>
+  <LI><A title="蓝牙4.0和3.0区别" href="http://blog.csdn.net/liuhaomatou/article/details/39183129">蓝牙4.0和3.0区别</A><SPAN>(6339)</SPAN>
+  </LI>
+  <LI><A title="ipc连接时出来这个提示: 不允许一个用户使用一个以上用户名与一个服务器或共享资源的多重连接。中断与此服务器或共享资源的连接，然后在试一次..." 
+  href="http://blog.csdn.net/liuhaomatou/article/details/39395209">ipc连接时出来这个提示: 
+  不允许一个用户使用一个以上用户名与一个服务器或共享资源的多重连接。中断与此服务器或共享资源的连接，然后在试一次...</A><SPAN>(5410)</SPAN>
+  </LI>
+  <LI><A title="ADB server didn't ACK 解决方法" href="http://blog.csdn.net/liuhaomatou/article/details/39376909">ADB 
+  server didn't ACK 解决方法</A><SPAN>(4519)</SPAN></LI>
+  <LI><A title="关于eclipse开发工具安装easyexplorer PlugIn(文件浏览插件)教程" href="http://blog.csdn.net/liuhaomatou/article/details/8200528">关于eclipse开发工具安装easyexplorer 
+  PlugIn(文件浏览插件)教程</A><SPAN>(4518)</SPAN></LI>
+  <LI><A title="Android SQlite 总结" href="http://blog.csdn.net/liuhaomatou/article/details/23797107">Android 
+  SQlite 总结</A><SPAN>(4174)</SPAN></LI></UL></DIV>
+<DIV id="hotarticls2" class="panel">
+<UL class="panel_head"><SPAN>评论排行</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title="Android开发使用的常见第三方框架汇总" href="http://blog.csdn.net/liuhaomatou/article/details/44857005">Android开发使用的常见第三方框架汇总</A><SPAN>(7)</SPAN>
+  </LI>
+  <LI><A title="Apatch Tomcat8.0 的配置遇到问题全面总结" href="http://blog.csdn.net/liuhaomatou/article/details/39893897">Apatch 
+  Tomcat8.0 的配置遇到问题全面总结</A><SPAN>(7)</SPAN></LI>
+  <LI><A title="Android Process 详解" href="http://blog.csdn.net/liuhaomatou/article/details/22445755">Android 
+  Process 详解</A><SPAN>(7)</SPAN></LI>
+  <LI><A title="Android中LayoutParams总结和用法" href="http://blog.csdn.net/liuhaomatou/article/details/22899925">Android中LayoutParams总结和用法</A><SPAN>(7)</SPAN>
+  </LI>
+  <LI><A title=".9.png一些总结。" href="http://blog.csdn.net/liuhaomatou/article/details/21418037">.9.png一些总结。</A><SPAN>(2)</SPAN>
+  </LI>
+  <LI><A title="20140319十个英语单词" href="http://blog.csdn.net/liuhaomatou/article/details/21569431">20140319十个英语单词</A><SPAN>(2)</SPAN>
+  </LI>
+  <LI><A title="Android自定义View全面总结" href="http://blog.csdn.net/liuhaomatou/article/details/23139659">Android自定义View全面总结</A><SPAN>(1)</SPAN>
+  </LI>
+  <LI><A title="Android图片处理（Matrix,ColorMatrix）" href="http://blog.csdn.net/liuhaomatou/article/details/22225471">Android图片处理（Matrix,ColorMatrix）</A><SPAN>(1)</SPAN>
+  </LI>
+  <LI><A title="ubuntu 系统中搭建bugzilla系统" href="http://blog.csdn.net/liuhaomatou/article/details/38312297">ubuntu 
+  系统中搭建bugzilla系统</A><SPAN>(1)</SPAN></LI>
+  <LI><A title="Android实现Back功能代码片段总结。" href="http://blog.csdn.net/liuhaomatou/article/details/21996041">Android实现Back功能代码片段总结。</A><SPAN>(1)</SPAN>
+  </LI></UL></DIV>
+<DIV id="homepageArticles" class="panel tracking-ad" data-mod="popu_4">
+<UL class="panel_head"><SPAN>推荐文章</SPAN></UL>
+<UL id="ad_commend" class="panel_body">
+  <UL>
+    <LI><A href="http://blog.csdn.net/u013064109/article/details/51590621" 
+    target="_blank">*浅谈android中异步加载之"取消异步加载"二</A></LI>
+    <LI><A href="http://blog.csdn.net/xiehuimx/article/details/51731649" target="_blank">*笑谈Android图表------MPAndroidChart</A></LI>
+    <LI><A href="http://blog.csdn.net/hiyun9/article/details/51602428" target="_blank">*Nginx正反向代理、负载均衡等功能实现配置</A></LI>
+    <LI><A href="http://blog.csdn.net/qianweifeng123/article/details/51555998" 
+    target="_blank">* 浅析ZeroMQ工作原理及其特点</A></LI>
+    <LI><A href="http://blog.csdn.net/sahadev_/article/details/51746119" target="_blank">*Android官方开发文档Training系列课程中文版：多样屏幕之支持不同的屏幕尺寸</A></LI>
+    <LI><A href="http://blog.csdn.net/mickjoust/article/details/51646658" 
+    target="_blank">*Spring Boot 实践折腾记（三）：三板斧，Spring 
+Boot下使用Mybatis</A></LI></UL></UL></DIV>
+<DIV id="newcomments" class="panel">
+<UL class="panel_head"><SPAN>最新评论</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A href="http://blog.csdn.net/liuhaomatou/article/details/44857005#comments">Android开发使用的常见第三方框架汇总</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/xaioxaio">xaioxaio</A>:
+  整理的很好~    </P></LI>
+  <LI><A href="http://blog.csdn.net/liuhaomatou/article/details/39893897#comments">Apatch 
+  Tomcat8.0 的配置遇到问题全面总结</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/qq_26586567">qq_26586567</A>:
+   Using JRE_HOME:         "C:\Program Files\Java\jdk...    </P></LI>
+  <LI><A href="http://blog.csdn.net/liuhaomatou/article/details/39893897#comments">Apatch 
+  Tomcat8.0 的配置遇到问题全面总结</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/qq_26586567">qq_26586567</A>:
+  您好，我在按照您这个提示的顺序配置的时候，CMD 执行service.bat install,提示失...    </P></LI>
+  <LI><A href="http://blog.csdn.net/liuhaomatou/article/details/39893897#comments">Apatch 
+  Tomcat8.0 的配置遇到问题全面总结</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/iiiddddd">iiiddddd</A>:
+  太棒了    </P></LI>
+  <LI><A href="http://blog.csdn.net/liuhaomatou/article/details/22445755#comments">Android 
+  Process 详解</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/nic122333">nic122333</A>:
+   android:process=":remote_1" 自定义和官方建议的“:remote”有什么差...    </P></LI>
+  <LI><A href="http://blog.csdn.net/liuhaomatou/article/details/22445755#comments">Android开发使用的常见第三方框架汇总</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/qq_31981629">qq_31981629</A>:
+  楼主你好！我是麦子学院的讲师顾问 麦兜，目前麦子学院在建设android第三方库的一些视频课程，想要...    </P></LI>
+  <LI><A href="http://blog.csdn.net/liuhaomatou/article/details/22899925#comments">Android中LayoutParams总结和用法</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/iiChrome">iiChrome</A>:
+   @sdhgood:sosad 是什么变故让你做出这个令人难过的决定的    </P></LI>
+  <LI><A href="http://blog.csdn.net/liuhaomatou/article/details/22899925#comments">Android中LayoutParams总结和用法</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/sdhgood">sdhgood</A>:
+   @iiChrome:我不做安卓了，哭……    </P></LI>
+  <LI><A href="http://blog.csdn.net/liuhaomatou/article/details/22899925#comments">Android开发使用的常见第三方框架汇总</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/crazywolfteam">crazywolfteam</A>:
+  当你在感叹有这样一个东西就好的时候，其实就是你的一个机会！可惜这个机会被大牛抢占了，哈哈！     ...    </P></LI>
+  <LI><A href="http://blog.csdn.net/liuhaomatou/article/details/22899925#comments">Android开发使用的常见第三方框架汇总</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/li530893850">li530893850</A>:
+  先 mark了  以后慢慢学习    </P></LI></UL></DIV></DIV>
+<DIV class="clear"></DIV></DIV>
+<DIV class="clear"></DIV></DIV>
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/cnick.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/newblog.min.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/showblogmedal.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/JavaScript1.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/login.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</SCRIPT>
+
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/counter.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="下载、配置、安装Tomcat服务器_files/ad-blog.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</SCRIPT>
+</DIV><!--new top-->
+<SCRIPT id="csdn-toolbar-id" type="text/javascript" src="下载、配置、安装Tomcat服务器_files/toolbar.js" subCount="5" count="5" wrapId="note1" btnId="header_notice_num"></SCRIPT>
+<!--new top--><LINK rel="stylesheet" type="text/css" href="下载、配置、安装Tomcat服务器_files/ask_float_block.css">
+<SCRIPT language="JavaScript" type="text/javascript" src="下载、配置、安装Tomcat服务器_files/wmd.js"></SCRIPT>
+
+<SCRIPT language="JavaScript" type="text/javascript" src="下载、配置、安装Tomcat服务器_files/showdown.js"></SCRIPT>
+
+<SCRIPT language="JavaScript" type="text/javascript" src="下载、配置、安装Tomcat服务器_files/prettify.js"></SCRIPT>
+
+<SCRIPT language="JavaScript" type="text/javascript" src="下载、配置、安装Tomcat服务器_files/ask_float_block.js"></SCRIPT>
+
+<DIV style="width: 1px; height: 1px; display: none;" id="a52b5334d">
+<SCRIPT id="adJs52b5334"></SCRIPT>
+
+<SCRIPT>document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();</SCRIPT>
+</DIV></BODY></HTML>

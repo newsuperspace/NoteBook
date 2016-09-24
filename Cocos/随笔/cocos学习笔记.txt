@@ -1,0 +1,673 @@
+﻿在社交平台上，我提问，你帮我选
+
+1、用简单的游戏周期来吸引玩家
+2、用很多牛逼闪闪的奖励和赞赏来让玩家自我感觉良好
+3、训练玩家使用虚拟货币
+4、要请玩家使用真实货币来买进虚拟货币，这样他们就会忘记自己在花真实的钱
+5、将游戏重点放在等待，并允许玩家花费虚拟货币取消等待
+
+
+
+JSON指的就是JS中对象使用{}方式的字面量表示形式
+在JS中类型的字面量表示形式有————
+1、引用类型  {}
+2、Array类型 []
+3、String类型  ""
+4、RegExp正则表达式类型 /^  $/
+5、Function类型 function(){}
+
+window.Global:{
+	backNode:{
+		default: null,
+		type: cc.Node
+	},
+	backLabel:{
+		default: 0,
+		type: cc.Label
+	}
+}
+
+总类型：  null    []     0(任意一个数值)  ""
+
+分类型：
+
+null -----  通过  var nameType  =  cc.Class({}); 定义的自定义类型，
+			任何cocos中的类型  cc.Sprite  cc.Node  等等
+			任何JS的原生引用类型   Object，  
+			
+			
+
+			
+
+cc.EventManager.addListener({
+	event: cc.eventListener.KEYBOARD,
+	
+	onKeyPressed: function(keyCode, event){
+	
+	},
+	
+	onKeyReleased: function(keyCode, event)
+	{
+	
+	}
+
+}, self.node);
+
+
+
+	cc.eventManager.addListener(事件监听器对象，方法调用对象通常是某个脚本对象); 该方法用来注册监听器来监听指定类型事件。
+	事件监听器对象的创建创建方法可以直接使用{}的引用类型字面量表示方式创建
+	也可以使用 var  listener  =  cc.eventListener.create({}); 的方式创建，该方法返回cc.eventListener类型的监听器对象,然后cc.eventManager.addListener(listener,this)就可以了(但在过去1.1.0版本中无法使用这种方式，现在1.2.0不知是否改正了这方面)
+
+	通常cc.eventListener常用类型有两种，KEYBOARD和ACCELERATION
+	// Create KEYBOARD EventListener.
+	cc.EventListener.create({
+		event: cc.EventListener.KEYBOARD,
+		onKeyPressed: function (keyCode, event) {     						<----------------------这里的event参数类型就是 cc.event.xxxxx
+			if(cc.KEY.space == keyCode)			<------- 参数keyCode是Number类型，与枚举cc.KEY中是一一对应的，通过这个方法就能获知用户按下的是哪个按键
+			{
+				do something;
+			}
+		},
+		onKeyReleased: function (keyCode, event) {
+			cc.log('released key: ' + keyCode);
+		}
+	});
+
+	// Create ACCELERATION EventListener.
+	cc.EventListener.create({
+		event: cc.EventListener.ACCELERATION,
+		callback: function (acc, event) {     		<---------------------这里的event参数类型就是 cc.event.xxxxx
+			cc.log(
+				"x轴加速度:" + acc.x +      <-------------acc参数我推测应该是cc.Acceleration类型的，用以报告设备各个加速度传感器轴上的加速度读数。
+				"y轴加速度:" + acc.y +
+				"z轴加速度:" + acc.z 
+			);
+		}
+	});
+		
+	
+
+（1）cc.eventListener.xxx  这是监听器类型，用来给cc.eventManager.addListener()中作为参数。只有三种监听器类型
+UNKNOWN 未知的事件监听器类型
+KEYBOARD 键盘事件监听器类型
+ACCELERATION 加速器事件监听器类型
+
+
+（2）cc.event.eventCustom 这是传递给事件处理过程的event参数的类，所有种类事件的属性和方法都包含在以cc.event.xxxx的类型中。因此在事件处理过程中解析每次
+传递进来的event参数的时候就需要参考对应类型的cc.event.xxxxx类型的API。
+	以cc.event为前缀的事件类型有
+	cc.event.EventAcceleration  加速度事件发生时候传递到处理历程中event的参数的类型
+	cc.event.EventCustom        自定义事件
+	cc.Event.EventKeyboard		键盘事件
+	cc.Event.EventMouse			鼠标事件
+	cc.event.eventTouche		触碰事件
+	
+	
+
+
+（3）cc.Node.eventType.xxxxx 由于creator事件处理的位置在cc.Node，因此当我们通过形如
+	// add Node Touch Event
+	node.on(cc.Node.EventType.TOUCH_START, callback, this.node); 
+	node.on(cc.Node.EventType.TOUCH_MOVE, callback, this.node);
+	node.on(cc.Node.EventType.TOUCH_END, callback, this.node);
+	node.on(cc.Node.EventType.TOUCH_CANCEL, callback, this.node);
+	
+	实现对指定节点node上发生的指定类型的事件(通常是触碰和鼠标点击)的监听的时候，这里“指定类型”就是通过cc.Node.EventType.xxxxxx来指定的
+	
+	需要说明的是，第三个参数 target，用于绑定事件处理函数（第二个function类型的参数）的调用者。以下两种调用方式， 效果上是相同的：
+	// 使用函数绑定
+	this.node.on('mousedown', function ( event ) {
+	  this.enabled = false;
+	}.bind(this));
+	// 使用第三个参数
+	this.node.on('mousedown', function (event) {
+	  this.enabled = false;
+	}, this);
+			
+	关闭监听
+	当我们不再关心某个事件时，我们可以使用 off 方法关闭对应的监听事件。需要注意的是，off 方法的 参数必须和 on 方法的参数一一对应，才能完成关闭。
+	我们推荐的书写方法如下：
+	cc.Class({
+	  extends: cc.Component,
+
+	  _sayHello: function () {
+		console.log('Hello World');
+	  },
+
+	  onEnable: function () {
+		this.node.on('foobar', this._sayHello, this);
+	  },
+
+	  onDisable: function () {
+		this.node.off('foobar', this._sayHello, this);
+	  },
+	});
+			
+			
+			
+
+(4) cc.eventManager 事件管理器类型，
+它主要管理事件监听器注册和派发系统事件。 原始设计中，它支持鼠标，触摸，键盘，陀螺仪和自定义事件。 在 Creator 的设计中，鼠标，触摸和自定义事件的监听和派发请参考 http://cocos.com/docs/creator/scripting/events.html。			
+			
+因此现在cc.eventManager中管理的事件种类只有KEYBOARD和ACCELERATION两种，而TOUCHE、MOUSE等事件的监听则具体到了
+需要处理这类事件的cc.Node节点上了。 之所以这样处理是因为对于TOUCH和MOUSE这类事件不仅需要精确制导到发生的准确节点，而且
+触发的事件类型也是非常复杂（包括按下、抬起、移动、移入、移出）等许多情况。所以将这类事件的处理单元从全局地、宏观地eventManager
+转下发给准确的node节点，就能更方便的处理此类事件。
+而eventManager更加偏向于宏观事件的处理，例如键盘的按下/抬起，以及设备加速度传感器读数，因为这里事件是发生在全局性地发生在所有节点上因此无需细致的定位操作。
+通过var  listener  =  cc.eventManager.addListener("cc.eventListener类型的事件监听器对象"， 需要处理这类事件的节点其实这个参数对于宏观事件不太重要主要是为了给事件监听器分组，方便以后通过removeListeners()来将一组的监听器一次移除而不会像调用removeAllListeners()那样移除所有事件监听器)；来完成指定类型事件监听器的注册,方法会返回一个cc.eventListener类型对象用以下面的移除监听器的操作
+通过cc.eventManager.removeListener(“通过cc.eventManager.addListener()方法返回的已经注册了的cc.eventListener类型的对象”); 完成对这个监听器对象的移除
+
+
+	
+
+（5） 在通过eventManager注册eventListener.KEYBOARD类型监听器监听键盘输入的时候一定需要用到另外一种用于定位用户具体按键的枚举cc.KEY
+通过cc.key枚举中的按键与监听器事件处理过程收到的参数keyCode进行比对，就能知道用户到底按下的是键盘上的哪个按键了。
+
+
+（6） 	cc.node.on() 只能监听发生在该节点上的 TOUCH和MOUSE操作
+		cc.eventManager.addListener() 用来监听更全部的键盘、加速度传感器的操作
+			
+			
+（7） cc.event.eventAcceleration和 cc.Acceleration 的关系
+		cc.event.eventTouch 和 cc.Touch的关系
+		
+（8） 在cc.Node节点上有很多的坐标系转换工具
+	①convertToNodeSpace          
+	形如：node.convertToNodeSpace(cc.p(100,100));  
+	这里将参数的坐标看作是世界坐标系中的一个坐标（世界坐标系就是GL坐标系，以屏幕左下角为原点,向上向右为Y轴和X轴正方向，指向我们脸的方向为Z轴正方向）
+	然后将这个坐标转化为一node的左下角为原点的坐标系中的坐标
+	
+	②convertToWorldSpace
+	形如： node.convertToWorldSpace(cc.v2(100,100));
+	这里将参数的坐标看作是以node节点左下角为原点的坐标系中的一个坐标，然后将这个坐标转换为世界坐标系（屏幕左下角）中的坐标输出
+	
+	
+	③convertToNodeSpaceAR
+	node.convertToNodeSpaceAR(cc.p(100,100));
+	参数为世界坐标系中的一点，将该点转变成node节点以锚点为原点所构成的这所标系中的坐标
+	
+	④convertToWorldSpaceAR
+	node.covertToWorldSpaceAR(cc.v2(100,100));
+	参数为node节点以锚点为坐标系原点的中的一个坐标，将之转变成世界坐标系中的坐标
+	
+	⑤convertTouchToNodeSpace
+	将发生的cc.Touch类型的触碰对象中的位置坐标转变为以节点左下角为原点的坐标系中的坐标
+	⑥convertTouchToNodeSpaceAR 
+	将发生的cc.Touch类型的触碰对象中的位置坐标转变为以节点锚点为原点的坐标系中的坐标（creator默认就是以锚点为原点）
+			
+	综上所述，由于Creator默认都是以node节点的锚点为其自身坐标系原点，因此实际在creator中编写脚本都应该使用AR版本的函数。r
+	
+(9) 在事件处理过程中，事件参数event.target会返回最初事件目标对象（Object），然后通过原生类型Object的原生属性_name就可以知道当前event事件
+	最初的触发节点对象（cc.node）的字符串名了。 实例可以参考MoveAnimationCtrl.js脚本
+	
+	
+(10)
+	
+	
+(11) 通过cc.log("message") 和 console.log(“message”)来分别实现向cocos creator的控制台和向浏览器的控制台输出日志信息的功能
+
+
+			
+			
+(12)  在通过
+			properties:{
+				
+			},    
+			
+			例如，通过定义一个
+			player: {
+				default: null,
+				type: cc.Node
+			}，
+			这样的属性，则任何节点对象（包括canvas）就都可以被这个属性引用到了。
+			
+			在逻辑控制组件（脚本组件）中定义属性的时候遵循的仍然是标准的JSON数据格式，也就是———— 属性名（键）: 属性值（值）
+			而其中属性值又是一个以{}形式表示的”引用类型的字面量表示形式“，在其中Cocos已经固定规定了该种引用类型所应该拥有的
+			并且不能自己创新的属性定义字段，当然这些字段也是JSON格式的，这其中以default和type两个最为重要。
+			default: 用以指定该种属性的大类型
+			type： 用以指定该种属性的小类型，或者说是准确类型
+			这两个字段在一起就如同是MIME类型一样，将属性的类型准确详实的固定住了。
+			通常 default的大类型只能为 []————表示属性是一个数组，  null————表示属性是一个引用类型，  ""————表示属性是一个字符串，   0————表示属性是一个Number类型。
+			而在接下来的type字段中则要进一步准确的告知具体类型，比如"type:cc.Sprite,"的意思对于大类型为[]就是表示数组元素是cc.Sprint;对于大类型为null就说明该属性引用的具体类型是cc.Sprint；如果需要在数组中指定非引用类型的元素类型，则cc.String指定数组元素为字符串、cc.Integer/cc.Float等指定数组元素为数值类型；另外如果指定大类型默认值为0则cocos默认就知道这个属性是Number类型的了无需指定type字段的具体类型；""也为原生ECMA中的String类型是同理的。
+			
+			
+			另外，我们还可以像定义JavaBean那样为属性定义set/get方法，形如：
+			properties: {
+				width: {
+					get: function () {
+						return this._width;   // 在cocos中_xxx为私有属性成员，也就是默认其visible字段为false在外部不可见
+					},
+					set: function (value) {
+						this._width = value;
+					}
+				}
+			}
+			这样在属性设置了 get 或 set 以后，访问属性值就只能通过这两个方法了而不能直接设置值了，以触发预定义的 get 或 set 方法中的逻辑，从而实现对传递进来的值的加工处理（例如检测值的合法性等逻辑）。
+			如果你只定义 get 方法，那相当于该属性为只读无法被set。
+			
+			
+			
+（13）cc.find()可以用来逐层查找场景根节点下的所有自己点。
+		我们知道每一个场景fire文件就代表一个节点树形结构，而其中真正的根节点就是场景节点，该节点是默认的且唯一的根结不会显示在层级管理器中、
+		而出现在层级管理器中的第一层节点，例如canvas节点就是主干节点，主干节点可以有多个。而之后我们创建的节点都是主干节点的子节点。
+		明白这些后，我们在向find（）传入的参数是以默认的根节点为其实的路径信息，例如 当 cc.find 只传入第一个参数时，将从场景根节点开始逐级查找：
+		this.backNode = cc.find("Canvas/Menu/Back"); 这个路径信息表示从主干节点canvas开始向下查找一个叫back的子节点。
+			
+	而如果你还指定了第二个可选参数，这个参数是一个节点对象，则表明甄选的起点不是场景根节点，而是从你给出的节点开始沿着第一个参数指明的路径进行查找。
+	this.gun = cc.find('hand/weapon', this.node);  表示在当前逻辑控制组件所挂在的节点下查找一个叫hand的直接子节点下的一个叫weapon的子节点。
+	
+	
+	
+			
+			
+(14)  组件（所有继承extends: cc.Component的组件，包括我们自定义的脚本组件在内）的生命周期
+	√	① onload()  关于onload方法我们需要知道两点内容， √
+		首先，它是随着其所属场景的加载而被调用的，换句话说，当某个指定场景被加载的时候，其所有子节点上的所有组件都会首先调用自身的onload方法完成各种初始化操作。
+		其次，可以保证在onload方法内部你已经可以引用当前场景中的所有节点以及与这些节点相关联的资源了，也就是说当前场景中的全部节点、组件、资源的实例是在onload方法调用前就已经加载到内存中等待onload调用了。因此你可以放心大胆的在onload内部操作场景中的所有节点对象，而无需顾忌是否已经存在这些对象的实例。
+		
+	√	② start（） 回调函数会在组件第一次激活前，也就是第一次执行 update 之前触发。start 通常用于 初始化一些中间状态的数据，这些数据可能在 update 	
+		时会发生改变，并且被频繁的 enable 和 disable。
+		
+	√	③ update()  游戏开发的一个关键点是在每一帧渲染前更新物体的行为，状态和方位。这些更新操作通常都放在 update 回调中
+		
+	√	④ lateUpdate()  update 会在所有帧画面更新前执行，但如果我们要在帧动画更新之后再进行一些额外操作，或者希望在所有组件的 update 
+		都执行完之后才进行其它操作，那就需要用到 lateUpdate 回调。
+		 
+		⑤ onEnable()  当组件的 enabled 属性从 false 变为 true 时，会激活 onEnable 回调。倘若节点第一次被 创建且 enabled 为 true，则会在 onLoad 之后，start 之前被调用。
+		
+		⑥ onDisable()  当组件的 enabled 属性从 true 变为 false 时，会激活 onDisable 回调。
+		
+	√	⑦ onDestroy()  当组件调用了 destroy()，会在该帧结束被统一回收，此时会调用 onDestroy 回调。
+		
+	
+	
+(15)   使用 cc.director这个单例的导演类中的方法实现场景之间的切换。
+			
+(16)  将某一个节点添加到指定节点之下，成为指定节点的子节点———— childNode.parent  =  parentNode;
+
+(17) 创建预置节点,比如我们需要在游戏运行中根据需要动态的用预制来创建多个节点，则可以像下面演示的这样。
+	和克隆已有节点相似，你也设置你的预置（prefab）节点并通过 cc.instantiate 生成。使用方法如下：
+	cc.Class({
+	  extends: cc.Component,
+
+	  properties: {
+	  
+		// 首先我们引用一个需要动态创建对象的预制的引用属性
+		target: {
+		  default: null,
+		  type: cc.Prefab,
+		},
+	  },
+
+	  start: function () {
+		var scene = cc.director.getScene();   // 获得当前运行的这个"场景根节点"
+		var node = cc.instantiate(this.target);   // 该方法instantiate()可以拷贝节点(参数是某个节点对象的引用)也可以创建指定预制的节点（参数是某个预制引用）
+
+		node.parent = scene;   // 将新创建的节点添加到场景根节点之下,建立父子关系
+	//	scene.addChild(node);   // 从父节点操作也可以建立父子关系,两种方式随你喜欢
+		
+		node.setPosition(0,0);   // 设置下新节点的位置等节点属性，就可以了
+	  },
+	});		
+			
+			
+(18)  使用 cc.Node.dispatchEvent(  new  cc.Event.EventCustom(‘eventName’， true) );  来以冒泡的方式向父节点及其以上直到场景根节点发送自定义消息。
+		需要说清楚的是，cc.Event.unuse()与cc.Event.EventKeyboard是不同的，前面是调用名叫cc.Event类的unuse()方法，后者则是指一个叫cc.Event.EventKeyboard的类，二者是完全不同的两个类。我就经常搞迷糊这两者。
+		
+		另一个要说清楚的是，作为所发送的自定义事件类型cc.Event.EventCustom构造函数的两个参数，第一个参数指定这个事件名称是什么，后者则表明是否将该事件一直推送给其节点链上的每一个节点对象直到场景根节点。
+		而父节点如果想监听到这个自定义事件就需要使用
+		parentNode.on('eventName', function (event) {
+		  event.stopPropagation();   // 如果希望该事件就此打住，不要再继续向上方节点传去，则调用这个方法就会终止事件的进一步扩散。
+		});
+		
+		最后一个重要的事件是，请注意，在发送用户自定义事件（或者其他类型事件）的时候，请不要直接创建 cc.Event 实例对象，因为它是一个抽象类，请创建 cc.Event.EventCustom 对象实例来进行派发。
+		
+	
+(19)   cc.Event 是事件类型的抽象父类，该类的子类包括：cc.Event.EventAcceleration ;  cc.Event.EventKeyboard; cc.Event.EventCustom; cc.Event.EventMouse;
+			cc.Event.EventTouch
+		
+		在事件监听的各种事件处理过程中，事件处理函数至少会接收到一个 cc.Event 类型的事件对象参数(父类引用指向子类对象)，如18中 event.stopPropagation 就是 cc.Event 的标准 API。通过这个event参数可以获取所有子类型事件的必要信息，包括真正的事件类型等。更具体的信息要参考API文档中的全部
+		cc.Event.EventXXX的各种事件类型。
+	
+(20)  执行周期行逻辑任务的选择
+		① 可以使用ECMAScrpit所提供的setTimeout()和setInterval()，前者是执行定时任务，后者是执行周期循环任务
+		② 你还可以选择使用cocos为我们提供的，内置于每个组件（一切继承自cc.Component类的组件类型，包括我们自定义的逻辑控制组件）内部的计时器方法：
+			schedule：开始一个计时器
+			scheduleOnce：开始一个只执行一次的计时器
+			unschedule：取消一个计时器
+			unscheduleAllCallbacks：取消这个组件的所有计时器等计时器方法。  其使用方法如下：
+			
+			// 以秒为单位的时间间隔
+			 var interval = 5;
+			 // 重复次数
+			 var repeat = 3;
+			 // 开始延时
+			 var delay = 10;
+			 // "组件对象.schedule(function对象, 循环周期, 重复次数, 延迟)"
+			 component.schedule(function() {
+				 // 这里的 this 指向 component
+				 this.doSomething();
+			 }, interval, repeat, delay);
+			 
+			 开发者可以使用回调函数本身来取消计时器
+			
+
+(21)  如何在cocos中动态分辨当前运行环境是否是原生环境？
+		if (cc.sys.isNative) {
+		 // 原生环境代码
+		 }
+		 else{
+		 // 非原生环境代码
+		 }
+
+(22)  实现游戏的联网功能需要使用WebSocket、XMLHttpRequest、Socket IO 的知识，不幸的是我哪个也不会。。。。。。66666666666666
+
+(23) cc.P(x,y) 和 cc.v2(x,y) 是两个包含在cc脚本类中的方法，在cc脚本中包含有许多常量、工具和枚举等，是需要以后慢慢深度挖掘的一点 6666666666666666
+		言归正传，两个方法的作用都是创建cc.Vec2类型的引用变量，这种类型就是封装点位置坐标（X.Y）用的。
+
+(24) 使场景中的某一特定节点"常驻内存"而不会随着场景的销毁而销毁							通常我们同时只会加载运行一个场景，当切换场景时，默认会将场景内所有节点和其他实例销毁。如果我们需要用一个组件控制所有场景的加载，或在场景之间传递参数数据，就需要将该组件所在节点标记为「常驻节点」，使它在场景切换时不被自动销毁，常驻内存。我们使用以下接口：
+		添加常驻
+		cc.game.addPersistRootNode(myNode);
+		取消常驻
+		cc.game.removePersistRootNode(myNode)
+
+
+(25  Creator中的几大神秘脚本类————cc  cc.Node  cc.Component  cc.game  cc.director  
+
+(26)  加载场景时，可以附加一个参数用来指定场景加载后的回调函数：
+		cc.director.loadScene('MyScene', onSceneLaunched);
+		第一个参数就是欲加载的场景的文件名，可以不包含fire扩展名
+		第二个参数onSceneLaunched 就是声明在本脚本中的一个回调函数，在场景加载后可以用来进一步的进行初始化或数据传递的操作。
+		由于回调函数只能写在本脚本中，所以场景加载回调通常用来配合常驻节点，在常驻节点上挂载的脚本中使用。
+		如果不是常驻节点上挂载的脚本，那么当节点和脚本随着其所属场景根节点一起被销毁的时候，又去哪里调用这个函数呢（连脚本实例对象都没了）？
+		
+			
+(27)  使用 cc.NodePool脚本类型实现对象池的工作逻辑
+		properties: {
+			enemyPrefab: cc.Prefab
+		},
+		onLoad: function () {
+			this.enemyPool = new cc.NodePool();  // 创建对象池实例
+			let initCount = 5;   // 对象池的大小
+			for (let i = 0; i < initCount; ++i) {
+				let enemy = cc.instantiate(this.enemyPrefab); // 创建节点
+				this.enemyPool.put(enemy); // 通过 putInPool 接口放入对象池
+			}
+		}
+
+		值得一提的是，我们在通过new cc.NodePool();创建对象池实例的时候，可以给它传递一个字符串参数，该字符串指明了对象池中的每一个对象身上都挂载着的一个
+		脚本组件的名字（当然也不包含扩展名）,这个特别的脚本组件的定义格式如下：
+		cc.Class({
+			extends: cc.Component,
+
+			onLoad: function () {
+				this.node.selected = false;
+				this.node.on(cc.Node.EventType.TOUCH_END, this.onSelect.bind(this), this);
+			},
+
+			unuse: function () {
+				this.node.off(cc.Node.EventType.TOUCH_END, this.onSelect.bind(this), this);
+			},
+
+			reuse: function () {
+				this.node.on(cc.Node.EventType.TOUCH_END, this.onSelect.bind(this), this);
+			}
+		});
+		于是当使用nodePool.get()方法的时候将对象池中的一个空闲对象取出（如果对象池中已经没有对象了则会返回null）,然后在这个对象上搜索在创建对象池时候
+		以参数形式给出的字符串的脚本组件，找到后就调用该组件上的reuse()方法。同理当使用nodePool.put(node)的时候就会按照字符串查找该节点上的同名组件，然后
+		调用该组件上的unuse()方法。
+		
+		另外 cc.NodePool.get() 可以传入任意数量类型的参数，这些参数会被原样传递给 reuse 方法：
+		
+		最后当我们不再需要使用对象池的时候（比如将要切换场景了），则最好手动调用对象池实例的clear()方法，清空整个对象池
+		
+(28)  在JavaScript中所谓的没有真正的类，所谓的“类”其实指的是function对象，也就是说在JS中function对象 == java中的Class对象，通过function对象可以创建引用类型的实例。
+
+(29)  Raw Asset 可以直接使用 url 从远程服务器上加载-------------------具体详见creator技术文档的《获取和加载资源》一章，如此这般我们就可以实现从服务器端下载指定路径url的图片资源来更新游戏中的网上商城的物品列表的功能了。
+
+
+(30)插件脚本，将提供外部功能的外部脚本（*.js）更改这种脚本文件的特性为插件脚本（一般我们自定义的脚本文件叫普通脚本）之后其脚本中的所有变量都自动成为
+		"全局作用域对象"的成员，也就是说所谓“插件脚本”指的就是像插件一样提供外部拓展功能的特殊脚本文件（还是js文件同样使用ES语法规范这种基础不会变）
+				
+		
+(31)	Java中的this与JS中的this是不一样的。
+		前者通常出现在类体内部的额任何位置（可能是函数体内，也可能是为某个成员变量赋值的表达式中）表示当前类的实例对象。
+		后者只会出现在function类型的对象内部，表明当前function是由哪个引用类型调用的。因此在CCClass中我们自定义的脚本组件对象中的funtcion体中的
+		this通常就指的是脚本组件对象本身，也就是有逻辑控制组件类型的实例对象来调用自己的成员function类型的属性。但是也有特殊情况，最显著的就是当我们
+		在自定义脚本组件CCCLASS内的其中一个生命周期或者任意一个function中通过 cc.eventManager.addEventListener({}，this.node)添加某种类型的事件监听器的时候，监听器内创建的事件处理方法中出现的this与外部第二个参数this.node中
+		的this二者就是不相同的this，后者明显指的还是脚本组件实例对象本身，而前者出现在事件处理例程中的this指的就是该事件处理例程的调用者，而这个调用者其实
+		是eventManager这个事件管理对象实例，而不是脚本组件实例了。因此通常的解决办法就是在匿名事件监听器的
+		{var self  =  this;}中手动备份一下当前脚本组件实例的this到self变量中方便事件处理例程使用。 这是一个非常重要的技巧，无论如何都要记住 666666666
+
+		
+(32)  CCCLASS进阶参考。cc.Class({})的作用是将以参数形式给出的"引用类型字面量表示形式的对象"加工成为一个function对象，而我们知道在JavaScript中fucntion类型就相当于Java中的Class类型，代表一个类。也就是说在JS中Fucntion既可以作为函数又可以作为类使用，而具体到CCCLASS所生产的function就是"逻辑控制组件类型"————它代表玩家自定义的一种组件类型，与cc.Sprite、cc.Label、cc.Animation、cc.Widget等一样的组件，可以挂在到节点上。
+
+对于在其他组件中的properties：{}中定义一个引用玩家另一个自定义脚本组件的属性的方式是怎样的呢？
+先回顾下如果是希望引用cc类型的组件的定义方式是：
+										anyName：{
+											default：null，
+											type: cc.Sprite
+										}，
+这样，这个叫做anyName的属性就可以引用到任何node节点上挂载这得cc.sprite组件实例了，但是由于自定义组件没有这样的一种组件类型所以需要借助模块的方式来获取到类型。因为js中所谓的类型就是一个Function类型变量（也就是说诸如"cc.Sprite"整体就是一个function的名字这个如同 "function cc.Sprite(){}"这样，不要被那个.迷惑了，它不是一个操作符，而只是一个字符而已），而在COCOS中任何的脚本文件 == 模块，同时如果在模块中没有显式地使用
+module.exports = xxxx；的形式指定当前模块的导出内容，则默认 module.exports = cc.Class({});  也就是代表自定义组件类型的Function会被导出，因此我们在需要引用该自定义组件的其他脚本中可以使用 var class =  require("刚才那个脚本文件名（不含扩展）");
+然后就可以想上面那样
+										anyName：{
+											default：null，
+											type: class
+										}，
+这样这个叫anyName就可以引用自定义脚本组件实例了。
+
+另外多数一句，如同第30中所说的那样脚本分为普通脚本（通常为自定义的那种）还有插件脚本（通常为第三方的那种），在插件脚本中任何非Function作用域范围内使用
+var xxx 定义的变量都属于全局作用域对象的成员从而变成全局的，这符合ES规则，但是在自定义脚本中由于每个自定义脚本文件就是一个独立的模块，所以在模块中使用var定义的非function作用域范围内的变量仅仅属于这个当前模块，而不是全局的。这是非function的var变量在普通脚本和插件脚本中的区别。
+
+
+
+(33)   function aa.bb(){} ->  aa.bb  -> aaa();
+		定义函数  ->  Function变量或类型  ->  函数调用
+
+(34)  CCCLASS也能定义静态成员，需要在 statics{}，中定义的成员就是静态的，可以使用组件类名直接访问，例如cc.eventManager.addListener()这样的静态类调用就是通过如下的定义方式（大概）实现的：
+	var  cc.eventManager  =  cc.Class({
+		statics:{
+			addListener:function()
+			{
+				// 逻辑代码
+			}，
+		},
+	});
+这样我们就能够直接调用 类 cc.eventManager中的静态方法addListener()了
+
+(35)  使用ES6的新特性Lambda（箭头函数）来避免脚本之间的循环引用。
+		properties:()=>({
+			
+			property001:{
+				default: null,
+				type: require('abc')
+			}
+			
+		}),
+		这段就是使用箭头函数来生命属性的方式。接下来要分解的内容是a、lambda函数的语法解释 b、何种情况下会出现模块间的循环调用 c、箭头函数如何避免循环滴哦啊用
+		
+		首先，关于lambda函数的语法是这样的，为了简化形如 function(){}这样的匿名Function的定义，因此出现了箭头函数这一新特性 
+		箭头左边的小括号() 代表着“形式参数表”；箭头指向的小括号不是必须的，实际上箭头右边指向的是对应老匿名函数定义中的由大括号{}包裹的函数体部分
+		如果仅仅在函数体中只有return a>b; 这样一句话的话 箭头右边可以直接写 (a,b) => a>b,这个箭头函数等同于 
+															function(a,b){
+																return a>b;
+															}
+		这样的匿名Function定义，最后结果返回的是Boolean值。而如果函数体中包含有多条语句的话就还是需要借助大括号包裹全部所有语句，例如
+			(a,b) => {                                               function(a,b){                                  
+				var c = a + b;                 等同于                  	var c  = a + b;                                   
+				return c;                                            	return c;                                   
+			}                                                        }                                                      
+		
+		需要特殊说明的是，如果函数最后的返回值是一个{}对象，则需要在外部套上一层（）小括号，以区分代码块和引用类型的字面量表示形式
+		
+		其次，如果在 A脚本中 使用 require('B') 引用B脚本，而在B脚本中 又使用 requrie('A') 引用A脚本，这样就会出现AB两个脚本之间死循环的调用
+		
+		最后，之所以lambda函数封装require模块调用（注意require可以出现在脚本文档中的任何位置，在CCCLASS声明内部和外部任何位置都可以）,是因为
+		在脚本加载过程中cocos不会对function对象进行调用，直到全部脚本组件都加载完毕后，才会开启独立线程来调用这些脚本中的Function。这样就避免的模块加载
+		的死循环。
+
+
+(36)  计算两个坐标之间的距离，通常用于判断用户是否执行了拖动操作（这个距离大于某个我们自己设定的阈限值），该计算函数还是工具类型cc中的
+		var v1 = cc.v2(20, 20);
+		var v2 = cc.v2(5, 5);
+		var  dis  = cc.pDistance(v1, v2); // dis === 21.213203435596427;	
+
+
+(37)  如果你需要调用相同节点上的其他组件上的方法，除了直接使用 this.node.getComponent('另外那个组件名').func();外还可以选择发送节点内部自定义事件。
+		通过 this.node.emit('自定义事件名',{自定义事件体，在这里可以自定义任何名称的属性，来存放需要传递的数据，其实就是一个JSON数据结构})发射数据
+		之后由于这是一个“节点内部自定义事件”所以会遍历节点上的所有组件中注册的事件处理历程，查找有关 this.node.on('自定义事件名称'，function(event){})
+		匹配的事件处理历程，然后交于这个function来处理自定义事件。
+
+
+(38)  设置cocos的枚举类型，用户可以把枚举值设为任意的整数，如果设为 -1，系统将会分配为上一个枚举值 + 1，也就是自动分配值。
+		const MoveState = cc.Enum({
+			None: -1,   // 自动分配为0
+			Stand: -1,   // 自动分配为1
+			Up: -1,       // 自动分配为2
+			Right: -1,      // 自动分配为3
+			Down: -1,       // 自动分配为4
+			Left: -1        // 自动分配为5
+		});
+		使用的时候就这样使用 
+			var  status =  MoveState.Stand;
+			if(status === MoveState.stand)
+			{
+				// 如果当前状态是站立Stand，则。。。。
+			}
+			
+		另外，如果需要在属性检查器中出现可下拉选择的属性项目，则这个属性项目一定是枚举类型的，定义方式跟一般的属性一样
+		属性名：{
+			default：0，
+			type: MoveState   <-------注意这里不是Function类型，而是一个枚举对象是一个Object对象，不过话说回来在JS中Function类型也同样是继承万物之源的Object的，因此算是同宗
+		}
+			
+
+(39)  在使用Button组件的时候最后一个属性可以添加引用一个 节点对象 --> 组件实例 --> Function  来处理点击事件，这种三层结构形式的属性类型必须是这样定义了
+		  属性名：{
+			default: null,
+			type: cc.Component.EventHandler,
+		  }
+		对于cc.Component.EventHandler这种类型的详细说明请见 http://www.cocos.com/docs/creator/api/classes/Component.EventHandler.html
+		通常我们在脚本中定义一个EventHandler类型对象的时候，是这样的：
+			var  handler   =  new  cc.Component.EventHandler();
+			handler.target =  这里引用一个节点对象；
+			handler.component  =  这里引用那个节点对象上的某个组件对象；
+			handler.handler =  这里引用那个组件对象上的一个Function对象
+		这样我们就定义好了一个handler对象，这种对象有什么用呢？它的使用方法是这样的，通过其自身方法emit([])来实现对handler属性所指定function的调用，参数字符串就是被调用函数需要用到的参数。注意该参数可以不填写
+		
+		或者还有另外一种方法也可以实现相同的效果，就是借助cc.Component.EventHandler的静态方法————emitEvent([])来批量调用多个cc.Component.EventHandler类型变量中handler属性各自所指定的function。
+		例如， cc.Component.EventHandler.emitEvent([handler1,handler2...handlern]) 这样就如同同时依次调用handler1到n的所有cc.Component.EventHandler类型实例的emit方法了。
+		
+		
+		
+		
+		
+		
+		
+(40)  一个很有形的按钮，需要在node节点上挂载两个组件，一个是button体现其按钮的功能，另一个就是Sprite用来展示很酷炫的按钮效果。还要注意，SPrite上挂载的图片
+一般都是选择使用button组件上normal常态按钮样式时候的相同图片
+
+
+(41)  Cocos Creator 中经常用到的位置坐标向量的计算工具
+	<1>  通过 this.node.position()获取到从坐标系原点到节点位置坐标的一条向量（我们知道向量在平面直角坐标系中之所以可以用（x,y）表示就是默认从原点出发到这个坐标用以表示该向量的方向并且可以计算出向量的长度大小）
+	<2> // 获取两个Vec2坐标之间连线的长度,通常用来测量两个节点位置之间的距离或者是两个触碰点之间的距离
+        let dist = cc.pDistance(this.player.node.position, this.node.position);
+	<3>  // 用玩家节点的坐标向量减去敌人节点的坐标向量，得到从敌人到玩家位置的坐标向量dir，我们知道在平面直角坐标系上的两个坐标相减和相加都是遵循三角形定理的
+	也就是说：
+	A、两个向量相加就是将两条向量平移到收尾相连的位置，第一条向量的结束点就是第二条向量的起始点，然后从第一条向量的起始点到第二条向量的终点的一条直线就是向量的和，然后再将这条新线段重新平移回坐标原点位置，这样由于线段有方向有长度，则向量的两条最重要信息方向和大小（向量就是有向线段，线段长度用来记录向量的大小）就都保存下来了，这时候只要知道向量的终点（起点在坐标系原点）的坐标，这个坐标就可以用来代表坐标系中的这个向量了。
+	B、两个向量相减其实就是相加的逆向运算，也是遵从三角原理，不在赘述。
+            let dir = cc.pSub(this.player.node.position, this.node.position);
+			
+	<4> // 获取向量与坐标系X轴正方向的夹角弧度
+            let rad = cc.pToAngle(dir);
+		// 获取指定的两个向量之间的夹角的弧度
+		let rad = cc.pAngleSigned(cc.p(0, 1), atkDir)
+	
+	<5> // 为了便于计算，将弧度转变为角度
+            let deg = cc.radiansToDegrees(rad);
+	<6> cc.pNormalize(dir)   // 将dir向量转变为单位向量，单位向量就是长度为1方向不变的向量，这个时候其坐标（x，y）都应该小于1,（根据勾股定理计算得知）
+		通常之所要获取一个向量的单位向量，目的是要限定这个向量的最大值（方向肯定保持不变）
+		cc.pMult(cc.pNormalize(atkDir), this.atkDist)  通过向量乘法就可以在单位向量上乘以一个数字使得向量的长度增大到指定倍数
+	<7>   向量加法  cc.pAdd( this.node.position, cc.pMult(cc.pNormalize(atkDir), this.atkDist) ); 可以获得两个向量的向量和
+	
+	<8> 
+	<9>
+
+
+(42)    从一个预制中动态的创建实力对象，并将其添加到指定父节点然后再从父节点中移除的整个过程。
+		首先，你需要在ccclass中定义一个属性引用一个perfab预制
+		proerpties:{
+			perfab:{
+				default:null,
+				type:cc.Perfab
+			}
+		}
+		然后，使用cc.instantiate() 来动态创建预制的一个实例对象
+		var obj  = cc.instantiate(this.perfab);
+		然后，就可以将这个新建节点添加到一个父节点中去了，常用方法有两种
+		<1>  obj.parent  =  parentNode;
+		<2>  parent.addChild(obj);
+		最后当从父节点中移除这个子节点，完成整个使用预制从创建到销毁的整个过程
+		obj.removeFromParent();  // 从父节点中移除这个子节点
+		obj.destroy();   // 销毁这个子节点
+		
+(43)  区分几个重要的概念：
+		<0> 脚本文件  === 脚本文档 === 模块 > CCCLASS >= 自定义逻辑控制组件类型
+		<1>CCCLASS的本质是返回一个Function类型实例，JS（ES）中类本质上其实都是函数对象，如果在cc.Class({  extends: cc.Component })则返回的Function对象就是
+		逻辑控制组件类型，它的实例就是可以挂载到cc.Node节点上的脚本组件。
+		<2> 脚本文档在cocos中等同视作是一种从Node.js中继承来的概念 ——————模块，也就是说每一个脚本文件 === 一个模块。在模块中定义的任何变量，包括ccclass返回的function类型对象以及在cc.Class()之外定义的var、let等变量都被视作是专属于这个模块中的变量，模块中的变量可以在模块的任何位置中访问得到，但是不能跨越模块访问，可以看作是模块私有的变量
+		<3> 通常一个模块（脚本文件）中只定义一个cc.Class() ，但如果你需要定义多个ccclass但是其中只能有一个作为脚本组件类型被外部引用到，则你需要做的是
+		除了那个cc.Class({  extends: cc.Component }) 通过extends属性继承自cc.Component组件基类型的ccclass外，其他都要使用var xxx =cc.Class()的形式进行引用。由于默认对于在模块中未显式使用module.exports = cc.Class()导出的变量，默认都是自动导出未被变量指向的的那个cc.Class()
+		所以这样有变量引用的ccclass就是脚本文档（模块）内部使用的类型，而那个唯一一个没有被变量引用的ccclass则会被自动导出成为其他模块可以使用的类型。
+		<4> 如果想在其他脚本中引用另外一个脚本中导出的ccclass 则可以使用 var xxx  =  require('目标脚本文件名（没有后缀）')，则这个xxx就是ccclass类型了（JS中的类型本质就是Function类型对象）。这样的就可以将xxx作为定义properties的type
+		之后这个属性就能引用到我们自定义的组件了。
+		<5>
+
+
+(44)  批量暂停或恢复某一节点上的所有定时器
+		pause () {
+        let scheduler = cc.director.getScheduler();  // 获取和director相关联的定时器
+        scheduler.pauseTarget(this.waveMng);   // 暂停指定对象的定时器。 指定对象的所有定时器都会被暂停。 如果指定的对象没有定时器，什么也不会发生。
+        this.sortMng.enabled = false;
+    },
+
+    // 游戏恢复的时候调用（非继承方法）
+    resume () {
+        let scheduler = cc.director.getScheduler();
+        scheduler.resumeTarget(this.waveMng);  // 恢复指定对象的所有定时器。 指定对象的所有定时器将继续工作。 如果指定的对象没有定时器，什么也不会发生。
+        this.sortMng.enabled = true;
+    },
+
+
+(45)  当需要在同一个节点上的同一个cc.Anmiation组件上切换播放动画剪辑的时候，需要遵循两个原则：
+	<1> 同一个动画组件上播放的所有动画剪辑的Sample帧率应该保持相同，因为如果不保持帧率相同，当相互切换播放动画的时候很可能会发生动画卡住的bug
+	<2> 在任何动画剪辑的的播放过程中，尽量少出现动画事件，如果一定要使用动画事件，请尽量将动画事件放到全部关键帧之后（也就是最后一关键帧的后一个点），因为在切换动画剪辑的时候，会很可能卡在这个有出发动画事件的关键帧上不动
+	
+	最后，如果你在实际编程的时候发现在update中或者schemudle的循环逻辑中调用的某个动画不播放，其很有可能是你在每次循环的时候都是用animation.play()将其实已经播放的动画剪辑又重新播放了，这导致每次循环时动画剪辑都重新播放，使得画面永远卡在动画剪辑的第一帧，就好像是动画没有播放一样。解决办法就是设置一个动画播放的flag，当指定动画剪辑播放的时候就将其设置为true并在每次循环的时候通过if语句判断这个动画剪辑是否已经播放了，如果已经播放了就不用play了，从而避免了动画的多次重复播放。
+
+
+(46)
+
+
+(47)
+
+
+(48)
+
+
+(49)
+
+
+(50) Cocos Creator 导致编译错误的可能原因：
+<1>脚本文件正在被VS Code打开着，即便已经保存，在编译构件项目的时候也要将VS code彻底关闭先。
+<2>
+<3>
+<4>
+<5>
+<6>
+<7>
+<8>
+<9>
+<10>

@@ -1,0 +1,527 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0048)http://www.cnblogs.com/franksunny/p/3714442.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./Android横竖屏切换小结 - frank.sunny - 博客园_files/ca-pub-4210569241504288.js"></script>
+
+<title>Android横竖屏切换小结 - frank.sunny - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./Android横竖屏切换小结 - frank.sunny - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./Android横竖屏切换小结 - frank.sunny - 博客园_files/bundle-clover.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/franksunny/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/franksunny/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/franksunny/wlwmanifest.xml">
+<script async="" src="./Android横竖屏切换小结 - frank.sunny - 博客园_files/analytics.js"></script><script src="./Android横竖屏切换小结 - frank.sunny - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'franksunny', cb_enable_mathjax=false;</script>
+<script src="./Android横竖屏切换小结 - frank.sunny - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+<tbody><tr>
+	<td width="299" background="./Android横竖屏切换小结 - frank.sunny - 博客园_files/banner1.jpg"></td>
+	<td background="./Android横竖屏切换小结 - frank.sunny - 博客园_files/banner.jpg">
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/franksunny/">frank.sunny的个人技术空间</a><br>
+		新平台 新空间
+	</div>
+</div>
+</td>
+	<td width="296" background="./Android横竖屏切换小结 - frank.sunny - 博客园_files/banner2.jpg"></td>
+</tr>
+</tbody></table>
+<div id="mylinks">&nbsp; &nbsp;
+<a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/franksunny/">首页</a>&nbsp; &nbsp;
+<a href="http://q.cnblogs.com/" class="menu" target="_blank">博问</a>&nbsp; &nbsp;
+<a href="http://home.cnblogs.com/ing/" class="menu" target="_blank">闪存</a>&nbsp; &nbsp;
+<a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a>&nbsp; &nbsp;
+<a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/franksunny/rss">订阅</a>
+<a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/franksunny/rss"><img src="./Android横竖屏切换小结 - frank.sunny - 博客园_files/xml.gif" alt="订阅"></a>&nbsp; &nbsp;
+<a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a>
+<!-- &nbsp;&nbsp;&nbsp; -->
+</div>
+<div id="mytopmenu">
+	
+		<div id="mystats">
+			
+<!--done-->
+<div class="blogStats">
+posts - 20,&nbsp;
+comments - 26,&nbsp;
+trackbacks - 0
+
+</div></div>
+	
+</div>
+<div id="centercontent">
+	
+<div id="post_detail">
+<!--done-->
+<div class="post">
+	<div class="postTitle">
+		<a id="cb_post_title_url" class="postTitle2" href="./Android横竖屏切换小结 - frank.sunny - 博客园_files/Android横竖屏切换小结 - frank.sunny - 博客园.htm">Android横竖屏切换小结</a>
+	</div>
+	<div id="cnblogs_post_body"><h3>Android横竖屏切换小结</h3>
+<p align="left">（老样子，图片啥的详细文档，可以下载后观看&nbsp;<a href="http://files.cnblogs.com/franksunny/635350788930000000.pdf">http://files.cnblogs.com/franksunny/635350788930000000.pdf</a>）</p>
+<p align="left">Android手机或平板都会存在横竖屏切换的功能，通常是由物理重力感应触发的，但是有时候也不尽然，通常在设置里面我们可以对手机的横竖屏切换进行关闭，操作界面如下</p>
+<p align="left">&nbsp;</p>
+<p align="left">只需要点击下“屏幕旋转”按钮就可以关闭横竖屏切换了。</p>
+<h4>一、禁止APP内横竖屏切换</h4>
+<p align="left">上述设置更改的是整个手机的横竖屏切换，当手机没有关闭横竖屏切换功能时，系统一旦触发横竖屏切换，缺省状态下，当前活动的App的界面就会进行横竖屏切换，由于横竖屏的界面尺寸等参数不同，很多软件在设计和开发中为了避免横竖屏切换时引发不必要的麻烦，通常需要让App禁止掉横竖屏的切换，这就需要通过在AndroidManifest.xml中设置activity中的android:screenOrientation属性值来实现。</p>
+<p align="left">该android:screenOrientation属性，他有以下几个参数：</p>
+<p align="left">"unspecified":默认值 由系统来判断显示方向.判定的策略是和设备相关的，所以不同的设备会有不同的显示方向.</p>
+<p align="left">"landscape":横屏显示（宽比高要长）</p>
+<p align="left">"portrait":竖屏显示(高比宽要长)</p>
+<p align="left">"user":用户当前首选的方向</p>
+<p align="left">"behind":和该Activity下面的那个Activity的方向一致(在Activity堆栈中的)</p>
+<p align="left">"sensor":有物理的感应器来决定。如果用户旋转设备这屏幕会横竖屏切换。</p>
+<p align="left">"nosensor":忽略物理感应器，这样就不会随着用户旋转设备而更改了（"unspecified"设置除外）。</p>
+<p align="left">比如下列设置</p>
+<p align="left">android:screenOrientation="portrait"</p>
+<p align="left">则无论手机如何变动，拥有这个属性的activity都将是竖屏显示。</p>
+<p align="left">android:screenOrientation="landscape"，为横屏显示。</p>
+<p align="left">上述修改也可以在Java代码中通过类似如下代码来设置</p>
+<p align="left">setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)</p>
+<h4>二、APP的横竖屏切换可以手动触发吗</h4>
+<p align="left">由上面描述可知，当android:screenOrientation为默认值"unspecified"或"sensor"等时，就会有系统根据设备的旋转情况来触发横竖屏的切换，那么有没有方法我们手动在程序中触发横竖屏的变换呢，显然上面为我们提供的setRequestedOrientation就是系统提供的一个入口，下面我们给出一个按键的方式来触发的案列：</p>
+<p align="left">public class MainActivity extends Activity implements OnClickListener {</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; private Button mBtnLandscape;</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; private Button mBtnPortrait;</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; @Override</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; protected void onCreate(Bundle savedInstanceState) {</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; super.onCreate(savedInstanceState);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; setContentView(R.layout.activity_main);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; mBtnLandscape = (Button) findViewById(R.id.but_landscape);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; mBtnPortrait = (Button) findViewById(R.id.but_portrait);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; mBtnLandscape.setOnClickListener(this);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;mBtnPortrait.setOnClickListener(this);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; @Override</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; public void onClick(View v) {</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TODO Auto-generated method stub</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(v == mBtnLandscape){</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }else{</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; @Override</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; public void onConfigurationChanged(Configuration newConfig) {</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; super.onConfigurationChanged(newConfig);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; String message=newConfig.orientation==Configuration.ORIENTATION_LANDSCAPE ? "屏幕设置为：横屏" : "屏幕设置为：竖屏";</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Toast.makeText(this, message, Toast.LENGTH_LONG).show();</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+<p align="left">}</p>
+<p align="left">需要注意的是，手动调用时，无视AndroidManifest中关于screenOrientation的设置；另外上述代码中的onConfigurationChanged要被调用到也是需要条件的，在这里，只给代码，不做讨论，后面再给出一个相关的补充说明。</p>
+<h4>三、重启Activity的横竖屏切换</h4>
+<p align="left">在上面的案列中，缺省状态下，Activity每次横竖屏切换（包括用setRequestedOrientation调用）都会重新调用一轮onPause-&gt; onStop-&gt; onDestory-&gt; onCreate-&gt;onStart-&gt;onResume操作，从而销毁原来的Activity对象，创建新的Activity对象，这是因为通常情况下软件在横竖屏之间切换，界面的高宽会发生转换，从而可能会要求不同的布局。具体的布局切换可以通过如下两种方法来实现：</p>
+<p align="left">1）在res目录下建立layout-land和layout-port目录,相应的layout文件名不变，比如main.xml。layout-land是横屏的layout,layout-port是竖屏的layout，其他的不用管，横竖屏切换时程序自己会调用Activity的onCreate方法，从而根据当前横竖屏情况自动加载响应的布局。</p>
+<p align="left">2）假如布局资源是不一样又不按照如上设置，则需要通过java代码来判断当前是横屏还是竖屏然后来加载相应的xml布局文件（比如mainP为竖屏mainL为横屏）。因为当屏幕变为横屏的时候,系统会重新呼叫当前Activity的onCreate方法,你可以把以下方法放在你的onCreate中来检查当前的方向,然后可以让你的setContentView来载入不同的layout xml。</p>
+<p align="left">@Override</p>
+<p align="left">protected void onCreate(Bundle icicle) {</p>
+<p align="left">&nbsp;super.onCreate(icicle);</p>
+<p align="left">&nbsp;int mCurrentOrientation = getResources().getConfiguration().orientation;</p>
+<p align="left">&nbsp;if ( mCurrentOrientation == Configuration.ORIENTATION_PORTRAIT ) {</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; // If current screen is portrait</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; Log.i("info", "portrait"); // 竖屏</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; setContentView(R.layout.mainP);</p>
+<p align="left">&nbsp;} else if ( mCurrentOrientation == Configuration.ORIENTATION_LANDSCAPE ) {</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; //If current screen is landscape</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; Log.i("info", "landscape"); // 横屏</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp; setContentView(R.layout.mainL);</p>
+<p align="left">&nbsp;}</p>
+<p align="left">&nbsp;init();//初始化，赋值等操作</p>
+<p align="left">&nbsp;findViews();//获得控件</p>
+<p align="left">&nbsp;setListensers();//设置控件的各种监听方法</p>
+<p align="left">}</p>
+<p align="left">上面只是对布局切换做了描述，实际上由于重启Activity在未加处理的情况下必然导致数据的丢失和重新获取，这样用户体验会非常差。为此就要在切换前对数据进行保存，切换重启后对数据进行恢复，具体操作的步骤如下：</p>
+<p align="left">重写Activity.onRetainNonConfigurationInstance()，用户横竖屏切换前保存数据</p>
+<p align="left">@Override&nbsp;</p>
+<p align="left">public Object onRetainNonConfigurationInstance() {&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp; final MyDataObject data = collectMyLoadedData();&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp; return data;&nbsp;</p>
+<p align="left">}</p>
+<p align="left">在onCreate()函数中调用getLastNonConfigurationInstance()，获取onRetainNonConfigurationInstance()保存的数据</p>
+<p align="left">@Override&nbsp;</p>
+<p align="left">public void onCreate(Bundle savedInstanceState) {&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp; super.onCreate(savedInstanceState);&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp; setContentView(R.layout.main);&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp; final MyDataObject data = (MyDataObject) getLastNonConfigurationInstance();&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp; if (data == null) {&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data = loadMyData();&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp; }&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp; ...&nbsp;</p>
+<p align="left">}</p>
+<h4>四、非重启Activity的横竖屏切换</h4>
+<p align="left">虽然重启Activity为我们提供了保存数据和读取数据的方式，但是如此一来程序会显得有些繁琐，所以有时候程序员往往就不想让Activity重启，Android也为我们提供了解决方案，就是通过onConfigurationChanged拦截横竖屏变换，从而进行必要的重新布局和切换操作。操作步骤如下：</p>
+<p align="left">首先，manifest中为相应的Activity设置android:configChanges属性，从而让Activity不延续上述的重建流程，具体如下：</p>
+<p align="left">Andorid 3.2以前的SDK可以使用如下配置</p>
+<p align="left">android:configChanges="orientation|keyboardHidden"</p>
+<p align="left">而Adnroid 3.2以后的SDK必须添加一个screenSize属性，具体如下</p>
+<p align="left">android:configChanges="keyboardHidden|orientation|screenSize"</p>
+<p align="left">或者</p>
+<p align="left">android:configChanges="orientation|screenSize"</p>
+<p align="left">关于configChanges的详细描述，后面有个简单补充章节，这里不做过多展开。</p>
+<p align="left">其次，在Activity或View的onConfigurationChanged(Configuration newConfig)函数中获取当前横竖屏参数。至于其调用顺序跟touch事件的传递顺序相似，不过他没有消费事件的概念，会顺次调用到每一个onConfigurationChanged函数。下面是重写Activity的例子：</p>
+<p align="left">//布局分别在layout-land和layout-port目录中的同名main.xml时</p>
+<p align="left">@Override</p>
+<p align="left">public void onConfigurationChanged (Configuration newConfig){</p>
+<p align="left">&nbsp;&nbsp;&nbsp; super.onConfigurationChanged(newConfig);</p>
+<p align="left">&nbsp;&nbsp;&nbsp; setContentView(R.layout.main);</p>
+<p align="left">&nbsp;&nbsp;&nbsp; //注意，这里删除了init()，否则又初始化了，状态就丢失</p>
+<p align="left">&nbsp;&nbsp;&nbsp; findViews();</p>
+<p align="left">&nbsp;&nbsp;&nbsp; setListensers();</p>
+<p align="left">}</p>
+<p align="left">//布局为不按照layout-land和layout-port目录，而自定义名字时</p>
+<p align="left">@Override</p>
+<p align="left">public void onConfigurationChanged (Configuration newConfig){</p>
+<p align="left">&nbsp;&nbsp;&nbsp; super.onConfigurationChanged(newConfig);</p>
+<p align="left">&nbsp;&nbsp;&nbsp; int mCurrentOrientation = getResources().getConfiguration().orientation;</p>
+<p align="left">&nbsp;&nbsp;&nbsp; if ( mCurrentOrientation == Configuration.ORIENTATION_PORTRAIT ) {</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // If current screen is portrait</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setContentView(R.layout.mainP);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //注意，这里删除了init()，否则又初始化了，状态就丢失</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; findViews();</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setListensers();</p>
+<p align="left">&nbsp;&nbsp;&nbsp; } else if ( mCurrentOrientation == Configuration.ORIENTATION_LANDSCAPE ) {</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //If current screen is landscape</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setContentView(R.layout.mainL);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //注意，这里删除了init()，否则又初始化了，状态就丢失</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; findViews();</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setListensers();</p>
+<p align="left">&nbsp;&nbsp;&nbsp; }</p>
+<p align="left">}</p>
+<p align="left">当然有时候连布局都不用更改的话，就可以直接对原有控件进行调用操作了，比如：</p>
+<p align="left">public class MainActivity extends Activity {</p>
+<p align="left">&nbsp;&nbsp;&nbsp; private TextView textView;</p>
+<p align="left">&nbsp;&nbsp;&nbsp; @Override</p>
+<p align="left">&nbsp;&nbsp;&nbsp; public void onCreate(Bundle savedInstanceState) {</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; super.onCreate(savedInstanceState);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setContentView(R.layout.main);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Log.i("--Main--", "onCreate");</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; textView=(TextView)findViewById(R.id.tv_id);</p>
+<p align="left">&nbsp;&nbsp;&nbsp; }</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp; @Override</p>
+<p align="left">&nbsp;&nbsp;&nbsp; public void onConfigurationChanged(Configuration newConfig) {</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; super.onConfigurationChanged(newConfig);</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Log.i("--Main--", "onConfigurationChanged");</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(newConfig.orientation==Configuration.ORIENTATION_LANDSCAPE){</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; textView.setText("当前屏幕为横屏");</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }else{</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; textView.setText("当前屏幕为竖屏");</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+<p align="left">&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;</p>
+<p align="left">}</p>
+<p align="left">需要注意的是，onConfigurationChanged函数中只能获得横竖屏切换后的参数，在该函数中获取不到新的Layout和控件的尺寸位置信息，如果要处理尺寸和位置信息，必须通过消息异步或者延时调用，下面是一个App在横竖屏切换时需要重新设置popupWindow位置的代码：</p>
+<p align="left">@Override</p>
+<p align="left">protected void onConfigurationChanged(Configuration newConfig) {</p>
+<p align="left">&nbsp;&nbsp;&nbsp; super.onConfigurationChanged(newConfig);</p>
+<p align="left">&nbsp;&nbsp;&nbsp; //View中不用创建Handler，可直接调用post操作</p>
+<p align="left">&nbsp;&nbsp;&nbsp; //new Handler().postDelayed(new Runnable() {</p>
+<p align="left">&nbsp;&nbsp;&nbsp; //&nbsp;&nbsp;&nbsp; @Override</p>
+<p align="left">&nbsp;&nbsp;&nbsp; //&nbsp;&nbsp;&nbsp; public void run() {</p>
+<p align="left">&nbsp;&nbsp;&nbsp; //&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; updatePopup();&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp; //&nbsp;&nbsp;&nbsp; }</p>
+<p align="left">&nbsp;&nbsp;&nbsp; //}, 500);</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;&nbsp;&nbsp; postDelayed(new Runnable() {</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Override</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void run() {</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; updatePopup();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+<p align="left">&nbsp;&nbsp;&nbsp; }, 500);//如果不在post中，而是直接调用，那么弹出位置就会有问题</p>
+<p align="left">}</p>
+<p align="left">虽然上面没有看到对布局的显式调用进行重新布局，照理控件的对象没有被销毁，但是控件在横竖屏切换时应该是需要进行重新layout和measure，然后再进行重绘的，否则不会引发弹出框位置的变化，至于如何调用重新layout、measure和Draw操作，在这里就不多展开了。</p>
+<h4>五、对于AndroidManifest.xml设置的补充</h4>
+<p align="left">经过上面代码演示，我们可以看到具体实现涉及到了Manifest工程配置里面具体Activity的screenOrientation和configChanges两个参数，这两个参数screenOrientation的优先级是高于configChanges，即假如screenOrientation设置为固定横竖屏时，那么configChanges参数无论怎么设都没有办法引发横竖屏切换，除非在代码中手动调用setRequestedOrientation函数进行修改。</p>
+<p align="left">screenOrientation属性在前面已经讲过了，而关于configChanges属性设置有如下选项：</p>
+<table border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td valign="top" width="144">
+<p align="left">值</p>
+</td>
+<td valign="top" width="360">
+<p align="left">描述</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">mcc</p>
+</td>
+<td valign="top" width="360">
+<p align="left">IMSI移动台的国家代码（MCC）发生变化——一个SIM被探测到并且更新MCC</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">mnc</p>
+</td>
+<td valign="top" width="360">
+<p align="left">IMSI移动台的网络代码（MNC）发生变化——一个SIM被探测到并且更新MNC</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">locale</p>
+</td>
+<td valign="top" width="360">
+<p align="left">区域发生变化——用户选择了一个文本需要显示的新语言</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">touchscreen</p>
+</td>
+<td valign="top" width="360">
+<p align="left">触摸屏发生变化。（这个通常不会发生。）</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">keyboard</p>
+</td>
+<td valign="top" width="360">
+<p align="left">键盘类型发生变化——例如：用户插入了外接键盘。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">keyboardHidden</p>
+</td>
+<td valign="top" width="360">
+<p align="left">键盘的可访问性发生变化——例如：用户发现了硬件键盘。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">navigation</p>
+</td>
+<td valign="top" width="360">
+<p align="left">导航类型（轨迹球或dpad）发生变化。（通常不会发生。）</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">screenLayout</p>
+</td>
+<td valign="top" width="360">
+<p align="left">屏幕布局发生变化——这个会导致显示不同的Activity。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">fontScale</p>
+</td>
+<td valign="top" width="360">
+<p align="left">字体缩放因子发生变化——用户选择了新的字体大小。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">uiMode</p>
+</td>
+<td valign="top" width="360">
+<p align="left">当UI模式发生改变的时候——当用户放置设备到桌子或/汽车或夜间模式改变的时候可以引起UI模式变化。阅读UiModeManager。在API级别8时引入。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">orientation</p>
+</td>
+<td valign="top" width="360">
+<p align="left">屏幕方向发生变化——用户旋转了屏幕。注意：如果应用程序的目标API级别是13或更高（通过属性minSdkVersion和属性targetSdkVersion声明），你也需要声明配置项screenSize，因为这将在设备选择肖像和屏幕方向时发生改变。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">screenSize</p>
+</td>
+<td valign="top" width="360">
+<p align="left">当前可用屏幕大小发生变化。这代表一个当前可用大小的变化，和当前的比率相关，因此当用户选择不同的画面和图像，会发生变化。然而，如果你的程序目标API级别是12或更低，你的Activity总是会自己处理这个配置变化（这个变化不会引起Activity的重启，甚至在Android 3.2或更新的设备上）。在API级别13里加入的。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">smallestScreenSize</p>
+</td>
+<td valign="top" width="360">
+<p align="left">物理屏幕大小的变化。不管方向的变化，仅仅在实际物理屏幕打包变化的时候，如：外接显示器。这个配置项的变化引起在smallestWidth configuration里的变化。然而，如果你的程序目标API级别是12或更低，你的Activity将自己处理这个变化（这个变化不会引起Activity的重启，甚至在Android 3.2或更新的设备上）在API级别13里加入的。</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="144">
+<p align="left">layoutDirection</p>
+</td>
+<td valign="top" width="360">
+<p align="left">布局方向变化。例如书写方式从左向右（LTR）转换为从右向左（RTL）</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p align="left">&nbsp;</p>
+<p align="left">从上述这个表我们可以看到除了横竖屏，包括语言、网络、键盘和外设等变化都可以被onConfigurationChanged函数监控到，具体的内容和释义还是查看官方英文文档吧，详见如下链接</p>
+<p align="left"><a href="http://developer.android.com/guide/topics/manifest/activity-element.html">http://developer.android.com/guide/topics/manifest/activity-element.html</a></p>
+<p align="left">中文翻译可以查阅 <a href="http://wiki.eoe.cn/page/Activity.html">http://wiki.eoe.cn/page/Activity.html</a></p>
+<p align="left">结合网上的整理，小结跟这几配置相关的情景：</p>
+<p align="left">1、不设置Activity的android:configChanges时，切屏会重新调用各个生命周期，切横屏时会执行一次，切竖屏时会执行两次（我在三星4.0设备上发现切横屏和竖屏都是执行一次，而并非这里说的有执行两次的情况，不知道是否以前版本手机会这样？）；</p>
+<p align="left">2、设置Activity的android:configChanges="orientation"时，切屏还是会重新调用各个生命周期，切横、竖屏时只会执行一次；</p>
+<p align="left">3、设置Activity的android:configChanges="orientation|keyboardHidden"时，切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法。</p>
+<p align="left">注：上述描述是在Android3.2以前，如果缺少了keyboardHidden选项，不能防止Activity的销毁重启，也就不能执行onConfigurationChanged方法了。在3.2之后，必须加上screenSize属性才可以屏蔽调用Activity的生命周期（我在一些设备上亲测可以不需要keyboardHidden，只要screenSize就可以了，但是保险起见还是继续保留keyboardHidden吧）。</p>
+<h4>六、对于setRequestedOrientation函数的补充说明</h4>
+<p align="left">在上述（二）对于手动触发横竖屏切换的时候，我们用到了setRequestedOrientation，那时只是简单做了下演示，后来发现还是需要做下补充说明的：</p>
+<p align="left">首先在非重启Activity模式下</p>
+<p align="left">手动调用setRequestedOrientation之后，假如会引发横竖屏切换（即请求的横竖屏要求与当前的横竖屏情况不一致，就会引发切换），那么会立即调用onConfigurationChanged函数；假如不会引发横竖屏切换（请求前后一致），那么也就不会调用到onConfigurationChanged函数。</p>
+<p align="left">这个手动调用setRequestedOrientation的地方也可以在Activity中的任何地方，即也可以在onConfigurationChanged中调用，但是一旦指定为横屏或竖屏完成这个变换之后，后面不论屏幕如何进行怎么翻转变化，都不会再触发横竖屏切换了，也即等同于在manifest中设置了android:screenOrientation属性为横屏或竖屏。如果要恢复为响应横竖屏随物理传感器设备变换，那么就需要手动调用类似如下代码进行恢复：</p>
+<p align="left">setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);</p>
+<p align="left">其次在重启Activity模式下</p>
+<p align="left">手动调用setRequestedOrientation发出横竖屏设定请求之后，假如需要进行横竖屏切换（即请求前后横竖屏状态不一致），则会对Activity进行销毁并重启；假如不需要需要进行横竖屏切换，则Activity维持现状不变；</p>
+<p align="left">手动调用setRequestedOrientation一次，完成变换之后，也跟上面非重启一样，相当于在manifest中设置了android:screenOrientation属性为横屏或竖屏。要想恢复也需要重新调用类似上面非重启的调用。</p>
+<p align="left">在这样一个原理下，就有了对如下一种需求的解决方案：</p>
+<p align="left">让App启动的时候是横屏的话就横屏表示，纵屏的话就纵屏表示，然后手机切换横竖屏就不能用了该怎么解决呢？</p>
+<p align="left">网上给出了一个例子代码，这里就不做摘抄了，有兴趣可以试一下，然后对比一下人家的实现方式，具体见如下链接</p>
+<p align="left"><a href="http://blog.csdn.net/yimo29/article/details/6030445">http://blog.csdn.net/yimo29/article/details/6030445</a></p>
+<p align="left">&nbsp;</p>
+<p align="left">另外再给出几个我做整理时参考的帖子，觉得对我帮助很大，分别如下</p>
+<p align="left">Android横屏竖屏切换的问题（一个总结帖，还是不错的）</p>
+<p align="left"><a href="http://blog.sina.com.cn/s/blog_77c632410101790w.html">http://blog.sina.com.cn/s/blog_77c632410101790w.html</a></p>
+<p align="left">解决Android手机屏幕横竖屏切换（一个真实测试过的小结）</p>
+<p align="left"><a href="http://www.cnblogs.com/zhangkai281/archive/2011/07/06/2099277.html">http://www.cnblogs.com/zhangkai281/archive/2011/07/06/2099277.html</a></p>
+<p align="left">Android 处理横竖屏切换事件</p>
+<p align="left"><a href="http://ipjmc.iteye.com/blog/1265991">http://ipjmc.iteye.com/blog/1265991</a></p>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/franksunny/category/325145.html">Android开发</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3714442,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/frank.sunny" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./Android横竖屏切换小结 - frank.sunny - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./Android横竖屏切换小结 - frank.sunny - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/franksunny/" target="_blank"><img src="./Android横竖屏切换小结 - frank.sunny - 博客园_files/sample_face.gif" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/franksunny/">frank.sunny</a><br>
+<a href="http://home.cnblogs.com/u/franksunny/followees">关注 - 6</a><br>
+<a href="http://home.cnblogs.com/u/franksunny/followers">粉丝 - 30</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(3714442,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">5</span>
+    </div>
+	<div class="buryit" onclick="votePost(3714442,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/franksunny/p/3629276.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/franksunny/p/3629276.html" title="发布于2014-03-27 21:36">如何将消息发送给Whatsapp联系人</a><br><a href="http://www.cnblogs.com/franksunny/p/3849758.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/franksunny/p/3849758.html" title="发布于2014-07-16 21:49">[整理]android中几种常见的尺寸</a><br></div>
+</div>
+
+
+	<div class="postDesc">posted on <span id="post-date">2014-05-07 19:08</span> <a href="http://www.cnblogs.com/franksunny/">frank.sunny</a> 阅读(<span id="post_view_count">27151</span>) 评论(<span id="post_comment_count">0</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=3714442" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/franksunny/p/3714442.html#" onclick="AddToWz(3714442);return false;">收藏</a></div>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=98091,cb_entryId=3714442,cb_blogApp=currentBlogApp,cb_blogUserGuid='26f07bc4-22e8-e011-8ee0-842b2b196315',cb_entryCreatedDate='2014/5/7 19:08:00';loadViewCount(cb_entryId);</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/franksunny/p/3714442.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/franksunny/p/3714442.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－专注为 App 开发者提供IM云服务</a><br><a href="http://www.ucloud.cn/site/active/new_gift.html?utm_source=cost&utm_campaign=bokeyuan1&utm_medium=display&utm_content=3yuecu" target="_blank">【推荐】UCloud开年大礼，充5000返1000；买云主机送CDN，详情点击</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block">     <ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-4210569241504288" data-ad-slot="5457903683" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/540331/" target="_blank">Linux Kernel最新稳定版4.4.4版本发布</a><br> ·  <a href="http://news.cnblogs.com/n/540330/" target="_blank">杨元庆“炮轰”企业税负太重</a><br> ·  <a href="http://news.cnblogs.com/n/540329/" target="_blank">3D打印定制矫形器帮助手部残疾男子实现抓握动作</a><br> ·  <a href="http://news.cnblogs.com/n/540328/" target="_blank">说好九点半现货现卖 小米5门店九点就断货</a><br> ·  <a href="http://news.cnblogs.com/n/540327/" target="_blank">英科学家称找到癌症"致命弱点" 可追杀每个癌细胞</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jpush.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./Android横竖屏切换小结 - frank.sunny - 博客园_files/24442-20160226161816318-1782390681.jpg" alt="极光推送_2016年3月份推广" title="极光推送_2016年3月份推广"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/538249/" target="_blank">谷歌背后的数学</a><br> ·  <a href="http://kb.cnblogs.com/page/533808/" target="_blank">Medium开发团队谈架构设计</a><br> ·  <a href="http://kb.cnblogs.com/page/539274/" target="_blank">理解“渐进增强(Progressive Enhancement)”</a><br> ·  <a href="http://kb.cnblogs.com/page/534571/" target="_blank">为什么说DOM操作很慢</a><br> ·  <a href="http://kb.cnblogs.com/page/527518/" target="_blank">为什么你应该尝试全栈</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+</div>
+<div id="leftcontent">
+	
+		<div id="leftcontentcontainer">
+			<br>			
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block"></div><div id="sidebar_categories">
+<!--done-->
+
+		<h1 class="catListTitle">随笔分类</h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_0" class="listitem" href="http://www.cnblogs.com/franksunny/category/329140.html">Android 源码学习(3)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_1" class="listitem" href="http://www.cnblogs.com/franksunny/category/325145.html">Android开发(14)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_2" class="listitem" href="http://www.cnblogs.com/franksunny/category/334420.html">工具学习(1)</a></li>
+			
+				</ul>
+			
+	
+		<h1 class="catListTitle">我的空间</h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_0" class="listitem" href="http://75096315.qzone.qq.com/" rel="nofollow">个人生活日志</a></li>
+			<li class="c_b_p_link_desc">个人的QQ空间，记得日志相对比较多一些，目前主要在这里活动了，呵呵。</li>
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_1" class="listitem" href="http://www.cppblog.com/franksunny/" rel="nofollow">以前的个人技术空间</a></li>
+			<li class="c_b_p_link_desc">以前一直从事C/C++开发，包括硬件、MFC、Symbian开发方面的一个个人技术随笔空间，目前不太更新了</li>
+				</ul>
+			
+	
+</div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/franksunny/archive/2011/11/17/2252926.html">1. Android Camera 使用小结(10)</a></li><li><a href="http://www.cnblogs.com/franksunny/archive/2011/09/27/2193085.html">2. Android app中加载jar插件(7)</a></li><li><a href="http://www.cnblogs.com/franksunny/archive/2012/04/17/2453403.html">3. Activity、Task、应用和进程(4)</a></li><li><a href="http://www.cnblogs.com/franksunny/archive/2012/01/12/2320520.html">4. Android 自定义组合控件小结(3)</a></li><li><a href="http://www.cnblogs.com/franksunny/archive/2011/10/21/2219890.html">5. Preference 使用小结(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script></div>
+	
+</div>
+
+
+<!--done-->
+<div class="footer">
+	
+	Copyright ©2016 frank.sunny Powered By<a href="http://www.cnblogs.com/">博客园</a> 模板提供：<a href="http://blog.hjenglish.com/">沪江博客</a>
+</div>
+
+
+</body></html>

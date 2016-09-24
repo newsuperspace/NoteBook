@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>深入理解 cocos2d-x 坐标系 - 里沃特 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=8F6jO9aWZhOryqKsIFGUkSbXpyPVKDwgWwvpie3eJis1"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="/skins/elf/bundle-elf.css?v=JHcmlukWR_bF1f6wNjCxPO-MfAKMYz5QllMp4s2snCY1"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/lyout/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/lyout/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/lyout/wlwmanifest.xml"/>
+<script src="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'lyout', cb_enable_mathjax=false;</script>
+<script src="/bundles/blog-common.js?v=ceHMEpeJXcR_f7TCJnXeZQRG1UsC0_cpwDJRs_oVInY1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/lyout/"><img id="blogLogo" src="/Skins/custom/images/logo.gif" alt="返回主页" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/lyout/">里沃特-技术博客</a></h1>
+<h2>Nothing is impossible for a willing heart.</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/lyout/">首页</a></li>
+<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/%E9%87%8C%E6%B2%83%E7%89%B9">联系</a></li>
+<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/lyout/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/lyout/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<span id="stats_post_count">随笔 - 59&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 305</span>
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class = "post">
+		<h1 class = "postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/lyout/p/3292702.html">深入理解 cocos2d-x 坐标系</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>首先对于初学的，带大家认识 cocos2d-x 中坐标系的几个概念，参考 http://blog.csdn.net/tskyfree/article/details/8292544。其他的往下看。</p>
+<p>弄懂坐标系是开始开发的重要的一步，为了不让大家头晕，现在<span style="color: #000000;"><a href="http://www.cnblogs.com/lyout"><span style="color: #000000;">里沃特</span></a></span>深入的为大家讲解一下，本人原文地址：http://www.cnblogs.com/lyout/p/3292702.html。</p>
+<p>首先我们添加两个测试精灵(宽：27，高：40)到场景里面：</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:cpp;gutter:false;">		CCSprite *sprite1 = CCSprite::create("player.png");
+		sprite1-&gt;setPosition(ccp(20, 40));
+		sprite1-&gt;setAnchorPoint(ccp(0, 0));
+		this-&gt;addChild(sprite1);
+
+		CCSprite *sprite2 = CCSprite::create("player.png");
+		sprite2-&gt;setPosition(ccp(-15, -30));
+		sprite2-&gt;setAnchorPoint(ccp(1, 1));
+		this-&gt;addChild(sprite2);
+</pre>
+</div>
+<p>然后调试，在场景中大概是下图这样显示（以左下角为坐标原点，从左到右为x方向，从下到上为y方向，废话了：））：</p>
+<p><img src="http://images.cnitblog.com/blog/19706/201308/30235118-c46c1a22580d45dca9f5e1086b497eb8.jpg" alt="" /></p>
+<p>在cocos2d-x中，<span style="color: #ff0000;">每个精灵都有一个锚点，以后对精灵的操作（比如旋转）都会围绕锚点进行</span>，我们暂且可以看作是精灵的中心位置，一般来说有每个方向有三种可能的值:0,0.5,1。上图中红色圆点即为各自的锚点，sprite1 锚点为 (0,0) 左下角，sprite2锚点为(1,1)在右上角。</p>
+<p>现在我们来看看坐标系转换，同样地，我们先写点测试代码：</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:cpp;gutter:false;">		CCPoint p1 = sprite2-&gt;convertToNodeSpace(sprite1-&gt;getPosition());
+		CCPoint p2 = sprite2-&gt;convertToWorldSpace(sprite1-&gt;getPosition());
+		CCPoint p3 = sprite2-&gt;convertToNodeSpaceAR(sprite1-&gt;getPosition());
+		CCPoint p4 = sprite2-&gt;convertToWorldSpaceAR(sprite1-&gt;getPosition());
+</pre>
+</div>
+<p>接着，再打印出各点的x,y值：</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:cpp;gutter:false;">		CCLog("p1:%f,%f", p1.x, p1.y);
+		CCLog("p2:%f,%f", p2.x, p2.y);
+		CCLog("p3:%f,%f", p3.x, p3.y);
+		CCLog("p4:%f,%f", p4.x, p4.y);
+</pre>
+</div>
+<p>现在开始分析这四个常用坐标系转换函数转换后的值（有兴趣的同学可以先算一算）。</p>
+<p>由于cocos2d-x的坐标系（本地坐标系）是以左下角为坐标原点的，所以 <span style="color: #ff0000;">sprite1和sprite2的坐标原点在上图的位置分别是（20,40）、（-42,-70）</span>，那么很明显的：</p>
+<p>p1就是<span style="color: #ff0000;">sprite1锚点</span>相对于<span style="color: #ff0000;">sprite2原点</span>来说在sprite2坐标系中的位置，经过对比上图，我们可以得到（20-(-42)，40-(-70)）即（62,110）</p>
+<p>p2就是<span style="color: #ff0000;">sprite1锚点</span>相对于<span style="color: #ff0000;">sprite2原点</span>来说在上图坐标系中的位置，这样我们可以计算出sprite1在sprite2坐标系中的位置：（20+(-42),40+(-70)），即（-22,-30）</p>
+<p>p3就是<span style="color: #ff0000;">sprite1锚点</span>相对于<span style="color: #ff0000;">sprite2锚点</span>来说在sprite2坐标系中的位置，也就是（20-(-15)，40-(-30)）,即（35,70）</p>
+<p>p4就是<span style="color: #ff0000;">sprite1锚点</span>相对于<span style="color: #ff0000;">sprite2锚点</span>来说在上图坐标系中的位置，也就是（20+(-15),40+(-30)），即（5,10）</p>
+<p>现在我们可以知道，计算方法<span style="color: #ff0000;">都是用sprite1的坐标去加减sprite2的坐标，针对本地坐标系就用减法，针对世界坐标系就用加法</span>。</p>
+<p>&nbsp;</p>
+<p>好了，方法出来了，有兴趣的可以做计算一下以下几个坐标的值（先不要上机调试），然后回复我，差不多10个回复后我会贴出正确答案：</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:cpp;gutter:false;">		CCPoint p1 = sprite1-&gt;convertToNodeSpace(sprite2-&gt;getPosition());
+		CCPoint p2 = sprite1-&gt;convertToWorldSpace(sprite2-&gt;getPosition());
+		CCPoint p3 = sprite1-&gt;convertToNodeSpaceAR(sprite2-&gt;getPosition());
+		CCPoint p4 = sprite1-&gt;convertToWorldSpaceAR(sprite2-&gt;getPosition());
+</pre>
+</div>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		</div>
+		<div class = "postDesc">posted @ <span id="post-date">2013-08-31 07:45</span> <a href='http://www.cnblogs.com/lyout/'>里沃特</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="http://i.cnblogs.com/EditPosts.aspx?postid=3292702" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(3292702);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=23265,cb_entryId=3292702,cb_blogApp=currentBlogApp,cb_blogUserGuid='1867360b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2013/8/31 7:45:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='ad_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='ad_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright &copy;2016 里沃特
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<!--PageEndHtml Block Begin-->
+<script language="javascript">
+$("#navList").append("<li><a href='http://www.lyout.com' target='_blank'>独立博客</a></li>");
+</script>
+<!--PageEndHtml Block End-->
+</body>
+</html>

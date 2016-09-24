@@ -1,0 +1,914 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0055)http://blog.csdn.net/ning109314/article/details/7070042 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<SCRIPT type="text/javascript" charset="utf-8" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/tracking.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </SCRIPT>
+
+<META content="no-siteapp" http-equiv="Cache-Control"><LINK rel="alternate" 
+href="#" media="handheld"><TITLE>this web application instance has been stopped 
+already解决办法 - ning109314的专栏        - 博客频道 - CSDN.NET</TITLE>
+<META content="text/html; charset=utf-8" http-equiv="Content-Type">
+<META name="description" content="unix下的话，找到sqlplus， file /path/to/sqlplus，windows就更简单了，32位系统肯定是32位的，64位系统看任务管理器就好了，sqlplus后面没有*32就是64位了，如下图：转自：http://hi.baidu.com/goodlisf/item/34ae5318647619446826bb72">
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery-version.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad.htm"></SCRIPT>
+<!--new top--><LINK rel="stylesheet" href="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/index.css"><!--new top--><!-- ad begin -->
+<SCRIPT language="javascript" type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/tracking.htm"></SCRIPT>
+<!-- ad end--><LINK rel="Stylesheet" type="text/css" href="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/style.css"><LINK 
+id="RSSLink" title="RSS" rel="alternate" type="application/rss+xml" href="/ning109314/rss/list"><LINK 
+rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico"><LINK rel="stylesheet" 
+type="text/css" href="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/default.css">
+<SCRIPT language="javascript" type="text/javascript" charset="gb2312" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/35ff706fd57d11c141cdefcd58d6562b.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+hQGHuMEAyLn('[id="bb9c190068b8405587e5006f905e790c"]');
+hQGHuMEAyLn('.banner_top2,.banner_top3,.leftad,.rightad,.textad,#Topic_Top,#tad2,.ad_l,#ad_left,#ad_right,.adtxt,[class^="ad_area_"],[id^="div-gpt-ad-"],[class^="ad_300"],.ad_960,div.baidu,.ad_650,.ad_300_60,.AD,.tracking-ad');</SCRIPT>
+
+<META name="GENERATOR" content="MSHTML 9.00.8112.16696"></HEAD>
+<BODY><!-- 广告位开始 --><INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="149"></INS><!-- 广告位结束 --><!--new top-->
+<SCRIPT id="toolbar-tpl-scriptId" type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/html.js" skin="black" prod="blog" fixed="true"></SCRIPT>
+<!--new top-->
+<DIV id="container">
+<DIV id="header">
+<DIV class="header">
+<DIV id="blog_title">
+<H2><A href="http://blog.csdn.net/ning109314">ning109314的专栏</A></H2>
+<H3></H3>
+<DIV class="clear"></DIV></DIV>
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV id="navigator">
+<DIV class="navigator_bg"></DIV>
+<DIV class="navigator">
+<UL>
+  <LI id="btnContents"><A href="http://blog.csdn.net/ning109314?viewmode=contents"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])"><IMG 
+  src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_list.gif">目录视图</SPAN></A></LI>
+  <LI id="btnView"><A href="http://blog.csdn.net/ning109314?viewmode=list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])"><IMG 
+  src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_summary.gif">摘要视图</SPAN></A></LI>
+  <LI id="btnRss"><A href="http://blog.csdn.net/ning109314/rss/list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])"><IMG 
+  src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_rss.gif">订阅</SPAN></A></LI></UL></DIV>
+</DIV>
+<SCRIPT type="text/javascript">var username = "ning109314";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/ning109314";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</SCRIPT>
+
+<DIV id="body">
+<DIV id="main">
+<DIV class="main">
+<DIV class="ad_class">
+<DIV class="notice tracking-ad" data-mod="popu_3"><A href="http://blog.csdn.net/blogdevteam/article/details/51919935">
+<FONT color="blue">【公告】博客系统优化升级</FONT></A>&nbsp;&nbsp;&nbsp;<A href="http://geek.csdn.net/news/detail/96977">
+<FONT color="red">【知识库发布】国外敏捷转型案例-敏捷软件开发知识体系</FONT></A>&nbsp;&nbsp;&nbsp;<A 
+href="http://blog.csdn.net/blogdevteam/article/details/51984275"><FONT color="blue">博乐招募开始啦
+</FONT></A>&nbsp;&nbsp;&nbsp;<A href="http://geek.csdn.net/news/detail/96883">
+<FONT color="red">不得不学的编程语言</FONT></A>&nbsp;&nbsp;&nbsp;</DIV></DIV><!-- 广告位开始 -->
+<INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="72"></INS><!-- 广告位结束 --><LINK rel="stylesheet" type="text/css" 
+href="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment1.css">
+<LINK rel="stylesheet" type="text/css" href="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/style1.css">
+<SCRIPT language="JavaScript" type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.cookie.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/main.js"></SCRIPT>
+<LINK rel="stylesheet" href="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/markdown_views.css">
+<LINK rel="stylesheet" href="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.css">
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/MathJax.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/web-storage-cache.min.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/replace.min.js"></SCRIPT>
+
+<SCRIPT type="text/ecmascript">
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </SCRIPT>
+
+<DIV id="article_details" class="details">
+<DIV class="article_title"><SPAN class="ico ico_type_Original"></SPAN>
+<H1><SPAN class="link_title"><A href="http://blog.csdn.net/ning109314/article/details/7070042"> 
+       this web application instance has been stopped already解决办法                
+    </A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix">
+<DIV class="article_l"><SPAN class="link_categories">            标签：             
+ <A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+href="http://www.csdn.net/tag/application" target="_blank">application</A><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+href="http://www.csdn.net/tag/web" target="_blank">web</A><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+href="http://www.csdn.net/tag/tomcat" target="_blank">tomcat</A><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+href="http://www.csdn.net/tag/debugging" target="_blank">debugging</A><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+href="http://www.csdn.net/tag/access" target="_blank">access</A></SPAN></DIV>
+<DIV class="article_r"><SPAN class="link_postdate">2011-12-14 13:17</SPAN><SPAN 
+class="link_view" title="阅读次数">54888人阅读</SPAN><SPAN class="link_comments" title="评论次数"> 
+<A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+href="http://blog.csdn.net/ning109314/article/details/7070042#comments">评论</A>(11)</SPAN><SPAN 
+class="link_collect tracking-ad" data-mod="popu_171"> <A title="收藏" onclick="javascript:collectArticle('this web application instance has been stopped already解决办法','7070042');return false;" 
+href="javascript:void(0);">收藏</A></SPAN><SPAN class="link_report"> <A title="举报" 
+onclick="javascript:report(7070042,2);return false;" href="http://blog.csdn.net/ning109314/article/details/7070042#report">举报</A></SPAN></DIV></DIV>
+<DIV style="display: none;" id="embody" class="embody"><SPAN 
+class="embody_t">本文章已收录于：</SPAN>
+<DIV id="lib" class="embody_c" 
+value='{"err":0,"msg":"ok","data":[]}'></DIV></DIV>
+<STYLE type="text/css">.embody{
+                padding:10px 10px 10px;
+                margin:0 -20px;
+                border-bottom:solid 1px #ededed;                
+            }
+            .embody_b{
+                margin:0 ;
+                padding:10px 0;
+            }
+            .embody .embody_t,.embody .embody_c{
+                display: inline-block;
+                margin-right:10px;
+            }
+            .embody_t{
+                font-size: 12px;
+                color:#999;
+            }
+            .embody_c{
+                font-size: 12px;
+            }
+            .embody_c img,.embody_c em{
+                display: inline-block;
+                vertical-align: middle;               
+            }
+             .embody_c img{               
+                width:30px;
+                height:30px;
+            }
+            .embody_c em{
+                margin: 0 20px 0 10px;
+                color:#333;
+                font-style: normal;
+            }
+    </STYLE>
+
+<SCRIPT type="text/javascript">
+        $(function () {
+            try
+            {
+                var lib = eval("("+$("#lib").attr("value")+")");
+                var html = "";
+                if (lib.err == 0) {
+                    $.each(lib.data, function (i) {
+                        var obj = lib.data[i];
+                        //html += '<img src="' + obj.logo + '"/>' + obj.name + "&nbsp;&nbsp;";
+                        html += ' <a href="' + obj.url + '" target="_blank">';
+                        html += ' <img src="' + obj.logo + '">';
+                        html += ' <em><b>' + obj.name + '</b></em>';
+                        html += ' </a>';
+                    });
+                    if (html != "") {
+                        setTimeout(function () {
+                            $("#lib").html(html);                      
+                            $("#embody").show();
+                        }, 100);
+                    }
+                }      
+            } catch (err)
+            { }
+            
+        });
+    </SCRIPT>
+
+<DIV class="category clearfix">
+<DIV class="category_l"><IMG src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/category_icon.jpg"><SPAN>分类：</SPAN></DIV>
+<DIV class="category_r"><LABEL onclick="GetCategoryArticles('950025','ning109314','top','7070042');"><SPAN 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">服务器<EM>（17）</EM></SPAN><IMG 
+style="display: inline;" class="arrow-down" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle%2520_down.jpg"><IMG 
+style="display: none;" class="arrow-up" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle_up.jpg">
+<DIV class="subItem">
+<DIV class="subItem_t"><A href="http://blog.csdn.net/ning109314/article/category/950025" 
+target="_blank">作者同类文章</A><I class="J_close">X</I></DIV>
+<UL id="top_950025" class="subItem_l"></UL></DIV></LABEL></DIV></DIV>
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.js"></SCRIPT>
+
+<DIV class="bog_copyright">
+<P class="copyright_p">版权声明：本文为博主原创文章，未经博主允许不得转载。</P></DIV>
+<DIV id="article_content" class="article_content">&nbsp;重启tomcat的时候出错
+<DIV>
+<P>Illegal access: this web application instance has been stopped already.&nbsp; 
+Could not load oracle.net.mesg.Message.&nbsp; The eventual following stack trace 
+is caused by an error thrown for debugging purposes as well as to attempt to 
+terminate the thread which caused the illegal access, and has no functional 
+impact.<BR>java.lang.IllegalStateException<BR>&nbsp; at 
+org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1566)<BR>
+&nbsp; at 
+org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1526)<BR>
+&nbsp; at 
+java.util.ResourceBundle$Control.newBundle(ResourceBundle.java:2289)<BR>
+&nbsp; at java.util.ResourceBundle.loadBundle(ResourceBundle.java:1364)<BR>
+&nbsp; at java.util.ResourceBundle.findBundle(ResourceBundle.java:1328)<BR>
+&nbsp; at java.util.ResourceBundle.findBundle(ResourceBundle.java:1282)<BR>
+&nbsp; at java.util.ResourceBundle.findBundle(ResourceBundle.java:1282)<BR>
+&nbsp; at java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1224)<BR>
+&nbsp; at java.util.ResourceBundle.getBundle(ResourceBundle.java:705)<BR>
+&nbsp; at oracle.net.ns.Message11.getMessage(Unknown Source)<BR>&nbsp; at 
+oracle.net.ns.NetException.getMessage(Unknown Source)<BR>&nbsp; at 
+oracle.jdbc.ttc7.TTC7Protocol.connect(TTC7Protocol.java:1695)<BR>&nbsp; at 
+oracle.jdbc.ttc7.TTC7Protocol.logon(TTC7Protocol.java:214)<BR>&nbsp; at 
+oracle.jdbc.driver.OracleConnection.&lt;init&gt;(OracleConnection.java:346)<BR>
+&nbsp; at 
+oracle.jdbc.driver.OracleDriver.getConnectionInstance(OracleDriver.java:468)<BR>
+&nbsp; at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:314)<BR>
+&nbsp; at 
+com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)<BR>
+&nbsp; at 
+com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)<BR>
+&nbsp; at 
+com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)<BR>
+&nbsp; at 
+com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)<BR>
+&nbsp; at 
+com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)<BR>
+&nbsp; at 
+com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)<BR>
+&nbsp; at 
+com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)<BR>
+&nbsp; at 
+com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)</P>
+<P>原因是因为在tomcat重启的时候，之前的tomcat的线程还没有完全关闭，最新启动tomcat就会报这个异常，只要把tomcat的server.xml 
+中的reloadable="true" 改成false就OK</P>大家看过这个帖子后说没有找到对应的配置，其实就存在于<SPAN style="font-size: 12px;">Context</SPAN>节点中，一下是我截取的Tomcat中文一个文档中的注释：</DIV>
+<DIV>
+<TABLE border="1" cellSpacing="0" cellPadding="0">
+  <TBODY>
+  <TR>
+    <TD rowSpan="3" width="19%"><SPAN 
+      style="font-size: 12px;">Context(表示一个web应用程序，通常为WAR文件，关于WAR的具体信息见servlet规范)</SPAN></TD>
+    <TD width="18%"><SPAN style="font-size: 12px;">docBase</SPAN></TD>
+    <TD width="62%"><SPAN 
+    style="font-size: 12px;">应用程序的路径或者是WAR文件存放的路径</SPAN></TD></TR>
+  <TR>
+    <TD width="18%"><SPAN style="font-size: 12px;">path</SPAN></TD>
+    <TD width="62%"><SPAN 
+      style="font-size: 12px;">表示此web应用程序的url的前缀，这样请求的url为http://localhost:8080/path/****</SPAN></TD>
+  </TR>
+  <TR>
+    <TD width="18%"><SPAN style="font-size: 12px;"><SPAN 
+      size="+0">reloadable</SPAN></SPAN></TD>
+    <TD width="62%"><SPAN 
+      style="font-size: 12px;">这个属性非常重要，如果为true，则tomcat会自动检测应用程序的/WEB-INF/lib 
+      和/WEB-INF/classes目录的变化，自动装载新的应用程序，我们可以在不重起tomcat的情况下改变应用程序</SPAN></TD></TR>
+  </TBODY></TABLE></DIV>
+<DIV>&nbsp;</DIV></DIV><!-- Baidu Button BEGIN -->
+<DIV style="float: right;" class="bdsharebuttonbox tracking-ad" data-mod="popu_172">
+<A style='background-image: url("http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png") !important;' 
+class="bds_more" href="http://blog.csdn.net/ning109314/article/details/7070042#" 
+data-cmd="more"></A><A style="background-position: 0px -52px !important;" class="bds_qzone" 
+title="分享到QQ空间" href="http://blog.csdn.net/ning109314/article/details/7070042#" 
+data-cmd="qzone"></A><A style="background-position: 0px -104px !important;" 
+class="bds_tsina" title="分享到新浪微博" href="http://blog.csdn.net/ning109314/article/details/7070042#" 
+data-cmd="tsina"></A><A style="background-position: 0px -260px !important;" 
+class="bds_tqq" title="分享到腾讯微博" href="http://blog.csdn.net/ning109314/article/details/7070042#" 
+data-cmd="tqq"></A><A style="background-position: 0px -208px !important;" class="bds_renren" 
+title="分享到人人网" href="http://blog.csdn.net/ning109314/article/details/7070042#" 
+data-cmd="renren"></A><A style="background-position: 0px -1612px !important;" 
+class="bds_weixin" title="分享到微信" href="http://blog.csdn.net/ning109314/article/details/7070042#" 
+data-cmd="weixin"></A></DIV>
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+<!-- Baidu Button END --><LINK rel="stylesheet" href="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog_detail.css"><!--172.16.140.12--><!-- Baidu Button BEGIN -->
+<SCRIPT id="bdshare_js" type="text/javascript" data="type=tools&amp;uid=1536434"></SCRIPT>
+
+<SCRIPT id="bdshell_js" type="text/javascript"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</SCRIPT>
+<!-- Baidu Button END -->
+<DIV id="digg" ArticleId="7070042">
+<DL id="btnDigg" class="digg digg_disable" onclick="btndigga();">
+  <DT>顶</DT>
+  <DD>0</DD></DL>
+<DL id="btnBury" class="digg digg_disable" onclick="btnburya();">
+  <DT>踩</DT>
+  <DD>2</DD></DL></DIV>
+<DIV class="tracking-ad" data-mod="popu_222"><A 
+href="javascript:void(0);">&nbsp;</A></DIV>
+<DIV class="tracking-ad" data-mod="popu_223"> <A 
+href="javascript:void(0);">&nbsp;</A></DIV>
+<SCRIPT type="text/javascript">
+                function btndigga() {
+                    $(".tracking-ad[data-mod='popu_222'] a").click();
+                }
+                function btnburya() {
+                    $(".tracking-ad[data-mod='popu_223'] a").click();
+                }
+            </SCRIPT>
+
+<UL class="article_next_prev">
+  <LI class="prev_article"><SPAN onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/ning109314/article/details/7066571';">上一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])" 
+  href="http://blog.csdn.net/ning109314/article/details/7066571">通过【偷取此锁定】或【破除锁定】解锁SVN被锁定的文件的控制权</A></LI>
+  <LI class="next_article"><SPAN onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/ning109314/article/details/7073868';">下一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])" 
+  href="http://blog.csdn.net/ning109314/article/details/7073868">使用Jar命令压缩War包</A></LI></UL>
+<DIV style="height: 10px; clear: both;"></DIV>
+<DIV style="display: none;" class="similar_article">
+<H4>我的同类文章</H4>
+<DIV style="margin: 20px 0px 0px;" class="similar_c">
+<DIV class="similar_c_t"><LABEL class="similar_cur"><SPAN style="cursor: pointer;" 
+onclick="GetCategoryArticles('950025','ning109314','foot','7070042');">服务器<EM>（17）</EM></SPAN></LABEL></DIV>
+<DIV style="max-height: 195px;" class="similar_wrap tracking-ad" data-mod="popu_141"><A 
+style="display: none;" href="http://blog.csdn.net/">http://blog.csdn.net/</A>
+<UL class="similar_list fl"></UL>
+<UL class="similar_list fr"></UL></DIV></DIV></DIV>
+<SCRIPT type="text/javascript">
+        $(function () {
+            GetCategoryArticles('950025', 'ning109314','foot','7070042');
+        });
+    </SCRIPT>
+</DIV>
+<DIV id="suggest"></DIV>
+<SCRIPT language="javascript" type="text/javascript">     
+             $(function(){
+                 $.get("/ning109314/svc/GetSuggestContent/7070042",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </SCRIPT>
+
+<STYLE>
+.blog-ass-articl dd {
+color: #369;
+width: 99%; /*修改行*/
+float: left;
+overflow: hidden;
+font: normal normal 12px/23px "SimSun";
+height: 23px;
+margin: 0;
+padding: 0 0 0 10px;
+margin-right: 30px;
+background: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;
+}
+</STYLE>
+<LINK rel="stylesheet" href="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/replace.css">
+<DIV id="relate" class="tracking-ad" data-mod="popu_218">
+<DIV class="relate_t">
+<H3><SPAN>参考知识库</SPAN></H3></DIV>
+<DIV class="relate_c"></DIV></DIV>
+<DL id="res-relatived" class="blog-ass-articl">
+  <DIV style="display: none;" id="libkeyparent" class="embody embody_b"><SPAN 
+  class="embody_t">更多资料请参考：</SPAN>
+  <DIV id="libkey" class="embody_c"></DIV></DIV>
+  <DT><SPAN>猜你在找</SPAN></DT>
+  <DIV style="width: 42%; float: left;" id="adCollege">
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/job_reco.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "7070042",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </SCRIPT>
+  </DIV>
+  <DIV style="width: 42%; margin-right: 30px; float: left;" id="res" class="tracking-ad" 
+  data-mod="popu_36"></DIV></DL>
+<SCRIPT type="text/javascript">
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = 'this web application instance has been stopped already解决办法' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </SCRIPT>
+
+<DIV id="ad_cen"><!-- 广告位开始 --><INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="71"></INS><!-- 广告位结束 --></DIV>
+<DIV class="comment_class">
+<DIV id="comment_title" class="panel_head"><SPAN 
+class="see_comment">查看评论</SPAN><A name="comments"></A></DIV>
+<DIV id="comment_list"></DIV>
+<DIV id="comment_bar"></DIV>
+<DIV id="comment_form"></DIV>
+<DIV class="announce">* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<A name="reply"></A><A 
+name="quote"></A></DIV></DIV>
+<SCRIPT type="text/javascript">var fileName = '7070042';
+    var commentscount = 11;
+    var islock = false
+</SCRIPT>
+
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment.js"></SCRIPT>
+
+<DIV id="ad_bot"></DIV>
+<DIV id="report_dialog"></DIV>
+<DIV style="bottom: 60px;" id="d-top"><A style="display: none;" id="quick-reply" 
+class="btn btn-top q-reply" title="快速回复"><IMG alt="快速回复" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog-icon-reply.png"></A><A 
+style="display: none;" id="d-top-a" class="btn btn-top backtop" title="返回顶部" 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])"><IMG 
+alt="TOP" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/top.png"></A>
+</DIV>
+<SCRIPT type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</SCRIPT>
+
+<STYLE type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</STYLE>
+
+<DIV style="display: none;" class="tag_list"></DIV>
+<SCRIPT language="javascript" type="text/javascript">     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/ning109314/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </SCRIPT>
+
+<DIV style="background: 0px 0px rgb(255, 255, 255); border: 1px solid rgb(220, 220, 220); left: 630px; top: 222.5px; display: none; position: absolute; z-index: 10000; opacity: 1;" 
+id="pop_win"></DIV>
+<DIV id="popup_mask"></DIV>
+<STYLE>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+</STYLE>
+
+<SCRIPT type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });         
+
+        },200);  
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },5000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },10000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },15000);
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }   
+
+</SCRIPT>
+
+<SCRIPT language="javascript" type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/async_new.htm"></SCRIPT>
+
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV id="side">
+<DIV class="side">
+<DIV id="panel_Profile" class="panel">
+<UL class="panel_head"><SPAN>个人资料</SPAN></UL>
+<UL class="panel_body profile">
+  <DIV id="blog_userface"><A href="http://my.csdn.net/ning109314" target="_blank"><IMG 
+  style="max-width: 90%;" title="访问我的空间" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/1_ning109314.jpg"></A><BR><SPAN><A 
+  class="user_name" href="http://my.csdn.net/ning109314" 
+  target="_blank">ning109314</A></SPAN></DIV>
+  <DIV class="interact"><A id="span_add_follow" class="attent" title="[加关注]" 
+  href="javascript:void(0);"></A><A class="letter" title="[发私信]" onclick="window.open('http://msg.csdn.net/letters/model?receiver=ning109314','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])" 
+  href="javascript:void(0);"></A></DIV>
+  <DIV id="blog_medal">
+  <DIV id="bms_box"></DIV></DIV>
+  <UL id="blog_rank">
+    <LI>访问：<SPAN>433885次</SPAN></LI>
+    <LI>积分：<SPAN>3702</SPAN> </LI>
+    <LI>等级： <SPAN 
+    style="display: inline-block; position: relative; z-index: 1;"><IMG style="vertical-align: middle;" 
+    id="leveImg" alt="" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog5.png">
+    <DIV style="border: 2px solid rgb(221, 221, 221); left: -24px; top: 25px; width: 101px; height: 32px; text-align: center; line-height: 32px; display: none; position: absolute; z-index: 999; box-shadow: none; background-color: rgb(255, 255, 255);" 
+    id="smallTittle">
+    <DIV style="left: 42%; top: -8px; width: 0px; height: 0px; border-right-color: transparent; border-bottom-color: rgb(234, 234, 234); border-left-color: transparent; border-right-width: 10px; border-bottom-width: 8px; border-left-width: 10px; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; position: absolute;"></DIV> 
+               积分：3702 </DIV></SPAN></LI>
+    <LI>排名：<SPAN>第6070名</SPAN></LI></UL>
+  <UL id="blog_statistics">
+    <LI>原创：<SPAN>22篇</SPAN></LI>
+    <LI>转载：<SPAN>111篇</SPAN></LI>
+    <LI>译文：<SPAN>1篇</SPAN></LI>
+    <LI>评论：<SPAN>32条</SPAN></LI></UL></UL></DIV>
+<DIV id="panel_Search" class="panel">
+<UL class="panel_head"><SPAN>文章搜索</SPAN></UL>
+<UL class="panel_body">
+  <FORM id="frmSearch" class="form_search" action="http://so.csdn.net/search" 
+  target="_blank"><SPAN><INPUT id="inputSearch" class="blogsearch" title="请输入关键字" 
+  type="text"></SPAN><INPUT id="btnSubmit" title="search in blog" value="搜索" type="button"><INPUT 
+  id="inputQ" name="q" type="hidden"><INPUT name="t" value="blog" 
+  type="hidden"><A id="btnSearchBlog" target="_blank"></A></FORM></UL></DIV>
+<SCRIPT type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</SCRIPT>
+
+<DIV id="panel_Category" class="panel">
+<UL class="panel_head"><SPAN>文章分类</SPAN></UL>
+<UL class="panel_body">
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/692827">c#</A><SPAN>(0)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/692826">JAVA</A><SPAN>(59)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/946058">linux</A><SPAN>(20)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/950025">服务器</A><SPAN>(18)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/950946">SVN</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/1054309">Mysql</A><SPAN>(8)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/1054313">综合</A><SPAN>(10)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/1086390">WEB</A><SPAN>(3)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/1086441">工具</A><SPAN>(5)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/1094891">JS</A><SPAN>(2)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/1121123">电子商务</A><SPAN>(1)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/1125223">Oracle</A><SPAN>(8)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/1135814">Office</A><SPAN>(2)</SPAN></LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/ning109314/article/category/2018109">DB2</A><SPAN>(2)</SPAN></LI>
+</UL></DIV>
+<DIV id="panel_Archive" class="panel">
+<UL class="panel_head"><SPAN>文章存档</SPAN></UL>
+<UL class="panel_body">
+  <DIV id="archive_list"><!--归档统计-->
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2015/01">2015年01月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2014/12">2014年12月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2014/11">2014年11月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2014/05">2014年05月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2014/03">2014年03月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2014/02">2014年02月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2013/12">2013年12月</A><SPAN>(12)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2013/11">2013年11月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2013/10">2013年10月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2013/09">2013年09月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2013/08">2013年08月</A><SPAN>(9)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2013/07">2013年07月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2013/03">2013年03月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2013/01">2013年01月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2012/11">2012年11月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2012/10">2012年10月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2012/09">2012年09月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2012/08">2012年08月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2012/07">2012年07月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2012/06">2012年06月</A><SPAN>(6)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2012/05">2012年05月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2012/04">2012年04月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2012/03">2012年03月</A><SPAN>(4)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2012/02">2012年02月</A><SPAN>(20)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2012/01">2012年01月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2011/12">2011年12月</A><SPAN>(21)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2011/11">2011年11月</A><SPAN>(12)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2011/10">2011年10月</A><SPAN>(7)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2011/06">2011年06月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2010/10">2010年10月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/month/2010/02">2010年02月</A><SPAN>(1)</SPAN></LI>
+  </DIV></UL></DIV>
+<DIV id="hotarticls" class="panel">
+<UL class="panel_head"><SPAN>阅读排行    </SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title="JVM原理和优化" href="http://blog.csdn.net/ning109314/article/details/10411495">JVM原理和优化</A><SPAN>(80724)</SPAN>
+  </LI>
+  <LI><A title="this web application instance has been stopped already解决办法" 
+  href="http://blog.csdn.net/ning109314/article/details/7070042">this web 
+  application instance has been stopped already解决办法</A><SPAN>(54832)</SPAN></LI>
+  <LI><A title="电子商务网站购物车设计" href="http://blog.csdn.net/ning109314/article/details/7446913">电子商务网站购物车设计</A><SPAN>(20801)</SPAN>
+  </LI>
+  <LI><A title="LazyLoad.js及scrollLoading.js" href="http://blog.csdn.net/ning109314/article/details/7042829">LazyLoad.js及scrollLoading.js</A><SPAN>(13399)</SPAN>
+  </LI>
+  <LI><A title="Mysql数据库调优和性能优化的21条最佳实践" href="http://blog.csdn.net/ning109314/article/details/9997867">Mysql数据库调优和性能优化的21条最佳实践</A><SPAN>(12419)</SPAN>
+  </LI>
+  <LI><A title="oracle行转列函数" href="http://blog.csdn.net/ning109314/article/details/10919029">oracle行转列函数</A><SPAN>(10072)</SPAN>
+  </LI>
+  <LI><A title="数据库悲观锁和乐观锁" href="http://blog.csdn.net/ning109314/article/details/10154321">数据库悲观锁和乐观锁</A><SPAN>(10060)</SPAN>
+  </LI>
+  <LI><A title="SpringMVC之用注解控制器" href="http://blog.csdn.net/ning109314/article/details/7595403">SpringMVC之用注解控制器</A><SPAN>(8396)</SPAN>
+  </LI>
+  <LI><A title="Windows中VirtualBox虚拟机实现桥接方式(Bridged Adapter)" href="http://blog.csdn.net/ning109314/article/details/7306313">Windows中VirtualBox虚拟机实现桥接方式(Bridged 
+  Adapter)</A><SPAN>(8221)</SPAN></LI>
+  <LI><A title="Glassfish 安装&amp;配置" href="http://blog.csdn.net/ning109314/article/details/7309645">Glassfish 
+  安装&amp;配置</A><SPAN>(7894)</SPAN></LI></UL></DIV>
+<DIV id="hotarticls2" class="panel">
+<UL class="panel_head"><SPAN>评论排行</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title="this web application instance has been stopped already解决办法" 
+  href="http://blog.csdn.net/ning109314/article/details/7070042">this web 
+  application instance has been stopped already解决办法</A><SPAN>(11)</SPAN></LI>
+  <LI><A title="电子商务网站购物车设计" href="http://blog.csdn.net/ning109314/article/details/7446913">电子商务网站购物车设计</A><SPAN>(5)</SPAN>
+  </LI>
+  <LI><A title="LazyLoad.js及scrollLoading.js" href="http://blog.csdn.net/ning109314/article/details/7042829">LazyLoad.js及scrollLoading.js</A><SPAN>(3)</SPAN>
+  </LI>
+  <LI><A title="JVM原理和优化" href="http://blog.csdn.net/ning109314/article/details/10411495">JVM原理和优化</A><SPAN>(3)</SPAN>
+  </LI>
+  <LI><A title="SpringMVC之用注解控制器" href="http://blog.csdn.net/ning109314/article/details/7595403">SpringMVC之用注解控制器</A><SPAN>(2)</SPAN>
+  </LI>
+  <LI><A title="MySQL数据库表的主键到底是用GUID好，还是INT好？" href="http://blog.csdn.net/ning109314/article/details/7162894">MySQL数据库表的主键到底是用GUID好，还是INT好？</A><SPAN>(1)</SPAN>
+  </LI>
+  <LI><A title="XP/win7如何删除服务" href="http://blog.csdn.net/ning109314/article/details/8020757">XP/win7如何删除服务</A><SPAN>(1)</SPAN>
+  </LI>
+  <LI><A title="Windows中VirtualBox虚拟机实现桥接方式(Bridged Adapter)" href="http://blog.csdn.net/ning109314/article/details/7306313">Windows中VirtualBox虚拟机实现桥接方式(Bridged 
+  Adapter)</A><SPAN>(1)</SPAN></LI>
+  <LI><A title="Windows 下的redmine搭建" href="http://blog.csdn.net/ning109314/article/details/6563893">Windows 
+  下的redmine搭建</A><SPAN>(1)</SPAN></LI>
+  <LI><A title="使用Oracle函数实现按汉字拼音首字母查询功能" href="http://blog.csdn.net/ning109314/article/details/6927688">使用Oracle函数实现按汉字拼音首字母查询功能</A><SPAN>(1)</SPAN>
+  </LI></UL></DIV>
+<DIV id="homepageArticles" class="panel tracking-ad" data-mod="popu_4">
+<UL class="panel_head"><SPAN>推荐文章</SPAN></UL>
+<UL id="ad_commend" class="panel_body">
+  <UL>
+    <LI><A href="http://blog.csdn.net/guolin_blog/article/details/51763825" 
+    target="_blank">* 郭神带你真正理解沉浸式模式</A></LI>
+    <LI><A href="http://blog.csdn.net/poem_qianmo/article/details/52268975" 
+    target="_blank">* 优秀代码的格式准则</A></LI>
+    <LI><A href="http://blog.csdn.net/wzy0623/article/details/52249187" target="_blank">* 
+    Hadoop的数据仓库实践——OLAP与数据可视化（二）</A></LI>
+    <LI><A href="http://blog.csdn.net/megatronkings/article/details/52156312" 
+    target="_blank">* Android 视图篇——恼人的分割线留白解决之道</A></LI>
+    <LI><A href="http://blog.csdn.net/abc649395594/article/details/52259409" 
+    target="_blank">* 移动端开发者眼中的前端开发流程变迁与前后端分离</A></LI></UL></UL></DIV>
+<DIV id="newcomments" class="panel">
+<UL class="panel_head"><SPAN>最新评论</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/details/7070042#comments">this 
+  web application instance has been stopped already解决办法</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/dingdangwang">dingdangwang</A>:
+  楼主说的我找到了  改了也好用 就在server.xml中    </P></LI>
+  <LI><A href="http://blog.csdn.net/ning109314/article/details/10411495#comments">JVM原理和优化</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/chaocai2004">chaocai2004</A>:
+  这个是亚马逊最受工程欢迎的JVM培训视频，深入浅出http://blog.csdn.net/chao...    </P></LI>
+  <LI><A href="http://blog.csdn.net/ning109314/article/details/10411495#comments">JVM原理和优化</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/u010121883">u010121883</A>:
+  还是没有那么高的知识量，只看懂了一点点    </P></LI>
+  <LI><A href="http://blog.csdn.net/ning109314/article/details/10411495#comments">this 
+  web application instance has been stopped already解决办法</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/u010663021">u010663021</A>:
+  没有这个节点，已证实！    </P></LI>
+  <LI><A href="http://blog.csdn.net/ning109314/article/details/10411495#comments">JVM原理和优化</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/jorjimmy">jorjimmy</A>:
+  希望能持续更新新版本的jvm的gc机制    </P></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/details/7595403#comments">SpringMVC之用注解控制器</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/s986450042">s986450042</A>:
+  确定是在类级别上和方法级别上映射注解的？    </P></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/details/9997867#comments">Mysql数据库调优和性能优化的21条最佳实践</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/u010850027">u010850027</A>:
+  谢谢分享 学习了 `(*∩_∩*)′    </P></LI>
+  <LI><A href="http://blog.csdn.net/ning109314/article/details/10491873#comments">MemberCache学习</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/penkee">penkee</A>:
+  我有一个疑问，pool 和mcc之间也没关联起来么，怎么起作用    </P></LI>
+  <LI><A href="http://blog.csdn.net/ning109314/article/details/10491873#comments">this 
+  web application instance has been stopped already解决办法</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/u012929879">u012929879</A>:
+   @qiantujava:很有用    问题已解决    </P></LI>
+  <LI><A 
+  href="http://blog.csdn.net/ning109314/article/details/7162894#comments">MySQL数据库表的主键到底是用GUID好，还是INT好？</A>
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/feiazifeiazi">feiazifeiazi</A>:
+  你说的是 mssql，不是mysql。别乱写。    </P></LI></UL></DIV></DIV>
+<DIV class="clear"></DIV><!-- 广告位开始 --><INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="190"></INS><!-- 广告位结束 --></DIV>
+<DIV class="clear"></DIV></DIV>
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/cnick.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/newblog.min.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/showblogmedal.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/JavaScript1.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/login.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</SCRIPT>
+
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/counter.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad-blog.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</SCRIPT>
+</DIV><!--new top-->
+<SCRIPT id="csdn-toolbar-id" type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/toolbar.js" subCount="5" count="5" wrapId="note1" btnId="header_notice_num"></SCRIPT>
+<!--new top--><LINK rel="stylesheet" type="text/css" href="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.css">
+<SCRIPT language="JavaScript" type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/wmd.js"></SCRIPT>
+
+<SCRIPT language="JavaScript" type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/showdown.js"></SCRIPT>
+
+<SCRIPT language="JavaScript" type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/prettify.js"></SCRIPT>
+
+<SCRIPT language="JavaScript" type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.js"></SCRIPT>
+
+<DIV style="width: 1px; height: 1px; display: none;" id="a52b5334d">
+<SCRIPT id="adJs52b5334"></SCRIPT>
+
+<SCRIPT>document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();</SCRIPT>
+</DIV><LINK rel="stylesheet" href="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog_code.css">
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/saveToCode.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="this%20web%20application%20instance%20has%20been%20stopped%20already解决办法%20-%20ning109314的专栏%20-%20博客频道%20-%20CSDN_NET_files/main(1).js"></SCRIPT>
+</BODY></HTML>

@@ -1,0 +1,1063 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JSTL SQL标签库 使用 - lihui_yy - 博客园</title><script async="" src="JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/core.php"></script>
+<link type="text/css" rel="stylesheet" href="JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-elf.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/lihuiyy/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/lihuiyy/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/lihuiyy/wlwmanifest.xml">
+<script src="JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'lihuiyy', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.js" type="text/javascript"></script>
+<style type="text/css">
+.c_ad_block,[id^="div-gpt-ad-"],#ibanner {display:none!important;display:none}[id="bb9c190068b8405587e5006f905e790c"]{display:none;position:absolute;top:-1000000px;visibility:hidden}</style>
+<script language="javascript" type="text/javascript" src="JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/35ff706fd57d11c141cdefcd58d6562b.js" charset="gb2312"></script><style type="text/css" id="a53db30f6-3370-4fa8-93c5-c8db74bb05ad">.f30b699fe-8a1e-4d4b-b1b8-5a443e27b9ac8411 { width:300px;height:250px; margin:0 0 10px 0;z-index:999999999;}</style><script type="text/javascript">
+hQGHuMEAyLn('[id="bb9c190068b8405587e5006f905e790c"]');</script></head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/lihuiyy/"><img id="blogLogo" src="JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/lihuiyy/">lihui_yy</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/lihuiyy/">首页</a></li>
+<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/lihui_yy">联系</a></li>
+<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/lihuiyy/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/lihuiyy/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<span id="stats_post_count">随笔 - 84&nbsp; </span>
+<span id="stats_article_count">文章 - 13&nbsp; </span>
+<span id="stats-comment_count">评论 - 42</span>
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/lihuiyy/archive/2012/03/01/2376086.html">JSTL SQL标签库 使用</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>推荐博客：<a href="http://blog.sina.com.cn/s/blog_4f925fc30101820u.html">http://blog.sina.com.cn/s/blog_4f925fc30101820u.html</a></p>
+<p>怕博主把原文删了，所以在这里先保存一下、</p>
+<h2>SQL<span style="font-family: 方正楷体简体;">标签库</span></h2>
+<p>JSTL<span style="font-family: 宋体;">提供了与数据库相关操作的标签，可以直接从页面上实现数据库操作的功能，在开发小型网站是可以很方便的实现数据的读取和操作。本章将详细介绍这些标签的功能和使用方法。</span></p>
+<p>SQL<span style="font-family: 宋体;"><span style="font-family: 宋体;">标</span>签库从功能上可以划分为两类：设置数据源标签、</span>SQL<span style="font-family: 宋体;">指令标签。</span></p>
+<p><span style="font-family: 宋体;">引入</span>SQL<span style="font-family: 宋体;">标签库的指令代码为：</span></p>
+<p>&lt;%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %&gt;</p>
+<h3>1&nbsp;<span style="font-family: 黑体;">设置数据源</span></h3>
+<p><span style="font-family: 宋体;">使用</span>&lt;sql:setDataSource&gt;<span style="font-family: 宋体;">标签可以实现对数据源的配置。</span></p>
+<p><span style="font-family: 宋体;">【语法</span>1<span style="font-family: 宋体;">】：直接使用已经存在的数据源。</span></p>
+<p>&lt;sql:setDataSource dataSource=”dataSource”[var=”name”]</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[scope=”page|request|session|application”]/&gt;</p>
+<p><span style="font-family: 宋体;">【语法</span>2<span style="font-family: 宋体;">】：使用</span>JDBC<span style="font-family: 宋体;">方式建立数据库连接。</span></p>
+<p>&lt;sql:setDataSource driver=”driverClass” url=”jdbcURL”</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user=”username”</p>
+<p style="tab-stops: 21.0pt 42.0pt 63.0pt 84.0pt 105.0pt 126.0pt 147.0pt 168.0pt 189.0pt 234.75pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;password=”pwd”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[var=”name”]</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[scope=”page|request|session|application”]/&gt;</p>
+<p><span style="font-family: 宋体;">【参数说明】：见表</span>9-15</p>
+<p><span style="font-family: 黑体;">表</span>9-15&nbsp;&lt;sql:DataSource&gt;<span style="font-family: 黑体;">标签属性说明</span></p>
+<p>&nbsp;</p>
+<table style="border-collapse: collapse;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 57.9pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="77" valign="top">
+<p><span style="font-family: 宋体;">参数名</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 156.7pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="209" valign="top">
+<p><span style="font-family: 宋体;">说明</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 21.8pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="29" valign="top">
+<p>EL</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 89.25pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="119" valign="top">
+<p><span style="font-family: 宋体;">类型</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 63pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="84" valign="top">
+<p><span style="font-family: 宋体;">必须</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36.05pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: medium none; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">默认值</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 57.9pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="77" valign="top">
+<p>dataSource</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 156.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="209" valign="top">
+<p><span style="font-family: 宋体;">数据源</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 21.8pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="29" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 89.25pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="119" valign="top">
+<p>String</p>
+<p>Javax.sql.DataSource</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 63pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="84" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36.05pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 57.9pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="77" valign="top">
+<p>driver</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 156.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="209" valign="top">
+<p><span style="font-family: 宋体;">使用的</span>JDBC<span style="font-family: 宋体;">驱动</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 21.8pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="29" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 89.25pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="119" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 63pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="84" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36.05pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 57.9pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="77" valign="top">
+<p>url</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 156.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="209" valign="top">
+<p><span style="font-family: 宋体;">连接数据库的路径</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 21.8pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="29" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 89.25pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="119" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 63pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="84" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36.05pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 57.9pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="77" valign="top">
+<p>user</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 156.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="209" valign="top">
+<p><span style="font-family: 宋体;">连接数据库的用户名</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 21.8pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="29" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 89.25pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="119" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 63pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="84" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36.05pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 57.9pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="77" valign="top">
+<p>password</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 156.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="209" valign="top">
+<p><span style="font-family: 宋体;">连接数据库的密码</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 21.8pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="29" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 89.25pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="119" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 63pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="84" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36.05pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 57.9pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="77" valign="top">
+<p>var</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 156.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="209" valign="top">
+<p><span style="font-family: 宋体;">指定存储数据源的变量名</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 21.8pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="29" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 89.25pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="119" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 63pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="84" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36.05pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 57.9pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="77" valign="top">
+<p>scope</p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 156.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="209" valign="top">
+<p><span style="font-family: 宋体;">指定数据源存储的</span>JSP<span style="font-family: 宋体;">范围</span></p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 21.8pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="29" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 89.25pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="119" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 63pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="84" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36.05pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="48" valign="top">
+<p>page</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><span style="font-family: 楷体_GB2312;">提示：是否必须是相对的，比如说如果使用数据源则，</span>driver<span style="font-family: 楷体_GB2312;">、</span>url<span style="font-family: 楷体_GB2312;">等就不再被使用。如果使用</span>JDBC<span style="font-family: 楷体_GB2312;">则要用到</span>driver<span style="font-family: 楷体_GB2312;">、</span>url<span style="font-family: 楷体_GB2312;">、</span>user<span style="font-family: 楷体_GB2312;">、</span>password<span style="font-family: 楷体_GB2312;">属性。</span></p>
+<p><span style="font-family: 宋体;">例如连接</span>SQL Server<span style="font-family: 宋体;">需要进行如下配置：</span></p>
+<p>Driver="com.microsoft.jdbc.sqlserver.SQLServerDriver"</p>
+<p>url=” jdbc:microsoft:sqlserver://localhost:1433; DatabaseName=pubs"</p>
+<p>user=”sa”</p>
+<p>password=””</p>
+<p><span style="font-family: 宋体;">使用</span>&lt;fmt:setDataSource&gt;<span style="font-family: 宋体;">配置的代码如下：</span></p>
+<p>&lt;fmt:setDataSource driver=”com.microsoft.jdbc.sqlserver.SQLServerDriver”</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url=”jdbc.microsoft:sqlserver://localhost:1433;DatabaseName=pubs”</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user=”sa”</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;password=””&gt;</p>
+<p><span style="font-family: 宋体;">如果连接其他数据库，只须把相对应的项修改即可。</span></p>
+<p><span style="font-family: 楷体_GB2312;">提示：可以把数据连接的配置存入</span>session<span style="font-family: 楷体_GB2312;">中，如果再用到数据库连接只须配置使用</span>DataSource<span style="font-family: 楷体_GB2312;">属性。</span></p>
+<h3>2&nbsp;SQL<span style="font-family: 黑体;">操作标签</span></h3>
+<p>JSTL<span style="font-family: 宋体;">提供了</span>&lt;sql:query&gt;<span style="font-family: 宋体;">、</span>&lt;sql:update&gt;<span style="font-family: 宋体;">、</span>&lt;sql:param&gt;<span style="font-family: 宋体;">、</span>&lt;sql:dateParam&gt;<span style="font-family: 宋体;">和</span>&lt;sql:transaction&gt;<span style="font-family: 宋体;">这</span>5<span style="font-family: 宋体;">个标签，通过使用</span>SQL<span style="font-family: 宋体;">语言操作数据库，实现增加、删除、修改等操作。下面将介绍这</span>5<span style="font-family: 宋体;">个标签的功能和使用方式。</span></p>
+<p>1<span style="font-family: 宋体;">．</span>&lt;sql:query&gt;<span style="font-family: 宋体;">标签</span></p>
+<p>&lt;sql:query&gt;<span style="font-family: 宋体;">标签用来查询数据。</span></p>
+<p><span style="font-family: 宋体;">【语法</span>1<span style="font-family: 宋体;">】：</span></p>
+<p>&lt;sql:query sql=”sqlQuery” var=”name” [scope=”page|request|session|application”]</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dataSource=”dateSource”]</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[maxRow=”maxRow”]</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[startRow=”starRow”]/&gt;</p>
+<p style="tab-stops: 138.0pt 184.5pt;"><span style="font-family: 宋体;">【语法</span>2<span style="font-family: 宋体;">】：</span></p>
+<p>&lt;sql:query var=”name” [scope=”page|request|session|application”]</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dataSource=”dateSource”]</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[maxRow=”maxRow”]</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[startRow=”starRow”]</p>
+<p>&gt;&nbsp;</p>
+<p>sqlQuery</p>
+<p>&lt;/sql:query&gt;</p>
+<p><span style="font-family: 宋体;">【属性说明】：见表</span>9-16<span style="font-family: 宋体;">。</span></p>
+<p><span style="font-family: 黑体;">表</span>9-16&nbsp;&lt;sql:query&gt;<span style="font-family: 黑体;">标签属性说明</span></p>
+<p>&nbsp;</p>
+<table style="border-collapse: collapse;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 68.85pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="92" valign="top">
+<p><span style="font-family: 宋体;">参数名</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 143.55pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="191" valign="top">
+<p><span style="font-family: 宋体;">说明</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 27pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="36" valign="top">
+<p>EL</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 108pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="144" valign="top">
+<p><span style="font-family: 宋体;">类型</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">必须</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 42.7pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: medium none; padding-top: 0cm;" width="57" valign="top">
+<p><span style="font-family: 宋体;">默认值</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 68.85pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="92" valign="top">
+<p>sql</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 143.55pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="191" valign="top">
+<p><span style="font-family: 宋体;">查询数据的</span>SQL<span style="font-family: 宋体;">语句</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 27pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="36" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 108pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="144" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 42.7pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="57" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 68.85pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="92" valign="top">
+<p>dataSource</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 143.55pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="191" valign="top">
+<p><span style="font-family: 宋体;">数据源对象</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 27pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="36" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 108pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="144" valign="top">
+<p>String</p>
+<p>Javax.sql.DataSoutce</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 42.7pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="57" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 68.85pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="92" valign="top">
+<p>maxRow</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 143.55pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="191" valign="top">
+<p><span style="font-family: 宋体;">设定最多可以暂存数据的行数</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 27pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="36" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 108pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="144" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 42.7pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="57" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 68.85pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="92" valign="top">
+<p>startRow</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 143.55pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="191" valign="top">
+<p><span style="font-family: 宋体;">设定从那一行数据开始</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 27pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="36" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 108pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="144" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 42.7pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="57" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 68.85pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="92" valign="top">
+<p>var</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 143.55pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="191" valign="top">
+<p><span style="font-family: 宋体;">指定存储查询结果的变量名</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 27pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="36" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 108pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="144" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 42.7pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="57" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 68.85pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="92" valign="top">
+<p>scope</p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 143.55pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="191" valign="top">
+<p><span style="font-family: 宋体;">指定结果的作用域</span></p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 27pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="36" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 108pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="144" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 36pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 42.7pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="57" valign="top">
+<p>page</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p style="tab-stops: 138.0pt 184.5pt;"><span style="font-family: 宋体;">使用</span>&lt;sql:query&gt;<span style="font-family: 宋体;">必须指定数据源，</span>dataSource<span style="font-family: 宋体;">是可选的，如果未给定该属性标签会在</span>page<span style="font-family: 宋体;">范围内查找是否设置过数据源，如果没有找到将抛出异常。</span></p>
+<p style="tab-stops: 138.0pt 184.5pt;"><span style="font-family: 宋体;">一般情况下使用</span>&lt;sql:setDateSource&gt;<span style="font-family: 宋体;">标签设置一个数据源存储在</span>session<span style="font-family: 宋体;">范围中，当需要数据库连接时使用</span>dataSource<span style="font-family: 宋体;">属性并实现数据库的操作。</span></p>
+<p style="tab-stops: 138.0pt 184.5pt;">&lt;sql:query&gt;<span style="font-family: 宋体;">的</span>var<span style="font-family: 宋体;">属性是必须的用来存放结果集，如果没有指定</span>scope<span style="font-family: 宋体;">范围则默认为</span>page<span style="font-family: 宋体;">，即在当前页面我们可以随时输出查询结果。结果集有一系列的属性如表</span>9-17<span style="font-family: 宋体;">所示。</span></p>
+<p style="tab-stops: 138.0pt 184.5pt;">maxRows<span style="font-family: 宋体;">和</span>startRow<span style="font-family: 宋体;">属性用来操作结果集，使用</span>SQL<span style="font-family: 宋体;">语句首先吧数据放入内存中，检查是否设置了</span>startRow<span style="font-family: 宋体;">属性，如果设置了就从</span>starRow<span style="font-family: 宋体;">指定的那一行开始取</span>maxRows<span style="font-family: 宋体;">个值，如果没有设定则从第一行开始取。</span></p>
+<p><span style="font-family: 黑体;">表</span>9-17&nbsp;<span style="font-family: 黑体;">结果集参数说明</span></p>
+<p>&nbsp;</p>
+<table style="border-collapse: collapse;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="189" valign="top">
+<p><span style="font-family: 宋体;">属性名</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.05pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="189" valign="top">
+<p><span style="font-family: 宋体;">类型</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.05pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: medium none; padding-top: 0cm;" width="189" valign="top">
+<p><span style="font-family: 宋体;">说明</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="189" valign="top">
+<p>rowCount</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.05pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="189" valign="top">
+<p>int</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.05pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="189" valign="top">
+<p><span style="font-family: 宋体;">结果集中的记录总数</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="189" valign="top">
+<p>Rows</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.05pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="189" valign="top">
+<p>Java.util.Map</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.05pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="189" valign="top">
+<p><span style="font-family: 宋体;">以字段为索引查询的结果</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="189" valign="top">
+<p>rowsByIndex</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.05pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="189" valign="top">
+<p>Object[]</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.05pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="189" valign="top">
+<p><span style="font-family: 宋体;">以数字为作索引的查询结果</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="189" valign="top">
+<p>columnNames</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.05pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="189" valign="top">
+<p>String[]</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.05pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="189" valign="top">
+<p><span style="font-family: 宋体;">字段名称数组</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="189" valign="top">
+<p>limitedByMaxRows</p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.05pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="189" valign="top">
+<p>boolean</p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.05pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="189" valign="top">
+<p><span style="font-family: 宋体;">是否设置了</span>maxRows<span style="font-family: 宋体;">属性来限制查询记录的数量</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><span style="font-family: 楷体_GB2312;">提示：</span>limitedByMaxRows<span style="font-family: 楷体_GB2312;">用来判断程序是否收到</span>maxRows<span style="font-family: 楷体_GB2312;">属性的限制。并不是说设定了</span>maxRows<span style="font-family: 楷体_GB2312;">属性，得到结果集的</span>limitedByMaxRows<span style="font-family: 楷体_GB2312;">的属性都为</span>true<span style="font-family: 楷体_GB2312;">，当取出的结果集小于</span>maxRows<span style="font-family: 楷体_GB2312;">时，则</span>maxRows<span style="font-family: 楷体_GB2312;">没有对结果集起到作用此时也为</span>false<span style="font-family: 楷体_GB2312;">。例如可以使用</span>startRow<span style="font-family: 楷体_GB2312;">属性限制结果集的数据量。</span></p>
+<p style="tab-stops: 138.0pt 184.5pt;"><span style="font-family: 宋体;">结果集的作用就是定义了数据在页面中的显示方式。下面给出了结果集每个属性的作用。</span></p>
+<p><span style="font-family: Wingdings;">q<span style="font: 7pt 'Times new roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span> rowCount<span style="font-family: 宋体;">属性。该属性统计结果集中有效记录的量，可以使用于大批量数据分页显示。</span></p>
+<p><span style="font-family: Wingdings;">q<span style="font: 7pt 'Times new roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span> Rows<span style="font-family: 宋体;">属性。等到每个字段对应的值。返回的结果为：字段名</span>={<span style="font-family: 宋体;">字段值···</span>}</p>
+<p><span style="font-family: Wingdings;">q<span style="font: 7pt 'Times new roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span> rowsByIndex<span style="font-family: 宋体;">属性。常用得到数据库中数据的方式，从有效行的第一个元素开始遍历，到最后一个有效行的最后一个元素。</span></p>
+<p><span style="font-family: Wingdings;">q<span style="font: 7pt 'Times new roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span> columnNames<span style="font-family: 宋体;">属性。用于得到数据库中的字段名。</span></p>
+<p><span style="font-family: Wingdings;">q<span style="font: 7pt 'Times new roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span> limitedByMaxRows<span style="font-family: 宋体;">属性。用于判断是否受到了</span>maxRows<span style="font-family: 宋体;">的限制。</span></p>
+<p style="tab-stops: 138.0pt 184.5pt;"><span style="font-family: 宋体;">【示例代码】：代码</span>9.20<span style="font-family: 宋体;">给出了配置数据库连接，和使用</span>&lt;sql:query&gt;<span style="font-family: 宋体;">查询数据以及结果集属性的使用。</span></p>
+<div style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 1pt; padding-left: 0cm; padding-right: 0cm; border-top: medium none; border-right: medium none; padding-top: 0cm;">
+<p style="text-indent: 24pt;"><span style="font-family: 黑体;">代码</span>9.20&nbsp;<span style="font-family: 黑体;">数据库示查询示例：</span>sqldemo01.jsp</p>
+</div>
+<p>&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;</p>
+<p>&lt;%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %&gt;</p>
+<p>&lt;%@ page contentType="text/html;charset=GBK"%&gt;</p>
+<p>&lt;html&gt;</p>
+<p>&lt;head&gt;</p>
+<p>&nbsp;&lt;title&gt;JSTL: SQL<span style="font-family: 黑体;">标签</span>&lt;/title&gt;</p>
+<p>&lt;/head&gt;</p>
+<p>&lt;body &gt;</p>
+<p>&lt;h3&gt;SQL<span style="font-family: 黑体;">标签库</span>&lt;/h3&gt;</p>
+<p>&lt;hr&gt;</p>
+<p>&lt;sql:setDataSource driver="com.microsoft.jdbc.sqlserver.SQLServerDriver"</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url="jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=pubs"</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user="sa" password="" /&gt;</p>
+<p>&lt;sql:query var="result" sql="select * from person" maxRows="2" startRow="1"/&gt;</p>
+<p><span style="font-family: 黑体;">结果集的实质是：</span>${result}&lt;br&gt;</p>
+<p><span style="font-family: 黑体;">得到的行数为：</span>${result.rowCount}&lt;br&gt;</p>
+<p><span style="font-family: 黑体;">是否收到了</span>maxRows<span style="font-family: 黑体;">的限制：</span>${result.limitedByMaxRows}</p>
+<p>&lt;hr&gt;</p>
+<p>&lt;table border="1" align="center"&gt;</p>
+<p>&lt;tr&gt;&lt;c:forEach var="columnName" items="${result.columnNames}"&gt;</p>
+<p>&lt;td&gt;</p>
+<p>&lt;c:out value="${columnName}"/&gt;</p>
+<p>&lt;/td&gt;</p>
+<p>&lt;/c:forEach&gt; &lt;/tr&gt;</p>
+<p>&lt;c:forEach var="row" items="${result.rowsByIndex}"&gt;</p>
+<p>&lt;tr&gt;</p>
+<p>&lt;c:forEach var="column" items="${row}"&gt;</p>
+<p>&lt;td&gt;&lt;c:out value="${column}"/&gt;&lt;/td&gt;</p>
+<p>&lt;/c:forEach&gt;</p>
+<p>&lt;/tr&gt;</p>
+<p>&lt;/c:forEach&gt;</p>
+<p>&lt;/table&gt;</p>
+<p>&lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p style="tab-stops: 138.0pt 184.5pt;"><span style="font-family: 宋体;">【代码解析】：</span></p>
+<p style="tab-stops: 138.0pt 184.5pt;"><span style="font-family: 宋体;">（</span>1<span style="font-family: 宋体;">）配置数据源。使用</span>&lt;sql:dataSource&gt;<span style="font-family: 宋体;">标签配置数据源，因为只共本页使用因此存储在默认的</span>page<span style="font-family: 宋体;">范围中。</span></p>
+<p style="tab-stops: 138.0pt 184.5pt;"><span style="font-family: 宋体;">（</span>2<span style="font-family: 宋体;">）使用</span>&lt;sql:query&gt;<span style="font-family: 宋体;">标签进行数据库查询，并定义了</span>maxRows<span style="font-family: 宋体;">和</span>startRow<span style="font-family: 宋体;">属性。并把结果集存储于作用于</span>page<span style="font-family: 宋体;">范围的</span>result<span style="font-family: 宋体;">变量。使用</span>${result}<span style="font-family: 宋体;">输出可以发现结果集就是一个</span>ResultImpl<span style="font-family: 宋体;">类。</span></p>
+<p><span style="font-family: 楷体_GB2312;">提示：在进行数据源配置时程序不会检查数据库连接是否配置正确，直接根据设定的数据库及连接访问，如果没有找到则抛出操作的表异常，因此要放如</span>&lt;c:catch&gt;&lt;/c:catch&gt;<span style="font-family: 楷体_GB2312;">同时在编写程序时一定要注意数据源是否配置正确。</span></p>
+<p style="tab-stops: 138.0pt 184.5pt;"><span style="font-family: 宋体;">（</span>3<span style="font-family: 宋体;">）使用结果集的</span>rowCount<span style="font-family: 宋体;">属性得到记录的总量。代码为：</span></p>
+<p>${result.rowCount}</p>
+<p style="tab-stops: 138.0pt 184.5pt;"><span style="font-family: 宋体;">（</span>4<span style="font-family: 宋体;">）使用结果集的</span>limitedMaxRows<span style="font-family: 宋体;">属性判断是否收到</span>maxRows<span style="font-family: 宋体;">设定的影响。代码为：</span></p>
+<p>${result.limitedMaxRows}</p>
+<p style="tab-stops: 138.0pt 184.5pt;"><span style="font-family: 宋体;">（</span>5<span style="font-family: 宋体;">）从结果集中得到数据库中定义的所有的字段。</span>${result.columnnames}<span style="font-family: 宋体;">得到的结果是一个字符串数组，因此需要使用</span>&lt;c:forEach&gt;<span style="font-family: 宋体;">循环输出。代码如下：</span></p>
+<p>&lt;c:forEach var="columnName" items="${result.columnNames}"&gt;</p>
+<p>&lt;c:out value="${columnName}"/&gt;</p>
+<p>&lt;/c:forEach&gt;</p>
+<p style="tab-stops: 138.0pt 184.5pt;"><span style="font-family: 宋体;">（</span>6<span style="font-family: 宋体;">）从结果集中得到所有的值。首先要遍历每一行，然后遍历每一行中的元素，因此需要循环嵌套。代码如下：</span></p>
+<p>&lt;c:forEach var="columnName" items="${result.columnNames}"&gt;</p>
+<p>&lt;c:out value="${columnName}"/&gt;</p>
+<p>&lt;/c:forEach&gt;</p>
+<p>&lt;c:forEach var="row" items="${result.rowsByIndex}"&gt;</p>
+<p>&lt;c:forEach var="column" items="${row}"&gt;</p>
+<p>&lt;c:out value="${column}"/&gt;&lt;/td&gt;</p>
+<p>&lt;/c:forEach&gt;</p>
+<p>&lt;/c:forEach&gt;</p>
+<p><span style="font-family: 楷体_GB2312;">提示：在代码解析中省略了</span>html<span style="font-family: 楷体_GB2312;">元素表格等标签的元素，本示例适用于任何数据库表，只要把数据库的</span>URL<span style="font-family: 楷体_GB2312;">、使用的</span>JDBC<span style="font-family: 楷体_GB2312;">进行相应的配置和操作的数据表名进行相应的修改即可看到结果。</span></p>
+<p>2<span style="font-family: 宋体;">．</span>&lt;sql:update&gt;<span style="font-family: 宋体;">标签</span></p>
+<p>&lt;sql:update&gt;<span style="font-family: 宋体;">用来实现操作数据库如：使用</span>create<span style="font-family: 宋体;">、</span>update<span style="font-family: 宋体;">、</span>delete<span style="font-family: 宋体;">和</span>insert<span style="font-family: 宋体;">等</span>SQL<span style="font-family: 宋体;">语句，并返回影响记录的条数。</span></p>
+<p><span style="font-family: 宋体;">【语法</span>1<span style="font-family: 宋体;">】：</span>SQL<span style="font-family: 宋体;">语句放在标签属性中。</span></p>
+<p>&lt;sql:update sql=”SQL<span style="font-family: 黑体;">语句</span>” [var=”name”] [scope=”page|request|session|application”]</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dateSource=”dateSource”]/&gt;</p>
+<p><span style="font-family: 宋体;">【语法</span>2<span style="font-family: 宋体;">】：</span>SQL<span style="font-family: 宋体;">语句放在标签体内。</span></p>
+<p>&lt;sql:update [var=”name”] [scope=”page|request|session|application”]</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[dateSource=”dateSource”]</p>
+<p>&gt;&nbsp;</p>
+<p>SQL<span style="font-family: 黑体;">语句</span></p>
+<p>&lt;/sql:update&gt;</p>
+<p><span style="font-family: 宋体;">【参数说明】：见表</span>9-18<span style="font-family: 宋体;">。</span></p>
+<p><span style="font-family: 黑体;">表</span>9-18&nbsp;&lt;sql:update&gt;<span style="font-family: 黑体;">标签属性说明</span></p>
+<p>&nbsp;</p>
+<table style="border-collapse: collapse;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 68.7pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="92" valign="top">
+<p><span style="font-family: 宋体;">参数名</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.7pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="190" valign="top">
+<p><span style="font-family: 宋体;">说明</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 26.95pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="36" valign="top">
+<p>EL</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 107.85pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="144" valign="top">
+<p><span style="font-family: 宋体;">类型</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 35.9pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: windowtext 1pt solid; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">必须</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 42.6pt; padding-right: 5.4pt; border-top: windowtext 1.5pt solid; border-right: medium none; padding-top: 0cm;" width="57" valign="top">
+<p><span style="font-family: 宋体;">默认值</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 68.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="92" valign="top">
+<p>sql</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="190" valign="top">
+<p><span style="font-family: 宋体;">查询数据的</span>SQL<span style="font-family: 宋体;">语句</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 26.95pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="36" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 107.85pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="144" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 35.9pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 42.6pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="57" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 68.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="92" valign="top">
+<p>dataSource</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="190" valign="top">
+<p><span style="font-family: 宋体;">数据源对象</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 26.95pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="36" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 107.85pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="144" valign="top">
+<p>String</p>
+<p>Javax.sql.DataSoutce</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 35.9pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 42.6pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="57" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 68.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="92" valign="top">
+<p>var</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="190" valign="top">
+<p><span style="font-family: 宋体;">指定存储查询结果的变量名</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 26.95pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="36" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 107.85pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="144" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 35.9pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">是</span></p>
+</td>
+<td style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 42.6pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="57" valign="top">
+<p><span style="font-family: 宋体;">无</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 68.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="92" valign="top">
+<p>scope</p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 142.7pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="190" valign="top">
+<p><span style="font-family: 宋体;">指定结果的作用域</span></p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 26.95pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="36" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 107.85pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="144" valign="top">
+<p>String</p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 35.9pt; padding-right: 5.4pt; border-top: medium none; border-right: windowtext 1pt solid; padding-top: 0cm;" width="48" valign="top">
+<p><span style="font-family: 宋体;">否</span></p>
+</td>
+<td style="border-bottom: windowtext 1.5pt solid; border-left: medium none; padding-bottom: 0cm; padding-left: 5.4pt; width: 42.6pt; padding-right: 5.4pt; border-top: medium none; border-right: medium none; padding-top: 0cm;" width="57" valign="top">
+<p>page</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><span style="font-family: 楷体_GB2312;">提示：</span>&lt;sql:update&gt;<span style="font-family: 楷体_GB2312;">标签的属性同</span>&lt;sql:query&gt;<span style="font-family: 楷体_GB2312;">标签的属性相比只减少了</span>maxRows<span style="font-family: 楷体_GB2312;">和</span>startRow2<span style="font-family: 楷体_GB2312;">个属性。其他参数用法一样。</span></p>
+<p><span style="font-family: 宋体;">使用</span>&lt;sql:update&gt;<span style="font-family: 宋体;">可以实现数据表的创建、插入数据、更行数据、删除数据。使用时只须在标签中放入正确的</span>SQL<span style="font-family: 宋体;">语句即可，同时要捕获可能产生的异常。本节只对一个简单的插入操作进行说明。</span></p>
+<p><span style="font-family: 宋体;">【示例代码】：代码</span>9.21<span style="font-family: 宋体;">实现了创建一个表、实现数据的插入。</span></p>
+<div style="border-bottom: windowtext 1pt solid; border-left: medium none; padding-bottom: 1pt; padding-left: 0cm; padding-right: 0cm; border-top: medium none; border-right: medium none; padding-top: 0cm;">
+<p style="text-indent: 24pt;"><span style="font-family: 黑体;">代码</span>9.21&nbsp;<span style="font-family: 黑体;">数据库创建、数据插入示例：</span>sqldemo02.jsp</p>
+</div>
+<p>&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;</p>
+<p>&lt;%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %&gt;</p>
+<p>&lt;%@ page contentType="text/html;charset=GBK"%&gt;</p>
+<p>&lt;html&gt;</p>
+<p>&lt;head&gt;</p>
+<p>&nbsp;&lt;title&gt;JSTL: SQL<span style="font-family: 黑体;">标签</span>&lt;/title&gt;</p>
+<p>&lt;/head&gt;</p>
+<p>&lt;body &gt;</p>
+<p>&lt;h3&gt;SQL<span style="font-family: 黑体;">标签库</span>&lt;/h3&gt;</p>
+<p>&lt;hr&gt;</p>
+<p>&lt;sql:setDataSource driver="com.microsoft.jdbc.sqlserver.SQLServerDriver"</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url="jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=pubs"</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user="sa" password="" /&gt;</p>
+<p><span style="font-family: 黑体;">实现数据库表的创建</span>&lt;br&gt;</p>
+<p>&lt;sql:update var="result1"&gt;</p>
+<p>create table c_user (</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id int primary key ,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;name varchar(80),</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;sex varchar(80),</p>
+<p>)</p>
+<p>&lt;/sql:update&gt;</p>
+<p>&lt;c:catch var="error"&gt;</p>
+<p>&lt;sql:update var="result2" &gt;</p>
+<p>insert c_user values(05,'Linda','<span style="font-family: 黑体;">女</span>')</p>
+<p>insert c_user values(01,'Rom','<span style="font-family: 黑体;">男</span>' )</p>
+<p>&lt;/sql:update&gt;</p>
+<p><span style="font-family: 黑体;">影响的记录数为：</span>&lt;c:out value="${result2}"&gt;&lt;/c:out&gt;</p>
+<p>&lt;/c:catch&gt;</p>
+<p>&lt;c:out value="${error}"&gt;&lt;/c:out&gt;&lt;br&gt;</p>
+<p>&lt;hr&gt;</p>
+<p>&lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p><span style="font-family: 宋体;">【代码解析】：</span></p>
+<p><span style="font-family: 宋体;">（</span>1<span style="font-family: 宋体;">）配置数据源。</span></p>
+<p><span style="font-family: 宋体;">（</span>2<span style="font-family: 宋体;">）使用</span>&lt;sql:update&gt;<span style="font-family: 宋体;">标签创建一个新表。</span></p>
+<p><span style="font-family: 宋体;">（</span>3<span style="font-family: 宋体;">）向表中插入两行数据。</span></p>
+<p><span style="font-family: 楷体_GB2312;">提示：本示例也没有针对固定的表进行操作，在使用时直接运行即可，如果使用的是其他数据库，需要更改数据源配置和</span>SQL<span style="font-family: 楷体_GB2312;">语句部分修改。</span></p>
+<p>使用&lt;sql:update&gt;<span style="font-family: 宋体;">的</span>var<span style="font-family: 宋体;">属性记录结果是不准确的，尤其是在一个标签中使用多条</span>sql<span style="font-family: 宋体;">语句只能记录下第一条。</span></p>
+<p>3<span style="font-family: 宋体;">．</span>&lt;sql:param&gt;<span style="font-family: 宋体;">标签</span></p>
+<p>&lt;sql:param&gt;<span style="font-family: 宋体;">标签用于动态的为</span>SQL<span style="font-family: 宋体;">语句设定参数，同</span>&lt;sql:query&gt;<span style="font-family: 宋体;">标签共同使用。可以防止</span>SQL<span style="font-family: 宋体;">注入作用类似于</span>java.sql.PreparedStatement<span style="font-family: 宋体;">。</span></p>
+<p><span style="font-family: 宋体;">【语法</span>1<span style="font-family: 宋体;">】：</span></p>
+<p>&lt;sql:param value=”value”/&gt;</p>
+<p><span style="font-family: 宋体;">【语法</span>2<span style="font-family: 宋体;">】：</span></p>
+<p>&lt;sql:param&gt;</p>
+<p>Value</p>
+<p>&lt;/sql:param&gt;</p>
+<p><span style="font-family: 宋体;">【参数说明】：</span></p>
+<p>value<span style="font-family: 宋体;">的作用为</span>SQL<span style="font-family: 宋体;">中的参数赋值。</span></p>
+<p><span style="font-family: 宋体;">【使用示例】：</span></p>
+<p>&lt;sql:query var=”result”&gt;</p>
+<p>select * from person where <span style="font-family: 黑体;">序号</span>=<span style="font-family: 黑体;">？</span></p>
+<p>&lt;sql:query&gt;</p>
+<p>4<span style="font-family: 宋体;">．</span>&lt;sql:dateParam&gt;<span style="font-family: 宋体;">标签</span></p>
+<p>&lt;sql:dataParam&gt;<span style="font-family: 宋体;">标签主要用于为</span>SQL<span style="font-family: 宋体;">标签填充日期类型的参数值。</span></p>
+<p><span style="font-family: 宋体;">【语法】：</span></p>
+<p>&lt;sql:dateParam value=”date”[type=”timestamp|time|date”]/&gt;</p>
+<p><span style="font-family: 宋体;">【参数说明】：</span></p>
+<p><span style="font-family: Wingdings;">q<span style="font: 7pt 'Times new roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span> value<span style="font-family: 宋体;">属性：</span>java.util.Date<span style="font-family: 宋体;">类型的参数。</span></p>
+<p><span style="font-family: Wingdings;">q<span style="font: 7pt 'Times new roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span> type<span style="font-family: 宋体;">属性：指定填充日期的类型</span>timestamp<span style="font-family: 宋体;">（全部日期和时间）、</span>time<span style="font-family: 宋体;">（填充的参数为时间）、</span>date<span style="font-family: 宋体;">（填充的参数为日期）。</span></p>
+<p>5<span style="font-family: 宋体;">．</span>&lt;sql:transaction&gt;<span style="font-family: 宋体;">标签</span></p>
+<p>&lt;sql:transaction&gt;<span style="font-family: 宋体;">标签提供了数据操作的一种安全机制（即事务回滚），当操作数据库的某条</span>SQL<span style="font-family: 宋体;">语句发生异常时，取消</span>&lt;sql:transaction&gt;<span style="font-family: 宋体;">标签体中的所有操作，恢复原来的状态，重新对数据库进行操作。</span></p>
+<p><span style="font-family: 宋体;">【语法】：</span></p>
+<p>&lt;sql:transaction [dataSource=”dataSource”]</p>
+<p>[isolation=”read_committed|read_uncommitted|repeatable|serializable”]</p>
+<p>&gt;&nbsp;</p>
+<p>&lt;sql:query&gt;</p>
+<p>&lt;sql:uptade&gt;</p>
+<p>&lt;/sql:transation&gt;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/lihuiyy/category/328540.html">JavaWeb</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/lihuiyy/tag/JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93/">JSTL SQL标签库</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(2376086,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow('ab9ab6e2-82b9-e011-8673-842b2b196315');" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/lihuiyy/" target="_blank"><img src="JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/u319502.jpg" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/lihuiyy/">lihui_yy</a><br>
+            <a href="http://home.cnblogs.com/u/lihuiyy/followees">关注 - 8</a><br>
+            <a href="http://home.cnblogs.com/u/lihuiyy/followers">粉丝 - 110</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow('ab9ab6e2-82b9-e011-8673-842b2b196315');return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(2376086,'Digg')">
+        <span class="diggnum" id="digg_count">1</span>
+    </div>
+    <div class="buryit" onclick="votePost(2376086,'Bury')">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/27/2370165.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/27/2370165.html" title="发布于2012-02-27 17:25">JSTL I18N  格式标签库 使用之三_____国际化</a><br><a href="http://www.cnblogs.com/lihuiyy/archive/2012/03/01/2376123.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/lihuiyy/archive/2012/03/01/2376123.html" title="发布于2012-03-01 19:43">JSTL XML标签库 使用</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2012-03-01 19:07</span> <a href="http://www.cnblogs.com/lihuiyy/">lihui_yy</a> 阅读(<span id="post_view_count">5676</span>) 评论(<span id="post_comment_count">1</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=2376086" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2376086);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=98145,cb_entryId=2376086,cb_blogApp=currentBlogApp,cb_blogUserGuid='ab9ab6e2-82b9-e011-8673-842b2b196315',cb_entryCreatedDate='2012/3/1 19:07:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#3031313" class="layer">#1楼</a><a name="3031313" id="comment_anchor_3031313"></a><span id="comment-maxId" style="display:none;">3031313</span><span id="comment-maxDate" style="display:none;">2014/9/20 0:25:13</span>  <span class="comment_date">2014-09-20 00:25</span> <a id="a_comment_author_3031313" href="http://www.cnblogs.com/skydreamteam/" target="_blank">DreamTop</a> <a href="http://msg.cnblogs.com/send/DreamTop" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3031313" class="blog_comment_body">不错，谢谢！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3031313,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3031313,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br><a href="http://www.gcpowertools.com.cn/products/activereports_overview.htm?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=AR&amp;utm_campaign=community" target="_blank">【推荐】报表开发有捷径：快速设计轻松集成，数据可视化和交互</a><br><a href="http://cn.iforex.com/landing_pages/br1/zhns/Testimonials8/?content=Testimonials8&amp;SID=445058" target="_blank">【推荐】一个月仅用630元赚取15000元，学会投资</a><br><a href="http://click.aliyun.com/m/5646/" target="_blank">【推荐】阿里舆情首次开放，69元限量秒杀</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://gold.xitu.io/welcome/?utm_source=cnblogs&amp;utm_medium=banner&amp;utm_content=gaoshou&amp;utm_campaign=q3_website" target="_blank"><img src="JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20160805112458981-1554012564.jpg" alt="" width="300" height="250"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/551375/" target="_blank">阿里股价大涨 马云财富暴涨至340亿美元</a><br> ·  <a href="http://news.cnblogs.com/n/551374/" target="_blank">Windows 10 RedStone 2首个版本14901发布</a><br> ·  <a href="http://news.cnblogs.com/n/551373/" target="_blank">安全专家警告：德国大众数百万汽车存在被黑风险</a><br> ·  <a href="http://news.cnblogs.com/n/551372/" target="_blank">实体Pokemon中心问世 可以为Pokemon Go玩家手机充电</a><br> ·  <a href="http://news.cnblogs.com/n/551371/" target="_blank">过度开发仍是生物灭绝的主要原因</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jiguang.cn/devservice/?from=cnblogs01" target="_blank"><img src="JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20160803181056012-1919505484.jpg" alt="" width="468" height="60"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/550625/" target="_blank">程序猿媳妇儿注意事项</a><br> ·  <a href="http://kb.cnblogs.com/page/540529/" target="_blank">可是姑娘，你为什么要编程呢？</a><br> ·  <a href="http://kb.cnblogs.com/page/549631/" target="_blank">知其所以然（以算法学习为例）</a><br> ·  <a href="http://kb.cnblogs.com/page/548394/" target="_blank">如何给变量取个简短且无歧义的名字</a><br> ·  <a href="http://kb.cnblogs.com/page/549080/" target="_blank">编程的智慧</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div class="f30b699fe-8a1e-4d4b-b1b8-5a443e27b9ac3236"><iframe src="JSTL%20SQL%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/i300.htm" style="width: 280px; height: 250px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"></iframe></div><div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/lihuiyy/">lihui_yy</a><br>园龄：<a href="http://home.cnblogs.com/u/lihuiyy/" title="入园时间：2011-07-29">5年</a><br>粉丝：<a href="http://home.cnblogs.com/u/lihuiyy/followers/">110</a><br>关注：<a href="http://home.cnblogs.com/u/lihuiyy/followees/">8</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow('ab9ab6e2-82b9-e011-8673-842b2b196315')">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="Calendar" cellspacing="0" cellpadding="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar('2012/02/01');return false;">&lt;</a></td><td align="center">2012年3月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar('2012/04/01');return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/03/01.html"><u>1</u></a></td><td align="center">2</td><td class="CalWeekendDay" align="center">3</td></tr><tr><td class="CalWeekendDay" align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td class="CalWeekendDay" align="center">10</td></tr><tr><td class="CalWeekendDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/03/14.html"><u>14</u></a></td><td align="center">15</td><td align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/03/16.html"><u>16</u></a></td><td class="CalWeekendDay" align="center">17</td></tr><tr><td class="CalWeekendDay" align="center">18</td><td align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/03/19.html"><u>19</u></a></td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/03/23.html"><u>23</u></a></td><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/03/24.html"><u>24</u></a></td></tr><tr><td class="CalWeekendDay" align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/03/29.html"><u>29</u></a></td><td align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/03/30.html"><u>30</u></a></td><td class="CalWeekendDay" align="center">31</td></tr><tr><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk" type="text">&nbsp;<input onclick="google_go()" value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/lihuiyy/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/lihuiyy/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/lihuiyy/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/lihuiyy/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/lihuiyy/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" onclick="this.blur();WarpClass('itemListLink', 'itemListLin_con');return false;" href="#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/lihuiyy/tag/I18N/">I18N</a>(3)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/JSTL/">JSTL</a>(3)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/Struts2/">Struts2</a>(2)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/%E6%A0%BC%E5%BC%8F%E6%A0%87%E7%AD%BE%E5%BA%93/">格式标签库</a>(2)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/ABAP/">ABAP</a>(1)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/%E5%9B%BD%E9%99%85%E5%8C%96/">国际化</a>(1)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/%E9%85%8D%E7%BD%AEstruts2%20web.xml%20%E6%8A%A5%E9%94%99/">配置struts2 web.xml 报错</a>(1)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/%E8%BE%93%E5%85%A5%E6%A0%A1%E9%AA%8C/">输入校验</a>(1)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/%E6%95%B0%E5%AD%97%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/">数字日期格式化</a>(1)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/struts2%20action%20%E4%B9%B1%E7%A0%81/">struts2 action 乱码</a>(1)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/lihuiyy/category/328541.html">Android(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/lihuiyy/category/404688.html">ExtJS(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/lihuiyy/category/392620.html">JavaScript(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/lihuiyy/category/328542.html">JavaSE(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/lihuiyy/category/328540.html">JavaWeb(45)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/lihuiyy/category/393314.html">jQuery(15)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/lihuiyy/category/331823.html">OpenGL(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/lihuiyy/category/571277.html">SAP ABAP</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/lihuiyy/category/471752.html">乱七八糟(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/lihuiyy/category/325314.html">算法</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/lihuiyy/archive/2013/04.html">2013年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/lihuiyy/archive/2013/03.html">2013年3月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/lihuiyy/archive/2012/10.html">2012年10月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/lihuiyy/archive/2012/09.html">2012年9月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/lihuiyy/archive/2012/08.html">2012年8月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/lihuiyy/archive/2012/07.html">2012年7月 (18)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/lihuiyy/archive/2012/06.html">2012年6月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/lihuiyy/archive/2012/05.html">2012年5月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/lihuiyy/archive/2012/04.html">2012年4月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/lihuiyy/archive/2012/03.html">2012年3月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/lihuiyy/archive/2012/02.html">2012年2月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/lihuiyy/archive/2011/12.html">2011年12月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/lihuiyy/archive/2011/11.html">2011年11月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/lihuiyy/archive/2011/10.html">2011年10月 (7)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_articlecategory" class="catListArticleCategory sidebar-block">
+<h3 class="catListTitle">文章分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_2_Link_0" href="http://www.cnblogs.com/lihuiyy/category/325287.html">Android</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_1" href="http://www.cnblogs.com/lihuiyy/category/325286.html">C/C++</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_2" href="http://www.cnblogs.com/lihuiyy/category/325288.html">iPhone</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_3" href="http://www.cnblogs.com/lihuiyy/category/325289.html">Java</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_4" href="http://www.cnblogs.com/lihuiyy/category/325766.html">Java Web(11)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_5" href="http://www.cnblogs.com/lihuiyy/category/325290.html">JS</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_6" href="http://www.cnblogs.com/lihuiyy/category/325292.html">sencha touch</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_7" href="http://www.cnblogs.com/lihuiyy/category/325293.html">经典评论</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_8" href="http://www.cnblogs.com/lihuiyy/category/325315.html">算法(2)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/03/14/2395357.html#3483728">1. Re:配置struts2 web.xml 报错</a></li>
+        <li class="recent_comment_body">谢</li>
+        <li class="recent_comment_author">--一点一点荡开</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lihuiyy/archive/2011/11/13/2247388.html#3378620">2. Re:OpenGL 关于全局固定坐标系统与局部移动坐标系统的理解</a></li>
+        <li class="recent_comment_body">十分感谢！网上好多都讲不清楚，君真乃神人也！</li>
+        <li class="recent_comment_author">--吴溢豪</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2366806.html#3371187">3. Re:JSTL 核心标签库 使用</a></li>
+        <li class="recent_comment_body">学习，加深了解</li>
+        <li class="recent_comment_author">--永远改不完的bug</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2363136.html#3352827">4. Re:JSTL 标签库 下载及配置</a></li>
+        <li class="recent_comment_body">我照着你说的配置了，但运行不起来，这是怎么回事？我用的是tomcat8和jdk1.8,望博主不吝赐教！</li>
+        <li class="recent_comment_author">--ljhaaa</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2366806.html#3326568">5. Re:JSTL 核心标签库 使用</a></li>
+        <li class="recent_comment_body">一直不知道varStatus的作用呢，学习了</li>
+        <li class="recent_comment_author">--晨间新闻</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2366806.html">1. JSTL 核心标签库 使用(193204)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2363136.html">2. JSTL 标签库 下载及配置(19833)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/07/17/2596450.html">3. jQuery 序列化表单数据  serialize()  serializeArray()(19485)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/08/14/2638814.html">4. ExtJS    Ext.get()和Ext.getCmp()的区别(17994)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/07/10/2584139.html">5. jQuery DOM 操作（基本操作、内部插入、外部插入、包裹操作）(12204)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2366806.html">1. JSTL 核心标签库 使用(15)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2363136.html">2. JSTL 标签库 下载及配置(4)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/14/2351787.html">3. 使用 servlet 连接数据库(3)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2011/12/06/2278481.html">4. OpenGL 点参数 示例(3)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2011/11/13/2247388.html">5. OpenGL 关于全局固定坐标系统与局部移动坐标系统的理解(3)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2366806.html">1. JSTL 核心标签库 使用(37)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/07/17/2596450.html">2. jQuery 序列化表单数据  serialize()  serializeArray()(3)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2013/03/14/2958782.html">3. Struts2 的国际化实现(3)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/08/08/2601683.html">4. jQuery UI  &amp;  下载  &amp;  拖动组件(2)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/07/17/2595838.html">5. jQuery 中的 Ajax  $.ajax()  load()  $.get()   $.post()   $.getJSON()   $.getScript()(2)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 lihui_yy
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+<div id="Vidown_extension_alhnopeoagjmjfgcbnokcnagkecgdcdh" style="display: none;"></div></body></html>

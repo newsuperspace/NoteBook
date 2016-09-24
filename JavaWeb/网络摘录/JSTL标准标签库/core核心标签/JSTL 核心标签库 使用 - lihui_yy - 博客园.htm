@@ -1,0 +1,631 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JSTL 核心标签库 使用 - lihui_yy - 博客园</title><script type="text/javascript" src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/encoder.js"></script><script async="" src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/core.php"></script>
+<link type="text/css" rel="stylesheet" href="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-elf.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/lihuiyy/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/lihuiyy/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/lihuiyy/wlwmanifest.xml">
+<script src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'lihuiyy', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.js" type="text/javascript"></script>
+<style type="text/css">
+.c_ad_block,[id^="div-gpt-ad-"],#ibanner {display:none!important;display:none}[id="bb9c190068b8405587e5006f905e790c"]{display:none;position:absolute;top:-1000000px;visibility:hidden}</style>
+<script language="javascript" type="text/javascript" src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/35ff706fd57d11c141cdefcd58d6562b.js" charset="gb2312"></script><style type="text/css" id="a53db30f6-3370-4fa8-93c5-c8db74bb05ad">.f30b699fe-8a1e-4d4b-b1b8-5a443e27b9ac6010 { width:300px;height:250px; margin:0 0 10px 0;z-index:999999999;}</style><script type="text/javascript">
+hQGHuMEAyLn('[id="bb9c190068b8405587e5006f905e790c"]');</script></head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/lihuiyy/"><img id="blogLogo" src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/lihuiyy/">lihui_yy</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/lihuiyy/">首页</a></li>
+<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/lihui_yy">联系</a></li>
+<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/lihuiyy/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/lihuiyy/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<span id="stats_post_count">随笔 - 84&nbsp; </span>
+<span id="stats_article_count">文章 - 13&nbsp; </span>
+<span id="stats-comment_count">评论 - 42</span>
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2366806.html">JSTL 核心标签库 使用</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>JSTL 核心标签库标签共有13个，功能上分为4类：</p>
+<p>1.表达式控制标签：<span style="color: #ff0000;">out</span>、<span style="color: #ff0000;">set</span>、<span style="color: #ff0000;">remove</span>、<span style="color: #ff0000;">catch</span></p>
+<p>2.流程控制标签：<span style="color: #ff0000;">if</span>、<span style="color: #ff0000;">choose</span>、<span style="color: #ff0000;">when</span>、<span style="color: #ff0000;">otherwise</span></p>
+<p>3.循环标签：<span style="color: #ff0000;">forEach</span>、<span style="color: #ff0000;">forTokens</span></p>
+<p>4.URL操作标签：<span style="color: #ff0000;">import</span>、<span style="color: #ff0000;">url</span>、<span style="color: #ff0000;">redirect</span></p>
+<p><span style="color: #000000;">使用标签时，一定要在jsp文件头加入以下代码：</span></p>
+<div class="cnblogs_code">
+<pre><span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@taglib prefix</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">c</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;"> uri</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">http://java.sun.com/jsp/jstl/core</span><span style="background-color: #f5f5f5; color: #800000;">"</span> <span style="background-color: #ffff00; color: #000000;">%&gt;</span></pre>
+</div>
+<p><span style="color: #000000;"><br></span></p>
+<p><strong><span style="color: #000000;">下面分别对这些标签进行说明：</span></strong></p>
+<p><span style="color: #000000;"><span style="background-color: #ffff00;">1. &lt;c:out&gt;</span> 用来显示数据对象（字符串、表达式）的内容或结果</span></p>
+<p><span style="color: #000000;">使用Java脚本的方式为：&lt;% out.println("hello")&nbsp;%&gt;&nbsp; &lt;%&nbsp;=表达式 %&gt;</span></p>
+<p><span style="color: #000000;">使用JSTL标签：&lt;c:out value="字符串"&gt;，例如：</span></p>
+<div class="cnblogs_code" style="width: 95%; height: 97px;">
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="&amp;lt要显示的数据对象（未使用转义字符）&amp;gt"</span><span style="color: #ff0000;"> escapeXml</span><span style="color: #0000ff;">="true"</span><span style="color: #ff0000;"> default</span><span style="color: #0000ff;">="默认值"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:out</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">/&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="&amp;lt要显示的数据对象（使用转义字符）&amp;gt"</span><span style="color: #ff0000;"> escapeXml</span><span style="color: #0000ff;">="false"</span><span style="color: #ff0000;"> default</span><span style="color: #0000ff;">="默认值"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:out</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">/&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${null}"</span><span style="color: #ff0000;"> escapeXml</span><span style="color: #0000ff;">="false"</span><span style="color: #0000ff;">&gt;</span>使用的表达式结果为null，则输出该默认值<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:out</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p><span style="color: #000000;">那么网页显示效果为：</span></p>
+<p><span style="color: #000000;"><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/2012022414364933.jpg" alt=""><br></span></p>
+<p><span style="color: #000000;"><span style="background-color: #ffff00;">2. &lt;c:set&gt;</span> 用于将变量存取于 JSP 范围中或 JavaBean 属性中。下面的例子中假设已经有 Person.java 这个类文件。</span></p>
+<p>&nbsp;</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@ page language</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">java</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;"> import</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">java.util.*</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;"> pageEncoding</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">gb2312</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@page contentType</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">text/html; charset=utf-8</span><span style="background-color: #f5f5f5; color: #800000;">"</span> <span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">jsp:useBean </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="person"</span><span style="color: #ff0000;"> class</span><span style="color: #0000ff;">="lihui.Person"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">jsp:useBean</span><span style="color: #0000ff;">&gt;</span><br><br><span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@taglib prefix</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">c</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;"> uri</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">http://java.sun.com/jsp/jstl/core</span><span style="background-color: #f5f5f5; color: #800000;">"</span> <span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><br><span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>JSTL测试<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br>  <br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:set </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="张三"</span><span style="color: #ff0000;"> var</span><span style="color: #0000ff;">="name1"</span><span style="color: #ff0000;"> scope</span><span style="color: #0000ff;">="session"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:set</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:set </span><span style="color: #ff0000;">var</span><span style="color: #0000ff;">="name2"</span><span style="color: #ff0000;"> scope</span><span style="color: #0000ff;">="session"</span><span style="color: #0000ff;">&gt;</span>李四<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:set</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:set </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="赵五"</span><span style="color: #ff0000;"> target</span><span style="color: #0000ff;">="${person}"</span><span style="color: #ff0000;"> property</span><span style="color: #0000ff;">="name"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:set</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:set </span><span style="color: #ff0000;">target</span><span style="color: #0000ff;">="${person}"</span><span style="color: #ff0000;"> property</span><span style="color: #0000ff;">="age"</span><span style="color: #0000ff;">&gt;</span>19<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:set</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>从session中得到的值：${sessionScope.name1}<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>从session中得到的值：${sessionScope.name2}<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>从Bean中获取对象person的name值：<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${person.name}"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:out</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>从Bean中获取对象person的age值：<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${person.age}"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:out</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><span style="color: #000000;">一共有四种语法格式，前两种是给jsp的范围变量赋值，后两个是给 javabean 变量赋值</span></p>
+<p><span style="color: #000000;">效果如下：</span></p>
+<p>&nbsp;</p>
+<p><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/2012022414583840.jpg" alt=""></p>
+<p><span style="color: #000000;"><span style="background-color: #ffff00;">3.&lt;c:remove&gt;</span> 主要用来从指定的 jsp 范围内移除指定的变量。使用类似，下面只给出语法：</span></p>
+<p><span style="color: #000000;">&lt;c:remove var="变量名" [scope="page|request|session|application"]&gt;&lt;/c:remove&gt;</span></p>
+<p><br><span style="background-color: #ffff00;">4.&lt;c:catch&gt;</span> 用来处理 JSP 页面中产生的异常，并存储异常信息</p>
+<p><span style="color: #000000;">&lt;c:catch var="name1"&gt;</span></p>
+<p><span style="color: #000000;"><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 容易产生异常的代码</span></span></p>
+<p><span style="color: #000000;">&lt;/c:catch&gt;</span></p>
+<p><span style="color: #000000;"><span style="color: #000000;">如果抛异常，则异常信息保存在变量 name1 中。</span></span></p>
+<p><span style="background-color: #ffff00; color: #000000;"><span style="color: #000000;"><span style="color: #000000;">5.&lt;c:if&gt;</span></span></span></p>
+<p><span style="color: #000000;">&lt;c:if&nbsp;test="条件1"&nbsp;var="name" [scope="page|request|session|application"]&gt;&lt;/c:remove&gt;</span></p>
+<p><span style="color: #000000;">例：</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:set </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="赵五"</span><span style="color: #ff0000;"> target</span><span style="color: #0000ff;">="${person}"</span><span style="color: #ff0000;"> property</span><span style="color: #0000ff;">="name"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:set</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:set </span><span style="color: #ff0000;">target</span><span style="color: #0000ff;">="${person}"</span><span style="color: #ff0000;"> property</span><span style="color: #0000ff;">="age"</span><span style="color: #0000ff;">&gt;</span>19<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:set</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:if </span><span style="color: #ff0000;">test</span><span style="color: #0000ff;">="${person.name == '赵武'}"</span><span style="color: #ff0000;"> var</span><span style="color: #0000ff;">="name1"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:if</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="name1的值：${name1}"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:out</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">/&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:if </span><span style="color: #ff0000;">test</span><span style="color: #0000ff;">="${person.name == '赵五'}"</span><span style="color: #ff0000;"> var</span><span style="color: #0000ff;">="name2"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:if</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="name2的值：${name2}"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:out</span><span style="color: #0000ff;">&gt;</span><br>  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><span style="color: #000000;">效果：</span></p>
+<p><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/2012022415100391.jpg" alt=""></p>
+<p><span style="color: #000000;"><span style="background-color: #ffff00;">6. &lt;c:choose&gt; &lt;c:when&gt; &lt;c:otherwise&gt;</span> 三个标签通常嵌套使用，第一个标签在最外层，最后一个标签在嵌套中只能使用一次</span></p>
+<p><span style="color: #000000;">例：</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">    &lt;</span><span style="color: #800000;">c:set </span><span style="color: #ff0000;">var</span><span style="color: #0000ff;">="score"</span><span style="color: #0000ff;">&gt;</span>85<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:set</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:choose</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:when </span><span style="color: #ff0000;">test</span><span style="color: #0000ff;">="${score&gt;=90}"</span><span style="color: #0000ff;">&gt;</span><br>    你的成绩为优秀！<br>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:when</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:when </span><span style="color: #ff0000;">test</span><span style="color: #0000ff;">="${score&gt;=70&amp;&amp;score&lt;90}"</span><span style="color: #0000ff;">&gt;</span><br>    您的成绩为良好!<br>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:when</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:when </span><span style="color: #ff0000;">test</span><span style="color: #0000ff;">="${score&gt;60&amp;&amp;score&lt;70}"</span><span style="color: #0000ff;">&gt;</span><br>    您的成绩为及格<br>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:when</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:otherwise</span><span style="color: #0000ff;">&gt;</span><br>    对不起，您没有通过考试！<br>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:otherwise</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:choose</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><span style="background-color: #ffff00; color: #000000;">7.&lt;c:forEach&gt;</span></p>
+<p><span style="color: #000000;">语法：&lt;c:forEach var="name" items="Collection" varStatus="statusName" begin="begin" end="end" step="step"&gt;&lt;/c:forEach&gt;</span></p>
+<p><span style="color: #000000;">该标签根据循环条件遍历集合 Collection 中的元素。 var 用于存储从集合中取出的元素；items 指定要遍历的集合；varStatus 用于存放集合中元素的信息。varStatus 一共有4种状态属性，下面例子中说明：</span></p>
+<div class="cnblogs_code" onclick="cnblogs_code_show('6bb0e35c-4dbc-4078-93b8-794da20c554b')"><img id="code_img_closed_6bb0e35c-4dbc-4078-93b8-794da20c554b" class="code_img_closed" src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ContractedBlock.gif" alt=""><img id="code_img_opened_6bb0e35c-4dbc-4078-93b8-794da20c554b" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('6bb0e35c-4dbc-4078-93b8-794da20c554b',event)" src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ExpandedBlockStart.gif" alt=""><span class="cnblogs_code_collapse">View Code </span>
+<div id="cnblogs_code_open_6bb0e35c-4dbc-4078-93b8-794da20c554b" class="cnblogs_code_hide">
+<pre><span style="color: #008080;"> 1</span> <span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@ page contentType</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">text/html;charset=GBK</span><span style="background-color: #f5f5f5; color: #800000;">"</span> <span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="color: #008080;"> 2</span> <span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@page import</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">java.util.List</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="color: #008080;"> 3</span> <span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@page import</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">java.util.ArrayList</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="color: #008080;"> 4</span> <span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@ taglib prefix</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">c</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;"> uri</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">http://java.sun.com/jsp/jstl/core</span><span style="background-color: #f5f5f5; color: #800000;">"</span> <span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>JSTL: -- forEach标签实例<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">10</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="forEach实例"</span><span style="color: #0000ff;">/&gt;&lt;/</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">11</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">hr</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">12</span>     <span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;"> <br></span><span style="color: #008080;">13</span> <span style="background-color: #f5f5f5; color: #000000;">        List a</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> ArrayList();<br></span><span style="color: #008080;">14</span> <span style="background-color: #f5f5f5; color: #000000;">        a.add(</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">贝贝</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;">);<br></span><span style="color: #008080;">15</span> <span style="background-color: #f5f5f5; color: #000000;">        a.add(</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">晶晶</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;">);<br></span><span style="color: #008080;">16</span> <span style="background-color: #f5f5f5; color: #000000;">        a.add(</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">欢欢</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;">);<br></span><span style="color: #008080;">17</span> <span style="background-color: #f5f5f5; color: #000000;">        a.add(</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">莹莹</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;">);<br></span><span style="color: #008080;">18</span> <span style="background-color: #f5f5f5; color: #000000;">        a.add(</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">妮妮</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;">);<br></span><span style="color: #008080;">19</span> <span style="background-color: #f5f5f5; color: #000000;">    request.setAttribute(</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">a</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;">,a);<br></span><span style="color: #008080;">20</span> <span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="color: #008080;">21</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">B</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="不指定begin和end的迭代："</span> <span style="color: #0000ff;">/&gt;&lt;/</span><span style="color: #800000;">B</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">22</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:forEach </span><span style="color: #ff0000;">var</span><span style="color: #0000ff;">="fuwa"</span><span style="color: #ff0000;"> items</span><span style="color: #0000ff;">="${a}"</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">23</span>     <span style="color: #ff0000;">&amp;nbsp;</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${fuwa}"</span><span style="color: #0000ff;">/&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">24</span>     <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:forEach</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">25</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">B</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="指定begin和end的迭代："</span> <span style="color: #0000ff;">/&gt;&lt;/</span><span style="color: #800000;">B</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">26</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:forEach </span><span style="color: #ff0000;">var</span><span style="color: #0000ff;">="fuwa"</span><span style="color: #ff0000;"> items</span><span style="color: #0000ff;">="${a}"</span><span style="color: #ff0000;"> begin</span><span style="color: #0000ff;">="1"</span><span style="color: #ff0000;"> end</span><span style="color: #0000ff;">="3"</span><span style="color: #ff0000;"> step</span><span style="color: #0000ff;">="2"</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">27</span>     <span style="color: #ff0000;">&amp;nbsp;</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${fuwa}"</span> <span style="color: #0000ff;">/&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">28</span>     <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:forEach</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">29</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">B</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="输出整个迭代的信息："</span> <span style="color: #0000ff;">/&gt;&lt;/</span><span style="color: #800000;">B</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">30</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:forEach </span><span style="color: #ff0000;">var</span><span style="color: #0000ff;">="fuwa"</span><span style="color: #ff0000;"> items</span><span style="color: #0000ff;">="${a}"</span><span style="color: #ff0000;"> begin</span><span style="color: #0000ff;">="3"</span><span style="color: #ff0000;"> end</span><span style="color: #0000ff;">="4"</span><span style="color: #ff0000;"> step</span><span style="color: #0000ff;">="1"</span><span style="color: #ff0000;"> varStatus</span><span style="color: #0000ff;">="s"</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">31</span>     <span style="color: #ff0000;">&amp;nbsp;</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${fuwa}"</span> <span style="color: #0000ff;">/&gt;</span>的四种属性：<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">32</span>     <span style="color: #ff0000;">&amp;nbsp;&amp;nbsp;</span>所在位置，即索引：<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${s.index}"</span> <span style="color: #0000ff;">/&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">33</span>     <span style="color: #ff0000;">&amp;nbsp;&amp;nbsp;</span>总共已迭代的次数：<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${s.count}"</span> <span style="color: #0000ff;">/&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">34</span>     <span style="color: #ff0000;">&amp;nbsp;&amp;nbsp;</span>是否为第一个位置：<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${s.first}"</span> <span style="color: #0000ff;">/&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">35</span>     <span style="color: #ff0000;">&amp;nbsp;&amp;nbsp;</span>是否为最后一个位置：<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${s.last}"</span> <span style="color: #0000ff;">/&gt;&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">36</span>     <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:forEach</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">37</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">38</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+</div>
+<p><span style="color: #000000;">显示效果：</span></p>
+<p><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/2012022415194588.jpg" alt=""></p>
+<p><span style="color: #000000;"><span style="background-color: #ffff00;">8.&lt;c:forTokens&gt;</span> 用于浏览字符串，并根据指定的字符串截取字符串<br>语法：&lt;c:forTokens items="stringOfTokens" delims="delimiters" [var="name" begin="begin" end="end" step="len" varStatus="statusName"]&gt;&lt;/c:forTokens&gt;<br></span></p>
+<p>还是看个例子吧：</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show('34e63149-892e-4088-ac6c-9e60971cbd8b')"><img id="code_img_closed_34e63149-892e-4088-ac6c-9e60971cbd8b" class="code_img_closed" src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ContractedBlock.gif" alt=""><img id="code_img_opened_34e63149-892e-4088-ac6c-9e60971cbd8b" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('34e63149-892e-4088-ac6c-9e60971cbd8b',event)" src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ExpandedBlockStart.gif" alt=""><span class="cnblogs_code_collapse">View Code </span>
+<div id="cnblogs_code_open_34e63149-892e-4088-ac6c-9e60971cbd8b" class="cnblogs_code_hide">
+<pre><span style="color: #008080;"> 1</span> <span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@ page contentType</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">text/html;charset=GBK</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="color: #008080;"> 2</span> <span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@ taglib prefix</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">c</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;"> uri</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">http://java.sun.com/jsp/jstl/core</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 4</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 5</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>JSTL: -- forTokens标签实例<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 6</span>     <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 8</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 9</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="forToken实例"</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">10</span>         <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">11</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">hr</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">12</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:forTokens </span><span style="color: #ff0000;">items</span><span style="color: #0000ff;">="北、京、欢、迎、您"</span><span style="color: #ff0000;"> delims</span><span style="color: #0000ff;">="、"</span><span style="color: #ff0000;"> var</span><span style="color: #0000ff;">="c1"</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">13</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${c1}"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:out</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">14</span>         <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:forTokens</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">15</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">16</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:forTokens </span><span style="color: #ff0000;">items</span><span style="color: #0000ff;">="123-4567-8854"</span><span style="color: #ff0000;"> delims</span><span style="color: #0000ff;">="-"</span><span style="color: #ff0000;"> var</span><span style="color: #0000ff;">="t"</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">17</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${t}"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:out</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">18</span>         <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:forTokens</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">19</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">20</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:forTokens </span><span style="color: #ff0000;">items</span><span style="color: #0000ff;">="1*2*3*4*5*6*7"</span><span style="color: #ff0000;"> delims</span><span style="color: #0000ff;">="*"</span><span style="color: #ff0000;"> begin</span><span style="color: #0000ff;">="1"</span><span style="color: #ff0000;"> end</span><span style="color: #0000ff;">="3"</span><span style="color: #ff0000;"><br></span><span style="color: #008080;">21</span> <span style="color: #ff0000;">            var</span><span style="color: #0000ff;">="n"</span><span style="color: #ff0000;"> varStatus</span><span style="color: #0000ff;">="s"</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">22</span>     <span style="color: #ff0000;">&amp;nbsp;</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${n}"</span> <span style="color: #0000ff;">/&gt;</span>的四种属性：<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">23</span>         <span style="color: #ff0000;">&amp;nbsp;&amp;nbsp;</span>所在位置，即索引：<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${s.index}"</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">24</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">25</span>         <span style="color: #ff0000;">&amp;nbsp;&amp;nbsp;</span>总共已迭代的次数：<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${s.count}"</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">26</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">27</span>         <span style="color: #ff0000;">&amp;nbsp;&amp;nbsp;</span>是否为第一个位置：<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${s.first}"</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">28</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">29</span>         <span style="color: #ff0000;">&amp;nbsp;&amp;nbsp;</span>是否为最后一个位置：<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${s.last}"</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">30</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">31</span>         <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:forTokens</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">32</span>     <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">33</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+</div>
+<p>显示结果：</p>
+<p><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/2012022415332417.jpg" alt=""></p>
+<p>&nbsp;<span style="background-color: #ffff00;">9.URL 操作标签</span></p>
+<p><span style="background-color: #ffff00;">（1）&lt;c:import&gt;</span> 把其他静态或动态文件包含到 JSP 页面。与&lt;jsp:include&gt;的区别是后者只能包含同一个web应用中的文件，前者可以包含其他web应用中的文件，甚至是网络上的资源。</p>
+<p>语法：&lt;c:import url="url" [context="context"] [value="value"] [scope="..."] [charEncoding="encoding"]&gt;&lt;/c:import&gt;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;c:import url="url"&nbsp;&nbsp;varReader="name" [context="context"][charEncoding="encoding"]&gt;&lt;/c:import&gt;</p>
+<p>&nbsp;看个例子：</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show('a09a615c-70e2-4a49-8cc3-de176d185348')"><img id="code_img_closed_a09a615c-70e2-4a49-8cc3-de176d185348" class="code_img_closed" src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ContractedBlock.gif" alt=""><img id="code_img_opened_a09a615c-70e2-4a49-8cc3-de176d185348" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('a09a615c-70e2-4a49-8cc3-de176d185348',event)" src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ExpandedBlockStart.gif" alt=""><span class="cnblogs_code_collapse">View Code </span>
+<div id="cnblogs_code_open_a09a615c-70e2-4a49-8cc3-de176d185348" class="cnblogs_code_hide">
+<pre><span style="color: #008080;"> 1</span> <span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@ page contentType</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">text/html;charset=GBK</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="color: #008080;"> 2</span> <span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@ taglib prefix</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">c</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;"> uri</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">http://java.sun.com/jsp/jstl/core</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 4</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 5</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>JSTL: -- import标签实例<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 6</span>     <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 8</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 9</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="import实例"</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">10</span>         <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">11</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">hr</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">12</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">13</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="绝对路径引用的实例"</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">14</span>         <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">15</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:catch </span><span style="color: #ff0000;">var</span><span style="color: #0000ff;">="error1"</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">16</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:import </span><span style="color: #ff0000;">url</span><span style="color: #0000ff;">="http://www.baidu.com"</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">17</span>         <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:catch</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">18</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${error1}"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:out</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">19</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">hr</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">20</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">21</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="相对路径引用的实例，引用本应用中的文件"</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">22</span>         <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">23</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:catch</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">24</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:import </span><span style="color: #ff0000;">url</span><span style="color: #0000ff;">="a1.txt"</span><span style="color: #ff0000;"> charEncoding</span><span style="color: #0000ff;">="gbk"</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">25</span>         <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:catch</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">26</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">hr</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">27</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">28</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="使用字符串输出、相对路径引用的实例，并保存在session范围内"</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">29</span>         <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">30</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:catch </span><span style="color: #ff0000;">var</span><span style="color: #0000ff;">="error3"</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">31</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:import </span><span style="color: #ff0000;">var</span><span style="color: #0000ff;">="myurl"</span><span style="color: #ff0000;"> url</span><span style="color: #0000ff;">="a1.txt"</span><span style="color: #ff0000;"> scope</span><span style="color: #0000ff;">="session"</span><span style="color: #ff0000;"> charEncoding</span><span style="color: #0000ff;">="gbk"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:import</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">32</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${myurl}"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:out</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">33</span>             <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${myurl}"</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">34</span>         <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:catch</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">35</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="${error3}"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:out</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">36</span>     <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">37</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+</div>
+<p>显示结果：</p>
+<p><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/2012022415430430.jpg" alt=""></p>
+<p>&nbsp;</p>
+<p>URL路径有个绝对路径和相对路径。相对路径：&lt;c:import url="a.txt"/&gt;那么，a.txt必须与当前文件放在同一个文件目录下。如果以"/"开头，表示存放在应用程序的根目录下，如Tomcat应用程序的根目录文件夹为 webapps。导入该文件夹下的 b.txt 的编写方式： &lt;c:import url="/b.txt"&gt;。如果要访问webapps管理文件夹中的其他Web应用，就要用context属性。例如访问demoProj下的index.jsp，则：&lt;c:import url="/index.jsp" context="/demoProj"/&gt;.</p>
+<p><span style="background-color: #ffff00;">（2）&lt;c:redirect&gt;</span> 该标签用来实现请求的重定向。例如，对用户输入的用户名和密码进行验证，不成功则重定向到登录页面。或者实现Web应用不同模块之间的衔接</p>
+<p>语法：&lt;c:redirect url="url" [context="context"]/&gt;</p>
+<p>&nbsp; 或：&lt;c:redirect&nbsp;url="url" [context="context"]&gt;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;c:param name="name1" value="value1"&gt;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/c:redirect&gt;</p>
+<p>看个例子：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;">1</span> <span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@ page contentType</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">text/html;charset=GBK</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="color: #008080;">2</span> <span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@ taglib prefix</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">c</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;"> uri</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">http://java.sun.com/jsp/jstl/core</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="color: #008080;">3</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:redirect </span><span style="color: #ff0000;">url</span><span style="color: #0000ff;">="http://127.0.0.1:8080"</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">4</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:param </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">="uname"</span><span style="color: #0000ff;">&gt;</span>lihui<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:param</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">5</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:param </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">="password"</span><span style="color: #0000ff;">&gt;</span>11111<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:param</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">6</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:redirect</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p>则运行后，页面跳转为：http://127.0.0.1:8080/?uname=<span style="color: #000000;">lihui</span>&amp;password=11111</p>
+<p><span style="background-color: #ffff00;">（3）&lt;c:url&gt;</span> 用于动态生成一个 String 类型的URL，可以同上个标签共同使用，也可以使用HTML的&lt;a&gt;标签实验超链接。</p>
+<p>语法：&lt;c:url&nbsp;value="value" [var="name"] [scope="..."] [context="context"]&gt;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;c:param name="name1" value="value1"&gt;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/c:url&gt;</p>
+<p>或：&lt;c:url&nbsp;value="value" [var="name"] [scope="..."] [context="context"]/&gt;</p>
+<p>看个例子：</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show('36e0a7d0-b13d-4294-836a-78a2636f549a')"><img id="code_img_closed_36e0a7d0-b13d-4294-836a-78a2636f549a" class="code_img_closed" src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ContractedBlock.gif" alt=""><img id="code_img_opened_36e0a7d0-b13d-4294-836a-78a2636f549a" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('36e0a7d0-b13d-4294-836a-78a2636f549a',event)" src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ExpandedBlockStart.gif" alt=""><span class="cnblogs_code_collapse">View Code </span>
+<div id="cnblogs_code_open_36e0a7d0-b13d-4294-836a-78a2636f549a" class="cnblogs_code_hide">
+<pre><span style="color: #008080;"> 1</span> <span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@ page contentType</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">text/html;charset=GBK</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="color: #008080;"> 2</span> <span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@ taglib prefix</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">c</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;"> uri</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">http://java.sun.com/jsp/jstl/core</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #ffff00; color: #000000;">%&gt;</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:out </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="url标签使用"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">c:out</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 5</span>     使用url标签生成一个动态的url，并把值存入session中.<br><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">h4</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">hr</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">c:url </span><span style="color: #ff0000;">value</span><span style="color: #0000ff;">="http://127.0.0.1:8080"</span><span style="color: #ff0000;"> var</span><span style="color: #0000ff;">="url"</span><span style="color: #ff0000;"> scope</span><span style="color: #0000ff;">="session"</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">c:url</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">10</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a </span><span style="color: #ff0000;">href</span><span style="color: #0000ff;">="${url}"</span><span style="color: #0000ff;">&gt;</span>Tomcat首页<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">a</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+</div>
+<p>显示：</p>
+<p><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/2012022416073210.jpg" alt=""></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/lihuiyy/category/328540.html">JavaWeb</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(2366806,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow('ab9ab6e2-82b9-e011-8673-842b2b196315');" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/lihuiyy/" target="_blank"><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/u319502.jpg" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/lihuiyy/">lihui_yy</a><br>
+            <a href="http://home.cnblogs.com/u/lihuiyy/followees">关注 - 8</a><br>
+            <a href="http://home.cnblogs.com/u/lihuiyy/followers">粉丝 - 110</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow('ab9ab6e2-82b9-e011-8673-842b2b196315');return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(2366806,'Digg')">
+        <span class="diggnum" id="digg_count">37</span>
+    </div>
+    <div class="buryit" onclick="votePost(2366806,'Bury')">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2363136.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2363136.html" title="发布于2012-02-24 14:28">JSTL 标签库 下载及配置</a><br><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/27/2369382.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/27/2369382.html" title="发布于2012-02-27 09:28">JSTL I18N  格式标签库 使用之一_____数字日期格式化</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2012-02-24 16:08</span> <a href="http://www.cnblogs.com/lihuiyy/">lihui_yy</a> 阅读(<span id="post_view_count">193208</span>) 评论(<span id="post_comment_count">15</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=2366806" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2366806);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=98145,cb_entryId=2366806,cb_blogApp=currentBlogApp,cb_blogUserGuid='ab9ab6e2-82b9-e011-8673-842b2b196315',cb_entryCreatedDate='2012/2/24 16:08:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#2628516" class="layer">#1楼</a><a name="2628516" id="comment_anchor_2628516"></a>  <span class="comment_date">2013-03-06 00:26</span> <a id="a_comment_author_2628516" href="http://home.cnblogs.com/u/501521/" target="_blank">RitaRose</a> <a href="http://msg.cnblogs.com/send/RitaRose" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2628516" class="blog_comment_body">不错</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2628516,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2628516,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#2651620" class="layer">#2楼</a><a name="2651620" id="comment_anchor_2651620"></a>  <span class="comment_date">2013-04-08 09:42</span> <a id="a_comment_author_2651620" href="http://home.cnblogs.com/u/514266/" target="_blank">M妞</a> <a href="http://msg.cnblogs.com/send/M%E5%A6%9E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2651620" class="blog_comment_body">学习了，</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2651620,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2651620,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#2775548" class="layer">#3楼</a><a name="2775548" id="comment_anchor_2775548"></a>  <span class="comment_date">2013-09-14 13:22</span> <a id="a_comment_author_2775548" href="http://www.cnblogs.com/crazyjava/" target="_blank">Chunwai Yeung</a> <a href="http://msg.cnblogs.com/send/Chunwai%20Yeung" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2775548" class="blog_comment_body">good</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2775548,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2775548,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#2792178" class="layer">#4楼</a><a name="2792178" id="comment_anchor_2792178"></a>  <span class="comment_date">2013-10-13 20:49</span> <a id="a_comment_author_2792178" href="http://www.cnblogs.com/fangchao/" target="_blank">fangchao</a> <a href="http://msg.cnblogs.com/send/fangchao" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2792178" class="blog_comment_body">学习了了啦啦啦啦啦了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2792178,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2792178,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#2805161" class="layer">#5楼</a><a name="2805161" id="comment_anchor_2805161"></a>  <span class="comment_date">2013-10-29 20:32</span> <a id="a_comment_author_2805161" href="http://www.cnblogs.com/tanglc/" target="_blank">huazhiliange</a> <a href="http://msg.cnblogs.com/send/huazhiliange" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2805161" class="blog_comment_body">不错，很好</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2805161,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2805161,'Bury',this)">反对(0)</a></div><span id="comment_2805161_avatar" style="display:none;">http://pic.cnblogs.com/face/550873/20130725202330.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#2856850" class="layer">#6楼</a><a name="2856850" id="comment_anchor_2856850"></a>  <span class="comment_date">2014-01-09 16:34</span> <a id="a_comment_author_2856850" href="http://home.cnblogs.com/u/141792/" target="_blank">我是你的谁</a> <a href="http://msg.cnblogs.com/send/%E6%88%91%E6%98%AF%E4%BD%A0%E7%9A%84%E8%B0%81" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2856850" class="blog_comment_body">顶</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2856850,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2856850,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#2931065" class="layer">#7楼</a><a name="2931065" id="comment_anchor_2931065"></a>  <span class="comment_date">2014-05-04 16:14</span> <a id="a_comment_author_2931065" href="http://home.cnblogs.com/u/466492/" target="_blank">Wmeng</a> <a href="http://msg.cnblogs.com/send/Wmeng" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2931065" class="blog_comment_body">学习了啊，谢LZ</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2931065,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2931065,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#2937514" class="layer">#8楼</a><a name="2937514" id="comment_anchor_2937514"></a>  <span class="comment_date">2014-05-13 08:22</span> <a id="a_comment_author_2937514" href="http://www.cnblogs.com/hsiun/" target="_blank">Hsiun</a> <a href="http://msg.cnblogs.com/send/Hsiun" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2937514" class="blog_comment_body">谢谢楼主，写出这么好的文章。。。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2937514,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2937514,'Bury',this)">反对(0)</a></div><span id="comment_2937514_avatar" style="display:none;">http://pic.cnblogs.com/face/629399/20140501221810.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#2969245" class="layer">#9楼</a><a name="2969245" id="comment_anchor_2969245"></a>  <span class="comment_date">2014-06-21 23:26</span> <a id="a_comment_author_2969245" href="http://www.cnblogs.com/diyunpeng/" target="_blank">规格严格-功夫到家</a> <a href="http://msg.cnblogs.com/send/%E8%A7%84%E6%A0%BC%E4%B8%A5%E6%A0%BC-%E5%8A%9F%E5%A4%AB%E5%88%B0%E5%AE%B6" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2969245" class="blog_comment_body">学习了。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2969245,'Digg',this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2969245,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#3025695" class="layer">#10楼</a><a name="3025695" id="comment_anchor_3025695"></a>  <span class="comment_date">2014-09-10 14:35</span> <a id="a_comment_author_3025695" href="http://home.cnblogs.com/u/671168/" target="_blank">炽天使鬼影</a> <a href="http://msg.cnblogs.com/send/%E7%82%BD%E5%A4%A9%E4%BD%BF%E9%AC%BC%E5%BD%B1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3025695" class="blog_comment_body">灰常不错！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3025695,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3025695,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#3178469" class="layer">#11楼</a><a name="3178469" id="comment_anchor_3178469"></a>  <span class="comment_date">2015-05-07 22:52</span> <a id="a_comment_author_3178469" href="http://www.cnblogs.com/wennychen/" target="_blank">Veet</a> <a href="http://msg.cnblogs.com/send/Veet" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3178469" class="blog_comment_body">学习学习，之前自己做项目一直都不成功~~~~(&gt;_&lt;)~~~~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3178469,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3178469,'Bury',this)">反对(0)</a></div><span id="comment_3178469_avatar" style="display:none;">http://pic.cnblogs.com/face/743681/20150507225359.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#3263104" class="layer">#12楼</a><a name="3263104" id="comment_anchor_3263104"></a>  <span class="comment_date">2015-09-09 11:21</span> <a id="a_comment_author_3263104" href="http://home.cnblogs.com/u/710537/" target="_blank">cheng2yifan</a> <a href="http://msg.cnblogs.com/send/cheng2yifan" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3263104" class="blog_comment_body">写的很详细..</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3263104,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3263104,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#3273898" class="layer">#13楼</a><a name="3273898" id="comment_anchor_3273898"></a>  <span class="comment_date">2015-09-24 21:50</span> <a id="a_comment_author_3273898" href="http://www.cnblogs.com/hourui/" target="_blank">Alenn</a> <a href="http://msg.cnblogs.com/send/Alenn" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3273898" class="blog_comment_body">写得真好，学习了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3273898,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3273898,'Bury',this)">反对(0)</a></div><span id="comment_3273898_avatar" style="display:none;">http://pic.cnblogs.com/face/706098/20150311205646.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#3326568" class="layer">#14楼</a><a name="3326568" id="comment_anchor_3326568"></a>  <span class="comment_date">2015-12-14 11:36</span> <a id="a_comment_author_3326568" href="http://home.cnblogs.com/u/827684/" target="_blank">晨间新闻</a> <a href="http://msg.cnblogs.com/send/%E6%99%A8%E9%97%B4%E6%96%B0%E9%97%BB" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3326568" class="blog_comment_body">一直不知道varStatus的作用呢，学习了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3326568,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3326568,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#3371187" class="layer">#15楼</a><a name="3371187" id="comment_anchor_3371187"></a><span id="comment-maxId" style="display:none;">3371187</span><span id="comment-maxDate" style="display:none;">2016/3/3 15:43:55</span>  <span class="comment_date">2016-03-03 15:43</span> <a id="a_comment_author_3371187" href="http://www.cnblogs.com/cnweiblog/" target="_blank">永远改不完的bug</a> <a href="http://msg.cnblogs.com/send/%E6%B0%B8%E8%BF%9C%E6%94%B9%E4%B8%8D%E5%AE%8C%E7%9A%84bug" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3371187" class="blog_comment_body">学习，加深了解</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3371187,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3371187,'Bury',this)">反对(0)</a></div><span id="comment_3371187_avatar" style="display:none;">http://pic.cnblogs.com/face/485668/20150622165729.png</span>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br><a href="http://www.gcpowertools.com.cn/products/activereports_overview.htm?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=AR&amp;utm_campaign=community" target="_blank">【推荐】报表开发有捷径：快速设计轻松集成，数据可视化和交互</a><br><a href="http://cn.iforex.com/landing_pages/br1/zhns/Testimonials8/?content=Testimonials8&amp;SID=445058" target="_blank">【推荐】一个月仅用630元赚取15000元，学会投资</a><br><a href="http://click.aliyun.com/m/5646/" target="_blank">【推荐】阿里舆情首次开放，69元限量秒杀</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://gold.xitu.io/welcome/?utm_source=cnblogs&amp;utm_medium=banner&amp;utm_content=gaoshou&amp;utm_campaign=q3_website" target="_blank"><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20160805112458981-1554012564.jpg" alt="" width="300" height="250"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/551375/" target="_blank">阿里股价大涨 马云财富暴涨至340亿美元</a><br> ·  <a href="http://news.cnblogs.com/n/551374/" target="_blank">Windows 10 RedStone 2首个版本14901发布</a><br> ·  <a href="http://news.cnblogs.com/n/551373/" target="_blank">安全专家警告：德国大众数百万汽车存在被黑风险</a><br> ·  <a href="http://news.cnblogs.com/n/551372/" target="_blank">实体Pokemon中心问世 可以为Pokemon Go玩家手机充电</a><br> ·  <a href="http://news.cnblogs.com/n/551371/" target="_blank">过度开发仍是生物灭绝的主要原因</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jiguang.cn/devservice/?from=cnblogs01" target="_blank"><img src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20160803181056012-1919505484.jpg" alt="" width="468" height="60"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/550625/" target="_blank">程序猿媳妇儿注意事项</a><br> ·  <a href="http://kb.cnblogs.com/page/540529/" target="_blank">可是姑娘，你为什么要编程呢？</a><br> ·  <a href="http://kb.cnblogs.com/page/549631/" target="_blank">知其所以然（以算法学习为例）</a><br> ·  <a href="http://kb.cnblogs.com/page/548394/" target="_blank">如何给变量取个简短且无歧义的名字</a><br> ·  <a href="http://kb.cnblogs.com/page/549080/" target="_blank">编程的智慧</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div class="f30b699fe-8a1e-4d4b-b1b8-5a443e27b9ac5339"><iframe src="JSTL%20%E6%A0%B8%E5%BF%83%E6%A0%87%E7%AD%BE%E5%BA%93%20%E4%BD%BF%E7%94%A8%20-%20lihui_yy%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/i300.htm" style="width: 280px; height: 250px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"></iframe></div><div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/lihuiyy/">lihui_yy</a><br>园龄：<a href="http://home.cnblogs.com/u/lihuiyy/" title="入园时间：2011-07-29">5年</a><br>粉丝：<a href="http://home.cnblogs.com/u/lihuiyy/followers/">110</a><br>关注：<a href="http://home.cnblogs.com/u/lihuiyy/followees/">8</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow('ab9ab6e2-82b9-e011-8673-842b2b196315')">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="Calendar" cellspacing="0" cellpadding="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar('2012/01/01');return false;">&lt;</a></td><td align="center">2012年2月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar('2012/03/01');return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td class="CalWeekendDay" align="center">4</td></tr><tr><td class="CalWeekendDay" align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/09.html"><u>9</u></a></td><td align="center">10</td><td class="CalWeekendDay" align="center">11</td></tr><tr><td class="CalWeekendDay" align="center">12</td><td align="center">13</td><td align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/14.html"><u>14</u></a></td><td align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/15.html"><u>15</u></a></td><td align="center">16</td><td align="center">17</td><td class="CalWeekendDay" align="center">18</td></tr><tr><td class="CalWeekendDay" align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/22.html"><u>22</u></a></td><td align="center">23</td><td align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24.html"><u>24</u></a></td><td class="CalWeekendDay" align="center">25</td></tr><tr><td class="CalWeekendDay" align="center">26</td><td align="center"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/27.html"><u>27</u></a></td><td align="center">28</td><td align="center">29</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td></tr><tr><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td><td class="CalOtherMonthDay" align="center">9</td><td class="CalOtherMonthDay" align="center">10</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk" type="text">&nbsp;<input onclick="google_go()" value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/lihuiyy/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/lihuiyy/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/lihuiyy/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/lihuiyy/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/lihuiyy/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" onclick="this.blur();WarpClass('itemListLink', 'itemListLin_con');return false;" href="#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/lihuiyy/tag/I18N/">I18N</a>(3)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/JSTL/">JSTL</a>(3)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/Struts2/">Struts2</a>(2)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/%E6%A0%BC%E5%BC%8F%E6%A0%87%E7%AD%BE%E5%BA%93/">格式标签库</a>(2)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/ABAP/">ABAP</a>(1)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/%E5%9B%BD%E9%99%85%E5%8C%96/">国际化</a>(1)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/%E9%85%8D%E7%BD%AEstruts2%20web.xml%20%E6%8A%A5%E9%94%99/">配置struts2 web.xml 报错</a>(1)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/%E8%BE%93%E5%85%A5%E6%A0%A1%E9%AA%8C/">输入校验</a>(1)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/%E6%95%B0%E5%AD%97%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/">数字日期格式化</a>(1)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/struts2%20action%20%E4%B9%B1%E7%A0%81/">struts2 action 乱码</a>(1)</li><li><a href="http://www.cnblogs.com/lihuiyy/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/lihuiyy/category/328541.html">Android(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/lihuiyy/category/404688.html">ExtJS(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/lihuiyy/category/392620.html">JavaScript(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/lihuiyy/category/328542.html">JavaSE(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/lihuiyy/category/328540.html">JavaWeb(45)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/lihuiyy/category/393314.html">jQuery(15)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/lihuiyy/category/331823.html">OpenGL(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/lihuiyy/category/571277.html">SAP ABAP</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/lihuiyy/category/471752.html">乱七八糟(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/lihuiyy/category/325314.html">算法</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/lihuiyy/archive/2013/04.html">2013年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/lihuiyy/archive/2013/03.html">2013年3月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/lihuiyy/archive/2012/10.html">2012年10月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/lihuiyy/archive/2012/09.html">2012年9月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/lihuiyy/archive/2012/08.html">2012年8月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/lihuiyy/archive/2012/07.html">2012年7月 (18)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/lihuiyy/archive/2012/06.html">2012年6月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/lihuiyy/archive/2012/05.html">2012年5月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/lihuiyy/archive/2012/04.html">2012年4月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/lihuiyy/archive/2012/03.html">2012年3月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/lihuiyy/archive/2012/02.html">2012年2月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/lihuiyy/archive/2011/12.html">2011年12月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/lihuiyy/archive/2011/11.html">2011年11月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/lihuiyy/archive/2011/10.html">2011年10月 (7)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_articlecategory" class="catListArticleCategory sidebar-block">
+<h3 class="catListTitle">文章分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_2_Link_0" href="http://www.cnblogs.com/lihuiyy/category/325287.html">Android</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_1" href="http://www.cnblogs.com/lihuiyy/category/325286.html">C/C++</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_2" href="http://www.cnblogs.com/lihuiyy/category/325288.html">iPhone</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_3" href="http://www.cnblogs.com/lihuiyy/category/325289.html">Java</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_4" href="http://www.cnblogs.com/lihuiyy/category/325766.html">Java Web(11)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_5" href="http://www.cnblogs.com/lihuiyy/category/325290.html">JS</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_6" href="http://www.cnblogs.com/lihuiyy/category/325292.html">sencha touch</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_7" href="http://www.cnblogs.com/lihuiyy/category/325293.html">经典评论</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_8" href="http://www.cnblogs.com/lihuiyy/category/325315.html">算法(2)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/03/14/2395357.html#3483728">1. Re:配置struts2 web.xml 报错</a></li>
+        <li class="recent_comment_body">谢</li>
+        <li class="recent_comment_author">--一点一点荡开</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lihuiyy/archive/2011/11/13/2247388.html#3378620">2. Re:OpenGL 关于全局固定坐标系统与局部移动坐标系统的理解</a></li>
+        <li class="recent_comment_body">十分感谢！网上好多都讲不清楚，君真乃神人也！</li>
+        <li class="recent_comment_author">--吴溢豪</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2366806.html#3371187">3. Re:JSTL 核心标签库 使用</a></li>
+        <li class="recent_comment_body">学习，加深了解</li>
+        <li class="recent_comment_author">--永远改不完的bug</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2363136.html#3352827">4. Re:JSTL 标签库 下载及配置</a></li>
+        <li class="recent_comment_body">我照着你说的配置了，但运行不起来，这是怎么回事？我用的是tomcat8和jdk1.8,望博主不吝赐教！</li>
+        <li class="recent_comment_author">--ljhaaa</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2366806.html#3326568">5. Re:JSTL 核心标签库 使用</a></li>
+        <li class="recent_comment_body">一直不知道varStatus的作用呢，学习了</li>
+        <li class="recent_comment_author">--晨间新闻</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2366806.html">1. JSTL 核心标签库 使用(193204)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2363136.html">2. JSTL 标签库 下载及配置(19833)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/07/17/2596450.html">3. jQuery 序列化表单数据  serialize()  serializeArray()(19485)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/08/14/2638814.html">4. ExtJS    Ext.get()和Ext.getCmp()的区别(17994)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/07/10/2584139.html">5. jQuery DOM 操作（基本操作、内部插入、外部插入、包裹操作）(12204)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2366806.html">1. JSTL 核心标签库 使用(15)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2363136.html">2. JSTL 标签库 下载及配置(4)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/14/2351787.html">3. 使用 servlet 连接数据库(3)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2011/12/06/2278481.html">4. OpenGL 点参数 示例(3)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2011/11/13/2247388.html">5. OpenGL 关于全局固定坐标系统与局部移动坐标系统的理解(3)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/02/24/2366806.html">1. JSTL 核心标签库 使用(37)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/07/17/2596450.html">2. jQuery 序列化表单数据  serialize()  serializeArray()(3)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2013/03/14/2958782.html">3. Struts2 的国际化实现(3)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/08/08/2601683.html">4. jQuery UI  &amp;  下载  &amp;  拖动组件(2)</a></li><li><a href="http://www.cnblogs.com/lihuiyy/archive/2012/07/17/2595838.html">5. jQuery 中的 Ajax  $.ajax()  load()  $.get()   $.post()   $.getJSON()   $.getScript()(2)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 lihui_yy
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+<div id="Vidown_extension_alhnopeoagjmjfgcbnokcnagkecgdcdh" style="display: none;"></div></body></html>

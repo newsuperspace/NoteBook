@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head>
+<title>Dom4j解析带有命名空间的XML文件_Linux编程_Linux公社-Linux系统门户网站</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="icon" href="http://www.linuxidc.com/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://www.linuxidc.com/favicon.ico" type="image/x-icon">
+<meta name="description" content="今天我在解析KML文件的过程中，使用XPath表达式，可是返回的结果总是null，纠结了很久，后来通过查资料，发现是我的KML中有命名空">
+<meta name="keywords" content="Dom4j解析XML文件,Dom4j,Dom4j解析带有命名空间的XML文件,编程,Linux编程,Linux Shell,Android,Android教程,JAVA,C语言,Python,HTML5">
+<link rel="canonical" href="http://www.linuxidc.com/Linux/2014-04/99621.htm">
+<meta name="generator" content="Linux公社">
+<meta name="generator" content="Linux">
+<link rel="stylesheet" href="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/style.css" type="text/css">
+<meta name="generator" content="专业的Linux网站">
+<script charset="utf-8" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/s.js"></script><script type="text/javascript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/jquery.js"></script>
+<script type="text/javascript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/iwms.js"></script>
+<script type="text/javascript">iwms.urlPrefix="../../";</script>
+
+<script type="text/javascript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/show.js"></script>
+<style type="text/css">
+.linux903,.linux902 {display:none!important;display:none}</style>
+<script src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/share.js"></script><link rel="stylesheet" href="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/share_style0_24.css"><style>html #hm_t_undefined .hm-t-go-top {position:fixed;right:2px;bottom:2px;z-index:99998;cursor:pointer;width:40px;height:37px!important;text-align:center;white-space:normal;font-size:14px;line-height:17px;padding-top:3px;color:#fff;background:#404040;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAAXCAYAAABH92JbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowMjgwMTE3NDA3MjA2ODExODA4M0UyNDA4ODdDRTZBQiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBQjc5RkRFNkI5ODMxMUUzQkZGNDhENEJFQjM2OTcyRiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBQjc5RkRFNUI5ODMxMUUzQkZGNDhENEJFQjM2OTcyRiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDI4MDExNzQwNzIwNjgxMTgwODNFMjQwODg3Q0U2QUIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDI4MDExNzQwNzIwNjgxMTgwODNFMjQwODg3Q0U2QUIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5HPYM5AAACC0lEQVR42uyZTSgEYRjH90NoqaVcpDblvKW2XOSkNh8H5Yac9sBBDqQokiJKSMpNTi5OPo6Ktsgu67JcUHIXWfK1u3b8Xx6Zxuzu+64dM83uv34zNfu8b8/8Z+d5P8YqSZLFJNLsRmyWvIRMKgVD4AhEwA3YAV0pzGwEqyAEwmAddIICHe7FqhnsdQM14FxKLj+ooFiGE2ykiD8GVbJ4I1ELAnTmasMODnAhpVcIFIMicMgRH6Z4IxnUAh4pP3Zu5TVpUOLXDJgWiB8wkEF9IK7IL07X05oUFLjpZ4JXQQOYYwfzafJcoDjVPqw43KE4lWtUTF+AQ8eBqQSsgTaO2E0apJ7URrdCDZOM62hQJfBzGmShOD+1+2XSiYaJ7utkkBsEgEewnYfauZUmzWmU6DuY0sEgLzgArgzbu6i992cu/1WclqXsa1iHIt0DYlnKP0b9fRZu5pWdZs7dWXqa7B80+s//oF5aMSjflGqBPq5BQnFtVv4UmGHjIPEH96PAZ6C5kVMwf6daPzbFKnqCqvx9Bk/yFjSBFTMvcL+1DerAmUA/p9Rm1+y7AHJdgnqwx9EHm1s0gKtc2CpR6gE00/ZHMm3RKxbJlf0kNb2BDrCk8hsbDdvBay5tuiUTGxL7waTs2iLw0YTR9BLZQRwDUVqwjuTS9q3VRB8C1OQUnM6UqdXX/IcADn0IMADs2AqDOPSutQAAAABJRU5ErkJggg==) no-repeat -42px center #666;*background-image:url(http://ecma.bdimg.com/holmes/t-popup-icons-png8.png);_position:absolute;_top:expression(eval(document.documentElement.scrollTop+(document.documentElement.clientHeight||document.body.clientHeight)-this.offsetHeight-2));}</style></head>
+<body>
+<div class="topBar">
+	<div class="twidth">
+	
+	<div style="float:right">
+		<script type="text/javascript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/language.js"></script> <a id="StranLink" href="javascript:StranBody()" title="點擊以繁體中文方式浏覽">繁體</a>
+	</div>
+	
+	<div id="topUser">你好，游客 <a href="#" onclick="iwms.logPop()">登录</a>
+	<a href="http://www.linuxidc.com/memberreg.aspx" rel="nofollow">注册</a>
+	<a href="http://www.linuxidc.com/search.aspx" rel="nofollow">搜索</a>
+	</div>
+	</div>
+</div>
+<div class="twidth">
+<div id="sitehead">
+<div class="l"></div>
+<div class="r"></div>
+<div class="m">
+	<table width="100%">
+	<tbody><tr align="center"><td width="160">
+	<a href="http://www.linuxidc.com/"><img style="filter: chroma(color=#FFFFFF);" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/logo.jpg" alt="Linux公社" border="0" width="155" height="53"></a>
+	</td><td>
+	<div align="center"><script src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux.js" type="text/javascript" language="javaScript"></script></div>
+	</td>
+	</tr></tbody></table>
+</div>
+</div>
+<div id="navbar">
+<div class="l"></div>
+<div class="r"></div>
+<div class="m">
+	<a href="http://www.linuxidc.com/index.htm" class="first">首页</a><a href="http://www.linuxidc.com/it/">Linux新闻</a><a href="http://www.linuxidc.com/Linuxit/">Linux教程</a><a href="http://www.linuxidc.com/MySql/">数据库技术</a><a href="http://www.linuxidc.com/RedLinux/" class="thisclass">Linux编程</a><a href="http://www.linuxidc.com/Apache/">服务器应用</a><a href="http://www.linuxidc.com/Unix/">Linux安全</a><a href="http://www.linuxidc.com/download/">Linux下载</a><a href="http://www.linuxidc.com/Linuxrz/">Linux认证</a><a href="http://www.linuxidc.com/theme/">Linux主题</a><a href="http://www.linuxidc.com/Linuxwallpaper/">Linux壁纸</a><a href="http://www.linuxidc.com/linuxsoft/">Linux软件</a><a href="http://www.linuxidc.com/digi/">数码</a><a href="http://www.linuxidc.com/mobile/">手机</a><a href="http://www.linuxidc.com/diannao/">电脑</a>
+
+</div>
+</div>
+
+<div id="navsub">
+<div class="l"></div>
+<div class="r"></div>
+<div class="m">
+	<a href="http://www.linuxidc.com/index.htm">首页</a> → <a href="http://www.linuxidc.com/RedLinux/">Linux编程</a>
+</div>
+</div>
+<div class="linuxe1"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linuxe1.js"></script></div>
+<div class="linux1"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux1.js"></script></div>
+<div class="linuxa"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linuxa.js"></script></div>
+<div class="linuxa1"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linuxa1.js"></script></div>
+<table id="middle" style="table-layout:fixed" width="100%" cellspacing="0" cellpadding="0">
+<tbody><tr valign="top"><td>
+
+	<div class="mframe mR">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm">
+		<div class="moreR">
+			背景：<script type="text/javascript">WriteBg()</script><img src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/b.gif" style="cursor:pointer;width:7px;height:6px;border:1px solid #999;background:#EDF0F5" alt="#EDF0F5" onclick='ContentBg("#EDF0F5")'> <img src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/b.gif" style="cursor:pointer;width:7px;height:6px;border:1px solid #999;background:#FAFBE6" alt="#FAFBE6" onclick='ContentBg("#FAFBE6")'> <img src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/b.gif" style="cursor:pointer;width:7px;height:6px;border:1px solid #999;background:#FFF2E2" alt="#FFF2E2" onclick='ContentBg("#FFF2E2")'> <img src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/b.gif" style="cursor:pointer;width:7px;height:6px;border:1px solid #999;background:#FDE6E0" alt="#FDE6E0" onclick='ContentBg("#FDE6E0")'> <img src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/b.gif" style="cursor:pointer;width:7px;height:6px;border:1px solid #999;background:#F3FFE1" alt="#F3FFE1" onclick='ContentBg("#F3FFE1")'> <img src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/b.gif" style="cursor:pointer;width:7px;height:6px;border:1px solid #999;background:#DAFAF3" alt="#DAFAF3" onclick='ContentBg("#DAFAF3")'> <img src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/b.gif" style="cursor:pointer;width:7px;height:6px;border:1px solid #999;background:#EAEAEF" alt="#EAEAEF" onclick='ContentBg("#EAEAEF")'> <img src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/b.gif" style="cursor:pointer;width:7px;height:6px;border:1px solid #999;background:#FFF" alt="默认" onclick='ContentBg("")'> 
+		</div>
+		<span class="tt">阅读新闻</span>
+	</div>
+	<div class="wrapper">
+	<div class="ml"></div>
+	<div class="mr"></div>
+	<div class="mm" id="bodyTd">
+		<div id="printBody" style="word-break:break-all;">
+			<div style="text-align:center"><h1 class="aTitle">Dom4j解析带有命名空间的XML文件</h1></div>
+			
+			<table align="center" width="97%">
+				<tbody><tr>
+				<td width="140">[日期：2014-04-06]</td>
+				<td align="center">来源：Linux社区&nbsp;
+				作者：Linux</td>
+				<td align="right" width="160">[字体：<a href="javascript:ContentSize(16)">大</a> <a href="javascript:ContentSize(0)">中</a> <a href="javascript:ContentSize(12)">小</a>]
+				</td></tr>
+			</tbody></table>
+<div id="li_all">
+<div id="li_1"><script type="text/javascript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux201.js"></script></div>
+<div id="li_2"><script type="text/javascript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux2.js"></script></div>
+</div>
+			<div id="content" style="overflow-x: hidden; word-break: break-all;"><div class="linux19"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux19.js"></script></div> <p>今天我在解析KML文件的过程中，使用XPath表达式，可是返回的结果总是null，纠结了很久，后来通过查资料，发现是我的KML中有命名空间的缘故。</p>
+<p>首先，说明一些什么是KML，因为下面的例子中会用到KML。KML是Keyhole Markup Language的缩写，是一种基于XML 
+语法与格式的、用于描述和保存地理信息（如点、线、图像、多边形和模型等）的编码规范，可以被 Google Earth 和 Google Maps 
+识别并显示。Google Earth 和 Google Maps 处理 KML 文件的方式与网页浏览器处理 HTML 和 XML 
+文件的方式类似。Google Earth中通常使用KMZ文件，KMZ文件是压缩过的KML文件。目前，KML 是由开放地理空间联盟（Open 
+Geospatial Consortium, Inc.，简称 OGC）维护的国际标准。</p>
+<p>下面来看一个KML文件实例，即本文中要用到的XML文件：</p>
+<p>（KML文件可以通过在Google Earth中得到，这里我利用Google Earth搜索长安大学渭水校区，然后添加地标，将位置另存为KML文件）</p>
+<p>&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>&lt;kml 
+xmlns="http://www.opengis.net/kml/2.2" 
+xmlns:gx="http://www.google.com/kml/ext/2.2" 
+xmlns:kml="http://www.opengis.net/kml/2.2" 
+xmlns:atom="http://www.w3.org/2005/Atom"&gt;<br>&lt;Document&gt;<br>&nbsp;&lt;name&gt;长安大学渭水校区&lt;/name&gt;<br>&nbsp;&lt;Style id="s_ylw-pushpin_hl"&gt;<br>&nbsp; &lt;IconStyle&gt;<br>&nbsp; &nbsp;&lt;scale&gt;1.3&lt;/scale&gt;<br>&nbsp; &nbsp;&lt;Icon&gt;<br>&nbsp; &nbsp; &lt;href&gt;http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png&lt;/href&gt;<br>&nbsp; &nbsp;&lt;/Icon&gt;<br>&nbsp; &nbsp;&lt;hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/&gt;<br>&nbsp; &lt;/IconStyle&gt;<br>&nbsp; &lt;ListStyle&gt;<br>&nbsp; &lt;/ListStyle&gt;<br>&nbsp;&lt;/Style&gt;<br>&nbsp;&lt;Style id="s_ylw-pushpin"&gt;<br>&nbsp; &lt;IconStyle&gt;<br>&nbsp; &nbsp;&lt;scale&gt;1.1&lt;/scale&gt;<br>&nbsp; &nbsp;&lt;Icon&gt;<br>&nbsp; &nbsp; &lt;href&gt;http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png&lt;/href&gt;<br>&nbsp; &nbsp;&lt;/Icon&gt;<br>&nbsp; &nbsp;&lt;hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/&gt;<br>&nbsp; &lt;/IconStyle&gt;<br>&nbsp; &lt;ListStyle&gt;<br>&nbsp; &lt;/ListStyle&gt;<br>&nbsp;&lt;/Style&gt;<br>&nbsp;&lt;StyleMap id="m_ylw-pushpin"&gt;<br>&nbsp; &lt;Pair&gt;<br>&nbsp; &nbsp;&lt;key&gt;normal&lt;/key&gt;<br>&nbsp; &nbsp;&lt;styleUrl&gt;#s_ylw-pushpin&lt;/styleUrl&gt;<br>&nbsp; &lt;/Pair&gt;<br>&nbsp; &lt;Pair&gt;<br>&nbsp; &nbsp;&lt;key&gt;highlight&lt;/key&gt;<br>&nbsp; &nbsp;&lt;styleUrl&gt;#s_ylw-pushpin_hl&lt;/styleUrl&gt;<br>&nbsp; &lt;/Pair&gt;<br>&nbsp;&lt;/StyleMap&gt;<br>&nbsp;&lt;Placemark&gt;<br>&nbsp; &lt;name&gt;长安大学渭水校区&lt;/name&gt;<br>&nbsp; &lt;LookAt&gt;<br>&nbsp; &nbsp;&lt;longitude&gt;108.9032130001538&lt;/longitude&gt;<br>&nbsp; &nbsp;&lt;latitude&gt;34.36892100035922&lt;/latitude&gt;<br>&nbsp; &nbsp;&lt;altitude&gt;0&lt;/altitude&gt;<br>&nbsp; &nbsp;&lt;heading&gt;8.682278169459107e-011&lt;/heading&gt;<br>&nbsp; &nbsp;&lt;tilt&gt;0&lt;/tilt&gt;<br>&nbsp; &nbsp;&lt;range&gt;999.7995012938454&lt;/range&gt;<br>&nbsp; &nbsp;&lt;gx:altitudeMode&gt;relativeToSeaFloor&lt;/gx:altitudeMode&gt;<br>&nbsp; &lt;/LookAt&gt;<br>&nbsp; &lt;styleUrl&gt;#m_ylw-pushpin&lt;/styleUrl&gt;<br>&nbsp; &lt;Point&gt;<br>&nbsp; &nbsp;&lt;gx:drawOrder&gt;1&lt;/gx:drawOrder&gt;<br>&nbsp; &nbsp;&lt;coordinates&gt;108.9032130001538,34.36892100035922,0&lt;/coordinates&gt;<br>&nbsp; &lt;/Point&gt;<br>&nbsp;&lt;/Placemark&gt;<br>&lt;/Document&gt;<br>&lt;/kml&gt;</p>
+<p>KML文件可以使用Google Earth打开，效果如下：</p>
+<p><img src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/140406163587221.jpg" alt="" style="cursor: pointer; display: block;" width="581" vspace="5"></p>
+<p>现在进入正题，我们可以看到上面的XML文件包含命名空间，如果我们任然使用以前没有命名空间的方法用XPath获取节点元素会出现什么情况呢？</p>
+<p>实例如下：</p>
+<p>public class XMLReader {<br>&nbsp;public static void main(String[] args) throws DocumentException {<br>&nbsp; SAXReader reader = new SAXReader();<br>&nbsp; Document document = reader.read(new File("长安大学渭水校区.kml"));<br>&nbsp; <br>&nbsp; Node name = document.selectSingleNode("//name");<br>&nbsp; if (name == null) {<br>&nbsp; &nbsp;System.out.println("name节点为null!");<br>&nbsp; } else {<br>&nbsp; &nbsp;System.out.println(name.getText());<br>&nbsp; }<br>&nbsp;}<br>}</p>
+<p>运行结果如下：name节点为null!</p>
+<p>可是我的name节点明明不为null呀，这都是命名空间惹的祸！</p>
+<p>下面我们着重看看解决办法：</p>
+<p>方法一：设置你的xpath的命名空间setNamespaceURIs</p>
+<p>实例如下：</p>
+<p>public class KMLReader1 {</p>
+<p>&nbsp;public static void main(String[] args) throws DocumentException {<br>&nbsp; SAXReader reader = new SAXReader();<br>&nbsp; Document document = reader.read(new File("长安大学渭水校区.kml"));<br>&nbsp; <br>&nbsp; //方法一：设置你的xpath的命名空间setNamespaceURIs<br>&nbsp; Map&lt;String, String&gt; xmlMap = new HashMap&lt;&gt;();<br>&nbsp; xmlMap.put("default", "http://www.opengis.net/kml/2.2");<br>&nbsp; XPath xPath = document.createXPath("//default:name");<br>&nbsp; xPath.setNamespaceURIs(xmlMap);<br>&nbsp; Node name = xPath.selectSingleNode(document);<br>&nbsp; System.out.println(name.getText());<br>&nbsp; <br>&nbsp;}<br>}</p>
+<p>首先，声明一个Map对象，添加命名空间，Map的键为命名空间的名称，这里是默认命名空间所以这里Map的键可以随便取，我取名叫
+default，Map的值为命名空间的值，即http://www.opengis.net/kml/2.2。然后，声明一个XPath对象，在
+createXPath方法中，要使用带命名空间前缀的XPath表达式，即defau:name。最后，调用setNamespaceURIs方法，设
+置XPath的命名空间。</p>
+<p>运行结果如下：</p>
+<p>长安大学渭水校区</p>
+<p>方法二：设置你的DocumentFactory()的命名空间 setXPathNamespaceURIs</p>
+<p>实例如下：</p>
+<p>public class KMLReader2 {</p>
+<p>&nbsp;public static void main(String[] args) throws DocumentException {<br>&nbsp; //方法二：设置你的DocumentFactory()的命名空间 setXPathNamespaceURIs<br>&nbsp; Map&lt;String, String&gt; xmlMap = new HashMap&lt;&gt;();<br>&nbsp; xmlMap.put("default", "http://www.opengis.net/kml/2.2");<br>&nbsp; xmlMap.put("gx", "http://www.google.com/kml/ext/2.2");<br>&nbsp; <br>&nbsp; SAXReader reader = new SAXReader();<br>&nbsp; reader.getDocumentFactory().setXPathNamespaceURIs(xmlMap);<br>&nbsp; Document document = reader.read(new File("长安大学渭水校区.kml"));<br>&nbsp; <br>&nbsp; Node name = document.selectSingleNode("//default:name");<br>&nbsp; System.out.println(name.getText());<br>&nbsp; <br>&nbsp; Node altitudeMode = document.selectSingleNode("//gx:altitudeMode");<br>&nbsp; System.out.println(altitudeMode.getText());<br>&nbsp;}<br>}</p>
+<p>这里，我们设置的不是XPath的命名空间了，而是DocumentFactory的命名空间，其原理都差不多，只不过作用范围不一样，设置
+XPath的命名空间作用在XPath表达式，设置DocumentFactory作用在整个Document对象上。所以这里不再啰嗦，和上面一样。</p>
+<p>运行结果如下：</p>
+<p>长安大学渭水校区</p>
+<p>relativeToSeaFloor</p>
+<p>方法三：不使用开发环境给你提供的一系列对象，而是用XPath语法中自带的local-name() 和 namespace-uri()指定你要使用的节点名和命名空间</p>
+<p>实例如下：</p>
+<p>public class KMLReader3 {</p>
+<p>&nbsp;public static void main(String[] args) throws DocumentException {<br>&nbsp; // 不使用开发环境给你提供的一系列对象，而是用XPath语法中自带的local-name() 和 namespace-uri()<br>&nbsp; // 指定你要使用的节点名和命名空间<br>&nbsp; SAXReader reader = new SAXReader();<br>&nbsp; Document document = reader.read(new File("长安大学渭水校区.kml"));</p>
+<p>&nbsp; Node name = document<br>&nbsp; &nbsp; .selectSingleNode("//*[local-name()='name' and namespace-uri()='http://www.opengis.net/kml/2.2']");<br>&nbsp; System.out.println(name.getText());<br>&nbsp;}<br>}</p>
+<p>这里直接在XPath表达式中指出命名空间，local-name()代表元素名称，namespace-uri()代表元素所在命名空间。</p>
+<p>运行结果如下：</p>
+<p>长安大学渭水校区</p>
+<p>方法四：不使用XPath表达式，直接用element的element方法取一个子元素或elementIterator方法取多个元素</p>
+<p>实例如下：</p>
+<p>public class KMLReader4 {</p>
+<p>&nbsp;public static void main(String[] args) throws DocumentException {<br>&nbsp; //不使用XPath，直接用element的element方法取一个子元素或elementIterator方法取多个元素<br>&nbsp; SAXReader reader = new SAXReader();<br>&nbsp; Document document = reader.read(new File("长安大学渭水校区.kml"));<br>&nbsp; <br>&nbsp; Element root = document.getRootElement();<br>&nbsp; Element name = root.element("Document").element("name");<br>&nbsp; System.out.println(name.getText());<br>&nbsp;}<br>}</p>
+<p>这种方法是Dom4j的入门方法，这里不再叙述。</p>
+<p>运行结果如下：</p>
+<p>长安大学渭水校区</p>
+<p><strong>推荐阅读：</strong></p>
+<p>dom4j+xpath读取xml文件配置<a href="http://www.linuxidc.com/topicnews.aspx?tid=12" target="_blank" title="Oracle">Oracle</a>数据库连接 <a href="http://www.linuxidc.com/Linux/2013-04/83405.htm">http://www.linuxidc.com/Linux/2013-04/83405.htm</a></p>
+<p>Struts2+jQuery+Dom4j实现服务器返回Xml文档 <a href="http://www.linuxidc.com/Linux/2012-07/65680.htm">http://www.linuxidc.com/Linux/2012-07/65680.htm</a></p>
+<p>Java使用dom4j解析XML字符串 <a href="http://www.linuxidc.com/Linux/2013-07/87734.htm">http://www.linuxidc.com/Linux/2013-07/87734.htm</a></p><a href="http://www.linuxidc.com/" target="_blank"><img src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/logo.gif" alt="linux" width="15" height="17"></a></div><a href="http://www.linuxidc.com/" target="_blank">
+<div class="linux301"><script type="text/javascript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux301.js"></script></div>
+<div class="linux3"><script type="text/javascript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux3.js"></script></div>
+<div class="linux302"><script type="text/javascript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux302.js"></script></div>		
+			
+			
+		</a></div><a href="http://www.linuxidc.com/" target="_blank">
+		</a><div style="padding:0 15px"><a href="http://www.linuxidc.com/" target="_blank">
+			</a><ul id="digg" class="digg"><a href="http://www.linuxidc.com/" target="_blank">
+				<li class="digg1">1</li>
+				</a><li class="digg2"><a href="http://www.linuxidc.com/" target="_blank"></a><a href="###" onclick="iwms.diggIt(this,iwms.aId)">顶一下</a></li>
+			</ul>	
+		</div>
+<div class="linuxfx"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/fx.js"></script><div class="bdsharebuttonbox bdshare-button-style0-24" data-bd-bind="1466758001259"><a class="bds_more" href="http://share.baidu.com/code#" data-cmd="more"></a><a title="分享到QQ空间" class="bds_qzone" href="http://share.baidu.com/code#" data-cmd="qzone"></a><a title="分享到新浪微博" class="bds_tsina" href="http://share.baidu.com/code#" data-cmd="tsina"></a><a title="分享到腾讯微博" class="bds_tqq" href="http://share.baidu.com/code#" data-cmd="tqq"></a><a title="分享到人人网" class="bds_renren" href="http://share.baidu.com/code#" data-cmd="renren"></a><a title="分享到百度新首页" class="bds_bdhome" href="http://share.baidu.com/code#" data-cmd="bdhome"></a><a title="分享到微信" class="bds_weixin" href="http://share.baidu.com/code#" data-cmd="weixin"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>	
+<div class="linux8"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux8.js"></script></div>
+<div class="linux801"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux801.js"></script></div>
+		<div class="nearNews">
+			<div class="prevNews"><a href="http://www.linuxidc.com/Linux/2014-04/99581.htm">Android连接到Linux/CentOS下Eclipse调试</a></div>
+			<div class="nextNews"><a href="http://www.linuxidc.com/Linux/2014-04/99622.htm">Java Swing中的透明窗体（Windows中消息提示框的制作）</a></div>
+		</div>
+	</div>
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+	</div>
+	
+	<div class="mframe mR">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm">
+		<span class="tt">相关资讯</span> &nbsp; &nbsp; &nbsp;
+		<a href="http://www.linuxidc.com/search.aspx?where=nkey&amp;keyword=12106" target="_blank">Dom4j</a>&nbsp; <a href="http://www.linuxidc.com/search.aspx?where=nkey&amp;keyword=28302" target="_blank">Dom4j解析XML文件</a>&nbsp; 
+	</div>
+	<div class="wrapper">
+	<div class="ml"></div>
+	<div class="mr"></div>
+	<div class="mm">
+		<table width="100%"><tbody><tr><td width="50%" valign="top"><ul class="nl"><li><a href="http://www.linuxidc.com/Linux/2015-04/115681.htm" target="_blank">Dom4j 改变XML编码</a>&nbsp; <span class="gray">(<span class="time">今 06:19</span>)</span></li>
+<li><a href="http://www.linuxidc.com/Linux/2014-04/100589.htm" target="_blank" title="Dom4j 存在命名空间导致document.selectNodes() 无返回结果">Dom4j 存在命名空间导致document.</a>&nbsp; <span class="gray">(04/22/2014 10:04:55)</span></li>
+<li><a href="http://www.linuxidc.com/Linux/2014-03/99211.htm" target="_blank" title="dom4j:Adding text to an XML document must not be null">dom4j:Adding text to an XML </a>&nbsp; <span class="gray">(03/31/2014 14:07:53)</span></li>
+</ul></td><td width="50%" valign="top"><ul class="nl"><li><a href="http://www.linuxidc.com/Linux/2014-06/103386.htm" target="_blank" title="Dom4j使用递归的方法输出xml元素的所有值">Dom4j使用递归的方法输出xml元素的</a>&nbsp; <span class="gray">(06/18/2014 13:48:32)</span></li>
+<li><a href="http://www.linuxidc.com/Linux/2014-03/99216.htm" target="_blank" title="org.xml.sax.SAXParseException: Content is not allowed in prolog.">org.xml.sax.SAXParseException: </a>&nbsp; <span class="gray">(03/31/2014 14:21:58)</span></li>
+<li><a href="http://www.linuxidc.com/Linux/2013-07/87734.htm" target="_blank">Java使用dom4j解析XML字符串</a>&nbsp; <span class="gray">(07/23/2013 08:53:06)</span></li>
+</ul></td></tr></tbody></table>
+	</div>
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+	</div>
+
+	<div class="mframe mR">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm">
+		<span class="tt">图片资讯</span> &nbsp; &nbsp; &nbsp;
+	</div>
+	<div class="wrapper">
+	<div class="ml"></div>
+	<div class="mr"></div>
+	<div class="mm">
+
+	</div>
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+	</div>
+	
+	
+	<div class="mframe mR">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm">
+		<span class="tt">本文评论</span>
+		 	　　<a href="http://www.linuxidc.com/remark.aspx?id=99621" target="_blank">查看全部评论</a> <span class="gray">(0)</span>
+	</div>
+	<div class="wrapper">
+	<div class="ml"></div>
+	<div class="mr"></div>
+	<div class="mm">
+		<table style="margin:6px" width="100%">		
+		<tbody><tr><td width="100%">
+			<form action="" name="fmRemarkSt" onsubmit="return remark.post(this);">
+			<input value="1" name="face" disabled="disabled" type="hidden">
+			表情： <img src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/b.gif" alt="表情" class="face1" style="cursor:pointer;vertical-align:middle" onclick="remark.dispFace(this)" onmouseout="remark.hideFace()">
+			姓名： <input name="username" value="匿名" maxlength="15" style="width:60px" class="inputbg" disabled="disabled" type="text">
+			<input id="rmAnonymitySt" onclick="remark.anony(this)" disabled="disabled" checked="checked" type="checkbox"><label for="rmAnonymitySt">匿名</label>
+			字数 <input id="bodyLen" size="3" readonly="readonly" style="border-width:0;background:transparent;vertical-align:middle" value="0" disabled="disabled" type="text">
+			<br>
+			<textarea name="body" cols="40" rows="4" onkeydown="remark.dispLen(this)" onkeyup="remark.handle(event,this);remark.dispLen(this)" style="width:40em;height:100px;margin:3px 0;overflow-y:auto" disabled="disabled"></textarea>
+				<br>
+		　　　<input checked="checked" id="rmAgreeSt" disabled="disabled" type="checkbox"><label for="rmAgreeSt">同意评论声明</label>
+		　　　<button type="submit" style="width: 50px; padding: 0px;" disabled="disabled">请登录</button>
+			</form>
+		</td></tr>
+		<tr><td width="100%">
+			评论声明
+			<ul style="list-style-type:square;margin:5px 0 0 1em;padding:0">
+			<li>尊重网上道德，遵守中华人民共和国的各项有关法律法规</li>
+			<li>承担一切因您的行为而直接或间接导致的民事或刑事法律责任</li>
+			<li>本站管理人员有权保留或删除其管辖留言中的任意内容</li>
+			<li>本站有权在网站内转载或引用您的评论</li>
+			<li>参与本评论即表明您已经阅读并接受上述条款</li>
+			</ul>
+		</td></tr>
+		</tbody></table>
+		<script type="text/javascript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/remark.js"></script>
+		<script type="text/javascript">
+			remark.maxSize=500;
+			remark.minSize=2;
+			remark.sourceEle=$(document.fmRemarkSt).find("button").get(0);
+			iwms.vCode="D2BDA41E";
+			iwms.user.name.length==0 ? $i("rmAnonymitySt").click() : $i("rmAnonymitySt").form.username.value=iwms.user.name;
+		</script>
+		
+		<div class="reCont" id="reContainer"></div>
+	</div>
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+	</div>
+	
+</td><td width="300" valign="top">
+<div class="linux901"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux901.js"></script></div>
+<div class="linux902"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux902.js"></script></div>
+<div class="linux903"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux903.js"></script></div>
+<div class="linux905"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux905.js"></script></div>
+	
+	<div class="lframe">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm">
+		<span class="tt">最新资讯</span>
+	</div>
+	<div class="wrapper">
+	<div class="ml"></div>
+	<div class="mr"></div>
+	<div class="mm">
+		<ul class="nl">
+<li><a href="http://www.linuxidc.com/Linux/2015-04/115681.htm" target="_blank">Dom4j 改变XML编码</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2015-04/115680.htm" target="_blank">自然语言处理成为未来差什么</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2015-04/115679.htm" target="_blank">Django 1.8 正式版发布下载，LTS 长期支持版本</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2015-04/115678.htm" target="_blank">Redis 3.0.0 正式版出炉，高性能 K/V 服务</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2015-04/115677.htm" target="_blank" title="Hibernate ORM 5.0.0.Beta1 发布下载，支持 Java 8">Hibernate ORM 5.0.0.Beta1 发布下载，支持 </a></li>
+<li><a href="http://www.linuxidc.com/Linux/2015-04/115676.htm" target="_blank">浅谈 HTTPS 和 SSL/TLS 协议的背景与基础</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2015-04/115675.htm" target="_blank">IntelliJ IDEA导航特性Top20</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2015-04/115674.htm" target="_blank">微软Visual Studio 2015今夏上市 采取全新定价</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2015-04/115673.htm" target="_blank">微软推出MS-DOS移动版</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2015-04/115672.htm" target="_blank">BIOS 病毒出现、暂无防御法？</a></li>
+</ul>
+	</div>
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+	</div>
+
+	<div class="lframe">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm">
+		<span class="tt">本周热门</span>
+	</div>
+	<div class="wrapper">
+	<div class="ml"></div>
+	<div class="mr"></div>
+	<div class="mm">
+		<ul class="nl">
+<li><a href="http://www.linuxidc.com/Linux/2012-02/53030.htm" target="_blank">Shell for&amp;while 循环详细总结</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2012-06/63652.htm" target="_blank">PyQt4 精彩实例分析</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2014-04/99916.htm" target="_blank">2014 阿里巴巴安全工程师实习生招聘笔试总结</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2014-04/99485.htm" target="_blank">2014阿里巴巴WEB前端实习生在线笔试题</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2011-02/32603.htm" target="_blank">Android SD卡路径问题以及如何获取SDCard 内存</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2012-02/53764.htm" target="_blank">Python 获得命令行参数的方法</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2013-03/81455.htm" target="_blank">Linux的sleep()和usleep()的使用和区别</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2011-02/32211.htm" target="_blank">./configure,make,make install的作用</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2011-04/33966.htm" target="_blank">Android核心分析</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2007-12/9623.htm" target="_blank">Linux内核的ioctl函数学习</a></li>
+</ul>
+	</div>
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+	</div>
+	<div class="linuxy9"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/y9.js"></script><script type="text/javascript">
+    /*Linux公社右侧悬停300*250，创建于2014-8-8*/
+    var cpro_id = "u1650512";
+</script>
+<script src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/c.js" type="text/javascript"></script>
+
+</div>	
+</td></tr>
+</tbody></table>
+<div class="linux906"><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linux906.js"></script></div>
+<div id="footer">
+<a href="http://www.linuxidc.com/aboutus.htm">Linux公社简介</a> - <a href="http://www.linuxidc.com/adsense.htm">广告服务</a> - <a href="http://www.linuxidc.com/sitemap.aspx">网站地图</a> - <a href="http://www.linuxidc.com/help.htm">帮助信息</a> - <a href="http://www.linuxidc.com/contactus.htm">联系我们</a><br>本站（LinuxIDC）所刊载文章不代表同意其说法或描述，仅为提供更多信息，也不构成任何建议。<br><script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/qq.js"></script>主编：漏网的鱼 (QQ:3165270) 联系邮箱:<img src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/email.png" alt="" width="138" height="20"> (如有版权及广告合作请联系)
+<br>
+<script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/foot.js"></script>本站带宽由[<a href="http://www.muu.cc/"><font color="red">MUU.CC</font></a>]友情提供<br>关注Linux，关注LinuxIDC.com，<font color="red">请向您的QQ好友宣传LinuxIDC.com</font>，多谢支持！
+<br>Copyright © 2006-2015　<a href="http://www.linuxidc.com/">Linux公社</a>　All rights reserved 沪ICP备15008072号-1号
+	<script type="text/javascript">iwms.aId=99621;$(function(){iwms.imgCont=$i('content');iwms.imgResize();InitContStyle();iwms.getVars();})</script>
+	
+</div>
+</div>
+<script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linuxren1.js"></script><script type="text/javascript">
+document.body.oncopy = function () { setTimeout( function () { var text = clipboardData.getData("text"); if (text) { text = text + "\r\n本篇文章来源于 Linux公社网站(www.linuxidc.com)  原文链接："+location.href; clipboardData.setData("text", text); } }, 100 ) }
+</script>
+
+<script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linuxren2.htm"></script>
+<script type="text/javascript" language="javaScript" src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/linuxren3.js"></script><script src="Dom4j%E8%A7%A3%E6%9E%90%E5%B8%A6%E6%9C%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84XML%E6%96%87%E4%BB%B6_Linux%E7%BC%96%E7%A8%8B_Linux%E5%85%AC%E7%A4%BE-Linux%E7%B3%BB%E7%BB%9F%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99_files/h.js" type="text/javascript"></script>
+
+<div id="Vidown_extension_alhnopeoagjmjfgcbnokcnagkecgdcdh" style="display: none;"></div><div id="hm_t_undefined" class="hm-t-container"><div class="hm-t-go-top" style="display: block;"></div></div></body></html>
