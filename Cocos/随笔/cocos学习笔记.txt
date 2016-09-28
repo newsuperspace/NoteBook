@@ -659,13 +659,207 @@ var xxx 定义的变量都属于全局作用域对象的成员从而变成全局
 物体的移动逻辑。 
 
 
-(48)
+(48)  对象池 的创建模板
+var NodePool = cc.Class({
+    
+    name: 'NodePool',  // 类名，用于序列化（钝化）的时候需要
+
+    properties: {
+        // 一个预制属性，敌人是哪个preFab
+        prefab: cc.Prefab,
+        // 一个size尺寸，计算需要从预制中创建多少个敌人实例出来
+        size: 0
+    },
+
+    // ccclass的构造器，其中的两个数组就是对象池的核心66666666666666
+    ctor () {
+        this.initList = [];   // 初始实例对象容器，存放从预制实例化出来的全部对象的引用
+
+        this.list = [];   // 对外使用的容器，从这个数组中会经常性地进行添加、删除的动作。
+        this.idx = 0;  //  位置索引，索引外部从this.list容器中拿取对象的索引（从数组最后一个元素拿起）
+    },
+
+    // 当前脚本的init()方法是由PoolMng（对象池管理器）的init()中调用的
+    init () {
+        // 创建预制的实例对象
+        for ( let i = 0; i < this.size; ++i ) {
+            let obj = cc.instantiate(this.prefab);
+            // 将预制的实例对象放入到两个[]数组中
+            this.initList[i] = obj;
+            this.list[i] = obj;
+        }
+        this.idx = this.size - 1;   // 设置list数组最后一个元素的索引位置，之后外部拿取实例对象都是从这个最后位置拿取
+    },
+
+    // 重置？将所有敌人实例重置为初始状态（没有父节点、没有激活active === false）并重新填充到外部引用数组中去
+    reset () {
+        for ( let i = 0; i < this.size; ++i ) {  
+            let obj = this.initList[i];   // 重新遍历实例化出来的敌人实例对象，从初始数组中
+            this.list[i] = obj;    // 并重新填充到外部引用数组中去
+
+            // 将节点重置
+            if (obj.active) {  
+                obj.active = false;   // 重置为未激活状态
+            }
+            if (obj.parent) {
+                obj.removeFromParent();   // 从父节点上移除重新成为无归属节点66666666
+            }
+        }
+        this.idx = this.size - 1;   // 重新设置外部引用
+    },
+
+    // 获取一个敌人实例
+    request ()  {
+        if ( this.idx < 0 ) {  // 如果引用已经小于0，则说明外部引用容器中已经没有剩余节点对象可供使用了
+            cc.log ("Error: the pool do not have enough free item.");
+            return null;  // 返回null，因此在外部使用的时候应该还要先判断下返回的是不是null
+        }
+
+        // 从外部引用数组中的最后一个位置拿取一个节点
+        let obj = this.list[this.idx];
+
+        if ( obj ) {
+            // 如果确实拿到了这个节点（不为null），则设置其active为true
+            obj.active = true;
+        }
+
+        --this.idx;  // 引用递减
+        
+        return obj; // 返回这个对象即可
+    },
+
+    // 归还之前从外部引用数组中拿出来的实例对象
+    return ( obj ) {
+        // 增加索引
+        ++this.idx;
+
+        // 重置节点为初始状态
+        obj.active = false;
+        if (obj.parent) {
+            obj.removeFromParent();
+        }
+
+        // 还回给外部引用容器以便于下次循环使用
+        this.list[this.idx] = obj;
+    }
+});
+
+module.exports = NodePool;
 
 
-(49)
+
+(49)  碰撞检测的回调函数，当拥有碰撞组件的节点上发生碰撞响应的时候，如果该节点上所挂载的逻辑组件拥有这些回调函数就会自动执行这些逻辑。
+前提条件是你需要首先开启默认关闭的碰撞检测系统：
+<1>获取碰撞检测系统
+var manager = cc.director.getCollisionManager();
+<2>默认碰撞检测系统是禁用的，如果需要使用则需要以下方法开启碰撞检测系统
+manager.enabled = true;
+<3>默认碰撞检测系统的 debug 绘制是禁用的，如果需要使用则需要以下方法开启 debug 绘制
+manager.enabledDebugDraw = true;
+
+	/**
+ * 当碰撞产生的时候调用
+ * @param  {Collider} other 产生碰撞的另一个碰撞组件
+ * @param  {Collider} self  产生碰撞的自身的碰撞组件
+ */
+	onCollisionEnter: function (other, self) {
+    console.log('on collision enter');
+
+    // 碰撞系统会计算出碰撞组件在世界坐标系下的相关的值，并放到 world 这个属性里面
+    var world = self.world;
+
+    // 碰撞组件的 aabb 碰撞框
+    var aabb = world.aabb;
+
+    // 上一次计算的碰撞组件的 aabb 碰撞框
+    var preAabb = world.preAabb;
+
+    // 碰撞框的世界矩阵
+    var t = world.transform;
+
+    // 以下属性为圆形碰撞组件特有属性
+    var r = world.radius;
+    var p = world.position;
+
+    // 以下属性为 矩形 和 多边形 碰撞组件特有属性
+    var ps = world.points;
+},
+/**
+ * 当碰撞产生后，碰撞结束前的情况下，每次计算碰撞结果后调用
+ * @param  {Collider} other 产生碰撞的另一个碰撞组件
+ * @param  {Collider} self  产生碰撞的自身的碰撞组件
+ */
+onCollisionStay: function (other, self) {
+    console.log('on collision stay');
+},
+/**
+ * 当碰撞结束后调用
+ * @param  {Collider} other 产生碰撞的另一个碰撞组件
+ * @param  {Collider} self  产生碰撞的自身的碰撞组件
+ */
+onCollisionExit: function (other, self) {
+    console.log('on collision exit');
+}
+
+(50)
+
+(51)
+
+(52)
+
+(53)
+
+(54)
+(55)
+(56)
+(57)
+(58)
+(59)
+(60)
+(61)
+(62)
+(63)
+(64)
+(65)
+(66)
+(67)
+(68)
+(69)
+(70)
+(71)
+(72)
+(73)
+(74)
+(75)
+(76)
+(77)
+(78)
+(79)
+(80)
+(81)
+(82)
+(83)
+(84)
+(85)
+(86)
+(87)
+(88)
+(89)
+(90)
+(91)
+(92)
+(93)
+(94)
+(95)
+(96)
+(97)
+(98)
+(99)
+(100)
 
 
-(50) Cocos Creator 导致编译错误的可能原因：
+
+(6666666) Cocos Creator 导致编译错误的可能原因：
 <1>脚本文件正在被VS Code打开着，即便已经保存，在编译构件项目的时候也要将VS code彻底关闭先。
 <2>
 <3>
@@ -676,3 +870,6 @@ var xxx 定义的变量都属于全局作用域对象的成员从而变成全局
 <8>
 <9>
 <10>
+
+
+
