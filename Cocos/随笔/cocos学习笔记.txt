@@ -7,6 +7,56 @@
 5、将游戏重点放在等待，并允许玩家花费虚拟货币取消等待
 
 
+Creator中的几大神秘脚本类————cc.Node  cc.Component  cc.game  cc.director  cc.view  666666666666666666666666
+
+// =======================================================模块之间数据使用的规则========================================================
+
+在模块中通过 var xxx =  cc.Class({
+	properties:{
+		aaa:{
+			default:0,
+			type: cc.Integer
+		},
+		
+		bbb: {
+			default: null,
+			type: cc.Node
+		}
+	}
+});     
+定义的数据类型，如果是作为某个Array的数组元素类型，例如 同样是与xxx相同脚本（模块）的另一个ccclass定义Array类型对象
+
+var  outer = require('outer');  
+
+cc.Class({
+
+	properties:{
+		bbb:{
+			default: [],
+			type: xxx
+		}
+	}
+
+	func: function(){
+		return outer.compare(this.bbb);
+	}
+});     的数组元素类型使用了xxx类型，然后将这个数组作为传递给了另外一个模块outer中，作为调用其compare方法的参数，如果在这个方法中需要取出xxx类型数组元素，并且比较
+每个元素中aaa的大小，并返回最大的那个，则在这种情况下，由于在outer脚本中compare方法可以通过 parameter[0].aaa的方式取出xxx数据类型的aaa属性，这是通过点操作符顺理成章实现的引用过程，因此无需在outer模块中预先使用require来引入xxx。
+
+但是如果你是想直接无中生有的（没有被动地从外部脚本传递进来数据，而是主动向外部脚本索要数据）则就需要预先通过require来加载那个外部脚本后才能引用到外部脚本的数据。
+
+
+总结一句话，要想看是否需要require外部脚本，主要看你所操作的这个涉及外部脚本中数据类型的数据是你主动获取的还是外部传给你的，只有主动的才需要加载模块，被动不用加载模块。
+“主动获取数据需要加载模块，被动得到数据不需要加载模块” 6666666666666666666666666666
+
+
+
+
+
+
+
+
+
 
 JSON指的就是JS中对象使用{}方式的字面量表示形式
 在JS中类型的字面量表示形式有————
@@ -195,6 +245,14 @@ ACCELERATION 加速器事件监听器类型
 	将发生的cc.Touch类型的触碰对象中的位置坐标转变为以节点左下角为原点的坐标系中的坐标
 	⑥convertTouchToNodeSpaceAR 
 	将发生的cc.Touch类型的触碰对象中的位置坐标转变为以节点锚点为原点的坐标系中的坐标（creator默认就是以锚点为原点）
+	
+	⑦ rectContainsRect
+		rectContainsRect ( rect1  rect2 )  Boolean
+		检查 rect1 矩形是否包含 rect2 矩形。 
+		注意：如果要允许 rect1 和 rect2 的边界重合，应该用 cc.rectOverlapsRect
+	
+	⑧ rectContainsPoint ( rect  point )  Boolean
+		检查一个矩形是否包含某个坐标点。
 			
 	综上所述，由于Creator默认都是以node节点的锚点为其自身坐标系原点，因此实际在creator中编写脚本都应该使用AR版本的函数。r
 	
@@ -202,12 +260,18 @@ ACCELERATION 加速器事件监听器类型
 	最初的触发节点对象（cc.node）的字符串名了。 实例可以参考MoveAnimationCtrl.js脚本
 	
 	
-(10)
+(10)  cc.Rect 每个节点都拥有的属性 “包围盒”里 封装了 cc.Size矩形框类型用来描述包围盒的长和宽度信息。
+		节点的包围盒可以通过 this.node.getBoundingBox ( )  Rect 返回父节坐标系下的轴向对齐的包围盒。
+			
+		或者
+		
+		this.node.getBoundingBoxToWorld ( )  Rect
+		返回节点在世界坐标系下的对齐轴向的包围盒（AABB）。
+		该边框包含自身和已激活的子节点的世界边框。
+	
 	
 	
 (11) 通过cc.log("message") 和 console.log(“message”)来分别实现向cocos creator的控制台和向浏览器的控制台输出日志信息的功能
-
-
 			
 			
 (12)  在通过
@@ -373,7 +437,7 @@ ACCELERATION 加速器事件监听器类型
 		cc.game.removePersistRootNode(myNode)
 
 
-(25  Creator中的几大神秘脚本类————cc  cc.Node  cc.Component  cc.game  cc.director  
+(25)  注意！ 在定义每个ccclass中存在一个并非强制填写的字段 ctor：{}   用作当前ccclass类的构造函数使用，需要特别记住的是，该构造函数会在其所属node被加载的最初是阶段就被执行，因此这就存在一个问题，如果你需要通过cc.find查找当前场景中的某个节点的时候，很可能这个节点是晚于ctor执行的时间，这样当先加载的节点上挂载的组件脚本的ctor执行了查找还未被加载的node节点就会出现null空指针的错误。所以在ctor中只适合填写一些不需要外部引用的内部成员的初始化，如果你需要引用外部的其他对象，请放在脚本的onload（如果这个ccclass继承自cc.Compon）或者其他更晚的时间段执行，这个时候场景中的所有节点和资源都已经加载完毕，也就不存在空指针的隐患了。6666666666
 
 (26)  加载场景时，可以附加一个参数用来指定场景加载后的回调函数：
 		cc.director.loadScene('MyScene', onSceneLaunched);
@@ -801,9 +865,84 @@ onCollisionExit: function (other, self) {
     console.log('on collision exit');
 }
 
-(50)
+(50)  关于JavaScript内置数据类型Array的常用用法——————由于JS中没有想JAVA和C等语言中那么丰富出彩的容器类型，因此Array就成为了我们唯一选择，其常用方法如下：
+		首先我们在cocos的JS脚本中通过
+		容器名：{
+			default: [],
+			type: 数组元素类型，
+			serializable： false
+		}
+		成功构建出一个Array数组类型的容器。
+		
+		之后对这个容器可以使用：
+		<1> shift() 删除并返回数组的第一个元素，然后改变数组长度length属性
+		<2> unshift(obj) 在数组的开头存入一个元素，然后改变数组长度length属性
+		<3> reverse() 将数组的首尾颠倒
+		<4> push(obj)  将指定元素放入到数组的最后一个位置
+		<5> pop() 返回数组的最后一个位置的元素
+		<6> splice(a,b,c)  从a索引开始，删除b个元素，并将c插入到a的位置 。 例如：
+			删除某个索引位置上的元素，并改变数组长度（被删除元素后面的元素补位）—— array.splice(index,1)
+			清空数组  array.splice(0,array.length)
+			等这些都是splice常用的使用方式
+		
+		更多具体的功能请见 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
 
-(51)
+(51)   cc.Class() 定义类型的模板代码：	
+var calledName = cc.Class({
+
+    // 类名，用于序列化
+    // 值类型：String
+    name: "Character",
+
+    // 基类，可以是任意创建好的 ccclass类型（本质是一个由cc.Class({})返回的function）
+    // 值类型：Function
+    extends: cc.Component,
+
+    // 构造函数
+    // 值类型：Function
+    ctor: function () {},
+
+    // 属性定义（方式一，直接定义）
+    properties: {
+        text: ""
+    },
+
+    // 属性定义（方式二，使用 ES6 的箭头函数，防止属性的循环引用而导致JS加载出现死循环）
+    properties: () => ({
+        text: ""
+    }),
+
+    // 实例方法
+    print: function () {
+        cc.log(this.text);
+    },
+
+    // 静态成员定义
+    // 值类型：Object
+	// 通常想要访问当前ccclass的properties等属性和方法的时候是需要首先通过 var xxx = new calledName(); 来创建一个xxx的实例对象然后通过xxx.xx 才能引用到
+	// 也就是说非静态的属性和方法与JAVA和C语言一样都是只能通过实例对象调用的，也就是说有多少个实例被创建出来就有多少份拷贝。
+	// 而在statics中定义的静态成员（属性和方法）是隶属于当前ccclass类型，因此只有一份拷贝是单例的。所以如果你需要在多个模块中通过当前这个ccclass共享数据
+	// 则你应该将保存数据的容器放入到statics中，之后在任何外部其他模块中先通过 var xxx = require('calledName');得到当前这个ccclass，然后就可以直接通过
+	// ccclass.静态成员 的方式引用到这些静态成员，而不用先创建实例对象。从而实现数据在多脚本中共享的目的.66666666666666666666666
+    statics: {
+		// 可以定义属性成员 但需要注意的是在statics中定义静态属性的时候是不支持像 properties中那么完备的属性定义机制的，在这里定义的属性只能立刻马上唯一地
+		// 给出一个初始值，例如这里就是直接定义了一个数组属性，至于这个数组的元素类型什么的则并不能指定。
+        _array: [],
+		
+		// 也可以定义成员函数
+        getCount: function () {}
+    },
+
+    // 提供给 Component 的子类专用的参数字段
+    // 值类型：Object
+    editor: {
+        disallowMultiple: true
+    }
+});
+
+module.exports = calledName;   // 将新定义的ccclass作为当前脚本文件（也就是模块）的导出，供其他脚本（模块）使用。也即是将calledName设置为全局的function对象
+
+
 
 (52)
 
