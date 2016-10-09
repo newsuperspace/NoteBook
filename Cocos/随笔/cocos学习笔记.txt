@@ -946,7 +946,16 @@ module.exports = calledName;   // 将新定义的ccclass作为当前脚本文件
 
 
 
-(52)
+(52) 关于事件监听器的几个注意点
+
+<1>通过事件管理器cc.EventManager.addListener()来监听单点触碰和多点触碰事件（具体格式参考cocos creator手册之玩家输入事件 http://www.cocos.com/docs/creator/scripting/player-controls.html）的时候需要注意需要注意的是，单点触碰由于同一时间只可能出现一个触点因此传递进入各个事件处理例程中的第一个参数是cc.Touch类型的（不是数组）因此可以直接从第一个参数touches获取触点嘻嘻，例如touches.getLoction()；而多点触碰由于存在同一时间可能出现多个触点的情况，因此第一个参数是一个元素为cc.Touch类型的数组，其信息获取是通过 var touch = touches[0] 来获取到第一个触点，然后在通过touch.getLocation() 获取触点信息的。
+
+<2>如果父子节点都包含有各自的触点事件监听器，则需要注意的是，如果子节点上发生的事件不需要父节点受到相应，则你必须在子节点所有事件处理例程的结尾都添加
+ event.stopPropagation();  用以停止事件继续向parent节点方向传递（与Android从父向子传递不同，cocos是从子向父传递）66666666 记住是全部历程的结尾都要添加。
+ 
+<3>经常让人忘记的一点就是，在触碰事件或者鼠标点击事件都是从Began这个处理例程开始，在历程结束的时候必须返回true，才能让后续其他的事件处理例程（例如move、end、cancel等）接收到后续事件，这也是必须的规定写法切记666666666
+
+
 
 (53)
 
