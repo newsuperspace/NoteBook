@@ -961,7 +961,14 @@ module.exports = calledName;   // 将新定义的ccclass作为当前脚本文件
 
 
 
-(53)
+(53)   如果我们需要动态的更新一个sprite节点的spriteFrame属性，让其在不同时候显示不同的样子，则你需要使用cc.SpriteAtlas类
+		你需要先使用
+			atlas: {     // 魔法飞弹的外形所需要使用的三种飞弹图片所在的图集
+				default: null,
+				type: cc.SpriteAtlas
+			},
+		在属性中设置图集资源的属性，然后让其引用一个图集资源，之后就可以通过 this.atlas.getSpriteFrame('图片名称')  得到spriteFrame，然后直接用这个返回值
+		来设置sprite节点的spriteFrame属性即可。
 
 (54)
 (55)
