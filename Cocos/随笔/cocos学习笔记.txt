@@ -223,21 +223,21 @@ ACCELERATION 加速器事件监听器类型
 		cc.event.eventTouch 和 cc.Touch的关系
 		
 （8） 在cc.Node节点上有很多的坐标系转换工具
-	①convertToNodeSpace          
+	①convertToNodeSpace(worldPoint)   // 作为参数的点的坐标是以屏幕左下角为原点的世界坐标系的坐标，将世界坐标系的坐标转化为当前节点以左下角为原点的坐标系的坐标        
 	形如：node.convertToNodeSpace(cc.p(100,100));  
 	这里将参数的坐标看作是世界坐标系中的一个坐标（世界坐标系就是GL坐标系，以屏幕左下角为原点,向上向右为Y轴和X轴正方向，指向我们脸的方向为Z轴正方向）
 	然后将这个坐标转化为一node的左下角为原点的坐标系中的坐标
 	
-	②convertToWorldSpace
+	②convertToWorldSpace(nodePoint)   // 作为参数的点的坐标是某个节点的坐标系的坐标，转化为以屏幕左下角为原点的世界坐标系的坐标  66666666666 获取真实视觉位置坐标（世界坐标系坐标）的唯一方法，也是进行各个节点坐标系之间坐标转化的过度和标尺，是坐标系对应转换的核心！！！！！！！ 
 	形如： node.convertToWorldSpace(cc.v2(100,100));
 	这里将参数的坐标看作是以node节点左下角为原点的坐标系中的一个坐标，然后将这个坐标转换为世界坐标系（屏幕左下角）中的坐标输出
 	
 	
-	③convertToNodeSpaceAR
+	③convertToNodeSpaceAR(worldPoint)   // 将以屏幕左下角为原点的世界坐标系坐标坐标转化为某个节点的以其锚点为原点的坐标系的坐标
 	node.convertToNodeSpaceAR(cc.p(100,100));
 	参数为世界坐标系中的一点，将该点转变成node节点以锚点为原点所构成的这所标系中的坐标
 	
-	④convertToWorldSpaceAR
+	④convertToWorldSpaceAR(nodePoint)  // 将节点坐标系上的一个坐标转化为以屏幕中心为锚点的世界坐标系的坐标
 	node.covertToWorldSpaceAR(cc.v2(100,100));
 	参数为node节点以锚点为坐标系原点的中的一个坐标，将之转变成世界坐标系中的坐标
 	
@@ -256,6 +256,13 @@ ACCELERATION 加速器事件监听器类型
 			
 	综上所述，由于Creator默认都是以node节点的锚点为其自身坐标系原点，因此实际在creator中编写脚本都应该使用AR版本的函数。r
 	
+	⑨ 如果需要将一个节点坐标系上的点的坐标，转变为另一个节点坐标系上的坐标，你需要两步走：
+	 a, 先将这个节点坐标转化为相同屏幕位置上的世界坐标系的坐标（因为虽然一个点在不同坐标系有不同的坐标，但其在屏幕上的位置是不变的，也就是说其世界坐标系上的坐标不会改变） 使用this.node.convertToWorldSpace(nodePosition);
+	 b, 然后再将这个世界坐标系坐标转化为目标节点坐标系坐标即可，targetNode.convertToNodeSpaceAR(worldPosition)
+	 也就是说，不论一个位置坐标是哪个节点坐标系的坐标，只要通过this.node.convertToWorldSpace()转化后得到的坐标就是其在屏幕上的真实位置的世界坐标，这个视觉位置是不会随着坐标系的改变而改变的。然后再使用不同节点的convertToNodeSpaceAR()方法来转化为不同坐标系的坐标，也就是说虽然这个点位在屏幕上的视觉位置没有发生变动，但是其坐标会随着其所属不同的坐标系而发生天翻地覆的变化。
+	 
+	 总结：如果一个可视对象在世界坐标系上的坐标没有发生变化，等同于其视觉位置没有发生任何改变。同理，如果一个可是对象视觉位置没有发生任何变化，则说明其在世界坐标系上的坐标没有改变。  世界坐标系坐标 ==== 视觉位置 66666666666666
+		
 (9) 在事件处理过程中，事件参数event.target会返回最初事件目标对象（Object），然后通过原生类型Object的原生属性_name就可以知道当前event事件
 	最初的触发节点对象（cc.node）的字符串名了。 实例可以参考MoveAnimationCtrl.js脚本
 	
